@@ -5,7 +5,7 @@ include_once('../admin_includes/common_functions.php');
 $getSiteSettings = getAllDataWhere('services_site_settings','id',1); 
 $getSiteSettingsData = $getSiteSettings->fetch_assoc();
 
-if(!isset($_SESSION['admin_user_id'])) {
+if(!isset($_SESSION['services_admin_user_id'])) {
   header("Location: logout.php");
   exit;
 }
@@ -61,7 +61,7 @@ if(!isset($_SESSION['admin_user_id'])) {
                   <span class="nav-cell p-r-10">
                     <img class="img-circle" src="img/avatars/1.jpg" alt="" width="32" height="32">
                   </span>
-                  <span class="nav-cell"><?php echo $_SESSION['admin_user_name']; ?>
+                  <span class="nav-cell"><?php echo $_SESSION['services_admin_user_name']; ?>
                     <span class="caret"></span>
                   </span>
                 </a>

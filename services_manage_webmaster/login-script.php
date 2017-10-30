@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 	//Set Password encrypt and decrypt	
 	$pwd=$_POST["admin_password"];	
 	$admin_password = encryptPassword($pwd);
-	$sql = "SELECT * FROM admin_users WHERE admin_email = '$admin_email' AND admin_password = '$admin_password' AND lkp_status_id = 0";
+	$sql = "SELECT * FROM admin_users WHERE admin_email = '$admin_email' AND admin_password = '$admin_password' AND lkp_status_id = 0 AND lkp_admin_user_type_id = 1";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();
 
@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 	    //Assign the current timestamp as the user's
 		//latest activity
 		$_SESSION['last_action'] = time();
-	    if(isset($_SESSION["admin_user_name"])) {
+	    if(isset($_SESSION["services_admin_user_name"])) {
 		    echo "<script type='text/javascript'>window.location='dashboard.php'</script>";
 		}
 	} else {
