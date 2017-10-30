@@ -72,7 +72,7 @@
                 <form data-toggle="validator" method="post" enctype="multipart/form-data">
 
                   <div class="form-group">
-                    <?php $getSiteSettings = getDataFromTables('services_site_settings',$status=NULL,$clause='id',$id=1,$activeStatus=NULL,$activeTop=NULL); 
+                    <?php $getSiteSettings = getAllDataWhere('services_site_settings','id','1'); 
                   $getSiteSettingsData = $getSiteSettings->fetch_assoc(); ?>
                     <label for="form-control-2" class="control-label">Admin Title</label>
                     <input type="text" name="admin_title" class="form-control" id="form-control-2" placeholder="Admin Title" data-error="Please enter a valid Title." value="<?php echo $getSiteSettingsData['admin_title'];?>" required>
