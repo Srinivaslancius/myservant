@@ -15,8 +15,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 	$row = $result->fetch_assoc();
 
 	if($row) {
-	    $_SESSION['admin_user_id'] = $row['id'];
-	    $_SESSION['admin_user_name'] = $row['admin_name'];
+	    $_SESSION['services_admin_user_id'] = $row['id'];
+	    $_SESSION['services_admin_user_name'] = $row['admin_name'];
 	    //Assign the current timestamp as the user's
 		//latest activity
 		$_SESSION['last_action'] = time();
