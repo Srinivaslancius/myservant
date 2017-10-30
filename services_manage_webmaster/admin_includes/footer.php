@@ -87,6 +87,17 @@
       }
     }
     </script>
+    <!-- Below script for ck editor -->
+    <script src="//cdn.ckeditor.com/4.7.0/full/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'category_description' );
+        CKEDITOR.replace( 'meta_desc' ); 
+    </script>
+    <style type="text/css">
+        .cke_top, .cke_contents, .cke_bottom {
+            border: 1px solid #333;
+        }
+    </style>
   </body>
   <style>
     .modal-body{
