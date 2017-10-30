@@ -1,40 +1,29 @@
 <?php
     
-    function getDataFromTables($table=NULL,$status=NULL,$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL) {
-        
-        //echo $table ."<br />". $status;
+    //common function for get all data with where clause
+
+    function getAllData($table)  {
         global $conn;
-        if($table!='' && $table!=NULL && $clause!='' && $clause!=NULL && $id!='' && $id!=NULL) {
-            //Get All Table Data with Where Condition(4)
-            $sql="select * from `$table` WHERE `$clause` = '$id' ";
-        } elseif($table!='' && $table!=NULL && $status!='' ) {
-            //Get Active Records (3)
-            $sql="select * from `$table` WHERE `status` = '$status' ORDER BY id DESC";
-        } elseif($table!='' && $table!=NULL && $activeTop!='' && $activeTop!=NULL) {
-            //Get All Active records top Table Data (6)
-            $sql="select * from `$table` ORDER BY status, id DESC ";
-        } elseif($table!='' && $table!=NULL) {
-            //Get All Table Data (1)
-            $sql="select * from `$table` ORDER BY status, id DESC";
-        }  else {
-            //Last if fail then go to this
-            $sql="select * from `$table` ORDER BY status, id DESC";
-        }
-        
-        $result = $conn->query($sql);
+        $sql="select * from `$table` ";
+        $result = $conn->query($sql);        
         return $result;
     }
 
-    /*Common function with where out where get all data from query */
-    function getAllDataWithActiveRecent($table)  {
+    function getAllDataWhere($table,$clause,$value)  {
         global $conn;
-        $sql="select * from `$table` ORDER BY status, id DESC ";
+        $sql="select * from `$table` WHERE `$clause` = '$value' ";
+        $result = $conn->query($sql);        
+        return $result;
+    }
+
+    function getAllDataWithStatus($table,$status)  {
+        global $conn;
+        $sql="select * from `$table` WHERE `lkp_status_id` = '$status' ";
         $result = $conn->query($sql); 
         return $result;
-    }
-
-    /* Common function for get count for rows */
-     function getRowsCount($table)  {
+    }    
+    
+    function getRowsCount($table)  {
         global $conn;
         $sql="select * from `$table` ";
         $result = $conn->query($sql);
