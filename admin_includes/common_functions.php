@@ -11,7 +11,7 @@
 
     function getAllDataWhere($table,$clause,$value)  {
         global $conn;
-        echo $sql="select * from `$table` WHERE `$clause` = '$value' "; die;
+        $sql="select * from `$table` WHERE `$clause` = '$value' ";
         $result = $conn->query($sql);        
         return $result;
     }
