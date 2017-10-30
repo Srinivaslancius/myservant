@@ -66,6 +66,27 @@
         }, 2000);
       });
     </script>
+    <!-- Checking for email availability -->
+    <script>
+    function checkEmail() {
+      var email1 = document.getElementById("admin_email").value;
+      if (email1){
+        $.ajax({
+        type: "POST",
+        url: "check_email_avail_admin_users.php",
+        data: {
+          admin_email:email1,
+        },
+        success: function (response) {
+          $( '#email_status' ).html(response);
+          if (response == "Email Already Exist"){
+            $("#admin_email").val("");
+          }        
+          }
+         });          
+      }
+    }
+    </script>
   </body>
   <style>
     .modal-body{

@@ -2,7 +2,7 @@
 ob_start();
 include_once('../admin_includes/config.php');
 include_once('../admin_includes/common_functions.php');
-$getSiteSettings = getDataFromTables('services_site_settings',$status=NULL,$clause='id',$id=1,$activeStatus=NULL,$activeTop=NULL); 
+$getSiteSettings = getAllDataWhere('services_site_settings','id',1); 
 $getSiteSettingsData = $getSiteSettings->fetch_assoc();
 
 if(!isset($_SESSION['admin_user_id'])) {
