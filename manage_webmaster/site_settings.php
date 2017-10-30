@@ -13,6 +13,8 @@
     $twitter_link = $_POST['twitter_link'];
     $gplus_link = $_POST['gplus_link'];
     $mobile = $_POST['mobile'];
+    $delivery_charges = $_POST['delivery_charges'];
+    $packaging_charges = $_POST['packaging_charges'];
     $footer_text = $_POST['footer_text'];
     $open_timings = $_POST['open_timings'];
     $address = $_POST['address'];
@@ -34,10 +36,10 @@
             echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             $uploadOk = 0;
         }
-        $getImgUnlink = getImageUnlink('logo','site_settings','id',$id,$target_dir);
+        $getImgUnlink = getImageUnlink('logo','services_site_settings','id',$id,$target_dir);
         //Send parameters for img val,tablename,clause,id,imgpath for image ubnlink from folder
         if (move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file)) {
-            $sql = "UPDATE `site_settings` SET admin_title = '$admin_title', email='$email', fb_link='$fb_link', twitter_link='$twitter_link', gplus_link='$gplus_link',inst_link='$inst_link', mobile='$mobile', logo = '$logo', footer_text='$footer_text', open_timings='$open_timings', address='$address', active_experts='$active_experts',happy_clients='$happy_clients',developer_hand='$developer_hand',completed_project='$completed_project' WHERE id = '$id' ";
+            $sql = "UPDATE `services_site_settings` SET admin_title = '$admin_title', email='$email', fb_link='$fb_link', twitter_link='$twitter_link', gplus_link='$gplus_link',inst_link='$inst_link', mobile='$mobile', logo = '$logo',delivery_charges = '$delivery_charges',packaging_charges = '$packaging_charges', footer_text='$footer_text', open_timings='$open_timings', address='$address', active_experts='$active_experts',happy_clients='$happy_clients',developer_hand='$developer_hand',completed_project='$completed_project' WHERE id = '$id' ";
             if($conn->query($sql) === TRUE){
                echo "<script type='text/javascript'>window.location='site_settings.php?msg=success'</script>";
             } else {
@@ -48,7 +50,7 @@
             echo "Sorry, there was an error uploading your file.";
         }
     }  else {
-        $sql = "UPDATE `site_settings` SET admin_title = '$admin_title', email='$email', fb_link='$fb_link', twitter_link='$twitter_link', gplus_link='$gplus_link',inst_link='$inst_link', mobile='$mobile',footer_text='$footer_text', open_timings='$open_timings', address='$address', active_experts='$active_experts',happy_clients='$happy_clients',developer_hand='$developer_hand',completed_project='$completed_project' WHERE id = '$id' ";
+        $sql = "UPDATE `services_site_settings` SET admin_title = '$admin_title', email='$email', fb_link='$fb_link', twitter_link='$twitter_link', gplus_link='$gplus_link',inst_link='$inst_link', mobile='$mobile',delivery_charges = '$delivery_charges',packaging_charges = '$packaging_charges',footer_text='$footer_text', open_timings='$open_timings', address='$address', active_experts='$active_experts',happy_clients='$happy_clients',developer_hand='$developer_hand',completed_project='$completed_project' WHERE id = '$id' ";
         if($conn->query($sql) === TRUE){
            echo "<script type='text/javascript'>window.location='site_settings.php?msg=success'</script>";
         } else {
@@ -70,7 +72,7 @@
                 <form data-toggle="validator" method="post" enctype="multipart/form-data">
 
                   <div class="form-group">
-                    <?php $getSiteSettings = getDataFromTables('site_settings',$status=NULL,$clause='id',$id=1,$activeStatus=NULL,$activeTop=NULL); 
+                    <?php $getSiteSettings = getDataFromTables('services_site_settings',$status=NULL,$clause='id',$id=1,$activeStatus=NULL,$activeTop=NULL); 
                   $getSiteSettingsData = $getSiteSettings->fetch_assoc(); ?>
                     <label for="form-control-2" class="control-label">Admin Title</label>
                     <input type="text" name="admin_title" class="form-control" id="form-control-2" placeholder="Admin Title" data-error="Please enter a valid Title." value="<?php echo $getSiteSettingsData['admin_title'];?>" required>
@@ -108,6 +110,18 @@
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Mobile</label>
                     <input type="text" name="mobile" class="form-control" id="form-control-2"  placeholder="Mobile" data-error="Please enter valid Mobile." value="<?php echo $getSiteSettingsData['mobile'];?>" required>
+                    <div class="help-block with-errors"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Delivery Charges</label>
+                    <input type="text" name="delivery_charges" class="form-control" id="form-control-2"  placeholder="Delivery Charges" data-error="Please enter valid Delivery Charges." value="<?php echo $getSiteSettingsData['delivery_charges'];?>" required>
+                    <div class="help-block with-errors"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Packaging Charges</label>
+                    <input type="text" name="packaging_charges" class="form-control" id="form-control-2"  placeholder="Packaging Charges" data-error="Please enter valid Packaging Charges." value="<?php echo $getSiteSettingsData['packaging_charges'];?>" required>
                     <div class="help-block with-errors"></div>
                   </div>         
 
