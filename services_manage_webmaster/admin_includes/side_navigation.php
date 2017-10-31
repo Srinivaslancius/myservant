@@ -37,14 +37,14 @@
                 <li class="<?php if($page_name == 'users.php' || $page_name == 'add_users.php' || $page_name == 'edit_users.php') { echo "active"; } ?>"><a href="users.php">Users</a></li>
               </ul>
             </li>
-            <!-- <li  class="<?php if($page_name == 'banners.php' || $page_name == 'add_banners.php' || $page_name == 'edit_banners.php' ) { echo "active"; } ?>">
-              <a href="banners.php" aria-haspopup="true">
+            <li  class="<?php if($page_name == 'services_category.php' || $page_name == 'add_services_category.php' || $page_name == 'edit_services_category.php' ) { echo "active"; } ?>">
+              <a href="services_category.php" aria-haspopup="true">
                 <span class="menu-icon">
                    <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
                 </span>
-                <span class="menu-text">Banners</span>
+                <span class="menu-text">Categories</span>
               </a>
-            </li> -->
+            </li>
           </ul>
         </div>
       </div>
