@@ -58,20 +58,20 @@ if (!isset($_POST['submit']))  {
 
                   <?php $getBannerTypes = getAllDataWithStatus('lkp_banner_types','0');?>
                   <div class="form-group">
-                    <label for="form-control-3" class="control-label">Choose your Banner Type</label>
-                    <select id="form-control-3" name="lkp_banner_type_id" class="custom-select" data-error="This field is required." required>
-                      <option value="">Select Banner Type</option>
+                    <label for="form-control-4" class="control-label">Banner Type</label>
+                    <div class="radio">
                       <?php while($row = $getBannerTypes->fetch_assoc()) {  ?>
-                          <option value="<?php echo $row['id']; ?>"><?php echo $row['banner_type']; ?></option>
+                      <label>
+                        <input name="lkp_banner_type_id" id="lkp_banner_type_id" value="<?php echo $row['id']; ?>" type="radio" required ><?php echo $row['banner_type']; ?>
+                      </label>
                       <?php } ?>
-                   </select>
-                    <div class="help-block with-errors"></div>
+                    </div>
                   </div>
 
                   <?php $getServicesCategories = getAllDataWithStatus('services_category','0');?>
-                  <div class="form-group">
+                  <div class="form-group" id="service_category_id">
                     <label for="form-control-3" class="control-label">Choose your Service Category</label>
-                    <select id="form-control-3" name="service_category_id" class="custom-select" data-error="This field is required." required>
+                    <select name="service_category_id" class="custom-select" >
                       <option value="">Select Service Category</option>
                       <?php while($row = $getServicesCategories->fetch_assoc()) {  ?>
                           <option value="<?php echo $row['id']; ?>"><?php echo $row['category_name']; ?></option>
@@ -102,3 +102,15 @@ if (!isset($_POST['submit']))  {
       </div>
   
 <?php include_once 'admin_includes/footer.php'; ?>
+<!-- Script for display category based on banner type -->
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("input[name='lkp_banner_type_id']").click(function () {
+      if ($("#lkp_banner_type_id").is(":checked")) {
+          $("#service_category_id").show();
+      } else {
+          $("#service_category_id").hide();
+      }
+    });
+  });
+</script>

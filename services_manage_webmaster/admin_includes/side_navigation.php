@@ -45,6 +45,14 @@
                 <span class="menu-text">Categories</span>
               </a>
             </li>
+            <li  class="<?php if($page_name == 'services_sub_category.php' || $page_name == 'add_services_sub_category.php' || $page_name == 'edit_services_sub_category.php' ) { echo "active"; } ?>">
+              <a href="services_sub_category.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Sub Categories</span>
+              </a>
+            </li>
             <li  class="<?php if($page_name == 'services_banners.php' || $page_name == 'add_services_banners.php' || $page_name == 'edit_services_banners.php' ) { echo "active"; } ?>">
               <a href="services_banners.php" aria-haspopup="true">
                 <span class="menu-icon">

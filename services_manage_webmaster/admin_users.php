@@ -8,6 +8,18 @@
           </div>
           <div class="panel-body">
             <div class="table-responsive">
+              <div class="col s12 m12 l12">                  
+                <?php $sql = "SELECT * FROM admin_users GROUP BY lkp_status_id"; $getAdminUsers = $conn->query($sql);?>
+                  <div class="form-group col-md-3">                    
+                    <select id="admin-user-status" class="custom-select">
+                       <option value="">Select Status</option>
+                        <?php while ($getAdminUsers1 = $getAdminUsers->fetch_assoc()) { ?>
+                          <option value="<?php echo $getAdminUsers1['lkp_status_id']; ?>"><?php if($getAdminUsers1['lkp_status_id'] == 0 ){ echo "Active";} else{ echo "InActive";}?></option>
+                        <?php } ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="clear_fix"></div>
               <table class="table table-striped table-bordered dataTable" id="table-1">
                 <thead>
                   <tr>
