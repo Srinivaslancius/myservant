@@ -16,16 +16,16 @@ if (!isset($_POST['submit']))  {
   
   if($fileToUpload!='') {
 
-    $target_dir = "../uploads/category_images/";
+    $target_dir = "../uploads/services_category_images/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        $sql = "INSERT INTO categories (`category_name`, `category_description`,`category_image`, `category_position`, `meta_title`, `meta_keywords`, `meta_desc`, `lkp_status_id`) VALUES ('$category_name', '$category_description','$fileToUpload', '$category_position', '$meta_title', '$meta_keywords', '$meta_desc', '$lkp_status_id')"; 
+        $sql = "INSERT INTO services_category (`category_name`, `category_description`,`category_image`, `category_position`, `meta_title`, `meta_keywords`, `meta_desc`, `lkp_status_id`) VALUES ('$category_name', '$category_description','$fileToUpload', '$category_position', '$meta_title', '$meta_keywords', '$meta_desc', '$lkp_status_id')"; 
         if($conn->query($sql) === TRUE){
-           echo "<script type='text/javascript'>window.location='categories.php?msg=success'</script>";
+           echo "<script type='text/javascript'>window.location='services_category.php?msg=success'</script>";
         } else {
-           echo "<script type='text/javascript'>window.location='categories.php?msg=fail'</script>";
+           echo "<script type='text/javascript'>window.location='services_category.php?msg=fail'</script>";
         }
         //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     } else {
