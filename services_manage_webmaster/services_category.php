@@ -3,8 +3,8 @@
      <div class="site-content">
         <div class="panel panel-default panel-table">
           <div class="panel-heading">
-            <a href="add_services_category.php" style="float:right">Add Servicers Categories</a>
-            <h3 class="m-t-0 m-b-5">Services Categories</h3>
+            <a href="add_services_category.php" style="float:right">Add Categories</a>
+            <h3 class="m-t-0 m-b-5">Categories</h3>
           </div>
           <div class="panel-body">
             <div class="table-responsive">
@@ -40,7 +40,7 @@
                                 <i class="zmdi zmdi-close"></i>
                               </span>
                             </button>
-                            <center><h4 class="modal-title">Admin User Information</h4></center>
+                            <center><h4 class="modal-title">Category Information</h4></center>
                           </div>
                           <div class="modal-body" id="modal_body">
                             <div class="row">
