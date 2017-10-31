@@ -16,5 +16,12 @@
         $response = curl_exec($ch);        
     }
 
+    function sendEmail($to,$subject,$message,$from) {
+        //global $conn;        
+        $headers = 'From: "'.$from.'"' . "\r\n" .            
+            'X-Mailer: PHP/' . phpversion();
+        mail($to, $subject, $message, $headers);
+
+    }
     
 ?>
