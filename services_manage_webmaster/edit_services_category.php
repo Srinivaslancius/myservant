@@ -93,7 +93,7 @@ if (!isset($_POST['submit'])) {
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Meta Description</label>
-                    <textarea name="meta_desc" class="form-control" id="meta_desc" data-error="This field is required." required><?php echo $getCategoriesData['category_description'];?></textarea>
+                    <textarea name="meta_desc" class="form-control" id="meta_desc" data-error="This field is required." required><?php echo $getCategoriesData['meta_desc'];?></textarea>
                     <div class="help-block with-errors"></div>
                   </div>
                   <?php $getStatus = getAllData('lkp_status');?>
