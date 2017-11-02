@@ -1,4 +1,4 @@
-<?php include_once 'admin_includes/main_header.php'; ?>
+<?php include_once 'admin_includes/main_header.php'; error_reporting(0);?>
 <?php $getGroupServiceNames = getAllData('services_group_service_names'); $i=1; ?>
      <div class="site-content">
         <div class="panel panel-default panel-table">
@@ -28,7 +28,7 @@
                     <td><?php $getServicesSubCategories = getAllDataWithStatus('services_sub_category','0'); while($getServicesSubCategories1 = $getServicesSubCategories->fetch_assoc()) { if($row['services_sub_category_id'] == $getServicesSubCategories1['id']) { echo $getServicesSubCategories1['sub_category_name']; } } ?></td>
                     <td><?php $getServiceGroups = getAllDataWithStatus('services_groups','0'); while($getServiceGroups1 = $getServiceGroups->fetch_assoc()) { if($row['services_group_id'] == $getServiceGroups1['id']) { echo $getServiceGroups1['group_name']; } } ?></td>
                     <td><?php echo $row['group_service_name'];?></td>
-                    <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='services_groups'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='services_groups'>In Active</span>" ;} ?></td>
+                    <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='services_group_service_names'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='services_group_service_names'>In Active</span>" ;} ?></td>
                     <td> <a href="edit_services_group_service_names.php?gsnid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a> &nbsp; <a href="delete_services_group_service_names.php?gsnid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-delete zmdi-hc-fw" onclick="return confirm('Are you sure you want to delete?')"></i></a> &nbsp;<a href="#"><i class="zmdi zmdi-eye zmdi-hc-fw" data-toggle="modal" data-target="#<?php echo $row['id']; ?>" class=""></i></a></td>
                      <!-- Open Modal Box  here -->
                     <div id="<?php echo $row['id']; ?>" class="modal fade" tabindex="-1" role="dialog">
@@ -46,20 +46,20 @@
                             <div class="row">
                               <?php $getServicesCategories = getAllDataWithStatus('services_category','0'); ?>
                               <div class="col-sm-2"></div>
-                              <div class="col-sm-4">Service Category Name:</div>
+                              <div class="col-sm-4">Category Name:</div>
                               <div class="col-sm-6"><?php while($getServicesCategories1 = $getServicesCategories->fetch_assoc()) { if($row['services_category_id'] == $getServicesCategories1['id']) { echo $getServicesCategories1['category_name']; } } ?></div>
                             </div>
                             <div class="row">
                               <?php $getServicesSubCategories = getAllDataWithStatus('services_sub_category','0'); ?>
                               <div class="col-sm-2"></div>
-                              <div class="col-sm-4">Service Category Name:</div>
+                              <div class="col-sm-4">Sub Category Name:</div>
                               <div class="col-sm-6"><?php while($getServicesSubCategories1 = $getServicesSubCategories->fetch_assoc()) { if($row['services_sub_category_id'] == $getServicesSubCategories1['id']) { echo $getServicesSubCategories1['sub_category_name']; } } ?></div>
                             </div>
                             <div class="row">
-                              <?php $getGroupsData = getAllDataWithStatus('services_sub_category','0'); ?>
+                              <?php $getGroupsData = getAllDataWithStatus('services_groups','0'); ?>
                               <div class="col-sm-2"></div>
-                              <div class="col-sm-4">Service Category Name:</div>
-                              <div class="col-sm-6"><?php while($getGroupsData1 = $getGroupsData->fetch_assoc()) { if($row['services_sub_category_id'] == $getGroupsData1['id']) { echo $getServicesSubCategories1['group_name']; } } ?></div>
+                              <div class="col-sm-4">Group Name:</div>
+                              <div class="col-sm-6"><?php while($getGroupsData1 = $getGroupsData->fetch_assoc()) { if($row['services_sub_category_id'] == $getGroupsData1['id']) { echo $getGroupsData1['group_name']; } } ?></div>
                             </div>
                             <div class="row">
                               <div class="col-sm-2"></div>

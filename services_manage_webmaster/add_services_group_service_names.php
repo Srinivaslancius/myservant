@@ -1,5 +1,6 @@
 <?php include_once 'admin_includes/main_header.php'; ?>
 <?php  
+error_reporting(0);
 if (!isset($_POST['submit']))  {
   //If fail
   echo "fail";
