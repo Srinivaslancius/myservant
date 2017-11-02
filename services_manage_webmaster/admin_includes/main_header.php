@@ -67,6 +67,10 @@ if(!isset($_SESSION['services_admin_user_id'])) {
                 </a>
                 <ul class="dropdown-menu">
                   <li>
+                    <a href="change_password.php">
+                      <i class="zmdi zmdi-power m-r-10"></i>Change Password</a>
+                  </li>
+                  <li>
                     <a href="logout.php">
                       <i class="zmdi zmdi-power m-r-10"></i> Logout</a>
                   </li>
