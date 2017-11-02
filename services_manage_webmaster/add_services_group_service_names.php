@@ -39,7 +39,7 @@ if (!isset($_POST['submit']))  {
                   <?php $getServicesCategories = getAllDataWithStatus('services_category','0');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your Service Category</label>
-                    <select name="services_category_id" class="custom-select" data-error="This field is required." required>
+                    <select name="services_category_id" class="custom-select" data-error="This field is required." required onChange="getSubCategory(this.value);">
                       <option value="">Select Service Category</option>
                       <?php while($row = $getServicesCategories->fetch_assoc()) {  ?>
                           <option value="<?php echo $row['id']; ?>" ><?php echo $row['category_name']; ?></option>
@@ -48,26 +48,18 @@ if (!isset($_POST['submit']))  {
                     <div class="help-block with-errors"></div>
                   </div>
 
-                  <?php $getServicesSubCategories = getAllDataWithStatus('services_sub_category','0');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your Service Sub Category</label>
-                    <select name="services_sub_category_id" class="custom-select" data-error="This field is required." required>
+                    <select name="services_sub_category_id" id="services_sub_category_id" class="custom-select" data-error="This field is required." required onChange="getGroupsData(this.value);">
                       <option value="">Select Service Sub Category</option>
-                      <?php while($row = $getServicesSubCategories->fetch_assoc()) {  ?>
-                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['sub_category_name']; ?></option>
-                      <?php } ?>
                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
 
-                  <?php $getGroups = getAllDataWithStatus('services_groups','0');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your Service Group</label>
-                    <select name="services_group_id" class="custom-select" data-error="This field is required." required>
+                    <select name="services_group_id" id="services_group_id" class="custom-select" data-error="This field is required." required>
                       <option value="">Select Service Group</option>
-                      <?php while($row = $getGroups->fetch_assoc()) {  ?>
-                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['group_name']; ?></option>
-                      <?php } ?>
                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
@@ -179,4 +171,25 @@ if (!isset($_POST['submit']))  {
 
   });
 }); 
+function getSubCategory(val) {
+    $.ajax({
+    type: "POST",
+    url: "get_subcategories.php",
+    data:'services_category_id='+val,
+    success: function(data){
+        $("#services_sub_category_id").html(data);
+    }
+    });
+}
+
+function getGroupsData(val) { 
+    $.ajax({
+    type: "POST",
+    url: "get_groups.php",
+    data:'services_sub_category_id='+val,
+    success: function(data){
+        $("#services_group_id").html(data);
+    }
+    });
+}
 </script>
