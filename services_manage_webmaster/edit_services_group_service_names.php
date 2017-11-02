@@ -87,42 +87,42 @@ if (!isset($_POST['submit'])) {
                       <div class="radio">
                         <?php while($getPriceTypes1 = $getPriceTypes->fetch_assoc()) {  ?>
                         <label>
-                          <input name="service_price_type_id" id="service_price_type_id" value="<?php echo $getPriceTypes1['id']; ?>" type="radio" <?php if($getGroupNamesData['service_price_type_id']  == $getPriceTypes1['id']){ echo "checked=checked"; }?> required><?php echo $getPriceTypes1['price_type']; ?>
+                          <input name="service_price_type_id" class="service_price_type_id" id="service_price_type_id" value="<?php echo $getPriceTypes1['id']; ?>" type="radio" <?php if($getGroupNamesData['service_price_type_id']  == $getPriceTypes1['id']){ echo "checked=checked"; }?> required><?php echo $getPriceTypes1['price_type']; ?>
                         </label>
                         <?php } ?>
                       </div>
                     <div class="help-block with-errors"></div>
                   </div>
-                  <?php if($getGroupNamesData['service_price_type_id'] == 1) {?>
+                  <?php if($getGroupNamesData['service_price_type_id']  == 1) { ?>
                   <div class="form-group" id="service_price">
                     <label for="form-control-2" class="control-label">Service Price</label>
-                    <input type="text" name="service_price" class="form-control" id="form-control-2" value="<?php echo $getGroupNamesData['service_price'];?>">
+                    <input type="text" name="service_price" class="form-control" id="service_price_txt" value="<?php echo $getGroupNamesData['service_price'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <?php } ?>
-                  <?php if($getGroupNamesData['service_price_type_id'] == 2) {?>
+                  <?php if($getGroupNamesData['service_price_type_id']  == 2) { ?>
                   <?php $getPriceAfterVisitTypes = getAllDataWithStatus('price_after_visit_types','0');?>
                   <div class="form-group" id="price_after_visit_type_id1">
                     <label for="form-control-3" class="control-label">Choose your Price After Visit Types</label>
                       <div class="radio">
                         <?php while($getPriceAfterVisitTypes1 = $getPriceAfterVisitTypes->fetch_assoc()) {  ?>
                         <label>
-                          <input name="price_after_visit_type_id" id="price_after_visit_type_id" value="<?php echo $getPriceAfterVisitTypes1['id']; ?>" type="radio" <?php if($getGroupNamesData['price_after_visit_type_id']  == $getPriceAfterVisitTypes1['id']){ echo "checked=checked"; }?> ><?php echo $getPriceAfterVisitTypes1['price_after_visit_type']; ?>
+                          <input name="price_after_visit_type_id" class="price_after_visit_type_id" id="price_after_visit_type_id" value="<?php echo $getPriceAfterVisitTypes1['id']; ?>" type="radio" <?php if($getGroupNamesData['price_after_visit_type_id']  == $getPriceAfterVisitTypes1['id']){ echo "checked=checked"; }?> ><?php echo $getPriceAfterVisitTypes1['price_after_visit_type']; ?>
                         </label>
                         <?php } ?>
                       </div>
                     <div class="help-block with-errors"></div>
                   </div>
                   <?php } ?>
-                  <?php if($getGroupNamesData['service_price_type_id'] == 2 && $getGroupNamesData['price_after_visit_type_id'] == 2) {?>
+                  <?php if($getGroupNamesData['service_price_type_id']  == 2 && $getGroupNamesData['price_after_visit_type_id']  == 2) { ?>
                   <div class="form-group" id="service_min_price">
                     <label for="form-control-2" class="control-label">Service Min Price</label>
-                    <input type="text" name="service_min_price" class="form-control" id="form-control-2"  value="<?php echo $getGroupNamesData['service_min_price'];?>">
+                    <input type="text" name="service_min_price" class="form-control" id="min_price"  value="<?php echo $getGroupNamesData['service_min_price'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group" id="service_max_price">
                     <label for="form-control-2" class="control-label">Service Max Price</label>
-                    <input type="text" name="service_max_price" class="form-control" id="form-control-2" value="<?php echo $getGroupNamesData['service_max_price'];?>">
+                    <input type="text" name="service_max_price" class="form-control" id="max_price" value="<?php echo $getGroupNamesData['service_max_price'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <?php } ?>
@@ -149,27 +149,33 @@ if (!isset($_POST['submit'])) {
 <?php include_once 'admin_includes/footer.php'; ?>
 <!-- Script for display Price Type -->
 <script type="text/javascript">
-  $(document).ready(function () {
-    $("input[name='service_price_type_id']").click(function () {
-      if ($("#service_price_type_id").is(":checked")) {
-          $("#service_price").show();
-      } else {
-          $("#service_price").hide();
-          $("#price_after_visit_type_id1").show();
-      }
-    });
+  $(document).ready(function () { 
+    //$('#service_price, #price_after_visit_type_id1, #service_min_price, #service_max_price').hide();
+    $('.service_price_type_id').on('click', function() {
+
+      if($(this).val() == 1) {
+        $('#service_price').show();
+        $('#price_after_visit_type_id1, #service_min_price, #service_max_price').hide();
+        $('#min_price, #max_price').val("");
+        $('.price_after_visit_type_id').prop('checked', false);
+      } else if($(this).val() == 2) {
+        $('#service_price').hide();
+        $('#service_price_txt').val("");
+        $('#price_after_visit_type_id1').show();
+      }  
+
+   });
+
+  $('.price_after_visit_type_id').on('click', function() {
+
+    $('#service_min_price, #service_max_price').show();
+    if($(this).val() == 2) {
+      $('#service_min_price, #service_max_price').show();
+    } else if($(this).val() == 1) {
+      $('#service_min_price, #service_max_price').hide();
+      $('#service_min_price, #service_max_price').val('');
+    }
+
   });
-</script>
-  <!-- Script to display price after visit type -->
-  <script type="text/javascript">
-  $(document).ready(function () {
-    $("input[name='price_after_visit_type_id']").click(function () {
-      if ($("#price_after_visit_type_id").is(":checked")) {
-          $("#price_after_visit_type_id").val("Yes");
-      } else {
-          $("#service_min_price").show();
-          $("#service_max_price").show();
-      }
-    });
-  });
+}); 
 </script>
