@@ -69,6 +69,14 @@
                 <span class="menu-text">Groups</span>
               </a>
             </li>
+            <li  class="<?php if($page_name == 'services_group_service_names.php' || $page_name == 'add_services_group_service_names.php' || $page_name == 'edit_services_group_service_names.php' ) { echo "active"; } ?>">
+              <a href="services_group_service_names.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Group Services</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
