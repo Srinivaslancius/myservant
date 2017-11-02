@@ -8,15 +8,20 @@
           </div>
           <div class="panel-body">
             <div class="table-responsive">
-              <div class="col s12 m12 l12">                  
-                <?php $sql = "SELECT * FROM admin_users GROUP BY lkp_status_id"; $getAdminUsers = $conn->query($sql);?>
-                  <div class="form-group col-md-3">                    
-                    <select id="admin-user-status" class="custom-select">
-                       <option value="">Select Status</option>
-                        <?php while ($getAdminUsers1 = $getAdminUsers->fetch_assoc()) { ?>
-                          <option value="<?php echo $getAdminUsers1['lkp_status_id']; ?>"><?php if($getAdminUsers1['lkp_status_id'] == 0 ){ echo "Active";} else{ echo "InActive";}?></option>
-                        <?php } ?>
-                    </select>
+              <div class="clear_fix"></div>
+
+                <div class="form-group col-md-4">
+                  <div class="custom-controls-stacked checkbox_new_div">
+                    <label class="custom-control custom-control-primary custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" id="test5" name="type" onchange="filterme()" value="Active">
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-label" for="test5">Active Users</span>
+                    </label>
+                    <label class="custom-control custom-control-primary custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" id="test6" name="type" onchange="filterme()" value="In Active">
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-label" for="test6">In Active Users</span>
+                    </label>
                   </div>
                 </div>
                 <div class="clear_fix"></div>
