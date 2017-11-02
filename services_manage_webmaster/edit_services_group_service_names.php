@@ -100,6 +100,7 @@ if (!isset($_POST['submit'])) {
                     <div class="help-block with-errors"></div>
                   </div>
                   <?php } ?>
+                  <?php if($getGroupNamesData['service_price_type_id'] == 2) {?>
                   <?php $getPriceAfterVisitTypes = getAllDataWithStatus('price_after_visit_types','0');?>
                   <div class="form-group" id="price_after_visit_type_id1">
                     <label for="form-control-3" class="control-label">Choose your Price After Visit Types</label>
@@ -112,6 +113,7 @@ if (!isset($_POST['submit'])) {
                       </div>
                     <div class="help-block with-errors"></div>
                   </div>
+                  <?php } ?>
                   <?php if($getGroupNamesData['service_price_type_id'] == 2 && $getGroupNamesData['price_after_visit_type_id'] == 2) {?>
                   <div class="form-group" id="service_min_price">
                     <label for="form-control-2" class="control-label">Service Min Price</label>
