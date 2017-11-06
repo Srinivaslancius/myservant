@@ -1,6 +1,39 @@
 <?php
     
-    //common function for get all data with where clause
+    //common function for web / android /ios user registration
+     function saveUser($name, $email, $mobile, $otp, $password,$lkp_register_device_type_id,$mobile_token,$mobile_imei_address) {
+        //Save data into users table
+        global $conn;
+        $created_at = date("Y-m-d h:i:s");
+        $sqlIns = "INSERT INTO users (user_name,user_email,user_mobile,user_address,user_password,mobile_token,mobile_imei_address,created_at) VALUES ('$name','$email','$mobile','$address', '$password','$mobile_token','$mobile_imei_address','$created_at')";
+        if ($conn->query($sqlIns) === TRUE) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    function sendMobileSMS($message,$user_mobile) {
+        global $conn;
+        $username = "*****";
+        $password = "*****";
+        $numbers = "$user_mobile"; // mobile number
+        $sender = urlencode('*****'); // assigned Sender_ID
+        // Message text required to deliver on mobile number
+        $data = "username="."$username"."&password="."$password"."&to="."$numbers"."&from="."$sender"."&msg="."$message"."&type=1";
+        $data = "https://www.smsstriker.com/API/sms.php?".$data;
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_URL,$data);
+        $response = curl_exec($ch);        
+    }
+
+    function sendEmail($to,$subject,$message,$from) {
+        global $conn;        
+        $headers = 'From: "'.$from.'"' . "\r\n" .            
+            'X-Mailer: PHP/' . phpversion();
+        mail($to, $subject, $message, $headers);
+
+    }
 
     function getAllData($table)  {
         global $conn;
