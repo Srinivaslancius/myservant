@@ -1,12 +1,43 @@
 <?php
     
     //common function for web / android /ios user registration
-     function saveUser($name, $email, $mobile, $otp, $password,$lkp_register_device_type_id,$mobile_token,$mobile_imei_address) {
+     function saveUser($name, $email, $mobile, $password,$created_admin_id,$otp,$lkp_status_id,$login_count,$last_login_visit,$lkp_register_device_type_id,$mobile_token) {
         //Save data into users table
         global $conn;
         $created_at = date("Y-m-d h:i:s");
-        $sqlIns = "INSERT INTO users (user_name,user_email,user_mobile,user_address,user_password,mobile_token,mobile_imei_address,created_at) VALUES ('$name','$email','$mobile','$address', '$password','$mobile_token','$mobile_imei_address','$created_at')";
+        $sqlIns = "INSERT INTO users (user_full_name,user_email,user_mobile,user_password,created_admin_id,otp,lkp_status_id,login_count,last_login_visit,lkp_register_device_type_id,mobile_token,created_at) VALUES ('$name','$email','$mobile','$password','$created_admin_id','$otp','$lkp_status_id','$login_count','$last_login_visit','$lkp_register_device_type_id','$mobile_token','$created_at')"; 
         if ($conn->query($sqlIns) === TRUE) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    function userLogin($email,$password) {
+        global $conn;
+        $sql="SELECT * from users WHERE user_email = '$email' AND user_password = '$password' ";
+        $result = $conn->query($sql);        
+        return $result;
+    }
+
+    function forgotPassword($email) {
+        global $conn;
+        $sql="SELECT * from users WHERE user_email = '$email' ";
+        $result = $conn->query($sql);
+        if ($row = $result->fetch_assoc()) {
+            $pwd = decryptPassword($row['user_password']);
+            $to = $email;
+            $subject =  "User Forgot Password";
+            $message = "<html><head><title>User New Password</title></head>
+                <body>
+                    <table rules='all' style='border-color: #666;' cellpadding='10'>
+                        <tr><td><strong>Your Password:  </strong>$pwd</td></tr>
+                    </table>
+                </body>
+                </html>
+                ";
+            $from = "info@myservant.com";
+            sendEmail($to,$subject,$message,$from);
             return 1;
         } else {
             return 0;
