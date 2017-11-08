@@ -47,7 +47,7 @@ $id = $_GET['uid'];
                     <input type="password" name="admin_password" class="form-control" id="form-control-2" placeholder="Password" data-error="Please enter Password." required value="<?php echo decryptPassword($getAdminUsersData['admin_password']);?>">
                     <div class="help-block with-errors"></div>
                   </div>
-                  <?php $getAdminSetviceTypes = getAllDataWithStatus('lkp_admin_service_types','0');?>
+                  <?php $getAdminSetviceTypes = getAllDataWithStatusLimit('lkp_admin_service_types','0','0','1');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose Admin Service Types</label>
                     <select id="form-control-3" name="lkp_admin_service_type_id" class="custom-select" data-error="This field is required." required>

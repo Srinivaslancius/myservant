@@ -54,7 +54,14 @@
         $sql="select * from `$table` WHERE `lkp_status_id` = '$status' ";
         $result = $conn->query($sql); 
         return $result;
-    }    
+    }
+
+    function getAllDataWithStatusLimit($table,$status,$minlimit,$maxlimit)  {
+        global $conn;
+        $sql="select * from `$table` WHERE `lkp_status_id` = '$status' LIMIT $minlimit,$maxlimit "; 
+        $result = $conn->query($sql); 
+        return $result;
+    }
     
     function getRowsCount($table)  {
         global $conn;
