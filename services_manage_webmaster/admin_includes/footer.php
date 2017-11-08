@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script>
       $( function() {
-        $( "#deal_start_date,#deal_end_date" ).datepicker();
+        $( "#deal_start_date,#deal_end_date,#last_login_visit" ).datepicker();
       } );
     </script>
     <script>
