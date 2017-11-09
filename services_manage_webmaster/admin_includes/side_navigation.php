@@ -74,7 +74,15 @@
                 <span class="menu-icon">
                    <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
                 </span>
-                <span class="menu-text">Group Services</span>
+                <span class="menu-text">Service Names</span>
+              </a>
+            </li>
+            <li  class="<?php if($page_name == 'services_our_branches.php' || $page_name == 'add_services_our_branches.php' || $page_name == 'edit_services_our_branches.php' ) { echo "active"; } ?>">
+              <a href="services_our_branches.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Our Branches</span>
               </a>
             </li>
           </ul>
