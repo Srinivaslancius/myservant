@@ -6,6 +6,7 @@ if (!isset($_POST['submit']))  {
   echo "fail";
 }else  {
   //If success
+  echo "<pre>";print_r($_POST);exit;
   $lkp_state_id = $_POST['lkp_state_id'];
   $lkp_district_id = $_POST['lkp_district_id'];
   $lkp_city_id = $_POST['lkp_city_id'];
@@ -59,18 +60,21 @@ if (!isset($_POST['submit']))  {
                     <div class="help-block with-errors"></div>
                   </div>
 
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">Location Name</label>
-                    <input type="text" name="location_name" class="form-control" id="form-control-2" placeholder="Location Name" data-error="Please enter Location Name" required>
-                    <div class="help-block with-errors"></div>
+                 <div class="input_fields_container">
+                    <div class="form-group">
+                      <label for="form-control-2" class="control-label">Location Name</label>
+                      <input type="text" name="location_name[]" class="form-control" id="form-control-2" placeholder="Location Name" data-error="Please enter Location Name" required>
+                      <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="form-control-2" class="control-label">Location Pincode</label>
+                      <input type="text" name="location_pincode[]" class="form-control" id="form-control-2" placeholder="Location Pincode" data-error="Please enter Location Pincode" required>
+                      <div class="help-block with-errors"></div>
+                    </div>
+                    <button type="button" class="btn btn-primary add_more_button">Add More Fields</button>
                   </div>
 
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">Location Pincode</label>
-                    <input type="text" name="location_pincode" class="form-control" id="form-control-2" placeholder="Location Pincode" data-error="Please enter Location Pincode" required>
-                    <div class="help-block with-errors"></div>
-                  </div>
-                  
                   <?php $getStatus = getAllData('lkp_status');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your status</label>
@@ -93,3 +97,19 @@ if (!isset($_POST['submit']))  {
       </div>
   
 <?php include_once 'admin_includes/footer.php'; ?>
+    <script>
+        $(document).ready(function() {
+        var max_fields_limit      = 2; //set limit for maximum input fields
+        var x = 1; //initialize counter for text box
+        $('.add_more_button').click(function(e){ //click event on add more fields button having class add_more_button
+            e.preventDefault();
+            if(x < max_fields_limit){ //check conditions
+                x++; //counter increment
+                $('.input_fields_container').append('<div><label for="form-control-2" class="control-label">Location Name</label><input type="text" name="location_name" class="form-control" id="form-control-2" placeholder="Location Name"><label for="form-control-2" class="control-label">Location Pincode</label><input type="text" name="location_pincode" class="form-control" id="form-control-2" placeholder="Location Pincode"><a href="#" class="remove_field" style="margin-left:10px;">Remove</a></div>'); //add input field
+            }
+        });  
+        $('.input_fields_container').on("click",".remove_field", function(e){ //user click on remove text links
+            e.preventDefault(); $(this).parent('div').remove(); x--;
+        })
+    });
+    </script>
