@@ -87,6 +87,19 @@
       }
     }
     </script>
+    <!-- Script to get Districts -->
+    <script type="text/javascript">
+    function getDistricts(val) { 
+        $.ajax({
+        type: "POST",
+        url: "get_districts.php",
+        data:'lkp_state_id='+val,
+        success: function(data){
+            $("#lkp_district_id").html(data);
+        }
+        });
+    }
+    </script>
     <!-- Below script for ck editor -->
     <script src="//cdn.ckeditor.com/4.7.0/full/ckeditor.js"></script>
     <script>

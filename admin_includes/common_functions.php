@@ -73,6 +73,13 @@
         return $result;
     }
 
+    function getAllDataWithActiveRecent($table)  {
+        global $conn;
+        $sql="select * from `$table` ORDER BY lkp_status_id, id DESC ";
+        $result = $conn->query($sql); 
+        return $result;
+    }
+
     function getAllDataWhere($table,$clause,$value)  {
         global $conn;
         $sql="select * from `$table` WHERE `$clause` = '$value' ";

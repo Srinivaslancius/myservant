@@ -1,40 +1,34 @@
 <?php include_once 'admin_includes/main_header.php'; ?>
 <?php
 error_reporting(0);
-$id = $_GET['branchid'];
+$id = $_GET['stateid'];
  if (!isset($_POST['submit']))  {
             echo "fail";
     } else  {
-            $title = $_POST['title'];
-            $address = $_POST['address'];
+            $state_name = $_POST['state_name'];
             $lkp_status_id = $_POST['lkp_status_id'];
-            $sql = "UPDATE `services_our_branches` SET title='$title', address='$address', lkp_status_id = '$lkp_status_id' WHERE id = '$id' ";
+            $sql = "UPDATE `lkp_states` SET state_name='$state_name', lkp_status_id = '$lkp_status_id' WHERE id = '$id' ";
             if($conn->query($sql) === TRUE){
-               echo "<script type='text/javascript'>window.location='services_our_branches.php?msg=success'</script>";
+               echo "<script type='text/javascript'>window.location='lkp_states.php?msg=success'</script>";
             } else {
-               echo "<script type='text/javascript'>window.location='services_our_branches.php?msg=fail'</script>";
+               echo "<script type='text/javascript'>window.location='lkp_states.php?msg=fail'</script>";
             }
         }
 ?>
       <div class="site-content">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="m-y-0">Our Branches</h3>
+            <h3 class="m-y-0">States</h3>
           </div>
           <div class="panel-body">
             <div class="row">
-              <?php $getOurBranches = getAllDataWhere('services_our_branches','id',$id);
-              $getOurBranchesData = $getOurBranches->fetch_assoc(); ?>
+              <?php $getStates = getAllDataWhere('lkp_states','id',$id);
+              $getStatesData = $getStates->fetch_assoc(); ?>
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <form data-toggle="validator" method="POST" autocomplete="off">
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">Title</label>
-                    <input type="text" name="title" class="form-control" id="form-control-2" placeholder="Title" data-error="Please enter title" required value="<?php echo $getOurBranchesData['title'];?>">
-                    <div class="help-block with-errors"></div>
-                  </div>
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">Address</label>
-                    <textarea type="text" name="address" class="form-control" id="category_description" placeholder="Address" data-error="Please enter address." required><?php echo $getOurBranchesData['address'];?></textarea>
+                    <label for="form-control-2" class="control-label">State Name</label>
+                    <input type="text" name="state_name" class="form-control" id="form-control-2" placeholder="State Name" data-error="Please enter State Name" required value="<?php echo $getStatesData['state_name'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                  <?php $getStatus = getAllData('lkp_status');?>
@@ -43,7 +37,7 @@ $id = $_GET['branchid'];
                     <select id="form-control-3" name="lkp_status_id" class="custom-select" data-error="This field is required." required>
                       <option value="">Select Status</option>
                       <?php while($row = $getStatus->fetch_assoc()) {  ?>
-                          <option <?php if($row['id'] == $getOurBranchesData['lkp_status_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['status']; ?></option>
+                          <option <?php if($row['id'] == $getStatesData['lkp_status_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['status']; ?></option>
                       <?php } ?>
                    </select>
                     <div class="help-block with-errors"></div>

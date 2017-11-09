@@ -1,5 +1,5 @@
 <?php include_once 'admin_includes/main_header.php'; ?>
-<?php $getBanners = getAllData('services_banners'); $i=1; ?>
+<?php $getBanners = getAllDataWithActiveRecent('services_banners'); $i=1; ?>
      <div class="site-content">
         <div class="panel panel-default panel-table">
           <div class="panel-heading">

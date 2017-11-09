@@ -80,9 +80,33 @@
             <li  class="<?php if($page_name == 'services_our_branches.php' || $page_name == 'add_services_our_branches.php' || $page_name == 'edit_services_our_branches.php' ) { echo "active"; } ?>">
               <a href="services_our_branches.php" aria-haspopup="true">
                 <span class="menu-icon">
-                   <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
+                   <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
                 </span>
                 <span class="menu-text">Our Branches</span>
+              </a>
+            </li>
+            <li  class="<?php if($page_name == 'lkp_states.php' || $page_name == 'add_lkp_states.php' || $page_name == 'edit_lkp_states.php' ) { echo "active"; } ?>">
+              <a href="lkp_states.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">States</span>
+              </a>
+            </li>
+            <li  class="<?php if($page_name == 'lkp_districts.php' || $page_name == 'add_lkp_districts.php' || $page_name == 'edit_lkp_districts.php' ) { echo "active"; } ?>">
+              <a href="lkp_districts.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Districts</span>
+              </a>
+            </li>
+            <li  class="<?php if($page_name == 'lkp_cities.php' || $page_name == 'add_lkp_cities.php' || $page_name == 'edit_lkp_cities.php' ) { echo "active"; } ?>">
+              <a href="lkp_cities.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Cities</span>
               </a>
             </li>
           </ul>
