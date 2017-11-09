@@ -8,14 +8,16 @@ if (!isset($_POST['submit']))  {
   //If success
   $lkp_state_id = $_POST['lkp_state_id'];
   $lkp_district_id = $_POST['lkp_district_id'];
-  $city_name = $_POST['city_name'];
+  $lkp_city_id = $_POST['lkp_city_id'];
+  $location_name = $_POST['location_name'];
+  $location_pincode = $_POST['location_pincode'];
   $lkp_status_id = $_POST['lkp_status_id'];
   
-    $sql = "INSERT INTO lkp_cities (`lkp_state_id`, `lkp_district_id`, `city_name`, `lkp_status_id`) VALUES ('$lkp_state_id', '$lkp_district_id', '$city_name', '$lkp_status_id')"; 
+    $sql = "INSERT INTO lkp_locations (`lkp_state_id`, `lkp_district_id`, `lkp_city_id`, `location_name`, `location_pincode`, `lkp_status_id`) VALUES ('$lkp_state_id', '$lkp_district_id', '$lkp_city_id', '$location_name', '$location_pincode', '$lkp_status_id')"; 
     if($conn->query($sql) === TRUE){
-       echo "<script type='text/javascript'>window.location='lkp_cities.php?msg=success'</script>";
+       echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=success'</script>";
     } else {
-       echo "<script type='text/javascript'>window.location='lkp_cities.php?msg=fail'</script>";
+       echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=fail'</script>";
     }
   
 }
@@ -23,7 +25,7 @@ if (!isset($_POST['submit']))  {
       <div class="site-content">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="m-y-0">Cities</h3>
+            <h3 class="m-y-0">Locations</h3>
           </div>
           <div class="panel-body">
             <div class="row">
@@ -43,18 +45,32 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your District</label>
-                    <select name="lkp_district_id" id="lkp_district_id" class="custom-select" data-error="This field is required." required>
+                    <select name="lkp_district_id" id="lkp_district_id" class="custom-select" data-error="This field is required." required onChange="getCities(this.value);">
                       <option value="">Select District</option>
                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
 
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">City Name</label>
-                    <input type="text" name="city_name" class="form-control" id="form-control-2" placeholder="City Name" data-error="Please enter City Name" required>
+                    <label for="form-control-3" class="control-label">Choose your City</label>
+                    <select name="lkp_city_id" id="lkp_city_id" class="custom-select" data-error="This field is required." required>
+                      <option value="">Select City</option>
+                   </select>
                     <div class="help-block with-errors"></div>
                   </div>
 
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Location Name</label>
+                    <input type="text" name="location_name" class="form-control" id="form-control-2" placeholder="Location Name" data-error="Please enter Location Name" required>
+                    <div class="help-block with-errors"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Location Pincode</label>
+                    <input type="text" name="location_pincode" class="form-control" id="form-control-2" placeholder="Location Pincode" data-error="Please enter Location Pincode" required>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  
                   <?php $getStatus = getAllData('lkp_status');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your status</label>
