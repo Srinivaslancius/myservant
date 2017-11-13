@@ -37,6 +37,14 @@
                 <li class="<?php if($page_name == 'users.php' || $page_name == 'add_users.php' || $page_name == 'edit_users.php') { echo "active"; } ?>"><a href="users.php">Users</a></li>
               </ul>
             </li>
+            <li  class="<?php if($page_name == 'service_employee_registration.php' || $page_name == 'add_service_employee_registration.php' || $page_name == 'edit_service_employee_registration.php' ) { echo "active"; } ?>">
+              <a href="service_employee_registration.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-accounts zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Service Employee</span>
+              </a>
+            </li>
             <li  class="<?php if($page_name == 'services_category.php' || $page_name == 'add_services_category.php' || $page_name == 'edit_services_category.php' ) { echo "active"; } ?>">
               <a href="services_category.php" aria-haspopup="true">
                 <span class="menu-icon">
