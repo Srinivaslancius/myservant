@@ -29,9 +29,9 @@ if (!isset($_POST['submit']))  {
   $fileToUpload = $_FILES["fileToUpload"]["name"];
   $fileToUpload1 = $_FILES["fileToUpload1"]["name"];
   
-   $service_provider = "INSERT INTO service_provider_registration (`name`, `email`, `mobile_number`, `address`,`service_provider_type_id`, `lkp_status_id`) VALUES ('$name', '$email', '$mobile_number', '$address','$service_provider_type_id', '$lkp_status_id')";
-    $result1 = $conn->query($service_provider);
-    $last_id = $conn->insert_id;
+  $service_provider = "INSERT INTO service_provider_registration (`name`, `email`, `mobile_number`, `address`,`service_provider_type_id`, `lkp_status_id`) VALUES ('$name', '$email', '$mobile_number', '$address','$service_provider_type_id', '$lkp_status_id')";
+  $result1 = $conn->query($service_provider);
+  $last_id = $conn->insert_id;
 
   if($service_provider_type_id == 1) {
 
@@ -60,7 +60,8 @@ if (!isset($_POST['submit']))  {
       }
     }
   }
-  if($result1 === 1) {
+ 
+  if($result1 == 1) {
     echo "<script type='text/javascript'>window.location='service_provider_registration.php?msg=success'</script>";
   } else {
     echo "<script type='text/javascript'>window.location='service_provider_registration.php?msg=fail'</script>";
