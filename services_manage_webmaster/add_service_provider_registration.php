@@ -26,10 +26,11 @@ if (!isset($_POST['submit']))  {
   $associate_or_not = $_POST['associate_or_not'];
   $experience = $_POST['experience'];
   $lkp_status_id = $_POST['lkp_status_id'];
+  $created_at = date("Y-m-d h:i:s");
   $fileToUpload = $_FILES["fileToUpload"]["name"];
   $fileToUpload1 = $_FILES["fileToUpload1"]["name"];
   
-  $service_provider = "INSERT INTO service_provider_registration (`name`, `email`, `mobile_number`, `address`,`service_provider_type_id`, `lkp_status_id`) VALUES ('$name', '$email', '$mobile_number', '$address','$service_provider_type_id', '$lkp_status_id')";
+  $service_provider = "INSERT INTO service_provider_registration (`name`, `email`, `mobile_number`, `address`,`service_provider_type_id`, `lkp_status_id`,`created_at`) VALUES ('$name', '$email', '$mobile_number', '$address','$service_provider_type_id', '$lkp_status_id', '$created_at')";
   $result1 = $conn->query($service_provider);
   $last_id = $conn->insert_id;
 

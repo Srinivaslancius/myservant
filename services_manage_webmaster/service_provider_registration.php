@@ -14,7 +14,8 @@
                     <th>S.No</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Mobile NUmber</th>
+                    <th>Mobile Number</th>
+                    <th>Created Date</th>
                     <th>Service Provide Type</th>
                     <th>Status</th>
                     <th>Actions</th>
@@ -27,6 +28,7 @@
                     <td><?php echo $row['name'];?></td>
                     <td><?php echo $row['email'];?></td>
                     <td><?php echo $row['mobile_number'];?></td>
+                    <td><?php echo $row['created_at'];?></td>
                     <td><?php $getServiceProviderTypes = getAllDataWithStatus('service_provider_types','0'); while($getServiceProviderTypes1 = $getServiceProviderTypes->fetch_assoc()) { if($row['service_provider_type_id'] == $getServiceProviderTypes1['id']) { echo $getServiceProviderTypes1['service_provider_type']; } } ?></td>
                     <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='service_provider_registration'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='service_provider_registration'>In Active</span>" ;} ?></td>
                     <td> <a href="edit_service_provider_registration.php?registrationid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a> &nbsp; <a href="delete.php?id=<?php echo $row['id']; ?>&table=<?php echo "service_provider_registration" ?>"><i class="zmdi zmdi-delete zmdi-hc-fw" onclick="return confirm('Are you sure you want to delete?')"></i></a> &nbsp;<a href="#"><i class="zmdi zmdi-eye zmdi-hc-fw" data-toggle="modal" data-target="#<?php echo $row['id']; ?>" class=""></i></a></td>
