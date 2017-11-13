@@ -37,12 +37,12 @@
                 <li class="<?php if($page_name == 'users.php' || $page_name == 'add_users.php' || $page_name == 'edit_users.php') { echo "active"; } ?>"><a href="users.php">Users</a></li>
               </ul>
             </li>
-            <li  class="<?php if($page_name == 'service_provider_registration.php' || $page_name == 'add_service_provider_registration.php' || $page_name == 'edit_service_provider_registration.php' ) { echo "active"; } ?>">
-              <a href="service_provider_registration.php" aria-haspopup="true">
+            <li  class="<?php if($page_name == 'service_employee_registration.php' || $page_name == 'add_service_employee_registration.php' || $page_name == 'edit_service_employee_registration.php' ) { echo "active"; } ?>">
+              <a href="service_employee_registration.php" aria-haspopup="true">
                 <span class="menu-icon">
-                   <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
+                   <i class="zmdi zmdi-accounts zmdi-hc-fw"></i>
                 </span>
-                <span class="menu-text">Service Provider Registrations</span>
+                <span class="menu-text">Service Employees</span>
               </a>
             </li>
             <li  class="<?php if($page_name == 'services_category.php' || $page_name == 'add_services_category.php' || $page_name == 'edit_services_category.php' ) { echo "active"; } ?>">
@@ -61,6 +61,14 @@
                 <span class="menu-text">Sub Categories</span>
               </a>
             </li>
+            <li  class="<?php if($page_name == 'services_banners.php' || $page_name == 'add_services_banners.php' || $page_name == 'edit_services_banners.php' ) { echo "active"; } ?>">
+              <a href="services_banners.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Banners</span>
+              </a>
+            </li>
             <li  class="<?php if($page_name == 'services_groups.php' || $page_name == 'add_services_groups.php' || $page_name == 'edit_services_groups.php' ) { echo "active"; } ?>">
               <a href="services_groups.php" aria-haspopup="true">
                 <span class="menu-icon">
@@ -75,22 +83,6 @@
                    <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
                 </span>
                 <span class="menu-text">Service Names</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'services_banners.php' || $page_name == 'add_services_banners.php' || $page_name == 'edit_services_banners.php' ) { echo "active"; } ?>">
-              <a href="services_banners.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Banners</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'services_brand_logos.php' || $page_name == 'add_services_brand_logos.php' || $page_name == 'edit_services_brand_logos.php' ) { echo "active"; } ?>">
-              <a href="services_brand_logos.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Brand Logos</span>
               </a>
             </li>
             <li  class="<?php if($page_name == 'services_our_branches.php' || $page_name == 'add_services_our_branches.php' || $page_name == 'edit_services_our_branches.php' ) { echo "active"; } ?>">
