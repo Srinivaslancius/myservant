@@ -85,6 +85,14 @@
                 <span class="menu-text">Banners</span>
               </a>
             </li>
+            <li  class="<?php if($page_name == 'services_brand_logos.php' || $page_name == 'add_services_brand_logos.php' || $page_name == 'edit_services_brand_logos.php' ) { echo "active"; } ?>">
+              <a href="services_brand_logos.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Brand Logos</span>
+              </a>
+            </li>
             <li  class="<?php if($page_name == 'services_our_branches.php' || $page_name == 'add_services_our_branches.php' || $page_name == 'edit_services_our_branches.php' ) { echo "active"; } ?>">
               <a href="services_our_branches.php" aria-haspopup="true">
                 <span class="menu-icon">
