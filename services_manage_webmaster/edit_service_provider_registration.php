@@ -59,12 +59,12 @@ if (!isset($_POST['submit']))  {
       $imageFileType = pathinfo($target_file1,PATHINFO_EXTENSION);
 
       if (move_uploaded_file($_FILES["fileToUpload1"]["tmp_name"], $target_file1)) {
-        $sql1 = "UPDATE service_provider_business_registration SET service_provider_type_id ='$service_provider_type_id',experience ='$experience',image = '$fileToUpload1',working_hours ='$working_hours1',specialization ='$specialization1' WHERE service_provider_registration_id = '$id'"; 
+        $sql1 = "UPDATE service_provider_personal_registration SET service_provider_type_id ='$service_provider_type_id',experience ='$experience',image = '$fileToUpload1',working_hours ='$working_hours1',specialization ='$specialization1' WHERE service_provider_registration_id = '$id'"; 
         $res1 = $conn->query($sql1);
       }
     } else {
-      $sql1 = "UPDATE service_provider_business_registration SET service_provider_type_id ='$service_provider_type_id',experience ='$experience',working_hours ='$working_hours1',specialization ='$specialization1' WHERE service_provider_registration_id = '$id'"; 
-        $res = $conn->query($sql);
+      $sql1 = "UPDATE service_provider_personal_registration SET service_provider_type_id ='$service_provider_type_id',experience ='$experience',working_hours ='$working_hours1',specialization ='$specialization1' WHERE service_provider_registration_id = '$id'"; 
+        $res1 = $conn->query($sql);
     }
     if($result1 === 1) {
       echo "<script type='text/javascript'>window.location='service_provider_registration.php?msg=success'</script>";
