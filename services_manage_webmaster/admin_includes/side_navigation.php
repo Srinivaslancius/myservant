@@ -42,7 +42,7 @@
                 <span class="menu-icon">
                    <i class="zmdi zmdi-accounts zmdi-hc-fw"></i>
                 </span>
-                <span class="menu-text">Service Employee</span>
+                <span class="menu-text">Service Employees</span>
               </a>
             </li>
             <li  class="<?php if($page_name == 'services_category.php' || $page_name == 'add_services_category.php' || $page_name == 'edit_services_category.php' ) { echo "active"; } ?>">

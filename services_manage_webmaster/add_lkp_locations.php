@@ -60,20 +60,34 @@ if (!isset($_POST['submit']))  {
                     <div class="help-block with-errors"></div>
                   </div>
 
-                 <div class="input_fields_container">
-                    <div class="form-group">
-                      <label for="form-control-2" class="control-label">Location Name</label>
-                      <input type="text" name="location_name[]" class="form-control" id="form-control-2" placeholder="Location Name" data-error="Please enter Location Name" required>
-                      <div class="help-block with-errors"></div>
-                    </div>
+                  <div class="clear_fix"></div>
+                  <div class="input_fields_container">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label for="form-control-2" class="control-label">Location Name</label>
+                          <input type="text" name="location_name[]" class="form-control" id="form-control-2" placeholder="Location Name" data-error="Please enter Location Name" required>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                      </div>
 
-                    <div class="form-group">
-                      <label for="form-control-2" class="control-label">Location Pincode</label>
-                      <input type="text" name="location_pincode[]" class="form-control" id="form-control-2" placeholder="Location Pincode" data-error="Please enter Location Pincode" required>
-                      <div class="help-block with-errors"></div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label for="form-control-2" class="control-label">Location Pincode</label>
+                          <input type="text" name="location_pincode[]" class="form-control" id="form-control-2" placeholder="Location Pincode" data-error="Please enter Location Pincode" required>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label for="form-control-2" class="control-label"></label>
+                          <button type="button" class="btn btn-primary add_more_button" style="top:24px;">Add More Fields</button>
+                        </div>
+                        
+                      </div>
                     </div>
-                    <button type="button" class="btn btn-primary add_more_button">Add More Fields</button>
                   </div>
+                  <div class="clear_fix"></div>
 
                   <?php $getStatus = getAllData('lkp_status');?>
                   <div class="form-group">
@@ -105,7 +119,7 @@ if (!isset($_POST['submit']))  {
             e.preventDefault();
             if(x < max_fields_limit){ //check conditions
                 x++; //counter increment
-                $('.input_fields_container').append('<div><label for="form-control-2" class="control-label">Location Name</label><input type="text" name="location_name" class="form-control" id="form-control-2" placeholder="Location Name"><label for="form-control-2" class="control-label">Location Pincode</label><input type="text" name="location_pincode" class="form-control" id="form-control-2" placeholder="Location Pincode"><a href="#" class="remove_field" style="margin-left:10px;">Remove</a></div>'); //add input field
+                $('.input_fields_container').append('<div><div class="row"><div class="col-sm-4"><div class="form-group"><label for="form-control-2" class="control-label">Location Name</label><input type="text" name="location_name[]" class="form-control" id="form-control-2" placeholder="Location Name"></div></div><div class="col-sm-4"><div class="form-group"><label for="form-control-2" class="control-label">Location Pincode</label><input type="text" name="location_pincode[]" class="form-control" id="form-control-2" placeholder="Location Pincode"></div></div><a href="#" class="remove_field btn btn-primary" style="margin-left:20px; top:20px;">Remove</a></div></div>'); //add input field
             }
         });  
         $('.input_fields_container').on("click",".remove_field", function(e){ //user click on remove text links
