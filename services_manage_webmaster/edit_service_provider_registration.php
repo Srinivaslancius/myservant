@@ -33,7 +33,7 @@ if (!isset($_POST['submit']))  {
    $service_provider = "UPDATE service_provider_registration SET name = '$name',email ='$email',mobile_number ='$mobile_number',address = '$address',lkp_status_id ='$lkp_status_id' WHERE id = '$id'";
     $result1 = $conn->query($service_provider);
 
-  if($service_provider_type_id == 1) {
+  if($service_provider_type_id == 'Business') {
 
     if($fileToUpload!='') {
 
@@ -43,7 +43,7 @@ if (!isset($_POST['submit']))  {
 
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 
-        $sql = "UPDATE service_provider_business_registration SET company_name ='$company_name',est_year = '$est_year',total_no_of_emp ='$total_no_of_emp',description ='$description',certification ='$certification',working_hours ='$working_hours',contact_numbers ='$contact_numbers',email_id ='$email_id',specialization ='$specialization',associate_or_not ='$associate_or_not',logo ='$fileToUpload' WHERE service_provider_registration_id = '$id'";
+        echo $sql = "UPDATE service_provider_business_registration SET company_name ='$company_name',est_year = '$est_year',total_no_of_emp ='$total_no_of_emp',description ='$description',certification ='$certification',working_hours ='$working_hours',contact_numbers ='$contact_numbers',email_id ='$email_id',specialization ='$specialization',associate_or_not ='$associate_or_not',logo ='$fileToUpload' WHERE service_provider_registration_id = '$id'"; die;
         $res = $conn->query($sql);
       }
     } else {

@@ -101,6 +101,14 @@
                 <span class="menu-text">Brand Logos</span>
               </a>
             </li>
+            <li  class="<?php if($page_name == 'services_newletter.php' ) { echo "active"; } ?>">
+              <a href="services_newletter.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">New Letters</span>
+              </a>
+            </li>
             <li  class="<?php if($page_name == 'services_our_branches.php' || $page_name == 'add_services_our_branches.php' || $page_name == 'edit_services_our_branches.php' ) { echo "active"; } ?>">
               <a href="services_our_branches.php" aria-haspopup="true">
                 <span class="menu-icon">
