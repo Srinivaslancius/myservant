@@ -57,6 +57,15 @@
         curl_setopt($ch,CURLOPT_URL,$data);
         $response = curl_exec($ch);        
     }
+    function checkUserAvail($table,$clause,$value){
+        global $conn;
+        $sql = "SELECT * FROM `$table` WHERE `$clause`= '$value' ";
+        $result = $conn->query($sql);
+        if($result->num_rows>0){
+            $returnStmt = "User Already Exist";
+            return $returnStmt;
+        }
+    }
 
     function sendEmail($to,$subject,$message,$from) {
         global $conn;        

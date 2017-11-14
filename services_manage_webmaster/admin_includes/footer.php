@@ -69,25 +69,27 @@
       });
     </script>
     <!-- Checking for email availability -->
-    <script>
-    function checkEmail() {
-      var email1 = document.getElementById("admin_email").value;
-      if (email1){
-        $.ajax({
-        type: "POST",
-        url: "check_email_avail_admin_users.php",
-        data: {
-          admin_email:email1,
-        },
-        success: function (response) {
-          $( '#email_status' ).html(response);
-          if (response == "Email Already Exist"){
-            $("#admin_email").val("");
-          }        
-          }
-         });          
+    <script type="text/javascript">
+      function checkUserAvailTest() {
+        var userInput = document.getElementById("user_input").value;
+        var table = document.getElementById("table_name").value;
+        var columnName = document.getElementById("column_name").value;
+        if (userInput){
+          $.ajax({
+          type: "POST",
+          url: "common_user_avail_check.php",
+          data: {
+            userInput:userInput,table:table,columnName:columnName,
+          },
+          success: function (response) {
+            $( '#input_status' ).html(response);
+            if (response == "User Already Exist"){
+              $("#user_input").val("");
+            }        
+            }
+           });          
+        }
       }
-    }
     </script>
     <!-- Script to get Districts -->
     <script type="text/javascript">

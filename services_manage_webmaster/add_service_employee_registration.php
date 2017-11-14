@@ -50,9 +50,11 @@
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email</label>
-                    <input type="email" name="email" class="form-control" id="service_emp_email" placeholder="Email" data-error="Please enter a valid email address." required onkeyup="checkServiceEmail()">
-                    <span id="email_status" style="color: red;"></span>
+                    <input type="email" name="email" class="form-control" id="user_input" placeholder="Email" data-error="Please enter a valid email address." required onkeyup="checkUserAvailTest()">
+                    <span id="input_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
+                    <input type="hidden" id="table_name" value="services_employee_registration">
+                    <input type="hidden" id="column_name" value="email">
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Mobile</label>
@@ -151,24 +153,4 @@
              }   
           });
         });  
-    </script>
-    <script>
-    function checkServiceEmail() {
-      var email1 = document.getElementById("service_emp_email").value;
-      if (email1){
-        $.ajax({
-        type: "POST",
-        url: "check_email_avail_service_employee.php",
-        data: {
-          service_emp_email:email1,
-        },
-        success: function (response) {
-          $( '#email_status' ).html(response);
-          if (response == "Email Already Exist"){
-            $("#service_emp_email").val("");
-          }        
-          }
-         });          
-      }
-    }
     </script>

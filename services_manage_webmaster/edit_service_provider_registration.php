@@ -94,9 +94,11 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="email" data-error="Please enter Valid Email Address" onkeyup="checkEmail()" value="<?php echo $getServiceProviderRegistrationsData['email'];?>" required>
-                    <span id="email_status" style="color: red;"></span>
+                    <input type="email" name="email" class="form-control" id="user_input" placeholder="email" data-error="Please enter Valid Email Address" onkeyup="checkUserAvailTest()" value="<?php echo $getServiceProviderRegistrationsData['email'];?>" required>
+                    <span id="input_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
+                    <input type="hidden" id="table_name" value="service_provider_registration">
+                    <input type="hidden" id="column_name" value="email">
                   </div>
 
                   <div class="form-group">

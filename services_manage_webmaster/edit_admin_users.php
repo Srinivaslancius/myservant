@@ -38,9 +38,11 @@ $id = $_GET['uid'];
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email</label>
-                    <input type="email" name="admin_email" class="form-control" id="admin_email" placeholder="Email" data-error="Please enter valid email address." onkeyup="checkEmail();" required value="<?php echo $getAdminUsersData['admin_email'];?>">
-                    <span id="email_status" style="color: red;"></span>
+                    <input type="email" name="admin_email" class="form-control" id="user_input" placeholder="Email" data-error="Please enter valid email address." onkeyup="checkUserAvailTest();" required value="<?php echo $getAdminUsersData['admin_email'];?>">
+                    <span id="input_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
+                    <input type="hidden" id="table_name" value="admin_users">
+                    <input type="hidden" id="column_name" value="admin_email">
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Password</label>
