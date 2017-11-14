@@ -1,6 +1,7 @@
 <?php include_once 'admin_includes/main_header.php'; ?>
 <?php  
 error_reporting(0);
+$id = $_GET['locationid'];
 if (!isset($_POST['submit']))  {
   //If fail
   echo "fail";
@@ -14,7 +15,7 @@ if (!isset($_POST['submit']))  {
   $location_pincode = implode(',',$_POST['location_pincode']);
   $lkp_status_id = $_POST['lkp_status_id'];
   
-    $sql = "INSERT INTO lkp_locations (`lkp_state_id`, `lkp_district_id`, `lkp_city_id`, `location_name`, `location_pincode`, `lkp_status_id`) VALUES ('$lkp_state_id', '$lkp_district_id', '$lkp_city_id', '$location_name', '$location_pincode', '$lkp_status_id')"; 
+    $sql = "UPDATE lkp_locations SET lkp_state_id = '$lkp_state_id',lkp_district_id ='$lkp_district_id',lkp_city_id ='$lkp_city_id',location_name = '$location_name',location_pincode ='$location_pincode',lkp_status_id ='$lkp_status_id' WHERE id = '$id'"; 
     if($conn->query($sql) === TRUE){
        echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=success'</script>";
     } else {
@@ -30,6 +31,8 @@ if (!isset($_POST['submit']))  {
           </div>
           <div class="panel-body">
             <div class="row">
+              <?php $getLocations = getAllDataWhere('lkp_locations','id',$id);
+              $getLocationsData = $getLocations->fetch_assoc(); ?>
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <form data-toggle="validator" method="POST" enctype="multipart/form-data">
                   <?php $getStates = getAllDataWithStatus('lkp_states','0');?>
@@ -38,25 +41,33 @@ if (!isset($_POST['submit']))  {
                     <select name="lkp_state_id" class="custom-select" data-error="This field is required." required onChange="getDistricts(this.value);">
                       <option value="">Select State</option>
                       <?php while($row = $getStates->fetch_assoc()) {  ?>
-                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['state_name']; ?></option>
+                          <option <?php if($row['id'] == $getLocationsData['lkp_state_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['state_name']; ?></option>
                       <?php } ?>
                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
 
+                  <?php $getDistrcits = getAllDataWithStatus('lkp_districts','0');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your District</label>
-                    <select name="lkp_district_id" id="lkp_district_id" class="custom-select" data-error="This field is required." required onChange="getCities(this.value);">
+                    <select id="lkp_district_id" name="lkp_district_id" class="custom-select" data-error="This field is required." required onChange="getCities(this.value);">
                       <option value="">Select District</option>
-                   </select>
+                      <?php while($row = $getDistrcits->fetch_assoc()) {  ?>
+                          <option <?php if($row['id'] == $getLocationsData['lkp_district_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['district_name']; ?></option>
+                      <?php } ?>
+                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
 
+                  <?php $getCities = getAllDataWithStatus('lkp_cities','0');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your City</label>
-                    <select name="lkp_city_id" id="lkp_city_id" class="custom-select" data-error="This field is required." required>
+                    <select id="lkp_city_id" name="lkp_city_id" class="custom-select" data-error="This field is required." required>
                       <option value="">Select City</option>
-                   </select>
+                      <?php while($row = $getCities->fetch_assoc()) {  ?>
+                          <option <?php if($row['id'] == $getLocationsData['lkp_city_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['city_name']; ?></option>
+                      <?php } ?>
+                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
 
@@ -66,7 +77,7 @@ if (!isset($_POST['submit']))  {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="form-control-2" class="control-label">Location Name</label>
-                          <input type="text" name="location_name[]" class="form-control" id="form-control-2" placeholder="Location Name" data-error="Please enter Location Name" required>
+                          <input type="text" name="location_name[]" class="form-control" id="form-control-2" placeholder="Location Name" data-error="Please enter Location Name" required value="<?php echo $getLocationsData['location_name'];?>">
                           <div class="help-block with-errors"></div>
                         </div>
                       </div>
@@ -74,7 +85,7 @@ if (!isset($_POST['submit']))  {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="form-control-2" class="control-label">Location Pincode</label>
-                          <input type="text" name="location_pincode[]" class="form-control" id="form-control-2" placeholder="Location Pincode" data-error="Please enter Location Pincode" required>
+                          <input type="text" name="location_pincode[]" class="form-control" id="form-control-2" placeholder="Location Pincode" data-error="Please enter Location Pincode" required value="<?php echo $getLocationsData['location_pincode'];?>">
                           <div class="help-block with-errors"></div>
                         </div>
                       </div>
@@ -95,9 +106,9 @@ if (!isset($_POST['submit']))  {
                     <select id="form-control-3" name="lkp_status_id" class="custom-select" data-error="This field is required." required>
                       <option value="">Select Status</option>
                       <?php while($row = $getStatus->fetch_assoc()) {  ?>
-                          <option value="<?php echo $row['id']; ?>"><?php echo $row['status']; ?></option>
+                          <option <?php if($row['id'] == $getLocationsData['lkp_status_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['status']; ?></option>
                       <?php } ?>
-                   </select>
+                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
                 
