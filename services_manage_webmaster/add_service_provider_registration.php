@@ -171,7 +171,7 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email id</label>
-                    <input type="email" name="email_id" class="form-control service_provider_business" id="email" placeholder="email" data-error="Please enter Valid Email Address" onkeyup="checkEmail()">
+                    <input type="email" name="email_id" class="form-control service_provider_business" id="email" placeholder="email" data-error="Please enter Valid Email Address">
                     <span id="email_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
                   </div>
