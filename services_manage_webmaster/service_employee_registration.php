@@ -32,9 +32,9 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Mobile</th>
-                    <th>Photo</th>
-                    <th>created_at</th>
                     <th>Status</th>
+                    <th>Photo</th>
+                    <th>Created Date</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -45,10 +45,11 @@
                     <td><?php echo $row['name'];?></td>
                     <td><?php echo $row['email'];?></td>
                     <td><?php echo $row['mobile_number'];?></td>
+                    <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='services_employee_registration'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='services_employee_registration'>In Active</span>" ;} ?></td>
                     <td><img src="<?php echo $base_url . 'uploads/service_employee_photo/'.$row['photo'] ?>" height="100" width="100"/></td>
                     <td><?php echo $row['created_at'];?></td>
-                   <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='services_employee_registration'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='services_employee_registration'>In Active</span>" ;} ?></td>
-                   <td> <a href="edit_service_employee_registration.php?seid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a> &nbsp; <a href="delete.php?seid=<?php echo $row['id']; ?>&table=<?php echo "services_employee_registration";?>"><i class="zmdi zmdi-delete zmdi-hc-fw" onclick="return confirm('Are you sure you want to delete?')"></i></a> &nbsp;<a href="#"><i class="zmdi zmdi-eye zmdi-hc-fw" data-toggle="modal" data-target="#<?php echo $row['id']; ?>" class=""></i></a></td>
+                   
+                   <td> <a href="edit_service_employee_registration.php?seid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a> &nbsp; <a href="delete_service_employee_registration.php?seid=<?php echo $row['id']; ?>&table=<?php echo "services_employee_registration";?>"><i class="zmdi zmdi-delete zmdi-hc-fw" onclick="return confirm('Are you sure you want to delete?')"></i></a> &nbsp;<a href="#"><i class="zmdi zmdi-eye zmdi-hc-fw" data-toggle="modal" data-target="#<?php echo $row['id']; ?>" class=""></i></a></td>
                      <!-- Open Modal Box  here -->
                     <div id="<?php echo $row['id']; ?>" class="modal fade" tabindex="-1" role="dialog">
                       <div class="modal-dialog">
