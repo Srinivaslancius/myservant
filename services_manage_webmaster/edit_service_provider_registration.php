@@ -176,7 +176,7 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email id</label>
-                    <input type="email" name="email_id" class="form-control service_provider_business" id="email" placeholder="email" data-error="Please enter Valid Email Address" onkeyup="checkEmail()" value="<?php echo $getServiceProviderBusinessRegistrationsData['email_id'];?>">
+                    <input type="email" name="email_id" class="form-control service_provider_business" id="email" placeholder="email" data-error="Please enter Valid Email Address" value="<?php echo $getServiceProviderBusinessRegistrationsData['email_id'];?>">
                     <span id="email_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
                   </div>
