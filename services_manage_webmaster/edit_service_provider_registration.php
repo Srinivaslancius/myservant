@@ -30,7 +30,7 @@ if (!isset($_POST['submit']))  {
   $fileToUpload = $_FILES["fileToUpload"]["name"];
   $fileToUpload1 = $_FILES["fileToUpload1"]["name"];
   
-   $service_provider = "UPDATE service_provider_registration SET name = '$name',email ='$email',mobile_number ='$mobile_number',address = '$address',service_provider_type_id ='$service_provider_type_id',lkp_status_id ='$lkp_status_id' WHERE id = '$id'";
+   $service_provider = "UPDATE service_provider_registration SET name = '$name',email ='$email',mobile_number ='$mobile_number',address = '$address',lkp_status_id ='$lkp_status_id' WHERE id = '$id'";
     $result1 = $conn->query($service_provider);
 
   if($service_provider_type_id == 1) {
@@ -43,14 +43,14 @@ if (!isset($_POST['submit']))  {
 
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 
-        $sql = "UPDATE service_provider_business_registration SET service_provider_type_id ='$service_provider_type_id',company_name ='$company_name',est_year = '$est_year',total_no_of_emp ='$total_no_of_emp',description ='$description',certification ='$certification',working_hours ='$working_hours',contact_numbers ='$contact_numbers',email_id ='$email_id',specialization ='$specialization',associate_or_not ='$associate_or_not',logo ='$fileToUpload' WHERE service_provider_registration_id = '$id'"; 
+        $sql = "UPDATE service_provider_business_registration SET company_name ='$company_name',est_year = '$est_year',total_no_of_emp ='$total_no_of_emp',description ='$description',certification ='$certification',working_hours ='$working_hours',contact_numbers ='$contact_numbers',email_id ='$email_id',specialization ='$specialization',associate_or_not ='$associate_or_not',logo ='$fileToUpload' WHERE service_provider_registration_id = '$id'";
         $res = $conn->query($sql);
       }
     } else {
-        $sql = "UPDATE service_provider_business_registration SET service_provider_type_id ='$service_provider_type_id',company_name ='$company_name',est_year = '$est_year',total_no_of_emp ='$total_no_of_emp',description ='$description',certification ='$certification',working_hours ='$working_hours',contact_numbers ='$contact_numbers',email_id ='$email_id',specialization ='$specialization',associate_or_not ='$associate_or_not' WHERE service_provider_registration_id = '$id'"; 
+       $sql = "UPDATE service_provider_business_registration SET company_name ='$company_name',est_year = '$est_year',total_no_of_emp ='$total_no_of_emp',description ='$description',certification ='$certification',working_hours ='$working_hours',contact_numbers ='$contact_numbers',email_id ='$email_id',specialization ='$specialization',associate_or_not ='$associate_or_not' WHERE service_provider_registration_id = '$id'";
         $res = $conn->query($sql);
     }
-  } elseif($service_provider_type_id == 2) {
+  } else {
 
     if($fileToUpload1!='') {
 
@@ -59,18 +59,18 @@ if (!isset($_POST['submit']))  {
       $imageFileType = pathinfo($target_file1,PATHINFO_EXTENSION);
 
       if (move_uploaded_file($_FILES["fileToUpload1"]["tmp_name"], $target_file1)) {
-        $sql1 = "UPDATE service_provider_personal_registration SET service_provider_type_id ='$service_provider_type_id',experience ='$experience',image = '$fileToUpload1',working_hours ='$working_hours1',specialization ='$specialization1' WHERE service_provider_registration_id = '$id'"; 
+       $sql1 = "UPDATE service_provider_personal_registration SET experience ='$experience',image = '$fileToUpload1',working_hours ='$working_hours1',specialization ='$specialization1' WHERE service_provider_registration_id = '$id'";
         $res1 = $conn->query($sql1);
       }
     } else {
-      $sql1 = "UPDATE service_provider_personal_registration SET service_provider_type_id ='$service_provider_type_id',experience ='$experience',working_hours ='$working_hours1',specialization ='$specialization1' WHERE service_provider_registration_id = '$id'"; 
-      $res1 = $conn->query($sql);
+      $sql1 = "UPDATE service_provider_personal_registration SET experience ='$experience',working_hours ='$working_hours1',specialization ='$specialization1' WHERE service_provider_registration_id = '$id'"; 
+      $res1 = $conn->query($sql1);
     }
-    if($result1 == 1) {
-      echo "<script type='text/javascript'>window.location='service_provider_registration.php?msg=success'</script>";
-    } else {
-      echo "<script type='text/javascript'>window.location='service_provider_registration.php?msg=fail'</script>";
-    }
+  }
+  if($result1 == 1) {
+    echo "<script type='text/javascript'>window.location='service_provider_registration.php?msg=success'</script>";
+  } else {
+    echo "<script type='text/javascript'>window.location='service_provider_registration.php?msg=fail'</script>";
   }
 
 }
@@ -111,15 +111,9 @@ if (!isset($_POST['submit']))  {
                     <div class="help-block with-errors"></div>
                   </div>
 
-                  <?php $getServiceProviderTypes = getAllDataWithStatus('service_provider_types','0');?>
                   <div class="form-group">
-                    <label for="form-control-3" class="control-label">Choose your Service Provider</label>
-                    <select name="service_provider_type_id" class="custom-select service_provider_type_id" id="service_provider_type_id" data-error="This field is required." required>
-                      <option value="">Select Service Provider</option>
-                      <?php while($row = $getServiceProviderTypes->fetch_assoc()) {  ?>
-                      <option value="<?php echo $row['id']; ?>" <?php if($row['id'] == $getServiceProviderRegistrationsData['service_provider_type_id']) { echo "selected=selected"; }?> ><?php echo $row['service_provider_type']; ?></option>
-                      <?php } ?>
-                   </select>
+                    <label for="form-control-2" class="control-label">Service Provider</label>
+                    <input type="text" name="service_provider_type_id" class="form-control" id="service_provider_type_id" placeholder="Name" data-error="Please enter Name" value="<?php if($getServiceProviderRegistrationsData['service_provider_type_id'] == 1) { echo "Business"; } else { echo "Personal";} ?>">
                     <div class="help-block with-errors"></div>
                   </div>
 
@@ -256,25 +250,12 @@ if (!isset($_POST['submit']))  {
 <script type="text/javascript">
   $(document).ready(function () { 
 
-    if ($("#service_provider_type_id").val() == 1) {
+    if ($("#service_provider_type_id").val() == 'Business') {
       $('#service_provider_business_type').show();
       $('#service_provider_personal_type').hide();
     } else {
       $('#service_provider_business_type').hide();
         $('#service_provider_personal_type').show();
     }
-    //$('#service_provider_business_type, #service_provider_personal_type').hide();
-    $('.service_provider_type_id').change(function() {
-
-      if($(this).val() == 1) {
-        $('#service_provider_business_type').show();
-        $('.service_provider_business').val("");
-        $('#service_provider_personal_type').hide();
-      } else if($(this).val() == 2) {
-        $('#service_provider_business_type').hide();
-        $('.service_provider_personal').val("");
-        $('#service_provider_personal_type').show();
-      }  
-    });
   });  
 </script>
