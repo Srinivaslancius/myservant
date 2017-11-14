@@ -10,15 +10,21 @@ if (!isset($_POST['submit']))  {
   $lkp_state_id = $_POST['lkp_state_id'];
   $lkp_district_id = $_POST['lkp_district_id'];
   $lkp_city_id = $_POST['lkp_city_id'];
-  $location_name = implode(',',$_POST['location_name']);
-  $location_pincode = implode(',',$_POST['location_pincode']);
   $lkp_status_id = $_POST['lkp_status_id'];
-  
-    $sql = "INSERT INTO lkp_locations (`lkp_state_id`, `lkp_district_id`, `lkp_city_id`, `location_name`, `location_pincode`, `lkp_status_id`) VALUES ('$lkp_state_id', '$lkp_district_id', '$lkp_city_id', '$location_name', '$location_pincode', '$lkp_status_id')"; 
-    if($conn->query($sql) === TRUE){
-       echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=success'</script>";
+
+    $location_name = $_REQUEST['location_name'];
+    foreach($location_name as $key=>$value){
+
+        $location_name = $_REQUEST['location_name'][$key];
+        $location_pincode = $_REQUEST['location_pincode'][$key];      
+        $sql = "INSERT INTO lkp_locations (`lkp_state_id`, `lkp_district_id`, `lkp_city_id`, `location_name`, `location_pincode`, `lkp_status_id`) VALUES ('$lkp_state_id', '$lkp_district_id', '$lkp_city_id', '$location_name', '$location_pincode', '$lkp_status_id')";
+        $result = $conn->query($sql);
+    }
+
+    if( $result == 1){
+        echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=success'</script>";
     } else {
-       echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=fail'</script>";
+        echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=fail'</script>";
     }
   
 }

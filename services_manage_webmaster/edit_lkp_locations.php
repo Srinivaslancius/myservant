@@ -1,7 +1,8 @@
 <?php include_once 'admin_includes/main_header.php'; ?>
 <?php  
 error_reporting(0);
-$id = $_GET['locationid'];
+$locationid = $_GET['locationid'];
+$cityid = $_GET['cityid'];
 if (!isset($_POST['submit']))  {
   //If fail
   echo "fail";
@@ -15,7 +16,7 @@ if (!isset($_POST['submit']))  {
   $location_pincode = implode(',',$_POST['location_pincode']);
   $lkp_status_id = $_POST['lkp_status_id'];
   
-    $sql = "UPDATE lkp_locations SET lkp_state_id = '$lkp_state_id',lkp_district_id ='$lkp_district_id',lkp_city_id ='$lkp_city_id',location_name = '$location_name',location_pincode ='$location_pincode',lkp_status_id ='$lkp_status_id' WHERE id = '$id'"; 
+    $sql = "UPDATE lkp_locations SET lkp_state_id = '$lkp_state_id',lkp_district_id ='$lkp_district_id',lkp_city_id ='$lkp_city_id',location_name = '$location_name',location_pincode ='$location_pincode',lkp_status_id ='$lkp_status_id' WHERE id = '$locationid' AND lkp_city_id = $cityid"; 
     if($conn->query($sql) === TRUE){
        echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=success'</script>";
     } else {
@@ -31,7 +32,8 @@ if (!isset($_POST['submit']))  {
           </div>
           <div class="panel-body">
             <div class="row">
-              <?php $getLocations = getAllDataWhere('lkp_locations','id',$id);
+              <?php $sql = "SELECT * FROM lkp_locations WHERE id = '$locationid' AND lkp_city_id = $cityid";
+               $getLocations = $conn->query($sql);
               $getLocationsData = $getLocations->fetch_assoc(); ?>
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <form data-toggle="validator" method="POST" enctype="multipart/form-data">
