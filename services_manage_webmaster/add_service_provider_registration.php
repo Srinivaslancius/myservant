@@ -238,7 +238,7 @@ if (!isset($_POST['submit']))  {
       </div>
   
 <?php include_once 'admin_includes/footer.php'; ?>
-<!-- Script for display Price Type -->
+<!-- Script for Service Probiders -->
 <script type="text/javascript">
   $(document).ready(function () { 
     $('#service_provider_business_type, #service_provider_personal_type').hide();

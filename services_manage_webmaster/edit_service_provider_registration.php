@@ -113,7 +113,7 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Service Provider</label>
-                    <input type="text" name="service_provider_type_id" class="form-control" id="service_provider_type_id" placeholder="Name" data-error="Please enter Name" value="<?php if($getServiceProviderRegistrationsData['service_provider_type_id'] == 1) { echo "Business"; } else { echo "Personal";} ?>">
+                    <input type="text" name="service_provider_type_id" readonly class="form-control" id="service_provider_type_id" placeholder="Name" data-error="Please enter Name" value="<?php if($getServiceProviderRegistrationsData['service_provider_type_id'] == 1) { echo "Business"; } else { echo "Personal";} ?>">
                     <div class="help-block with-errors"></div>
                   </div>
 
@@ -134,8 +134,8 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Total Number of Employees</label>
-                    <input type="text" name="total_no_of_emp" class="form-control service_provider_business" id="form-control-2" placeholder="Total Number of Employees" data-error="Please enter Total Number of Employees" value="<?php echo $getServiceProviderBusinessRegistrationsData['total_no_of_emp'];?>">
-                    <div class="help-block with-errors"  onkeypress="return isNumberKey(event)"></div>
+                    <input type="text" name="total_no_of_emp" class="form-control service_provider_business" id="form-control-2" placeholder="Total Number of Employees" data-error="Please enter Total Number of Employees" value="<?php echo $getServiceProviderBusinessRegistrationsData['total_no_of_emp'];?>" onkeypress="return isNumberKey(event)">
+                    <div class="help-block with-errors"></div>
                   </div>
 
                   <div class="form-group">
@@ -162,7 +162,7 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Working Hours</label>
-                    <input type="text" name="working_hours" class="form-control service_provider_business" id="form-control-2" placeholder="Working Hours" data-error="Please enter Working Hours" value="<?php echo $getServiceProviderBusinessRegistrationsData['working_hours'];?>">
+                    <input type="text" name="working_hours" class="form-control service_provider_business" id="form-control-2" placeholder="Working Hours" data-error="Please enter Working Hours" value="<?php echo $getServiceProviderBusinessRegistrationsData['working_hours'];?>" onkeypress="return isNumberKey(event)">
                     <div class="help-block with-errors"></div>
                   </div>
 
@@ -197,7 +197,7 @@ if (!isset($_POST['submit']))  {
                   <div id="service_provider_personal_type">
                     <div class="form-group">
                     <label for="form-control-2" class="control-label">Working Hours</label>
-                    <input type="text" name="working_hours1" class="form-control service_provider_personal" id="form-control-2" placeholder="Working Hours" data-error="Please enter Working Hours" value="<?php echo $getServiceProviderPersonalRegistrationsData['working_hours'];?>">
+                    <input type="text" name="working_hours1" class="form-control service_provider_personal" id="form-control-2" placeholder="Working Hours" data-error="Please enter Working Hours" value="<?php echo $getServiceProviderPersonalRegistrationsData['working_hours'];?>" onkeypress="return isNumberKey(event)">
                     <div class="help-block with-errors"></div>
                   </div>
 
@@ -215,8 +215,8 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-4" class="control-label">Image</label>
-                    <img src="<?php echo $base_url . 'uploads/service_provider_personal_iamge/'.$getServiceProviderPersonalRegistrationsData['image'] ?>"  id="output" height="100" width="100"/>
-                    <img id="output" height="100" width="100"/>
+                    <img src="<?php echo $base_url . 'uploads/service_provider_personal_iamge/'.$getServiceProviderPersonalRegistrationsData['image'] ?>"  id="output1" height="100" width="100"/>
+                    <img id="output1" height="100" width="100"/>
                     <label class="btn btn-default file-upload-btn">
                       Choose file...
                         <input id="form-control-22" class="file-upload-input service_provider_personal" type="file" accept="image/*" name="fileToUpload1" id="fileToUpload1"  onchange="loadFile(event)"  multiple="multiple" >
@@ -246,7 +246,7 @@ if (!isset($_POST['submit']))  {
       </div>
   
 <?php include_once 'admin_includes/footer.php'; ?>
-<!-- Script for display Price Type -->
+<!-- Script for Service Probiders -->
 <script type="text/javascript">
   $(document).ready(function () { 
 

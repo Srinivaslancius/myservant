@@ -15,7 +15,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Mobile</th>
-                    <th>created_at</th>
+                    <th>Created Date</th>
                     <th>Status</th>
                     <th>Actions</th>
                   </tr>
