@@ -1,7 +1,6 @@
 <?php include_once 'admin_includes/main_header.php'; ?>
 <?php  
 error_reporting(0);
-$locationid = $_GET['locationid'];
 $cityid = $_GET['cityid'];
 if (!isset($_POST['submit']))  {
   //If fail
@@ -12,11 +11,11 @@ if (!isset($_POST['submit']))  {
   $lkp_state_id = $_POST['lkp_state_id'];
   $lkp_district_id = $_POST['lkp_district_id'];
   $lkp_city_id = $_POST['lkp_city_id'];
-  $location_name = implode(',',$_POST['location_name']);
-  $location_pincode = implode(',',$_POST['location_pincode']);
+  $location_name = $_POST['location_name'];
+  $location_pincode = $_POST['location_pincode'];
   $lkp_status_id = $_POST['lkp_status_id'];
   
-    $sql = "UPDATE lkp_locations SET lkp_state_id = '$lkp_state_id',lkp_district_id ='$lkp_district_id',lkp_city_id ='$lkp_city_id',location_name = '$location_name',location_pincode ='$location_pincode',lkp_status_id ='$lkp_status_id' WHERE id = '$locationid' AND lkp_city_id = $cityid"; 
+    $sql = "UPDATE lkp_locations SET lkp_state_id = '$lkp_state_id',lkp_district_id ='$lkp_district_id',lkp_city_id ='$lkp_city_id',location_name = '$location_name',location_pincode ='$location_pincode',lkp_status_id ='$lkp_status_id' WHERE lkp_city_id = $cityid"; 
     if($conn->query($sql) === TRUE){
        echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=success'</script>";
     } else {
@@ -32,7 +31,7 @@ if (!isset($_POST['submit']))  {
           </div>
           <div class="panel-body">
             <div class="row">
-              <?php $sql = "SELECT * FROM lkp_locations WHERE id = '$locationid' AND lkp_city_id = $cityid";
+              <?php $sql = "SELECT * FROM lkp_locations WHERE lkp_city_id = $cityid";
                $getLocations = $conn->query($sql);
               $getLocationsData = $getLocations->fetch_assoc(); ?>
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
@@ -75,11 +74,14 @@ if (!isset($_POST['submit']))  {
 
                   <div class="clear_fix"></div>
                   <div class="input_fields_container">
+                    <?php $sql = "SELECT * FROM lkp_locations WHERE lkp_city_id = $cityid";
+                         $getLocations1 = $conn->query($sql);
+                        while($getLocationsData1 = $getLocations1->fetch_assoc()) { ?>
                     <div class="row">
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="form-control-2" class="control-label">Location Name</label>
-                          <input type="text" name="location_name[]" class="form-control" id="form-control-2" placeholder="Location Name" data-error="Please enter Location Name" required value="<?php echo $getLocationsData['location_name'];?>">
+                          <input type="text" name="location_name[]" class="form-control" id="form-control-2" placeholder="Location Name" data-error="Please enter Location Name" required value="<?php echo $getLocationsData1['location_name'];?>">
                           <div class="help-block with-errors"></div>
                         </div>
                       </div>
@@ -87,18 +89,22 @@ if (!isset($_POST['submit']))  {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="form-control-2" class="control-label">Location Pincode</label>
-                          <input type="text" name="location_pincode[]" class="form-control" id="form-control-2" placeholder="Location Pincode" data-error="Please enter Location Pincode" required value="<?php echo $getLocationsData['location_pincode'];?>">
+                          <input type="text" name="location_pincode[]" class="form-control" id="form-control-2" placeholder="Location Pincode" data-error="Please enter Location Pincode" required value="<?php echo $getLocationsData1['location_pincode'];?>" onkeypress="return isNumberKey(event)" maxlength="6" >
                           <div class="help-block with-errors"></div>
                         </div>
                       </div>
+                    </div>
+                    <?php } 
+                    if($getLocations1->num_rows < 2) { ?>
+                    <div class="row">
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="form-control-2" class="control-label"></label>
                           <button type="button" class="btn btn-primary add_more_button" style="top:24px;">Add More Fields</button>
                         </div>
-                        
                       </div>
                     </div>
+                    <?php } ?>
                   </div>
                   <div class="clear_fix"></div>
 
@@ -132,7 +138,7 @@ if (!isset($_POST['submit']))  {
             e.preventDefault();
             if(x < max_fields_limit){ //check conditions
                 x++; //counter increment
-                $('.input_fields_container').append('<div><div class="row"><div class="col-sm-4"><div class="form-group"><label for="form-control-2" class="control-label">Location Name</label><input type="text" name="location_name[]" class="form-control" id="form-control-2" placeholder="Location Name"></div></div><div class="col-sm-4"><div class="form-group"><label for="form-control-2" class="control-label">Location Pincode</label><input type="text" name="location_pincode[]" class="form-control" id="form-control-2" placeholder="Location Pincode"></div></div><a href="#" class="remove_field btn btn-primary" style="margin-left:20px; top:20px;">Remove</a></div></div>'); //add input field
+                $('.input_fields_container').append('<div><div class="row"><div class="col-sm-4"><div class="form-group"><label for="form-control-2" class="control-label">Location Name</label><input type="text" name="location_name" class="form-control" id="form-control-2" placeholder="Location Name"></div></div><div class="col-sm-4"><div class="form-group"><label for="form-control-2" class="control-label">Location Pincode</label><input type="text" name="location_pincode" class="form-control" id="form-control-2" placeholder="Location Pincode" onkeypress="return isNumberKey(event)" maxlength="6"></div></div><a href="#" class="remove_field btn btn-primary" style="margin-left:20px; top:20px;">Remove</a></div></div>'); //add input field
             }
         });  
         $('.input_fields_container').on("click",".remove_field", function(e){ //user click on remove text links
