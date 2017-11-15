@@ -87,7 +87,7 @@
                   </div>
                   <div class="form-group">
                     <label for="form-control-4" class="control-label">Address</label>
-                    <textarea type="text" name="address" class="form-control" id="form-control-2" placeholder="Address" data-error="This field is required." required></textarea>
+                    <textarea type="text" name="address" class="form-control" id="meta_desc" placeholder="Address" data-error="This field is required." required></textarea>
                   </div>
                   <?php $getServiceEmployeeBelongs = getAllDataWithStatus('service_employee_belongs_to','0');?>
                   <div class="form-group">
