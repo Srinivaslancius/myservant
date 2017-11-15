@@ -80,6 +80,11 @@
                             </div>
                             <div class="row">
                               <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Employee Belongs To:</div>
+                              <div class="col-sm-6"><?php if($row['employee_belongs_to'] == 1 ){ echo "Own";} else{ echo "Others";}?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
                               <div class="col-sm-4">Date:</div>
                               <div class="col-sm-6"><?php echo $row['created_at'];?></div>
                             </div>
