@@ -20,7 +20,6 @@
 							if(!empty($getCatId)) { ?>
 							<a class="ls-l button_intro_2 outline" style="top:370px; left:50%;white-space: nowrap;" data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='all_tour_list.php?cid=<?php echo $getBannerData['service_category_id']?>'>Read more</a>
 						<?php }?>	
-					?>
 				</div>
 				<?php }?>
 				<!-- second slide -->
