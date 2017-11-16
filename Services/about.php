@@ -54,11 +54,13 @@
 
 	<main>
 		<!-- Slider -->
-		<div id="full-slider-wrapper">
-                    <?php include_once './slider.php';?>
+		 <div class="container-fluid page-title">
+		<div class="row">
+			<img src="img/slides/slide_1.jpg" class="img-responsive">
 		</div>
+    </div>
 		<!-- End layerslider -->
-                <div class="container-fluid marg10 search_back">
+             <!--   <div class="container-fluid marg10 search_back">
                     <div class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
@@ -90,172 +92,43 @@
                             </form>
                      <div id="message-newsletter"></div>
                          
-                        </div><!-- End newsletter_wp -->	
-                    </div><!-- End row -->
+                        </div>
+                    </div>
                     <div class="col-md-2"></div>
                 </div>
-                </div>
-		<div class="container margin_60">
-
-			<div class="main_title">
-				<h2>Our <span>Services</span> Categories</h2>
-				
+                </div>-->
+		<div class="white_bg">
+			<div class="container margin20 txt">								
+            <div class="main_title">
+				<h2>About <span>Us</span></h2>				
 			</div>
-
-			<div class="row">
-                            <?php for($i=0; $i<2; $i++) {?>
-				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-					<div class="tour_container">
-						<div class="ribbon_3 popular"><span>Popular</span>
-						</div>
-						<div class="img_container padd15">
-                                                    <a href="list.php">
-                                                            <img src="img/categories/hcat1.png" class="img-responsive" alt="Image">
-								
-							</a>
-						</div>
-						<div class="tour_title">
-							<h3>Hospitals</h3>
-							
-							<!-- end rating -->
-							
-						</div>
-					</div>
-					<!-- End box tour -->
-				</div>
-                                <div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-					<div class="tour_container">
-						<div class="ribbon_3 toprated"><span>Top Rated</span>
-						</div>
-						<div class="img_container padd15">
-							<a href="list.php">
-                                                            <img src="img/categories/hcat2.png" class="img-responsive" alt="Image">
-								
-							</a>
-						</div>
-						<div class="tour_title">
-							<h3>Hotel & Resort</h3>
-							
-							<!-- end rating -->
-							
-						</div>
-					</div>
-					<!-- End box tour -->
-				</div>
-                            <div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-					<div class="tour_container">
-						
-						<div class="img_container padd15">
-							<a href="list.php">
-                                                            <img src="img/categories/hcat3.png" class="img-responsive" alt="Image">
-								
-							</a>
-						</div>
-						<div class="tour_title">
-							<h3>Events</h3>
-							
-							<!-- end rating -->
-							
-						</div>
-					</div>
-					<!-- End box tour -->
-				</div>
-                            <div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-					<div class="tour_container">
-						
-						<div class="img_container padd15">
-							<a href="list.php">
-                                                            <img src="img/categories/hcat4.png" class="img-responsive" alt="Image">
-								
-							</a>
-						</div>
-						<div class="tour_title">
-							<h3>Wedding Halls</h3>
-							
-							<!-- end rating -->
-							
-						</div>
-					</div>
-					<!-- End box tour -->
-				</div>
-                            <div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-					<div class="tour_container">
-						
-						<div class="img_container padd15">
-							<a href="list.php">
-                                                            <img src="img/categories/hcat5.png" class="img-responsive" alt="Image">
-								
-							</a>
-						</div>
-						<div class="tour_title">
-							<h3>Shops</h3>
-							
-							<!-- end rating -->
-							
-						</div>
-					</div>
-					<!-- End box tour -->
-				</div>
-                            <div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-					<div class="tour_container">
-						
-						<div class="img_container padd15">
-							<a href="list.php">
-                                                            <img src="img/categories/hcat6.png" class="img-responsive" alt="Image">
-								
-							</a>
-						</div>
-						<div class="tour_title">
-							<h3>Fitness & Gym</h3>
-							
-							<!-- end rating -->
-							
-						</div>
-					</div>
-					<!-- End box tour -->
-				</div>
-                                
-				<!-- End col-md-4 -->
-
-                            <?php } ?>
-				<!-- End col-md-4 -->
-
+			<h4><b>What is Myservant.com</b></h4>
+				<p>Myservant.com (A Unit of CMR Enterprises Pvt Ltd) is one of the largest online food and grocery store in Vijayawada. With over 3500 products and we deal with over 250 brands in our catalogue. The Main Vision of Myservant.com is to convert complex to simpler form. Myservant offers best online food and grocery shopping experience in and around Vijayawada. My Servant offers the best price, the best quality with on time delivery.</p>
+				<h4><b>Why Myservant is here?</b></h4>
+				<p>Myservant is an online grocery store coupled with house maintenance services which serves all your home needs in just a click. Whether it might be a metro city or an urban it doesn’t matter, we are here to save your precious time and reduce the stress on shopping household items and give life changing experience in handling household products. Myservant is an online grocery store designed just for everyone from infant to old age. We provide services at your door step with respect to your comfortable time. Select a time slot for delivery/ service and your order will be delivered right to your doorstep, anywhere in Vijayawada. You can also pay online using your debit/credit cards, wallet payments and cash on delivery.</p>
+				<h4><b>MyServant.com Services</b></h4>
+				<p>We give you wide range of grocery products from branded to non-branded including Groceries, Staples, Food items, Fruits and Vegetables, cosmetics, Beauty products, baby products, personal care and many more.</p>
+				<h4><b>Book a Service</b></h4>
+				<p>We offer different services which offers great convenience. We offer services such as Home Appliances Repairs & services, Car & bike repair Services, Online 24 X 7 emergency electrical services, Laundry Services, Plumbing Services, Air Conditioning services. You get served by the best and authorized technicians.</p>
+				<h4><b>Why should you shop at Myservant?</b></h4>
+				<p>Myservant always give prior importance to “Time”. Every individual is so willing to spare their valuable time with family and friends in their free time but unfortunately a mandate grocery shopping will kill your time. Myservant is a part of CMR services Pvt Ltd which focuses on customers and consumers valuable and precious time who shop for online grocery store in order to save their. No need to list out grocery items, no scope of traffic jam’s, you can say no to carrying, can avoid standing in line. You can just get everything you need by just one click and we will be at your door steps with your order.</p>
+				<p>This is Vijayawada’s best online grocery store. As we know you and we understand your needs. You can also order services from your house and let them do the work. We offer great security, as our services are provided by the best service man in Vijayawada. Our prices are reasonable and we offer reliable service.</p>
+				<h4><b>Get your service with just few clicks</b></h4>
+				<p>Browse or search from our wide range of products.<br>
+				Select all your groceries/service and add them to the cart.<br>
+				Select the payment mode and give information in the fields.<br>
+				Select your convenient time slots as per mentioned.<br>
+				Finally, Your products will be delivered.</P>
+				<P><b>Note:</b> We currently operate in Vijayawada only</p>
+				<p>Should you have any concerns or would you want to give us feedback, please do not hesitate to contact our customer service team by sending an email at customercare@myservant.com. CMR Services PVT LTD Office is located at Plot no. 40-15/2-19B, 3rd floor, Brindavan Colony Vijayawada, Andhra Pradesh, India-520010.</p>
 				
-				
+				<!-- End row -->
 			</div>
-			<!-- End row -->
-			<p class="text-center add_bottom_30">
-				<a href="services.php" class="btn_1 medium"><i class="icon-eye-7"></i>View all our Services</a>
-			</p>
-
-			<hr>
-
-			<div class="main_title">
-				<h2>Our <span>Associate</span> Partners</h2>
-				
-			</div>
-
-			<div class="row">
-                            <?php for($k=0; $k<6; $k++) {?>
-				<div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
-					<div class="feature">
-						<i class="icon_set_1_icon-57"></i>
-						<h3><span>Company</span> Name</h3>
-						<p>
-							Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset, doctus volumus explicari qui ex, appareat similique an usu.
-						</p>
-					</div>
-				</div>
-                            <?php } ?>
-			</div>
-			<!-- End row -->
-			<!-- End row -->
-			<p class="text-center nopadding">
-				<a href="partners.php" class="btn_1 medium"><i class="icon-eye-7"></i>View all</a>
-			</p>
+			<!-- End container -->
 		</div>
-		<!-- End container -->
+		<!-- End white_bg -->
 
+		
 		<div class="white_bg">
 			<div class="container margin20">
 								
@@ -278,7 +151,7 @@
 
 			<div class="main_title">
 				<h2>Some <span>good</span> reasons</h2>
-				
+			
 			</div>
 
 			<div class="row">
@@ -323,7 +196,7 @@
 			
 
 		</div>
-		<!-- End container -->
+		
 	</main>
 	<!-- End main -->
 
