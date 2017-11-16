@@ -34,7 +34,7 @@
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Description</label>
-                    <textarea name="description" class="form-control" id="description" placeholder="Group Description" data-error="Please enter Description." required></textarea>
+                    <textarea name="description" class="form-control" id="category_description" placeholder="Group Description" data-error="Please enter Description." required></textarea>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
@@ -63,9 +63,3 @@
         </div>
       </div>
 <?php include_once 'admin_includes/footer.php'; ?>
-<!-- Below script for ck editor -->
-    <script src="//cdn.ckeditor.com/4.7.0/full/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace( 'description' );
-        CKEDITOR.replace( 'meta_desc' );
-    </script>

@@ -10,15 +10,21 @@ if (!isset($_POST['submit']))  {
   $lkp_state_id = $_POST['lkp_state_id'];
   $lkp_district_id = $_POST['lkp_district_id'];
   $lkp_city_id = $_POST['lkp_city_id'];
-  $location_name = implode(',',$_POST['location_name']);
-  $location_pincode = implode(',',$_POST['location_pincode']);
   $lkp_status_id = $_POST['lkp_status_id'];
-  
-    $sql = "INSERT INTO lkp_locations (`lkp_state_id`, `lkp_district_id`, `lkp_city_id`, `location_name`, `location_pincode`, `lkp_status_id`) VALUES ('$lkp_state_id', '$lkp_district_id', '$lkp_city_id', '$location_name', '$location_pincode', '$lkp_status_id')"; 
-    if($conn->query($sql) === TRUE){
-       echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=success'</script>";
+
+    $location_name = $_REQUEST['location_name'];
+    foreach($location_name as $key=>$value){
+
+        $location_name = $_REQUEST['location_name'][$key];
+        $location_pincode = $_REQUEST['location_pincode'][$key];      
+        $sql = "INSERT INTO lkp_locations (`lkp_state_id`, `lkp_district_id`, `lkp_city_id`, `location_name`, `location_pincode`, `lkp_status_id`) VALUES ('$lkp_state_id', '$lkp_district_id', '$lkp_city_id', '$location_name', '$location_pincode', '$lkp_status_id')";
+        $result = $conn->query($sql);
+    }
+
+    if( $result == 1){
+        echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=success'</script>";
     } else {
-       echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=fail'</script>";
+        echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=fail'</script>";
     }
   
 }
@@ -74,7 +80,7 @@ if (!isset($_POST['submit']))  {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="form-control-2" class="control-label">Location Pincode</label>
-                          <input type="text" name="location_pincode[]" class="form-control" id="form-control-2" placeholder="Location Pincode" data-error="Please enter Location Pincode" required>
+                          <input type="text" name="location_pincode[]" class="form-control" id="form-control-2" placeholder="Location Pincode" data-error="Please enter Location Pincode"  onkeypress="return isNumberKey(event)" maxlength="6" required>
                           <div class="help-block with-errors"></div>
                         </div>
                       </div>
@@ -119,7 +125,7 @@ if (!isset($_POST['submit']))  {
             e.preventDefault();
             if(x < max_fields_limit){ //check conditions
                 x++; //counter increment
-                $('.input_fields_container').append('<div><div class="row"><div class="col-sm-4"><div class="form-group"><label for="form-control-2" class="control-label">Location Name</label><input type="text" name="location_name[]" class="form-control" id="form-control-2" placeholder="Location Name"></div></div><div class="col-sm-4"><div class="form-group"><label for="form-control-2" class="control-label">Location Pincode</label><input type="text" name="location_pincode[]" class="form-control" id="form-control-2" placeholder="Location Pincode"></div></div><a href="#" class="remove_field btn btn-primary" style="margin-left:20px; top:20px;">Remove</a></div></div>'); //add input field
+                $('.input_fields_container').append('<div><div class="row"><div class="col-sm-4"><div class="form-group"><label for="form-control-2" class="control-label">Location Name</label><input type="text" name="location_name[]" class="form-control" id="form-control-2" placeholder="Location Name"></div></div><div class="col-sm-4"><div class="form-group"><label for="form-control-2" class="control-label">Location Pincode</label><input type="text" name="location_pincode[]" class="form-control" id="form-control-2" placeholder="Location Pincode"  onkeypress="return isNumberKey(event)" maxlength="6"></div></div><a href="#" class="remove_field btn btn-primary" style="margin-left:20px; top:20px;">Remove</a></div></div>'); //add input field
             }
         });  
         $('.input_fields_container').on("click",".remove_field", function(e){ //user click on remove text links

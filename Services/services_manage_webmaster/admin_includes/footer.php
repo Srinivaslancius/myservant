@@ -119,7 +119,6 @@
     <script>
         CKEDITOR.replace( 'category_description' );
         CKEDITOR.replace( 'meta_desc' );
-        CKEDITOR.replace( 'sub_category_description' ); 
     </script>
     <style type="text/css">
         .cke_top, .cke_contents, .cke_bottom {

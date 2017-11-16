@@ -99,7 +99,7 @@ if (!isset($_POST['submit'])) {
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Description</label>
-                    <textarea name="description" class="form-control" id="description" placeholder="Description" data-error="Please enter description." required><?php echo $getServiceEmployeesData['description'];?></textarea>
+                    <textarea name="description" class="form-control" id="category_description" placeholder="Description" data-error="Please enter description." required><?php echo $getServiceEmployeesData['description'];?></textarea>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
@@ -109,7 +109,7 @@ if (!isset($_POST['submit'])) {
                   </div>
                   <div class="form-group">
                     <label for="form-control-4" class="control-label">Address</label>
-                    <textarea type="text" name="address" class="form-control" id="form-control-2" placeholder="Address" data-error="This field is required." required><?php echo $getServiceEmployeesData['address'];?></textarea>
+                    <textarea type="text" name="address" class="form-control" id="meta_desc" placeholder="Address" data-error="This field is required." required><?php echo $getServiceEmployeesData['address'];?></textarea>
                   </div>
                   <?php $getServiceEmployeeBelongs = getAllDataWithStatus('service_employee_belongs_to','0');?>
                   <div class="form-group">
@@ -154,11 +154,6 @@ if (!isset($_POST['submit'])) {
         </div>
       </div>
 <?php include_once 'admin_includes/footer.php'; ?>
-<!-- Below script for ck editor -->
-    <script src="//cdn.ckeditor.com/4.7.0/full/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace( 'description' );
-    </script>
     <script type="text/javascript">
         $(document).ready(function () {
           $('#employee_belongs_to').change(function() {

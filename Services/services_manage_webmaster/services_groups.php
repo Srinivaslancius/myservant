@@ -25,8 +25,8 @@
                   <?php while ($row = $getGroupsData->fetch_assoc()) { ?>
                   <tr>
                     <td><?php echo $i;?></td>
-                    <td><?php $getServicesCategories = getAllDataWithStatus('services_category','0'); while($getServicesCategories1 = $getServicesCategories->fetch_assoc()) { if($row['services_category_id'] == $getServicesCategories1['id']) { echo $getServicesCategories1['category_name']; } } ?></td>
-                    <td><?php $getServicesSubCategories = getAllDataWithStatus('services_sub_category','0'); while($getServicesSubCategories1 = $getServicesSubCategories->fetch_assoc()) { if($row['services_sub_category_id'] == $getServicesSubCategories1['id']) { echo $getServicesSubCategories1['sub_category_name']; } } ?></td>
+                    <td><?php $getServicesCategories = getAllData('services_category'); while($getServicesCategories1 = $getServicesCategories->fetch_assoc()) { if($row['services_category_id'] == $getServicesCategories1['id']) { echo $getServicesCategories1['category_name']; } } ?></td>
+                    <td><?php $getServicesSubCategories = getAllData('services_sub_category'); while($getServicesSubCategories1 = $getServicesSubCategories->fetch_assoc()) { if($row['services_sub_category_id'] == $getServicesSubCategories1['id']) { echo $getServicesSubCategories1['sub_category_name']; } } ?></td>
                     <td><?php echo $row['group_name'];?></td>
                     <td><?php echo $row['meta_title'];?></td>
                     <td><?php echo $row['meta_keywords'];?></td>
@@ -46,13 +46,13 @@
                           </div>
                           <div class="modal-body" id="modal_body">
                             <div class="row">
-                              <?php $getServicesCategories = getAllDataWithStatus('services_category','0'); ?>
+                              <?php $getServicesCategories = getAllData('services_category'); ?>
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Service Category Name:</div>
                               <div class="col-sm-6"><?php while($getServicesCategories1 = $getServicesCategories->fetch_assoc()) { if($row['services_category_id'] == $getServicesCategories1['id']) { echo $getServicesCategories1['category_name']; } } ?></div>
                             </div>
                             <div class="row">
-                              <?php $getServicesSubCategories = getAllDataWithStatus('services_sub_category','0'); ?>
+                              <?php $getServicesSubCategories = getAllData('services_sub_category'); ?>
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Service Category Name:</div>
                               <div class="col-sm-6"><?php while($getServicesSubCategories1 = $getServicesSubCategories->fetch_assoc()) { if($row['services_sub_category_id'] == $getServicesSubCategories1['id']) { echo $getServicesSubCategories1['sub_category_name']; } } ?></div>

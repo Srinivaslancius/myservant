@@ -24,7 +24,7 @@
                   <?php while ($row = $getSubCategoriesData->fetch_assoc()) { ?>
                   <tr>
                     <td><?php echo $i;?></td>
-                    <td><?php $getServicesCategories = getAllDataWithStatus('services_category','0'); while($getServicesCategories1 = $getServicesCategories->fetch_assoc()) { if($row['services_category_id'] == $getServicesCategories1['id']) { echo $getServicesCategories1['category_name']; } } ?></td>
+                    <td><?php $getServicesCategories = getAllData('services_category'); while($getServicesCategories1 = $getServicesCategories->fetch_assoc()) { if($row['services_category_id'] == $getServicesCategories1['id']) { echo $getServicesCategories1['category_name']; } } ?></td>
                     <td><?php echo $row['sub_category_name'];?></td>
                     <td><?php echo $row['meta_title'];?></td>
                     <td><?php echo $row['meta_keywords'];?></td>

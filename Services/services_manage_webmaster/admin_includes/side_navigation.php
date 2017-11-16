@@ -58,7 +58,7 @@
                 <span class="menu-icon">
                    <i class="zmdi zmdi-collection-item  zmdi-hc-fw"></i>
                 </span>
-                <span class="menu-text">Serivce Content Pages</span>
+                <span class="menu-text">Content Pages</span>
               </a>
             </li>
             <li  class="<?php if($page_name == 'services_category.php' || $page_name == 'add_services_category.php' || $page_name == 'edit_services_category.php' ) { echo "active"; } ?>">
@@ -114,7 +114,7 @@
                 <span class="menu-icon">
                    <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
                 </span>
-                <span class="menu-text">New Letters</span>
+                <span class="menu-text">News Letters</span>
               </a>
             </li>
             <li  class="<?php if($page_name == 'services_our_branches.php' || $page_name == 'add_services_our_branches.php' || $page_name == 'edit_services_our_branches.php' ) { echo "active"; } ?>">
