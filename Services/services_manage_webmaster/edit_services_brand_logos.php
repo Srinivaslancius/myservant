@@ -13,7 +13,7 @@ if (!isset($_POST['submit'])) {
     if($_FILES["fileToUpload"]["name"]!='') {
 
               $fileToUpload = $_FILES["fileToUpload"]["name"];
-              $target_dir = "../uploads/services_brand_logos/";
+              $target_dir = "../../uploads/services_brand_logos/";
               $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
               $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
               $getImgUnlink = getImageUnlink('brand_logo','services_brand_logos','id',$id,$target_dir);

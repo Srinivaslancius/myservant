@@ -2,7 +2,7 @@
 <?php
 $id = $_GET['cid'];
 //echo $music_number;
-$target_dir = '../uploads/services_category_images/';
+$target_dir = '../../uploads/services_category_images/';
 $getImgUnlink = getImageUnlink('category_image','services_category','id',$id,$target_dir);
 $qry = "DELETE FROM services_category WHERE id ='$id'";
 $result = $conn->query($qry);
