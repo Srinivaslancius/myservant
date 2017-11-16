@@ -1,8 +1,3 @@
-<?php include_once('../admin_includes/config.php');
-	include_once('../admin_includes/common_functions.php');
-	$getSiteSettings = getAllDataWhere('services_site_settings','id','1'); 
-    $getSiteSettingsData = $getSiteSettings->fetch_assoc();
-?>
 <div class="container">
             
             <div class="row">

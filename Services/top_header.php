@@ -1,14 +1,10 @@
 <?php 
 error_reporting(1);
-include_once('../admin_includes/config.php');
-include_once('../admin_includes/common_functions.php');
-$getSiteSettings = getAllDataWhere('services_site_settings','id','1'); 
-$getSiteSettingsData = $getSiteSettings->fetch_assoc();
 if(isset($_POST['sign_in']))  { 
     //Login here
     $user_email = $_POST['login_email'];
     $user_password = encryptPassword($_POST['login_password']);
-    $sql = "SELECT * FROM users WHERE user_email = '$user_email' AND user_password = '$user_password' AND lkp_status_id = 1 ";
+    $sql = "SELECT * FROM users WHERE (user_email = '$user_email' OR user_mobile = '$user_email') AND user_password = '$user_password'";
     $result = $conn->query($sql);
     //Set variable for session
     if($row = $result->fetch_assoc()) {
@@ -52,7 +48,7 @@ if(isset($_POST['sign_in']))  {
 										</div>
 										<form action="" method="post">
 										<div class="form-group">
-											<input type="email" name="login_email" class="form-control" id="inputUsernameEmail" placeholder="Email" required>
+											<input type="text" name="login_email" class="form-control" id="inputUsernameEmail" placeholder="Email or Phone" required>
 										</div>
 										<div class="form-group">
 											<input type="password" name="login_password" class="form-control" id="inputPassword" placeholder="Password"required>
