@@ -54,47 +54,11 @@
 
 	<main>
 		<!-- Slider -->
-		<div id="full-slider-wrapper">
-                    <?php include_once './slider.php';?>
+		 <div class="container-fluid page-title">
+		<div class="row">
+			<img src="img/slides/slide_3.jpg" class="img-responsive">
 		</div>
-		<!-- End layerslider -->
-                <div class="container-fluid marg10 search_back">
-                    <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
-			<div id="newsletter_wp" >
-                            <form method="post" action="#" id="newsletter" name="newsletter"  autocomplete="off">
-							<div class="row">
-                                                            
-                            	<div class="col-md-9 first-nogutter">
-                                    <div class="col-md-4 padd0">
-                                        
-								<div class="form-group">
-									
-									<select name="country" class="form-control">
-												<option>Home Service</option>
-												<option>Laundry</option>
-												
-											</select>
-								</div>
-							
-                                    </div>
-                                    <div class="col-md-8 padd0">
-                                	<input name="email_newsletter" id="email_newsletter" type="email" placeholder="Search your related service" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-3 nogutter">
-                                	    <button type="submit" class="btn-check" id="submit-newsletter">Search</button>
-                                </div>
-                             </div>                            	
-                            </form>
-                     <div id="message-newsletter"></div>
-                         
-                        </div><!-- End newsletter_wp -->	
-                    </div><!-- End row -->
-                    <div class="col-md-2"></div>
-                </div>
-                </div>
+    </div>
 		<div class="container margin_60">
 
 			<div class="main_title">
@@ -103,7 +67,7 @@
 			</div>
 
 			<div class="row">
-                            <?php for($i=0; $i<2; $i++) {?>
+                            <?php for($i=0; $i<3; $i++) {?>
 				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
 					<div class="tour_container">
 						<div class="ribbon_3 popular"><span>Popular</span>
@@ -224,38 +188,11 @@
 				
 			</div>
 			<!-- End row -->
-			<p class="text-center add_bottom_30">
-				<a href="services.php" class="btn_1 medium"><i class="icon-eye-7"></i>View all our Services</a>
-			</p>
-
+			
 			<hr>
 
-			<div class="main_title">
-				<h2>Our <span>Associate</span> Partners</h2>
-				
-			</div>
-
-			<div class="row">
-                            <?php for($k=0; $k<6; $k++) {?>
-				<div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
-					<div class="feature">
-						<i class="icon_set_1_icon-57"></i>
-						<h3><span>Company</span> Name</h3>
-						<p>
-							Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset, doctus volumus explicari qui ex, appareat similique an usu.
-						</p>
-					</div>
-				</div>
-                            <?php } ?>
-			</div>
-			<!-- End row -->
-			<!-- End row -->
-			<p class="text-center nopadding">
-				<a href="partners.php" class="btn_1 medium"><i class="icon-eye-7"></i>View all</a>
-			</p>
+			
 		</div>
-		<!-- End container -->
-
 		<div class="white_bg">
 			<div class="container margin20">
 								
@@ -323,7 +260,7 @@
 			
 
 		</div>
-		<!-- End container -->
+		
 	</main>
 	<!-- End main -->
 
