@@ -13,6 +13,13 @@
         }
     }
 
+    function getBanners() {
+        global $conn;
+        $sql="SELECT * FROM `services_banners` AS sb, `services_category` sc WHERE sc.`lkp_status_id` = '0' AND  sb.`lkp_status_id` = '0 '  ";
+        $result = $conn->query($sql);        
+        return $result;
+    }
+
     function userLogin($user_email,$user_mobile,$user_pwd) {
         global $conn;
         $sql="SELECT * FROM users WHERE (user_email = '$user_email' OR user_mobile = '$user_email') AND user_password = '$user_pwd' ";

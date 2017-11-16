@@ -1,6 +1,6 @@
 <div id="layerslider" style="width:100%;height:600px;">
-<?php $banners = "SELECT * FROM `services_banners` AS sb, `services_category` sc WHERE sc.`lkp_status_id` = '0' AND  sb.`lkp_status_id` = '0 ' "; 
-	$getBanners = $conn->query($banners);      
+<?php  
+	$getBanners = getBanners();      
 ?>
 	<!-- first slide -->
 	<?php while($getBannerData = $getBanners->fetch_assoc()) { ?>
