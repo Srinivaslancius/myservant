@@ -1,10 +1,10 @@
 <div class="row">
-				<div class="col-md-3 col-sm-3 col-xs-3">
-					<div id="logo_home">
-						<h1><a href="index.php" title="My Servant">My Servant</a></h1>
-					</div>
-				</div>
-				<nav class="col-md-9 col-sm-9 col-xs-9">
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <div id="logo_home">
+                        <h1><a href="index.php" title="My Servant">My Servant</a></h1>
+                    </div>
+                </div>
+                <nav class="col-md-9 col-sm-9 col-xs-9">
                     <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
                     <div class="main-menu">
                         <div id="header_menu">
@@ -12,11 +12,11 @@
                         </div>
                         <a href="#" class="open_close" id="close_in"><i class="icon_set_1_icon-77"></i></a>
                         <ul>
-                            <li><a href="">Home</a></li>
-                            <li><a href="">About US</a></li>
-                            <li><a href="">Services</a></li>
+                            <li><a href="index.php">Home</a></li>
+                            <li><a href="about.php">About US</a></li>
+                            <li><a href="services.php">Services</a></li>
                             <li><a href="">Testimonials</a></li>
-                            <li><a href="">Partners</a></li>
+                            <li><a href="partners.php">Partners</a></li>
                             <li><a href="">Brands</a></li>
                             <li><a href="">Contact Us</a></li>
                          
@@ -33,4 +33,4 @@
                         </li>
                     </ul>
                 </nav>
-			</div>
+            </div>
