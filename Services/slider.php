@@ -1,14 +1,13 @@
 <?php 
-	$getQry = "SELECT * FROM services_category WHERE lkp_status_id = 0";			
-	$excQry = $conn->query($getQry);
-	while($getCatId = $excQry->fetch_assoc()){
+	$getQry = getAllDataWithStatus('services_category','0');
+	while($getCatId = $getQry->fetch_assoc()){
 		$catId = $getCatId['id'];
 	}	
 ?>
 		<div id="layerslider" style="width:100%;height:600px;">
 				<!-- first slide -->
 				<?php 
-					$sql = "SELECT * FROM services_banners WHERE service_category_id = '$catId' AND lkp_status_id = 0 ";
+					$sql = "SELECT * FROM services_banners WHERE service_category_id = '$catId' OR service_category_id = 0 AND lkp_status_id = 0 ";
 					$getBanners = $conn->query($sql);
 				while($getBannerData = $getBanners->fetch_assoc()){?>
 				<div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
