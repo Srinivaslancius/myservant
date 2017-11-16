@@ -57,6 +57,7 @@
         curl_setopt($ch,CURLOPT_URL,$data);
         $response = curl_exec($ch);        
     }
+    
     function checkUserAvail($table,$clause,$value){
         global $conn;
         $sql = "SELECT * FROM `$table` WHERE `$clause`= '$value' ";
