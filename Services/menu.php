@@ -19,6 +19,7 @@
                             <li><a href="partners.php">Partners</a></li>
                             <li><a href="">Brands</a></li>
                             <li><a href="">Contact Us</a></li>
+                        </ul>
                          
                     </div><!-- End main-menu -->
                     <ul id="top_tools">
