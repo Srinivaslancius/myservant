@@ -2,7 +2,7 @@
 <?php
 $id = $_GET['seid'];
 //echo $music_number;
-$target_dir = '../uploads/service_employee_photo/';
+$target_dir = '../../uploads/service_employee_photo/';
 $getImgUnlink = getImageUnlink('photo','services_employee_registration','id',$id,$target_dir);
 $qry = "DELETE FROM services_employee_registration WHERE id ='$id'";
 $result = $conn->query($qry);
