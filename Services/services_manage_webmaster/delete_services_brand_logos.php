@@ -2,7 +2,7 @@
 <?php
 $id = $_GET['logoid'];
 //echo $music_number;
-$target_dir = '../uploads/services_brand_logos/';
+$target_dir = '../../uploads/services_brand_logos/';
 $getImgUnlink = getImageUnlink('brand_logo','services_brand_logos','id',$id,$target_dir);
 $qry = "DELETE FROM services_brand_logos WHERE id ='$id'";
 $result = $conn->query($qry);

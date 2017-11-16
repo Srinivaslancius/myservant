@@ -18,7 +18,7 @@
         $service_provider_registration_id = $_POST['service_provider_registration_id'];
         $status = $_POST['lkp_status_id'];
         if($fileToUpload!='') {
-          $target_dir = "../uploads/service_employee_photo/";
+          $target_dir = "../../uploads/service_employee_photo/";
           $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
           $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {

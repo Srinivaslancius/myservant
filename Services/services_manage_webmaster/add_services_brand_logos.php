@@ -11,7 +11,7 @@ if (!isset($_POST['submit']))  {
   
   if($fileToUpload!='') {
 
-    $target_dir = "../uploads/services_brand_logos/";
+    $target_dir = "../../uploads/services_brand_logos/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 

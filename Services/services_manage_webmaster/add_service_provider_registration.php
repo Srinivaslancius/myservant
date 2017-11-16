@@ -38,7 +38,7 @@ if (!isset($_POST['submit']))  {
 
     if($fileToUpload!='') {
 
-      $target_dir = "../uploads/service_provider_business_logo/";
+      $target_dir = "../../uploads/service_provider_business_logo/";
       $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
       $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
@@ -51,7 +51,7 @@ if (!isset($_POST['submit']))  {
 
     if($fileToUpload1!='') {
 
-      $target_dir1 = "../uploads/service_provider_personal_iamge/";
+      $target_dir1 = "../../uploads/service_provider_personal_iamge/";
       $target_file1 = $target_dir1 . basename($_FILES["fileToUpload1"]["name"]);
       $imageFileType = pathinfo($target_file1,PATHINFO_EXTENSION);
 

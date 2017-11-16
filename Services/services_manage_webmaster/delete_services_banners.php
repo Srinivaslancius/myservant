@@ -2,7 +2,7 @@
 <?php
 $id = $_GET['bid'];
 //echo $music_number;
-$target_dir = '../uploads/services_banner_images/';
+$target_dir = '../../uploads/services_banner_images/';
 $getImgUnlink = getImageUnlink('banner','services_banners','id',$id,$target_dir);
 $qry = "DELETE FROM services_banners WHERE id ='$id'";
 $result = $conn->query($qry);
