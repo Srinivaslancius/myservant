@@ -83,7 +83,7 @@ if (!isset($_POST['submit'])) {
                   <?php $getServicesCategories = getAllDataWithStatus('services_category','0');?>
                   <div class="form-group" id="service_category_id">
                     <label for="form-control-3" class="control-label">Choose your Services Categories</label>
-                    <select id="form-control-3" name="service_category_id" class="custom-select" data-error="This field is required." required>
+                    <select id="form-control-3" name="service_category_id" class="custom-select" data-error="This field is required.">
                       <option value="">Select Services Categories</option>
                       <?php while($row = $getServicesCategories->fetch_assoc()) {  ?>
                           <option <?php if($row['id'] == $getBannersData['service_category_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['category_name']; ?></option>

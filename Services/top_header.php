@@ -1,7 +1,12 @@
+<?php include_once('../admin_includes/config.php');
+	include_once('../admin_includes/common_functions.php');
+	$getSiteSettings = getAllDataWhere('services_site_settings','id','1'); 
+    $getSiteSettingsData = $getSiteSettings->fetch_assoc();
+?>
 <div id="top_line">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-sm-6 col-xs-6"><i class="icon-phone"></i><strong>+91-999-999-9999</strong>
+					<div class="col-md-6 col-sm-6 col-xs-6"><i class="icon-phone"></i><strong><a href="Tel:<?php echo $getSiteSettingsData['mobile']; ?>" style="color:white;"><?php echo $getSiteSettingsData['mobile']; ?></a></strong>
 					</div>
 
 					<div class="col-md-6 col-sm-6 col-xs-6">
