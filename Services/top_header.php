@@ -4,13 +4,12 @@ if(isset($_POST['sign_in']))  {
     //Login here
     $user_email = $_POST['login_email'];
     $user_password = encryptPassword($_POST['login_password']);
-    $sql = "SELECT * FROM users WHERE (user_email = '$user_email' OR user_mobile = '$user_email') AND user_password = '$user_password'";
-    $result = $conn->query($sql);
+    $getLoginData = userLogin($user_email,$user_mobile,$user_password);
     //Set variable for session
-    if($row = $result->fetch_assoc()) {
-        $_SESSION['user_login_session_id'] =  $row['id'];
-        $_SESSION['user_login_session_name'] = $row['user_full_name'];
-        $_SESSION['user_login_session_email'] = $row['user_email'];
+    if($getLoggedInDetails = $getLoginData->fetch_assoc()) {
+        $_SESSION['user_login_session_id'] =  $getLoggedInDetails['id'];
+        $_SESSION['user_login_session_name'] = $getLoggedInDetails['user_full_name'];
+        $_SESSION['user_login_session_email'] = $getLoggedInDetails['user_email'];
         header('Location: index.php');
     } else {
     	echo "<script>alert('invalid username/password.  Please try again');window.location='index.php';</script>";
