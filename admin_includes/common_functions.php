@@ -13,9 +13,9 @@
         }
     }
 
-    function userLogin($email,$password) {
+    function userLogin($user_email,$user_mobile,$user_pwd) {
         global $conn;
-        $sql="SELECT * from users WHERE user_email = '$email' AND user_password = '$password' ";
+        $sql="SELECT * FROM users WHERE (user_email = '$user_email' OR user_mobile = '$user_email') AND user_password = '$user_pwd' ";
         $result = $conn->query($sql);        
         return $result;
     }
