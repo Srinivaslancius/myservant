@@ -114,29 +114,3 @@
       </div>
   
 <?php include_once 'admin_includes/footer.php'; ?>
-<script type="text/javascript">
-  function isNumberKey(evt){
-    var charCode = (evt.which) ? evt.which : event.keyCode
-      if (charCode > 31 && (charCode < 48 || charCode > 57))
-        return false;
-    return true;
-  }
-  function checkemail() {
-    var email1 = document.getElementById("user_email").value;
-    if (email1){
-      $.ajax({
-      type: "POST",
-      url: "check_email_avail.php",
-      data: {
-        user_email:email1,
-      },
-      success: function (response) {
-        $( '#email_status' ).html(response);
-        if (response == "Email Already Exist"){
-          $("#user_email").val("");
-        }
-        }
-       });
-    }
-  }
-</script>
