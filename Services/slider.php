@@ -1,9 +1,16 @@
 <?php 
-	$getBanners = getAllDataWithStatus('services_banners','0');				
+	$getQry = "SELECT * FROM services_category WHERE lkp_status_id = 0";			
+	$excQry = $conn->query($getQry);
+	while($getCatId = $excQry->fetch_assoc()){
+		$catId = $getCatId['id'];
+	}	
 ?>
 		<div id="layerslider" style="width:100%;height:600px;">
 				<!-- first slide -->
-				<?php while($getBannerData = $getBanners->fetch_assoc()){?>
+				<?php 
+					$sql = "SELECT * FROM services_banners WHERE service_category_id = '$catId' AND lkp_status_id = 0 ";
+					$getBanners = $conn->query($sql);
+				while($getBannerData = $getBanners->fetch_assoc()){?>
 				<div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
 					<img src="<?php echo $base_url . 'uploads/services_banner_images/'.$getBannerData['banner'] ?>" class="ls-bg" alt="Slide background">					
 					<h3 class="ls-l slide_typo" style="top: 45%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;"><?php echo $getBannerData['title'];?></h3>
