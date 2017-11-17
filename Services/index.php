@@ -5,8 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<?php include_once 'meta.php';?>
-	
+	<?php include_once 'meta.php';?>	
 
 	<!-- Favicons-->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -24,6 +23,9 @@
 
 	<!-- REVOLUTION SLIDER CSS -->
 	<link href="layerslider/css/layerslider.css" rel="stylesheet">
+	<!-- For brands slider -->
+	<script src="../cdn-cgi/scripts/78d64697/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Bitter" rel="stylesheet" type="text/css">
 
 
 </head>
@@ -178,7 +180,7 @@
 	<!-- Search Menu -->
 	
 	<!-- Common scripts -->
-	<script src="../cdn-cgi/scripts/78d64697/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
+	
 	<script src="js/common_scripts_min.js"></script>
 	<script src="js/functions.js"></script>
 
@@ -200,6 +202,35 @@
 			});
 		});
 	</script>
+	<script>
+(function(){
+  // setup your carousels as you normally would using JS
+  // or via data attributes according to the documentation
+  // https://getbootstrap.com/javascript/#carousel
+  $('#carousel123').carousel({ interval: 2000 });
+  $('#carouselABC').carousel({ interval: 3600 });
+}());
+
+(function(){
+  $('.carousel-showmanymoveone .item').each(function(){
+    var itemToClone = $(this);
+
+    for (var i=1;i<6;i++) {
+      itemToClone = itemToClone.next();
+
+      // wrap around if at end of item collection
+      if (!itemToClone.length) {
+        itemToClone = $(this).siblings(':first');
+      }
+
+      // grab item, clone, add marker class, add to collection
+      itemToClone.children(':first-child').clone()
+        .addClass("cloneditem-"+(i))
+        .appendTo($(this));
+    }
+  });
+}());
+</script>
 
 </body>
 
