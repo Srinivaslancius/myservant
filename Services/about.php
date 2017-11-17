@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once 'meta.php';?>
-	<?php $getContentPageData = getAllDataWhere('services_content_pages','id',3);
+	<?php $getContentPageData = getAllDataWhere('services_content_pages','id',1);
 		  $getAboutUsData = $getContentPageData->fetch_assoc();
 	?>
 

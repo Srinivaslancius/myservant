@@ -10,11 +10,11 @@
       $meta_keywords = $_POST['meta_keywords'];
       $meta_desc = $_POST['meta_desc'];
       $created_at = date("Y-m-d h:i:s");
-      $fileToUpload = $_FILES["fileToUpload"]["name"];
+      $fileToUpload = uniqid().$_FILES["fileToUpload"]["name"];
       if($fileToUpload!='') {
 
         $target_dir = "../../uploads/services_content_pages_images/";
-        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $target_file = $target_dir . basename($fileToUpload);
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {

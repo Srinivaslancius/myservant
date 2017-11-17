@@ -16,9 +16,9 @@ if (!isset($_POST['submit'])) {
 
       if($_FILES["fileToUpload"]["name"]!='') {
 
-              $fileToUpload = $_FILES["fileToUpload"]["name"];
+              $fileToUpload = uniqid().$_FILES["fileToUpload"]["name"];
               $target_dir = "../../uploads/services_content_pages_images/";
-              $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+              $target_file = $target_dir . basename($fileToUpload);
               $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
               $getImgUnlink = getImageUnlink('image','services_content_pages','id',$id,$target_dir);
                 //Send parameters for img val,tablename,clause,id,imgpath for image ubnlink from folder
