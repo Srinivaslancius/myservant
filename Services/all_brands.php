@@ -65,116 +65,30 @@
 				<h2>Our <span>Services</span> Categories</h2>
 				
 			</div>
-			<?php $getCategoriesData = getAllDataWithStatusLimit('services_category',0,'',''); ?>
+			<?php $getServiceBrands = getAllDataWithStatusLimit('services_brand_logos',0,'',''); ?>
 
 			<div class="row">
-                 <?php  while($getAllCategoriesData = $getCategoriesData->fetch_assoc()) { ?>           
+                 <?php  while($getServiceBrandsData = $getServiceBrands->fetch_assoc()) { ?>           
 				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
 					<div class="tour_container">
 						<div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
 						</div>
 						<div class="img_container padd15">
                         <a href="list.php">
-                        <img src="<?php echo $base_url . 'uploads/services_category_images/'.$getAllCategoriesData['category_image'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getAllCategoriesData['category_name']; ?>">
-								
-							</a>
+                        	<img src="<?php echo $base_url . 'uploads/services_brand_logos/'.$getServiceBrandsData['brand_logo'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getServiceBrandsData['title']; ?>">
+						</a>
 						</div>
 						<div class="tour_title">
-							<h3><?php echo $getAllCategoriesData['category_name']; ?></h3>
-							
-							<!-- end rating -->
-							
+							<h3><?php echo $getServiceBrandsData['title']; ?></h3>		
 						</div>
 					</div>
 					<!-- End box tour -->
 				</div>
                  <?php } ?>    
-                            
-                            
-                           
-                            
-                                
-				<!-- End col-md-4 -->
-
-                            
-				<!-- End col-md-4 -->
-
-				
-				
-			</div>
+            </div>
 			<!-- End row -->
-			
-			<hr>
-
-			
 		</div>
-		<div class="white_bg">
-			<div class="container margin20">
-								
-
-				<div class="banner colored">
-					<h4>Are You  <span>Professional</span> Looking to grow your service Business</h4>
-					<a href="#" class="btn_1 white">Join Now</a>
-				</div>
-				
-				<!-- End row -->
-			</div>
-			<!-- End container -->
-		</div>
-		<!-- End white_bg -->
-
-		
-		<!-- End section -->
-
-		<div class="container margin_60">
-
-			<div class="main_title">
-				<h2>Some <span>good</span> reasons</h2>
-				
-			</div>
-
-			<div class="row">
-
-				<div class="col-md-4 wow zoomIn" data-wow-delay="0.2s">
-					<div class="feature_home">
-						<i class="icon_set_1_icon-41"></i>
-						<h3><span>+50</span> Premium Services</h3>
-						<p>
-							Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
-						</p>
-						<a href="#" class="btn_1 outline">Read more</a>
-					</div>
-				</div>
-
-				<div class="col-md-4 wow zoomIn" data-wow-delay="0.4s">
-					<div class="feature_home">
-						<i class="icon_set_1_icon-30"></i>
-						<h3><span>+1000</span> Customers</h3>
-						<p>
-							Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
-						</p>
-						<a href="#" class="btn_1 outline">Read more</a>
-					</div>
-				</div>
-
-				<div class="col-md-4 wow zoomIn" data-wow-delay="0.6s">
-					<div class="feature_home">
-						<i class="icon_set_1_icon-57"></i>
-						<h3><span>24 * 7 </span> Support</h3>
-						<p>
-							Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
-						</p>
-						<a href="about.html" class="btn_1 outline">Read more</a>
-					</div>
-				</div>
-
-			</div>
-			<!--End row -->
-
-			
-			
-
-		</div>
+		<?php include_once 'our_associate_partners.php';?>
 		
 	</main>
 	<!-- End main -->
