@@ -119,9 +119,9 @@
                                 
                             </form>
                         </div>
+
                 </div>
-				<div class="col-sm-1">
-				</div>
+				
 			<div class="col-sm-5">
                 	<div id="login">
                     		<div class="text-center"><h2><span>Register</span></h2></div>

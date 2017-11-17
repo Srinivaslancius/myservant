@@ -100,7 +100,7 @@
 									<input type="submit" value="Submit" class="btn_1" id="submit-contact">
 								</div>
 							</div>
-						</form>
+						</form><br>
 					
 				</div>
 				<!-- End col-md-8 -->
