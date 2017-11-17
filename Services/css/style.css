@@ -214,7 +214,7 @@ hr {
     border: none;
     font-family: inherit;
     color: #fff;
-    background: #51bce6;
+    background: #f26226;
     cursor: pointer;
     padding: 7px 20px;
     display: inline-block;
@@ -227,7 +227,7 @@ hr {
     -moz-border-radius: 3px;
     border-radius: 3px;
     text-transform: uppercase;
-    font-weight: 700
+    font-weight: 700;
 }
 
 .btn_1.green,a.btn_1.green {
@@ -2137,8 +2137,8 @@ input.qty2 {
 }
 
 #directions {
-    background-color: #f26226;
-    padding: 22px 0
+    /* background-color: #f26226; */
+    /* padding: 22px 0; */
 }
 
 ul#contact-info {
@@ -2751,8 +2751,8 @@ ul.list_order li span {
 }
 
 .pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover,.pagination>.active>span,.pagination>.active>span:focus,.pagination>.active>span:hover {
-    background-color: #555;
-    border-color: #555
+    background-color: #f26226;
+    border-color: #f26226;
 }
 
 .styled-select select {
@@ -4793,4 +4793,8 @@ header.sticky nav.full-horizontal {
 .wdth50
 {
     width: 70%;
+}
+.btn-default{
+    background-color:#f26226 !important;
+    color: white !important;
 }
