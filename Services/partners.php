@@ -66,17 +66,19 @@
 			</div>
 
 			<div class="row">
-                            <?php for($k=0; $k<6; $k++) {?>
+                <?php $getServiceProvider =  getServicesProviderDataLimit('',''); ?>
+                <?php  while($getAllgetServiceProvider = $getServiceProvider->fetch_assoc()) { ?> 
 				<div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
 					<div class="feature">
-						<i class="icon_set_1_icon-57"></i>
-						<h3><span>Company</span> Name</h3>
+						<!-- <i class="icon_set_1_icon-57"></i> -->
+						<img src="<?php echo $base_url . 'uploads/service_provider_business_logo/'.$getAllgetServiceProvider['logo'] ?>" class="img-responsive" alt="<?php echo $getAllgetServiceProvider['company_name']; ?>" style="width:65px; height:65px;">
+						<h3><span><?php echo $getAllgetServiceProvider['company_name']; ?></span></h3>
 						<p>
-							Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset, doctus volumus explicari qui ex, appareat similique an usu.
+							<?php echo substr(strip_tags($getAllgetServiceProvider['description']), 0,200);?>
 						</p>
 					</div>
 				</div>
-                            <?php } ?>
+                <?php } ?>       
 			</div>
 			<!-- End row -->
 			

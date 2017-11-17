@@ -137,10 +137,11 @@
                 <?php  while($getAllgetServiceProvider = $getServiceProvider->fetch_assoc()) { ?> 
 				<div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
 					<div class="feature">
-						<i class="icon_set_1_icon-57"></i>
+						<!-- <i class="icon_set_1_icon-57"></i> -->
+						<img src="<?php echo $base_url . 'uploads/service_provider_business_logo/'.$getAllgetServiceProvider['logo'] ?>" class="img-responsive" alt="<?php echo $getAllgetServiceProvider['company_name']; ?>" style="width:65px; height:65px;">
 						<h3><span><?php echo $getAllgetServiceProvider['company_name']; ?></span></h3>
 						<p>
-							<?php echo substr(strip_tags($getAllgetServiceProvider['description']), 0,150);?>
+							<?php echo substr(strip_tags($getAllgetServiceProvider['description']), 0,200);?>
 						</p>
 					</div>
 				</div>
