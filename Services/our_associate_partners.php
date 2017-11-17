@@ -9,7 +9,9 @@
 	<!-- End container -->
 </div>
 <!-- End white_bg -->
-
+	<?php 	$getPremiumServicesData = getAllDataWhere('services_content_pages','id',2);
+		  	$getPremiumServices = $getPremiumServicesData->fetch_assoc();
+	?>
 <div class="container margin_60">
 	<div class="main_title">
 		<h2>Some <span>good</span> reasons</h2>		
@@ -19,33 +21,31 @@
 		<div class="col-md-4 wow zoomIn" data-wow-delay="0.2s">
 			<div class="feature_home">
 				<i class="icon_set_1_icon-41"></i>
-				<h3><span>+50</span> Premium Services</h3>
-				<p>
-					Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
-				</p>
-				<a href="#" class="btn_1 outline">Read more</a>
+				<h3><span><?php echo $getPremiumServices['title'];?></span></h3>
+				<?php echo substr(strip_tags($getPremiumServices['description']), 0,250);?>
+				<a href="content_details.php?sid=2" class="btn_1 outline">Read more</a>
 			</div>
 		</div>
-
+		<?php 	$getCustomersData = getAllDataWhere('services_content_pages','id',3);
+		  		$getCustomers = $getCustomersData->fetch_assoc();
+		?>
 		<div class="col-md-4 wow zoomIn" data-wow-delay="0.4s">
 			<div class="feature_home">
 				<i class="icon_set_1_icon-30"></i>
-				<h3><span>+1000</span> Customers</h3>
-				<p>
-					Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
-				</p>
-				<a href="#" class="btn_1 outline">Read more</a>
+				<h3><span><?php echo $getCustomers['title'];?></span></h3>
+				<?php echo substr(strip_tags($getCustomers['description']), 0,250);?>
+				<a href="content_details.php?sid=3" class="btn_1 outline">Read more</a>
 			</div>
 		</div>
-
+		<?php 	$getSupportData = getAllDataWhere('services_content_pages','id',4);
+		  		$getSupport = $getSupportData->fetch_assoc();
+		?>
 		<div class="col-md-4 wow zoomIn" data-wow-delay="0.6s">
 			<div class="feature_home">
 				<i class="icon_set_1_icon-57"></i>
-				<h3><span>24 * 7 </span> Support</h3>
-				<p>
-					Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
-				</p>
-				<a href="about.html" class="btn_1 outline">Read more</a>
+				<h3><span><?php echo $getSupport['title'];?></span></h3>
+				<?php echo substr(strip_tags($getSupport['description']), 0,250);?>
+				<a href="content_details.php?sid=4" class="btn_1 outline">Read more</a>
 			</div>
 		</div>
 	</div>

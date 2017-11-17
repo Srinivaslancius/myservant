@@ -62,7 +62,7 @@
 		<div class="container margin_60">
 
 			<div class="main_title">
-				<h2>Our <span>Services</span> Categories</h2>
+				<h2>Our <span>Brands</span></h2>
 				
 			</div>
 			<?php $getServiceBrands = getAllDataWithStatusLimit('services_brand_logos',0,'',''); ?>

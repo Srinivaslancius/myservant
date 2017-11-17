@@ -73,7 +73,8 @@
 			</div>
 			<!-- End container -->
 		</div>
-		<!-- End white_bg -->	
+		<!-- End white_bg -->
+		<?php include_once 'our_associate_partners.php';?>	
 	</main>
 	<!-- End main -->
 
