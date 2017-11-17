@@ -25,11 +25,6 @@
 </head>
 
 <body>
-
-	<!--[if lte IE 8]>
-    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
-<![endif]-->
-
 	
 
 	<div class="layer"></div>
@@ -101,9 +96,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-6">
-									<label>Human verification</label>
-									<input type="text" id="verify_contact" class=" form-control add_bottom_30" placeholder="Are you human? 3 + 1 =">
+								<div class="col-md-6">									
 									<input type="submit" value="Submit" class="btn_1" id="submit-contact">
 								</div>
 							</div>
@@ -128,16 +121,7 @@
 		<!-- End container -->
 		<div id="map_contact"></div>
 		<!-- end map-->
-		<div id="directions">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<form action="http://maps.google.com/maps" method="get" target="_blank">
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 	</main>
 	<!-- End main -->
 
@@ -152,13 +136,12 @@
 	<!-- Search Menu -->
 
 	<!-- Common scripts -->
-	<script src="../cdn-cgi/scripts/0e574bed/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
 	<script src="js/common_scripts_min.js"></script>
 	<script src="js/functions.js"></script>
 
 	<!-- Specific scripts -->
 	<script src="assets/validate.js"></script>
-	<script src="http://maps.googleapis.com/maps/api/js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
 	<script src="js/map_contact.js"></script>
 	<script src="js/infobox.js"></script>
 
