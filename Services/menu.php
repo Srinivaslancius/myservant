@@ -17,7 +17,7 @@
                             <li><a href="services.php">Services</a></li>
                             <li><a href="">Testimonials</a></li>
                             <li><a href="partners.php">Partners</a></li>
-                            <li><a href="">Brands</a></li>
+                            <li><a href="all_brands.php">Brands</a></li>
                             <li><a href="">Contact Us</a></li>
                         </ul>
                          

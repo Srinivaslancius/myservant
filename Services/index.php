@@ -156,7 +156,16 @@
 		<!-- End container -->
 
 		<?php include_once 'our_associate_partners.php';?>
-		
+
+		<!-- Brnds Start here -->
+		<div class="container margin_60">
+			<div class="main_title">
+				<h2>Our <span>Brands</span></h2>				
+			</div>
+			  <?php include_once 'brands.php';?>
+		</div>
+		<!-- End Brnds here -->
+
 	</main>
 	<!-- End main -->
 

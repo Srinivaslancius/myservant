@@ -52,11 +52,3 @@
 	<!--End row -->
 </div>
 
-<!-- Brnds Start here -->
-<div class="container margin_60">
-	<div class="main_title">
-		<h2>Our <span>Brands</span></h2>				
-	</div>
-	  <?php include_once 'brands.php';?>
-</div>
-<!-- End Brnds here -->
