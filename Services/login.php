@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
@@ -6,7 +7,24 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once 'meta.php';?>
-	
+	<?php 
+		error_reporting(1);
+		if(isset($_POST['login']))  { 
+		    //Login here
+		    $user_email = $_POST['login_email'];
+		    $user_password = encryptPassword($_POST['login_password']);
+		    $getLoginData = userLogin($user_email,$user_mobile,$user_password);
+		    //Set variable for session
+		    if($getLoggedInDetails = $getLoginData->fetch_assoc()) {
+		        $_SESSION['user_login_session_id'] =  $getLoggedInDetails['id'];
+		        $_SESSION['user_login_session_name'] = $getLoggedInDetails['user_full_name'];
+		        $_SESSION['user_login_session_email'] = $getLoggedInDetails['user_email'];
+		        header('Location: index.php');
+		    } else {
+		    	echo "<script>alert('invalid username/password.  Please try again');window.location='index.php';</script>";
+		    }
+		}
+	?>
 
 	<!-- Favicons-->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -61,7 +79,7 @@
                 	<div id="login">
                     		<div class="text-center"><h2><span>Login</span></h2></div>
                             <hr>
-                            <form>
+                            <form method="POST">
                             <div class="row">
                             <div class="col-md-6 col-sm-6 login_social">
                                 <a href="#" class="btn btn-primary btn-block"><i class="icon-facebook"></i> Facebook</a>
@@ -74,16 +92,16 @@
                        
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input type="text" class=" form-control " placeholder="Username">
+                                    <input type="text" class=" form-control " name="login_email" placeholder="Username" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" class=" form-control" placeholder="Password">
+                                    <input type="password" class=" form-control" name="login_password" placeholder="Password" required>
                                 </div>
                                 <p class="small">
                                     <a href="#">Forgot Password?</a>
                                 </p>
-                                <a href="#" class="btn_full">Sign in</a>
+                                <button type="submit" name="login" class="btn_full">Sign in</button>
                                 
                             </form>
                         </div>
