@@ -52,8 +52,8 @@ if(!isset($_SESSION['services_admin_user_id'])) {
               <span class="hamburger"></span>
             </button>
             <button class="navbar-toggler right-sidebar-toggle pull-right hidden-xs" type="button">
-              <i class="zmdi zmdi-long-arrow-left"></i>
-              <div class="dot bg-danger"></div>
+              
+              <div class="dot bg-success"></div>
             </button>           
             
             <ul class="nav navbar-nav navbar-right">              
