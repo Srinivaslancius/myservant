@@ -22,7 +22,7 @@
 			<div class="feature_home">
 				<i class="icon_set_1_icon-41"></i>
 				<h3><span><?php echo $getPremiumServices['title'];?></span></h3>
-				<?php echo substr(strip_tags($getPremiumServices['description']), 0,250);?>
+				<p><?php echo substr(strip_tags($getPremiumServices['description']), 0,200);?></p>
 				<a href="content_details.php?sid=2" class="btn_1 outline">Read more</a>
 			</div>
 		</div>
@@ -33,7 +33,7 @@
 			<div class="feature_home">
 				<i class="icon_set_1_icon-30"></i>
 				<h3><span><?php echo $getCustomers['title'];?></span></h3>
-				<?php echo substr(strip_tags($getCustomers['description']), 0,250);?>
+				<p><?php echo substr(strip_tags($getCustomers['description']), 0,200);?></p>
 				<a href="content_details.php?sid=3" class="btn_1 outline">Read more</a>
 			</div>
 		</div>
@@ -44,7 +44,7 @@
 			<div class="feature_home">
 				<i class="icon_set_1_icon-57"></i>
 				<h3><span><?php echo $getSupport['title'];?></span></h3>
-				<?php echo substr(strip_tags($getSupport['description']), 0,250);?>
+				<p><?php echo substr(strip_tags($getSupport['description']), 0,200);?></p>
 				<a href="content_details.php?sid=4" class="btn_1 outline">Read more</a>
 			</div>
 		</div>
