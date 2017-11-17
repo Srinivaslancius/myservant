@@ -122,6 +122,18 @@
         $result = $conn->query($sql); 
         return $result;
     }
+
+    function getServicesProviderDataLimit($minlimit,$maxlimit)  {
+        global $conn;
+        if($minlimit!='' && $maxlimit!='') {
+            $sql="SELECT * FROM `service_provider_registration` AS spr, `service_provider_business_registration` spbr WHERE spr.`lkp_status_id` = '0' AND  spbr.`service_provider_registration_id` = spr.`id` AND  spr.`service_provider_type_id` = 1 LIMIT $minlimit,$maxlimit ORDER BY `spr.id` DESC ";
+        } else {
+            $sql="SELECT * FROM `service_provider_registration` AS spr, `service_provider_business_registration` spbr WHERE spr.`lkp_status_id` = '0' AND  spbr.`service_provider_registration_id` = spr.`id` AND  spr.`service_provider_type_id` = 1 ORDER BY `spr.id` DESC ";
+        }        
+         
+        $result = $conn->query($sql); 
+        return $result;
+    }
     
     function getRowsCount($table)  {
         global $conn;
