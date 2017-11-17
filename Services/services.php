@@ -71,11 +71,11 @@
                  <?php  while($getAllCategoriesData = $getCategoriesData->fetch_assoc()) { ?>           
 				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
 					<div class="tour_container">
-						<div class="ribbon_3 popular"><span>Popular</span> 
+						<div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
 						</div>
 						<div class="img_container padd15">
                         <a href="list.php">
-                        <img src="<?php echo $base_url . 'uploads/services_category_images/'.$getAllCategoriesData['category_image'] ?>" class="img-responsive" alt="Image">
+                        <img src="<?php echo $base_url . 'uploads/services_category_images/'.$getAllCategoriesData['category_image'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getAllCategoriesData['category_name']; ?>">
 								
 							</a>
 						</div>
