@@ -21,7 +21,8 @@
 		        $_SESSION['user_login_session_email'] = $getLoggedInDetails['user_email'];
 		        header('Location: index.php');
 		    } else {
-		    	echo "<script>alert('invalid username/password.  Please try again');window.location='index.php';</script>";
+		    	//echo "<script>alert('invalid username/password.  Please try again');window.location='index.php';</script>";
+		    	header('Location: login.php?err=log-fail');
 		    }
 		}
 	?>
@@ -74,8 +75,21 @@
 		</div>
     </div>
 		<div class="container" style="margin-top:-70px">		
+
            <div class="row">
+           	  	<div class="col-sm-12 alert alert-success" style="top:90px; display:none">
+		      <strong>Success!</strong> Your Registration Successfully Completed.
+		    </div>
+
+		    <?php if(isset($_GET['err']) && $_GET['err'] == 'log-fail' ) {  ?>
+		    <div class="col-sm-12 alert alert-danger" style="top:100px; display:block">
+		      <strong>Failed!</strong> Your Registration Failed.
+		    </div>
+		    <?php }?>
+
 		   <div class="col-sm-5">
+
+
                 	<div id="login">
                     		<div class="text-center"><h2><span>Login</span></h2></div>
                             <hr>
