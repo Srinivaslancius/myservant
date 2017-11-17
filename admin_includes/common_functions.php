@@ -114,7 +114,7 @@
     function getAllDataWithStatusLimit($table,$status,$minlimit,$maxlimit)  {
         global $conn;
         if($minlimit!='' && $maxlimit!='') {
-            $sql="select * from `$table` WHERE `lkp_status_id` = '$status' LIMIT $minlimit,$maxlimit ORDER BY id DESC";
+            $sql="select * from `$table` WHERE `lkp_status_id` = '$status' ORDER BY id DESC LIMIT $minlimit,$maxlimit";
         } else {
             $sql="select * from `$table` WHERE `lkp_status_id` = '$status' ORDER BY id DESC";
         }
