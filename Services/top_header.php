@@ -29,8 +29,8 @@ if(isset($_POST['sign_in']))  {
 								<?php if(isset($_SESSION['user_login_session_id']) && $_SESSION['user_login_session_id']!='') { ?>
 									<a href="index.php"><?php echo $_SESSION['user_login_session_name']; ?> </a> &nbsp;|&nbsp;<a href="logout.php"> Logout </a>
 								<?php } else { ?>
-					                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="access_link">Sign in</a>
-					                <div class="dropdown-menu">
+					                <a href="login.php" class="dropdown-toggle" data-toggle="dropdown" id="access_link">Sign in</a>
+					                <!-- <div class="dropdown-menu">
 										<div class="row">
 											<div class="col-md-6 col-sm-6 col-xs-6">
 												<a href="#" class="bt_facebook">
@@ -56,9 +56,9 @@ if(isset($_POST['sign_in']))  {
 										<input type="submit" name="sign_in" value="Sign in" id="Sign_in" class="button_drop">
 										<input type="submit" name="Sign_up" value="Sign up" id="Sign_up" class="button_drop outline">
 										</form>
-									</div>
+									</div> -->
 					        </li>
-                            <li><a href="#" id="wishlist_link">Register</a></li>
+                            <li><a href="login.php" id="wishlist_link">Register</a></li>
 										<?php } ?>
 								</div>
 								<!-- End Dropdown access -->
