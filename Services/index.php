@@ -101,127 +101,24 @@
 				<h2>Our <span>Services</span> Categories</h2>
 				
 			</div>
-
+			<?php $getCategoriesData = getAllDataWithStatusLimit('services_category',0,1,6); ?>
 			<div class="row">
-                            <?php for($i=0; $i<2; $i++) {?>
+                 <?php  while($getAllCategoriesData = $getCategoriesData->fetch_assoc()) { ?> 
 				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
 					<div class="tour_container">
-						<div class="ribbon_3 popular"><span>Popular</span>
-						</div>
+						<div class="ribbon_3 popular"><!-- <span>Popular</span> --></div>
 						<div class="img_container padd15">
-                                                    <a href="list.php">
-                                                            <img src="img/categories/hcat1.png" class="img-responsive" alt="Image">
-								
-							</a>
+                           <a href="list.php">
+                           <img src="<?php echo $base_url . 'uploads/services_category_images/'.$getAllCategoriesData['category_image'] ?>" class="img-responsive" alt="Image">
+						   </a>
 						</div>
 						<div class="tour_title">
-							<h3>Hospitals</h3>
-							
-							<!-- end rating -->
-							
+							<h3><?php echo $getAllCategoriesData['category_name']; ?></h3>
 						</div>
 					</div>
 					<!-- End box tour -->
 				</div>
-                                <div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-					<div class="tour_container">
-						<div class="ribbon_3 toprated"><span>Top Rated</span>
-						</div>
-						<div class="img_container padd15">
-							<a href="list.php">
-                                                            <img src="img/categories/hcat2.png" class="img-responsive" alt="Image">
-								
-							</a>
-						</div>
-						<div class="tour_title">
-							<h3>Hotel & Resort</h3>
-							
-							<!-- end rating -->
-							
-						</div>
-					</div>
-					<!-- End box tour -->
-				</div>
-                            <div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-					<div class="tour_container">
-						
-						<div class="img_container padd15">
-							<a href="list.php">
-                                                            <img src="img/categories/hcat3.png" class="img-responsive" alt="Image">
-								
-							</a>
-						</div>
-						<div class="tour_title">
-							<h3>Events</h3>
-							
-							<!-- end rating -->
-							
-						</div>
-					</div>
-					<!-- End box tour -->
-				</div>
-                            <div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-					<div class="tour_container">
-						
-						<div class="img_container padd15">
-							<a href="list.php">
-                                                            <img src="img/categories/hcat4.png" class="img-responsive" alt="Image">
-								
-							</a>
-						</div>
-						<div class="tour_title">
-							<h3>Wedding Halls</h3>
-							
-							<!-- end rating -->
-							
-						</div>
-					</div>
-					<!-- End box tour -->
-				</div>
-                            <div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-					<div class="tour_container">
-						
-						<div class="img_container padd15">
-							<a href="list.php">
-                                                            <img src="img/categories/hcat5.png" class="img-responsive" alt="Image">
-								
-							</a>
-						</div>
-						<div class="tour_title">
-							<h3>Shops</h3>
-							
-							<!-- end rating -->
-							
-						</div>
-					</div>
-					<!-- End box tour -->
-				</div>
-                            <div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-					<div class="tour_container">
-						
-						<div class="img_container padd15">
-							<a href="list.php">
-                                                            <img src="img/categories/hcat6.png" class="img-responsive" alt="Image">
-								
-							</a>
-						</div>
-						<div class="tour_title">
-							<h3>Fitness & Gym</h3>
-							
-							<!-- end rating -->
-							
-						</div>
-					</div>
-					<!-- End box tour -->
-				</div>
-                                
-				<!-- End col-md-4 -->
-
-                            <?php } ?>
-				<!-- End col-md-4 -->
-
-				
-				
+                  <?php } ?>  
 			</div>
 			<!-- End row -->
 			<p class="text-center add_bottom_30">
