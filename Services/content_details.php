@@ -6,7 +6,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once 'meta.php';?>
-	
+	<?php $id = $_GET['sid'];
+		  $getContentsData = getAllDataWhere('services_content_pages','id',$id);
+		  $getAboutUsData  = $getContentsData->fetch_assoc();
+	?> 
 
 	<!-- Favicons-->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -56,108 +59,22 @@
 		<!-- Slider -->
 		 <div class="container-fluid page-title">
 		<div class="row">
-			<img src="img/slides/slide_1.jpg" class="img-responsive">
+			<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getAboutUsData['image'] ?>" alt="<?php echo $getAboutUsData['title'];?>" class="img-responsive">
 		</div>
     </div>
 	
 		<div class="white_bg">
 			<div class="container margin20 txt">								
             <div class="main_title">
-				<h2>Premium <span>Services</span></h2>				
+				<h2><span><?php echo $getAboutUsData['title'];?></span></h2>				
 			</div>
-			<h4><b>Original Latin text:</b></h4>
-				<p>“Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit amet consectetur adipisci[ng] velit, sed quia non numquam </p>
-				<h4><b>Original Latin text:</b></h4>
-				<p>eius modi tempora inci[di]dunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?”</p>
-				<h4><b>Original Latin text:</b></h4>
-				<p>“But I must explain to you how all this mistaken idea of denouncing of a pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally </b></h4>
-				<p>“But I must explain to you how all this mistaken idea of denouncing of a pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally.</p>
-				<h4><b>Original Latin text:</b></h4>
-				<p>“On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying .</p>
-				<p>untrammeled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these .</p>
-				<h4><b>Original Latin text:</b></h4>
-				<p>Browse or search from our wide range of products.<br>
-				Select all your groceries/service and add them to the cart.<br>
-				Select the payment mode and give information in the fields.<br>
-				Select your convenient time slots as per mentioned.<br>
-				Finally, Your products will be delivered.</P>
-				<P><b>Note:</b> We currently operate in Vijayawada only</p>
-				<p>linded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is .</p>
+			<?php echo $getAboutUsData['description'];?>
 				
 				<!-- End row -->
 			</div>
 			<!-- End container -->
 		</div>
 		<!-- End white_bg -->
-
-		
-		<div class="white_bg">
-			<div class="container margin20">
-								
-
-				<div class="banner colored">
-					<h4>Are You  <span>Professional</span> Looking to grow your service Business</h4>
-					<a href="#" class="btn_1 white">Join Now</a>
-				</div>
-				
-				<!-- End row -->
-			</div>
-			<!-- End container -->
-		</div>
-		<!-- End white_bg -->
-
-		
-		<!-- End section -->
-
-		<div class="container margin_60">
-
-			<div class="main_title">
-				<h2>Some <span>good</span> reasons</h2>
-			
-			</div>
-
-			<div class="row">
-
-				<div class="col-md-4 wow zoomIn" data-wow-delay="0.2s">
-					<div class="feature_home">
-						<i class="icon_set_1_icon-41"></i>
-						<h3><span>+50</span> Premium Services</h3>
-						<p>
-							Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
-						</p>
-						<a href="#" class="btn_1 outline">Read more</a>
-					</div>
-				</div>
-
-				<div class="col-md-4 wow zoomIn" data-wow-delay="0.4s">
-					<div class="feature_home">
-						<i class="icon_set_1_icon-30"></i>
-						<h3><span>+1000</span> Customers</h3>
-						<p>
-							Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
-						</p>
-						<a href="#" class="btn_1 outline">Read more</a>
-					</div>
-				</div>
-
-				<div class="col-md-4 wow zoomIn" data-wow-delay="0.6s">
-					<div class="feature_home">
-						<i class="icon_set_1_icon-57"></i>
-						<h3><span>24 * 7 </span> Support</h3>
-						<p>
-							Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
-						</p>
-						<a href="about.html" class="btn_1 outline">Read more</a>
-					</div>
-				</div>
-
-			</div>
-			<!--End row -->
-
-			
-			
-
-		</div>
 		
 	</main>
 	<!-- End main -->
