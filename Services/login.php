@@ -64,6 +64,10 @@
 		      <strong>Success!</strong> Your Registration Successfully Completed.
 		    </div>
 
+		    <div class="col-sm-12 alert alert-danger" style="top:90px; display:block">
+		      <strong>Failed!</strong> Your Registration Failed.
+		    </div>
+
 		   <div class="col-sm-5">		   
 			    
 	        	<div id="login">
