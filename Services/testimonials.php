@@ -89,7 +89,7 @@
 							</div>
 							<div class="clearfix visible-xs-block"></div>
 							<div class="col-lg-9 col-md-9 col-sm-9">
-								<div class="tour_list_desc"  style="padding-top:30px">									
+								<div class="tour_list_desc"  style="padding-top:20px">									
 									<h3><strong>Jhon Smith</strong></h3>
 									<p>Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat..Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat.Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat.Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat....</p>									
 								</div>

@@ -67,7 +67,8 @@
 		    <div class="col-sm-12 alert alert-danger" style="top:90px; display:block">
 		      <strong>Failed!</strong> Your Registration Failed.
 		    </div>
-
+<div class="col-sm-1">
+				</div>
 		   <div class="col-sm-5">		   
 			    
 	        	<div id="login">
@@ -100,8 +101,7 @@
 	                    </form>
 	                </div>
                 </div>
-				<div class="col-sm-1">
-				</div>
+				
 			<div class="col-sm-5">
                 	<div id="login">
                     		<div class="text-center"><h2><span>Register</span></h2></div>
