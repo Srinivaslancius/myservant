@@ -30,33 +30,7 @@ if(isset($_POST['sign_in']))  {
 									<a href="index.php"><?php echo $_SESSION['user_login_session_name']; ?> </a> &nbsp;|&nbsp;<a href="logout.php"> Logout </a>
 								<?php } else { ?>
 					                <a href="login.php" class="dropdown-toggle" data-toggle="dropdown" id="access_link">Sign in</a>
-					                <!-- <div class="dropdown-menu">
-										<div class="row">
-											<div class="col-md-6 col-sm-6 col-xs-6">
-												<a href="#" class="bt_facebook">
-													<i class="icon-facebook"></i>Facebook </a>
-											</div>
-											<div class="col-md-6 col-sm-6 col-xs-6">
-												<a href="#" class="bt_paypal">
-													<i class="icon-google"></i>Google</a>
-											</div>
-										</div>
-										<div class="login-or">
-											<hr class="hr-or">
-											<span class="span-or">or</span>
-										</div>
-										<form action="" method="post">
-										<div class="form-group">
-											<input type="text" name="login_email" class="form-control" id="inputUsernameEmail" placeholder="Email or Phone" required>
-										</div>
-										<div class="form-group">
-											<input type="password" name="login_password" class="form-control" id="inputPassword" placeholder="Password"required>
-										</div>
-										<a id="forgot_pw" href="#">Forgot password?</a>
-										<input type="submit" name="sign_in" value="Sign in" id="Sign_in" class="button_drop">
-										<input type="submit" name="Sign_up" value="Sign up" id="Sign_up" class="button_drop outline">
-										</form>
-									</div> -->
+					                
 					        </li>
                             <li><a href="login.php" id="wishlist_link">Register</a></li>
 										<?php } ?>
