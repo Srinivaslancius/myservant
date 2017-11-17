@@ -10,11 +10,25 @@
       $meta_keywords = $_POST['meta_keywords'];
       $meta_desc = $_POST['meta_desc'];
       $created_at = date("Y-m-d h:i:s");
-      $sql = "INSERT INTO services_content_pages (`title`, `description`, `meta_title`, `meta_keywords`, `meta_desc`) VALUES ('$title', '$description', '$meta_title','$meta_keywords','$meta_desc')";
-      if($conn->query($sql) === TRUE){
-         echo "<script type='text/javascript'>window.location='services_content_pages.php?msg=success'</script>";
-      } else {
-         echo "<script type='text/javascript'>window.location='services_content_pages.php?msg=fail'</script>";
+      $fileToUpload = $_FILES["fileToUpload"]["name"];
+      if($fileToUpload!='') {
+
+        $target_dir = "../../uploads/services_content_pages_images/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            $sql = "INSERT INTO services_content_pages (`title`, `description`, `image`, `meta_title`, `meta_keywords`, `meta_desc`) VALUES ('$title', '$description','$fileToUpload', '$meta_title','$meta_keywords','$meta_desc')";
+            if($conn->query($sql) === TRUE){
+               echo "<script type='text/javascript'>window.location='services_content_pages.php?msg=success'</script>";
+            } else {
+               echo "<script type='text/javascript'>window.location='services_content_pages.php?msg=fail'</script>";
+            }
+            //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+
       }
   }
 ?>
@@ -26,7 +40,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-                <form data-toggle="validator" method="POST" autocomplete="off">
+                <form data-toggle="validator" method="POST" autocomplete="off" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Title</label>
                     <input type="text" name="title" class="form-control" id="form-control-2" placeholder="Title" data-error="Please enter Title" required>
@@ -36,6 +50,14 @@
                     <label for="form-control-2" class="control-label">Description</label>
                     <textarea name="description" class="form-control" id="category_description" placeholder="Group Description" data-error="Please enter Description." required></textarea>
                     <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-4" class="control-label">Image</label>
+                    <img id="output" height="100" width="100"/>
+                    <label class="btn btn-default file-upload-btn">
+                      Choose file...
+                        <input id="form-control-22" class="file-upload-input" type="file" accept="image/*" name="fileToUpload" id="fileToUpload"  onchange="loadFile(event)"  multiple="multiple">
+                      </label>
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Meta title</label>
