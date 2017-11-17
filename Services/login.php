@@ -51,42 +51,50 @@
 <main>
 		<!-- Slider -->
 		 <div class="container-fluid page-title">
-		<div class="row">
-			<img src="img/slides/slide_3.jpg" class="img-responsive">
-		</div>
-    </div>
-		<div class="container" style="margin-top:-70px">		
+			<div class="row">
+				<img src="img/slides/slide_3.jpg" class="img-responsive">
+			</div>
+	    </div>
+
+		<div class="container" style="margin-top:-70px">	
+
            <div class="row">
-		   <div class="col-sm-5">
-                	<div id="login">
-                    		<div class="text-center"><h2><span>Login</span></h2></div>
-                            <hr>
-                            <form>
-                            <div class="row">
-                            <div class="col-md-6 col-sm-6 login_social">
-                                <a href="#" class="btn btn-primary btn-block"><i class="icon-facebook"></i> Facebook</a>
-                            </div>
-                            <div class="col-md-6 col-sm-6 login_social">
-                                <a href="#" class="btn btn-info btn-block "><i class="icon-twitter"></i>Twitter</a>
-                            </div>
-                            </div> <!-- end row -->
-                            <div class="login-or"><hr class="hr-or"><span class="span-or">or</span></div>
-                       
-                                <div class="form-group">
-                                    <label>Username</label>
-                                    <input type="text" class=" form-control " placeholder="Username">
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class=" form-control" placeholder="Password">
-                                </div>
-                                <p class="small">
-                                    <a href="#">Forgot Password?</a>
-                                </p>
-                                <a href="#" class="btn_full">Sign in</a>
-                                
-                            </form>
-                        </div>
+
+           	<div class="col-sm-12 alert alert-success" style="top:90px; display:block">
+		      <strong>Success!</strong> Your Registration Successfully Completed.
+		    </div>
+
+		   <div class="col-sm-5">		   
+			    
+	        	<div id="login">
+	            		<div class="text-center"><h2><span>Login</span></h2></div>
+	                    <hr>
+	                    <form>
+	                    <div class="row">
+	                    <div class="col-md-6 col-sm-6 login_social">
+	                        <a href="#" class="btn btn-primary btn-block"><i class="icon-facebook"></i> Facebook</a>
+	                    </div>
+	                    <div class="col-md-6 col-sm-6 login_social">
+	                        <a href="#" class="btn btn-info btn-block "><i class="icon-twitter"></i>Twitter</a>
+	                    </div>
+	                    </div> <!-- end row -->
+	                    <div class="login-or"><hr class="hr-or"><span class="span-or">or</span></div>
+	               
+	                        <div class="form-group">
+	                            <label>Username</label>
+	                            <input type="text" class=" form-control " placeholder="Username">
+	                        </div>
+	                        <div class="form-group">
+	                            <label>Password</label>
+	                            <input type="password" class=" form-control" placeholder="Password">
+	                        </div>
+	                        <p class="small">
+	                            <a href="#">Forgot Password?</a>
+	                        </p>
+	                        <a href="#" class="btn_full">Sign in</a>
+	                        
+	                    </form>
+	                </div>
                 </div>
 				<div class="col-sm-1">
 				</div>
