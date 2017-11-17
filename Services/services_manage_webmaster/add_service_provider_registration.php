@@ -183,6 +183,7 @@ if (!isset($_POST['submit']))  {
                   </div>
 
                   <div class="form-group">
+                      <!--- //if associate value = 0 (Yes) & if associate value = 1 (No) -->
                         <h4>Associate With Us</h4>
                         <label>
                           <input type="checkbox"  value="0" name="associate_or_not" />&nbsp;Yes</label>&nbsp;&nbsp;

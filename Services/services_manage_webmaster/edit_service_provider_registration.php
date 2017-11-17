@@ -191,6 +191,7 @@ if (!isset($_POST['submit']))  {
                         <?php 
                             $checked = "checked";
                             $getAssoc = $getServiceProviderBusinessRegistrationsData['associate_or_not'];
+                            //if associate value = 0 Yes & if associate value = 1 No
                         ?>
                         <h4>Associate With Us</h4>
                         <label>
