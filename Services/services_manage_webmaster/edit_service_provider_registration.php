@@ -43,7 +43,7 @@ if (!isset($_POST['submit']))  {
 
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 
-        echo $sql = "UPDATE service_provider_business_registration SET company_name ='$company_name',est_year = '$est_year',total_no_of_emp ='$total_no_of_emp',description ='$description',certification ='$certification',working_hours ='$working_hours',contact_numbers ='$contact_numbers',email_id ='$email_id',specialization ='$specialization',associate_or_not ='$associate_or_not',logo ='$fileToUpload' WHERE service_provider_registration_id = '$id'"; die;
+        $sql = "UPDATE service_provider_business_registration SET company_name ='$company_name',est_year = '$est_year',total_no_of_emp ='$total_no_of_emp',description ='$description',certification ='$certification',working_hours ='$working_hours',contact_numbers ='$contact_numbers',email_id ='$email_id',specialization ='$specialization',associate_or_not ='$associate_or_not',logo ='$fileToUpload' WHERE service_provider_registration_id = '$id'";
         $res = $conn->query($sql);
       }
     } else {

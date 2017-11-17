@@ -133,7 +133,7 @@
 			</div>
 
 			<div class="row">
-                           <?php $getServiceProvider =  getServicesProviderDataLimit(0,6); ?>
+                <?php $getServiceProvider =  getServicesProviderDataLimit(0,6); ?>
                 <?php  while($getAllgetServiceProvider = $getServiceProvider->fetch_assoc()) { ?> 
 				<div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
 					<div class="feature">
