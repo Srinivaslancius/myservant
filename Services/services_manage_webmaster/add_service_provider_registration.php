@@ -183,12 +183,15 @@ if (!isset($_POST['submit']))  {
                   </div>
 
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">Associate or Not</label>
-                    <input type="text" name="associate_or_not" class="form-control service_provider_business" id="form-control-2" placeholder="Associate or Not" data-error="Please enter Associate or Not">
-                    <div class="help-block with-errors"></div>
-                  </div>
-                  </div>
-
+                        <h4>Associate With Us</h4>
+                        <label>
+                          <input type="checkbox"  value="0" name="associate_or_not" />&nbsp;Yes</label>&nbsp;&nbsp;
+                        <label>
+                          <input type="checkbox"  value="1" name="associate_or_not"/>&nbsp;No</label>
+                        <label>
+                   </div>
+                </div>
+                   
                   <div id="service_provider_personal_type">
                     <div class="form-group">
                     <label for="form-control-2" class="control-label">Working Hours</label>
@@ -257,4 +260,21 @@ if (!isset($_POST['submit']))  {
       }  
     });
   });  
+</script>
+<script type="text/javascript">
+    $("input:checkbox").on('click', function() {
+  // in the handler, 'this' refers to the box clicked on
+  var $box = $(this);
+  if ($box.is(":checked")) {
+    // the name of the box is retrieved using the .attr() method
+    // as it is assumed and expected to be immutable
+    var group = "input:checkbox[name='" + $box.attr("name") + "']";
+    // the checked state of the group/box on the other hand will change
+    // and the current value is retrieved using .prop() method
+    $(group).prop("checked", false);
+    $box.prop("checked", true);
+  } else {
+    $box.prop("checked", false);
+  }
+});
 </script>
