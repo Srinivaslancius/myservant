@@ -101,7 +101,7 @@
 				<h2>Our <span>Services</span> Categories</h2>
 				
 			</div>
-			<?php $getCategoriesData = getAllDataWithStatusLimit('services_category',0,1,6); ?>
+			<?php $getCategoriesData = getAllDataWithStatusLimit('services_category',0,0,12); ?>
 			<div class="row">
                  <?php  while($getAllCategoriesData = $getCategoriesData->fetch_assoc()) { ?> 
 				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
@@ -109,7 +109,7 @@
 						<div class="ribbon_3 popular"><!-- <span>Popular</span> --></div>
 						<div class="img_container padd15">
                            <a href="list.php">
-                           <img src="<?php echo $base_url . 'uploads/services_category_images/'.$getAllCategoriesData['category_image'] ?>" class="img-responsive" alt="Image">
+                           <img src="<?php echo $base_url . 'uploads/services_category_images/'.$getAllCategoriesData['category_image'] ?>" class="img-responsive" alt="<?php echo $getAllCategoriesData['category_name']; ?>" style="width:64px; height:64px;">
 						   </a>
 						</div>
 						<div class="tour_title">
