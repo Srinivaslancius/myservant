@@ -176,13 +176,13 @@ if(mail($to,$subject,$message,$headers)) {
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>First Name</label>
-										<input type="text" class="form-control" id="name_contact" name="name_contact" placeholder="Enter Name">
+										<input type="text" class="form-control" id="name_contact" name="name_contact" placeholder="Enter Name" required>
 									</div>
 								</div>
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>Last Name</label>
-										<input type="text" class="form-control" id="lastname_contact" name="lastname_contact" placeholder="Enter Last Name">
+										<input type="text" class="form-control" id="lastname_contact" name="lastname_contact" placeholder="Enter Last Name" required> 
 									</div>
 								</div>
 							</div>
@@ -191,13 +191,13 @@ if(mail($to,$subject,$message,$headers)) {
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>Email</label>
-										<input type="email" id="email_contact" name="email_contact" class="form-control" placeholder="Enter Email">
+										<input type="email" id="email_contact" name="email_contact" class="form-control" placeholder="Enter Email" required>
 									</div>
 								</div>
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>Phone</label>
-										<input type="text" id="phone_contact" name="phone_contact" class="form-control" placeholder="Enter Phone number" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)">
+										<input type="text" id="phone_contact" name="phone_contact" class="form-control" placeholder="Enter Phone number" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" required>
 									</div>
 								</div>
 							</div>
@@ -205,7 +205,7 @@ if(mail($to,$subject,$message,$headers)) {
 								<div class="col-md-12">
 									<div class="form-group">
 										<label>Message</label>
-										<textarea rows="5" id="message_contact" name="message_contact" class="form-control" placeholder="Write your message" style="height:200px;"></textarea>
+										<textarea rows="5" id="message_contact" name="message_contact" class="form-control" placeholder="Write your message" style="height:200px;" required></textarea>
 									</div>
 								</div>
 							</div>
@@ -298,3 +298,11 @@ if(mail($to,$subject,$message,$headers)) {
 </body>
 
 </html>
+<script type="text/javascript">
+function isNumberKey(evt){
+	    var charCode = (evt.which) ? evt.which : event.keyCode
+	    if (charCode > 31 && (charCode < 48 || charCode > 57))
+	        return false;
+	    return true;
+	}
+</script>
