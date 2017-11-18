@@ -98,7 +98,7 @@
 							<?php while ($getGroupsData = $getGroups->fetch_assoc()) { ?>
 							<div class="panel-heading">
 								<h4 class="panel-title">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#payment" href="#collapse_payment<?php echo $getGroupsData['id'];?>"><?php echo $getGroupsData['group_name'];?><i class="indicator icon-minus pull-right"></i></a>
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#payment" href="#collapse_payment<?php echo $getGroupsData['id'];?>"><?php echo $getGroupsData['group_name'];?><i class="indicator pull-right <?php if($getGroupsData['id']==1) { echo "icon-minus"; } else { echo "icon-plus";  } ?>"></i></a>
                       </h4>
 							</div>
 							<?php $services_group_id = $getGroupsData['id'];
@@ -165,28 +165,7 @@
 	<!-- Common scripts -->
 	<script src="/cdn-cgi/scripts/84a23a00/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
 	<script src="js/common_scripts_min.js"></script>
-	<script src="js/functions.js"></script>
-
-	<!-- Specific scripts -->
-	<!-- Fixed sidebar -->
-	<script src="js/theia-sticky-sidebar.js"></script>
-	<script>
-		jQuery('#sidebar').theiaStickySidebar({
-			additionalMarginTop: 80
-		});
-	</script>
-	<script>
-	$('#faq_box a[href^="#"]').on('click', function (e) {
-				e.preventDefault();
-				var target = this.hash;
-				var $target = $(target);
-				$('html, body').stop().animate({
-					'scrollTop': $target.offset().top - 120
-				}, 900, 'swing', function () {
-					window.location.hash = target;
-				});
-			});
-	</script>
+	<script src="js/functions.js"></script>	
 
 </body>
 
