@@ -1,0 +1,4 @@
+
+errorDocument 404 http://localhost/myservant/Services/404.html
+RewriteEngine On
+

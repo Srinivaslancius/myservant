@@ -171,18 +171,18 @@ if(mail($to,$subject,$message,$headers)) {
 			
 				<div class="col-md-8 col-sm-8">
 						<div id="message-contact"></div>
-						<form method="post" action="" id="contactform">
+						<form method="post" action="" id="contactform" name="contactform"> 
 							<div class="row">
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>First Name</label>
-										<input type="text" class="form-control" id="name_contact" name="name_contact" placeholder="Enter Name">
+										<input type="text" class="form-control" id="name_contact" name="name_contact" placeholder="Enter Name" required>
 									</div>
 								</div>
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>Last Name</label>
-										<input type="text" class="form-control" id="lastname_contact" name="lastname_contact" placeholder="Enter Last Name">
+										<input type="text" class="form-control" id="lastname_contact" name="lastname_contact" placeholder="Enter Last Name" required> 
 									</div>
 								</div>
 							</div>
@@ -191,13 +191,13 @@ if(mail($to,$subject,$message,$headers)) {
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>Email</label>
-										<input type="email" id="email_contact" name="email_contact" class="form-control" placeholder="Enter Email">
+										<input type="email" id="email_contact" name="email_contact" class="form-control" placeholder="Enter Email" required>
 									</div>
 								</div>
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>Phone</label>
-										<input type="text" id="phone_contact" name="phone_contact" class="form-control" placeholder="Enter Phone number" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)">
+										<input type="text" id="phone_contact" name="phone_contact" class="form-control" placeholder="Enter Phone number" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" required>
 									</div>
 								</div>
 							</div>
@@ -205,7 +205,7 @@ if(mail($to,$subject,$message,$headers)) {
 								<div class="col-md-12">
 									<div class="form-group">
 										<label>Message</label>
-										<textarea rows="5" id="message_contact" name="message_contact" class="form-control" placeholder="Write your message" style="height:200px;"></textarea>
+										<textarea rows="5" id="message_contact" name="message_contact" class="form-control" placeholder="Write your message" style="height:200px;" ></textarea>
 									</div>
 								</div>
 							</div>
@@ -284,17 +284,25 @@ if(mail($to,$subject,$message,$headers)) {
 	<!-- Common scripts -->
 	<div id="toTop"></div><!-- Back to top button -->
 	
-	<!-- Search Menu -->
-
-	<!-- Common scripts -->
-	<script src="js/common_scripts_min.js"></script>
-	<script src="js/functions.js"></script>
-
-	<!-- Specific scripts -->
-	<script src="assets/validate.js"></script>
-	<script src="js/map_contact.js"></script>
-	<script src="js/infobox.js"></script>
-
+	<!-- Validation purpose add scripts -->
+	<script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+	<script src="js/custom_validation_js.js"></script>
+	
 </body>
 
 </html>
+<script type="text/javascript">
+function isNumberKey(evt){
+	    var charCode = (evt.which) ? evt.which : event.keyCode
+	    if (charCode > 31 && (charCode < 48 || charCode > 57))
+	        return false;
+	    return true;
+	}
+</script>
+<style type="text/css">
+  .error {
+    color: $errorMsgColor;
+  }
+
+</style>
