@@ -104,6 +104,13 @@
         return $result;
     }
 
+    function getAllDataWhereWithActive($table,$clause,$value)  {
+        global $conn;
+        $sql="select * from `$table` WHERE `$clause` = '$value' AND lkp_status_id = '0' ";
+        $result = $conn->query($sql);        
+        return $result;
+    }
+
     function getAllDataWithStatus($table,$status)  {
         global $conn;
         $sql="select * from `$table` WHERE `lkp_status_id` = '$status' ";
