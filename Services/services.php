@@ -74,7 +74,7 @@
 						<div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
 						</div>
 						<div class="img_container padd15">
-                        <a href="sub_categories.php?catid=<?php echo $getAllCategoriesData['id']; ?>">
+                        <a href="sub_categories.php?key=<?php echo encryptPassword($getAllCategoriesData['id']); ?>">
                         <img src="<?php echo $base_url . 'uploads/services_category_images/'.$getAllCategoriesData['category_image'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getAllCategoriesData['category_name']; ?>">
 								
 							</a>

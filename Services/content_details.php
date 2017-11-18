@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once 'meta.php';?>
-	<?php $id = $_GET['sid'];
+	<?php $id = decryptPassword($_GET['key']);
 		  $getContentsData = getAllDataWhere('services_content_pages','id',$id);
 		  $getAboutUsData  = $getContentsData->fetch_assoc();
 	?> 
@@ -59,7 +59,11 @@
 		<!-- Slider -->
 		 <div class="container-fluid page-title">
 		<div class="row">
+		<?php if($getAboutUsData['image']!='') { ?>
 			<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getAboutUsData['image'] ?>" alt="<?php echo $getAboutUsData['title'];?>" class="img-responsive">
+		<?php } else { ?>
+			<img src="img/slides/slide_3.jpg" class="img-responsive">
+		<?php } ?>
 		</div>
     </div>
 	
