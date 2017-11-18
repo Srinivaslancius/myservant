@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once 'meta.php';?>
 	<?php 
-		error_reporting(1);
+		error_reporting(0);
 		if(isset($_POST['login']))  { 
 		    //Login here
 		    $user_email = $_POST['login_email'];
