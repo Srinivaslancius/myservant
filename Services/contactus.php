@@ -105,7 +105,7 @@ $message .= "<html><head><title>Myservent Contactus Form</title></head>
         </div>
     </body>
 </html>";
-echo $message; die;
+
 //echo $message; die;
 // Always set content-type when sending HTML email
 $headers = "MIME-Version: 1.0" . "\r\n";
