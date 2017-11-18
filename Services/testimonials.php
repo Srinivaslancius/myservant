@@ -67,22 +67,20 @@
 		</div>
     </div>
 		<!-- Position -->
-		<div class="container margin_60">
-<div class="container margin20 txt">								
+	<div class="container margin_60">
+		<div class="container margin20 txt">								
             <div class="main_title">
 				<h2>Our <span>Testimonials</span></h2>				
 			</div>
 			<div class="row">
 				<div class="col-lg-12 col-md-12">
-
-				<?php for($i=0; $i<6; $i++) {?>
-
+					<?php $getTestimonials = getAllDataWithStatus('services_testimonials','0'); ?>
+					<?php while($getAllTestimonials = $getTestimonials->fetch_assoc()) { ?> 
 					<div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.1s">
 						<div class="row">
 							<div class="col-lg-3 col-md-3 col-sm-3">
-								
 								<div class="img_list">
-									<a href="single_restaurant.html"><img src="img/restaurant_box_1.jpg" alt="Image">
+									<a href="#"><img src="<?php echo $base_url . 'uploads/services_testimonials_images/'.$getAllTestimonials['image'] ?>" alt="Image">
 									
 									</a>
 								</div>
@@ -90,22 +88,20 @@
 							<div class="clearfix visible-xs-block"></div>
 							<div class="col-lg-9 col-md-9 col-sm-9">
 								<div class="tour_list_desc"  style="padding-top:20px">									
-									<h3><strong>Jhon Smith</strong></h3>
-									<p>Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat..Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat.Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat.Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat....</p>									
+									<h3><strong><?php echo $getAllTestimonials['title'];?></strong></h3>
+									<p><?php echo $getAllTestimonials['description'];?></p>									
 								</div>
 							</div>
 							
 						</div>
 					</div>
 					<?php } ?>
-
-					<hr>
-
+					<!-- <hr>
 					<div class="text-center">
 						<ul class="pagination">
 							<li><a href="#">Prev</a>
 							</li>
-							<li class="active"><a href="#">1</a>
+							<li class="<?php if($getAllTestimonials['id']==2) { echo "active"; } ?>"><a href="#">1</a>
 							</li>
 							<li><a href="#">2</a>
 							</li>
@@ -118,7 +114,7 @@
 							<li><a href="#">Next</a>
 							</li>
 						</ul>
-					</div>
+					</div> -->
 					<!-- end pagination-->
 
 				</div>
