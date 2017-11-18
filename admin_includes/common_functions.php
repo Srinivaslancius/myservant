@@ -111,6 +111,20 @@
         return $result;
     }
 
+    function getAllDataWhereWithTWoConditions($table,$clause1,$value1,$clause2,$value2)  {
+        global $conn;
+        $sql="select * from `$table` WHERE `$clause1` = '$value1' AND `$clause2` = '$value2' AND lkp_status_id = '0' ";
+        $result = $conn->query($sql);        
+        return $result;
+    }
+
+    function getAllDataWhereWithThreeConditions($table,$clause1,$value1,$clause2,$value2,$clause3,$value3)  {
+        global $conn;
+        $sql="select * from `$table` WHERE `$clause1` = '$value1' AND `$clause2` = '$value2' AND `$clause3` = '$value3' AND lkp_status_id = '0' ";
+        $result = $conn->query($sql);        
+        return $result;
+    }
+
     function getAllDataWithStatus($table,$status)  {
         global $conn;
         $sql="select * from `$table` WHERE `lkp_status_id` = '$status' ";
