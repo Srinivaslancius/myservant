@@ -171,7 +171,7 @@ if(mail($to,$subject,$message,$headers)) {
 			
 				<div class="col-md-8 col-sm-8">
 						<div id="message-contact"></div>
-						<form method="post" action="" id="contactform">
+						<form method="post" action="" id="contactform" name="contactform"> 
 							<div class="row">
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
@@ -205,7 +205,7 @@ if(mail($to,$subject,$message,$headers)) {
 								<div class="col-md-12">
 									<div class="form-group">
 										<label>Message</label>
-										<textarea rows="5" id="message_contact" name="message_contact" class="form-control" placeholder="Write your message" style="height:200px;" required></textarea>
+										<textarea rows="5" id="message_contact" name="message_contact" class="form-control" placeholder="Write your message" style="height:200px;" ></textarea>
 									</div>
 								</div>
 							</div>
@@ -284,17 +284,11 @@ if(mail($to,$subject,$message,$headers)) {
 	<!-- Common scripts -->
 	<div id="toTop"></div><!-- Back to top button -->
 	
-	<!-- Search Menu -->
-
-	<!-- Common scripts -->
-	<script src="js/common_scripts_min.js"></script>
-	<script src="js/functions.js"></script>
-
-	<!-- Specific scripts -->
-	<script src="assets/validate.js"></script>
-	<script src="js/map_contact.js"></script>
-	<script src="js/infobox.js"></script>
-
+	<!-- Validation purpose add scripts -->
+	<script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+	<script src="js/custom_validation_js.js"></script>
+	
 </body>
 
 </html>
@@ -306,3 +300,9 @@ function isNumberKey(evt){
 	    return true;
 	}
 </script>
+<style type="text/css">
+  .error {
+    color: $errorMsgColor;
+  }
+
+</style>
