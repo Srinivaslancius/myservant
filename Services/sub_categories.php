@@ -54,7 +54,7 @@
 
 	<main>
 		<!-- Slider -->
-		<?php $cat_id = $_GET['catid']; $getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id); ?>
+		<?php $cat_id = decryptPassword($_GET['catid']); $getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id); ?>
 		 <div class="container-fluid page-title">
 		 <?php	$getBanners = getAllDataWhere('services_banners','service_category_id',$cat_id); 
 		 if($getBannersData = $getBanners->fetch_assoc()) { ?>
