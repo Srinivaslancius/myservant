@@ -1,5 +1,4 @@
 <?php
-ob_start();
 include "../admin_includes/config.php";
 include "../admin_includes/common_functions.php";
 $getSiteSettings = getAllDataWhere('services_site_settings','id','1'); 
