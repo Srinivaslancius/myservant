@@ -54,33 +54,40 @@
 
 	<main>
 		<!-- Slider -->
+		<?php $cat_id = $_GET['catid']; $getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id); ?>
 		 <div class="container-fluid page-title">
-		<div class="row">
-			<img src="img/slides/slide_3.jpg" class="img-responsive">
-		</div>
+		 <?php	$getBanners = getAllDataWhere('services_banners','service_category_id',$cat_id); 
+		 if($getBannersData = $getBanners->fetch_assoc()) { ?>
+			<div class="row">
+				<img src="<?php echo $base_url . 'uploads/services_banner_images/'.$getBannersData['banner'] ?>" class="img-responsive">
+			</div>
+		<?php } else { ?>
+			<div class="row">
+				<img src="img/slides/slide_3.jpg" class="img-responsive">
+			</div>
+		<?php } ?>
     </div>
 		<div class="container margin_60">
 
 			<div class="main_title">
-				<h2>Our <span>Services</span> Categories</h2>
+				<h2>Our <span>Services</span> Sub Categories</h2>
 				
 			</div>
-			<?php $getCategoriesData = getAllDataWithStatusLimit('services_category',0,'',''); ?>
 
 			<div class="row">
-                 <?php  while($getAllCategoriesData = $getCategoriesData->fetch_assoc()) { ?>           
+                 <?php  while($getAllSubCategoriesData = $getSubCategoriesData->fetch_assoc()) { ?>           
 				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
 					<div class="tour_container">
 						<div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
 						</div>
 						<div class="img_container padd15">
-                        <a href="sub_categories.php?catid=<?php echo $getAllCategoriesData['id']; ?>">
-                        <img src="<?php echo $base_url . 'uploads/services_category_images/'.$getAllCategoriesData['category_image'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getAllCategoriesData['category_name']; ?>">
+                        <a href="list.php">
+                        <img src="<?php echo $base_url . 'uploads/services_sub_category_images/'.$getAllSubCategoriesData['sub_category_image'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getAllSubCategoriesData['sub_category_name']; ?>">
 								
 							</a>
 						</div>
 						<div class="tour_title">
-							<h3><?php echo $getAllCategoriesData['category_name']; ?></h3>
+							<h3><?php echo $getAllSubCategoriesData['sub_category_name']; ?></h3>
 							
 							<!-- end rating -->
 							
