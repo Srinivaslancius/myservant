@@ -92,100 +92,40 @@
 					<h3 class="nomargin_top">Group Level</h3>
 
 					<div class="panel-group" id="payment">
+						<?php $catid = decryptPassword($_GET['key']); $subcatid = $_GET['subcatid']; 
+						$getGroups = getAllDataWhereWithTWoConditions('services_groups','services_category_id',$catid,'services_sub_category_id',$subcatid); ?>
 						<div class="panel panel-default">
+							<?php while ($getGroupsData = $getGroups->fetch_assoc()) { ?>
 							<div class="panel-heading">
 								<h4 class="panel-title">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#payment" href="#collapseOne_payment">Full Home Deep Cleaning<i class="indicator icon-minus pull-right"></i></a>
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#payment" href="#collapse_payment<?php echo $getGroupsData['id'];?>"><?php echo $getGroupsData['group_name'];?><i class="indicator icon-minus pull-right"></i></a>
                       </h4>
 							</div>
-							<div id="collapseOne_payment" class="panel-collapse collapse in">
+							<?php $services_group_id = $getGroupsData['id'];
+							$getServiceNames = getAllDataWhereWithThreeConditions('services_group_service_names','services_category_id',$catid,'services_sub_category_id',$subcatid,'services_group_id',$services_group_id); ?>
+							<div id="collapse_payment<?php echo $getGroupsData['id'];?>" class="panel-collapse collapse  <?php if($getGroupsData['id']==1) { echo "in"; } ?>">
 								<div class="panel-body">
-                                                                    <table class="table table-striped cart-list shopping-cart">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th>Particulars</th>
-                                                                                <th>Prices</th>
-                                                                                <th>Action</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td>1 BHK</td>
-                                                                                <td>Rs. 3499/-</td>
-                                                                                <td><a href="" class="btn_full_outline wdth50">Add to Cart</a></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1 BHK</td>
-                                                                                <td>Rs. 3499/-</td>
-                                                                                <td><a href="" class="btn_full_outline wdth50">Add to Cart</a></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1 BHK</td>
-                                                                                <td>Rs. 3499/-</td>
-                                                                                <td><a href="#" class="btn_full_outline wdth50">Add to Cart</a></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1 BHK</td>
-                                                                                <td>Rs. 3499/-</td>
-                                                                                <td><a href="#" class="btn_full_outline wdth50">Add to Cart</a></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1 BHK</td>
-                                                                                <td>Rs. 3499/-</td>
-                                                                                <td><a href="#" class="btn_full_outline wdth50">Add to Cart</a></td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                    <table class="table table-striped cart-list shopping-cart">
+                                        <thead>
+                                            <tr>
+                                                <th>Service</th>
+                                                <th>Price</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        	<?php while ($getServiceNamesData = $getServiceNames->fetch_assoc()) { ?>
+                                            <tr>
+                                                <td><?php echo $getServiceNamesData['group_service_name'];?></td>
+                                                <td>Price After our Visit</td>
+                                                <td><a href="" class="btn_full_outline wdth50">Add to Cart</a></td>
+                                            </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
 								</div>
 							</div>
-                                                        
-						</div>
-                                                <div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#payment" href="#collapseTwo_payment">Full home basic cleaning<i class="indicator icon-plus pull-right"></i></a>
-                      </h4>
-							</div>
-							<div id="collapseTwo_payment" class="panel-collapse collapse">
-								<div class="panel-body">
-									<table class="table table-striped cart-list shopping-cart">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th>Particulars</th>
-                                                                                <th>Prices</th>
-                                                                                <th>Action</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td>1 BHK</td>
-                                                                                <td>Rs. 3499/-</td>
-                                                                                <td><a href="" class="btn_full_outline wdth50">Add to Cart</a></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1 BHK</td>
-                                                                                <td>Rs. 3499/-</td>
-                                                                                <td><a href="" class="btn_full_outline wdth50">Add to Cart</a></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1 BHK</td>
-                                                                                <td>Rs. 3499/-</td>
-                                                                                <td><a href="#" class="btn_full_outline wdth50">Add to Cart</a></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1 BHK</td>
-                                                                                <td>Rs. 3499/-</td>
-                                                                                <td><a href="#" class="btn_full_outline wdth50">Add to Cart</a></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1 BHK</td>
-                                                                                <td>Rs. 3499/-</td>
-                                                                                <td><a href="#" class="btn_full_outline wdth50">Add to Cart</a></td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-								</div>
-							</div>
+                            <?php } ?>                         
 						</div>
 						
 					</div>
