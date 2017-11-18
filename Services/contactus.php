@@ -285,9 +285,7 @@ if(mail($to,$subject,$message,$headers)) {
 	<div id="toTop"></div><!-- Back to top button -->
 	
 	<!-- Validation purpose add scripts -->
-	<script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
-	<script src="js/custom_validation_js.js"></script>
+	<?php include_once 'common_validations_scripts.php'; ?>	
 	
 </body>
 
