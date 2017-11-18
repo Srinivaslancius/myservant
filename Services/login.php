@@ -9,7 +9,23 @@
 	<?php include_once 'meta.php';?>
 	<?php 
 		error_reporting(0);
-		if(isset($_POST['login']))  { 
+		if (isset($_POST['register']))  {
+                //If success
+                $user_full_name = $_POST['user_name'];
+                $user_email = $_POST['user_email'];
+                $user_mobile = $_POST['user_mobile'];
+                $user_password = encryptPassword($_POST['user_password']);
+                $confirm_password = encryptPassword($_POST['confirm_password']);
+                $created_admin_id = $_SESSION['services_admin_user_id'];
+                $created_at = date("Y-m-d h:i:s");
+                $sql = saveUser($user_full_name, $user_email, $user_mobile, $user_password,$created_admin_id,'','','','','','');
+                if ($sql) {
+			       echo "<script type='text/javascript'>window.location='login.php?err=log-success'</script>";
+			    } else {
+			       echo "<script type='text/javascript'>window.location='login.php?err=log-fail'</script>";
+			    }
+
+            } else if(isset($_POST['login']))  { 
 		    //Login here
 		    $user_email = $_POST['login_email'];
 		    $user_password = encryptPassword($_POST['login_password']);
@@ -77,9 +93,11 @@
 		<div class="container" style="margin-top:-70px">		
 
            <div class="row">
-           	  	<div class="col-sm-12 alert alert-success" style="top:90px; display:none">
-		      <strong>Success!</strong> Your Registration Successfully Completed.
-		    </div>
+           	<?php if(isset($_GET['err']) && $_GET['err'] == 'log-success' ) {  ?>
+           	  	<div class="col-sm-12 alert alert-success" style="top:90px; display:block">
+			      <strong>Success!</strong> Your Registration Successfully Completed.
+			    </div>
+			<?php }?>
 
 		    <?php if(isset($_GET['err']) && $_GET['err'] == 'log-fail' ) {  ?>
 		    <div class="col-sm-12 alert alert-danger" style="top:100px; display:block">
@@ -126,25 +144,30 @@
                 	<div id="login">
                     		<div class="text-center"><h2><span>Register</span></h2></div>
                             <hr>
-                           <form>
+                           <form method="POST">
                                 <div class="form-group">
-                                	<label>Username</label>
-                                    <input type="text" class=" form-control"  placeholder="Username">
+                                	<label>Name</label>
+                                    <input type="text" name="user_name" class=" form-control"  placeholder="Name" required>
+                                </div>
+                                <div class="form-group">
+                                	<label>Mobile Number</label>
+                                    <input type="text" name="user_mobile" class=" form-control"  placeholder="Mobile Number" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)"required>
                                 </div>
                                 <div class="form-group">
                                 	<label>Email</label>
-                                    <input type="email" class=" form-control" placeholder="Email">
+                                    <input type="email" name="user_email" class=" form-control" placeholder="Email" required>
                                 </div>
                                 <div class="form-group">
                                 	<label>Password</label>
-                                    <input type="password" class=" form-control" id="password1" placeholder="Password">
+                                    <input type="password" name="user_password" class=" form-control" id="user_password" placeholder="Password" required>
                                 </div>
                                 <div class="form-group">
                                 	<label>Confirm password</label>
-                                    <input type="password" class=" form-control" id="password2" placeholder="Confirm password">
+                                    <input type="password" name="confirm_password" class=" form-control" id="confirm_password" placeholder="Confirm password" onChange="checkPasswordMatch();" required>
                                 </div>
+                                <div id="divCheckPasswordMatch" style="color:red"></div>
                                 <div id="pass-info" class="clearfix"></div>
-                                <button class="btn_full">Create an account</button>
+                                <button type="submit" name="register" class="btn_full">Create an account</button>
                             </form>
                         </div>
                 </div>
@@ -189,6 +212,22 @@
 					// except the last line!
 			});
 		});
+		function isNumberKey(evt){
+  	    var charCode = (evt.which) ? evt.which : event.keyCode
+  	    if (charCode > 31 && (charCode < 48 || charCode > 57))
+  	        return false;
+  	    return true;
+    	}
+    	function checkPasswordMatch() {
+		    var password = $("#user_password").val();
+		    var confirmPassword = $("#confirm_password").val();
+		    if (confirmPassword != password) {
+		        $("#divCheckPasswordMatch").html("Passwords do not match!");
+		        $("#confirm_password").val("");
+		    } else {
+        $("#divCheckPasswordMatch").html("");
+    }
+		}
 	</script>
 
 </body>

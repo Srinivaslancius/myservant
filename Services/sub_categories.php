@@ -81,7 +81,7 @@
 						<div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
 						</div>
 						<div class="img_container padd15">
-                        <a href="list.php">
+                        <a href="list.php?catid=<?php echo $cat_id; ?>&subcatid=<?php echo $getAllSubCategoriesData['id']; ?>">
                         <img src="<?php echo $base_url . 'uploads/services_sub_category_images/'.$getAllSubCategoriesData['sub_category_image'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getAllSubCategoriesData['sub_category_name']; ?>">
 								
 							</a>
