@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once 'meta.php';?>
-	<?php $id = $_GET['sid'];
+	<?php $id = decryptPassword($_GET['key']);
 		  $getContentsData = getAllDataWhere('services_content_pages','id',$id);
 		  $getAboutUsData  = $getContentsData->fetch_assoc();
 	?> 
