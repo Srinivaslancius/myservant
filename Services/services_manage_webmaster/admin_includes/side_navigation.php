@@ -109,6 +109,14 @@
                 <span class="menu-text">Brand Logos</span>
               </a>
             </li>
+            <li  class="<?php if($page_name == 'services_testimonials.php' || $page_name == 'add_services_testimonials.php' || $page_name == 'edit_services_testimonials.php') { echo "active"; } ?>">
+              <a href="services_testimonials.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-comments  zmdi-hc-fw"></i>
+                </span> 
+                <span class="menu-text">Testimonials</span>
+              </a>
+            </li>
             <li  class="<?php if($page_name == 'services_newletter.php' ) { echo "active"; } ?>">
               <a href="services_newletter.php" aria-haspopup="true">
                 <span class="menu-icon">
