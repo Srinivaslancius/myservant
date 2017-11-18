@@ -15,10 +15,10 @@
                             <li><a href="index.php">Home</a></li>
                             <li><a href="about.php">About US</a></li>
                             <li><a href="services.php">Services</a></li>
-                            <li><a href="">Testimonials</a></li>
+                            <li><a href="testimonials.php">Testimonials</a></li>
                             <li><a href="partners.php">Partners</a></li>
                             <li><a href="all_brands.php">Brands</a></li>
-                            <li><a href="">Contact Us</a></li>
+                            <li><a href="contactus.php">Contact Us</a></li>
                         </ul>
                          
                     </div><!-- End main-menu -->
