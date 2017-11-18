@@ -5,7 +5,7 @@
 ?>
 <style type="text/css">
 .check_page {
-    color:#f51f8a !important;
+    color:#f26226 !important;
 }
 </style>
 <div class="row">

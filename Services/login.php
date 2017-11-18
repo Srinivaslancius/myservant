@@ -133,6 +133,7 @@
 		        $_SESSION['user_login_session_id'] =  $getLoggedInDetails['id'];
 		        $_SESSION['user_login_session_name'] = $getLoggedInDetails['user_full_name'];
 		        $_SESSION['user_login_session_email'] = $getLoggedInDetails['user_email'];
+		        $_SESSION['timestamp'] = time();
 		        header('Location: index.php');
 		    } else {
 		    	//echo "<script>alert('invalid username/password.  Please try again');window.location='index.php';</script>";
