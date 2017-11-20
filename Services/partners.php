@@ -57,7 +57,8 @@
 	<main>
 		<!-- Slider -->
 		 <div class="container-fluid page-title">
-			<?php if($getContentPageData->num_rows > 0) { ?> 	
+			<?php $checkImg =$getPartnersBanner['image']; 
+				  if(file_exists($checkImg)) { ?> 	
 					<div class="row">
 						<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getPartnersBanner['image'] ?>" alt="<?php echo $getPartnersBanner['title'];?>" class="img-responsive">
 					</div>
