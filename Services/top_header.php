@@ -8,7 +8,7 @@
 						<ul id="top_links">
 							<li>
 								<?php if(isset($_SESSION['user_login_session_id']) && $_SESSION['user_login_session_id']!='') { ?>
-									<a href="index.php"><?php echo $_SESSION['user_login_session_name']; ?> </a> &nbsp;|&nbsp;<a href="logout.php"> Logout </a>
+									<a href="my_dashboard.php"><?php echo $_SESSION['user_login_session_name']; ?> </a> &nbsp;|&nbsp;<a href="logout.php"> Logout </a>
 								<?php } else { ?>
 					                <a href="login.php" id="access_link">Sign in</a>
 					        </li>

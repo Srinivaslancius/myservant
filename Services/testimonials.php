@@ -64,9 +64,11 @@
 	<main>
 		
 	 <div class="container-fluid page-title">
-		<?php if($getContentPageData->num_rows > 0) { ?> 	
+		<?php 
+		$checkImg =$getTestimonialsBanner['image']; 
+		if(file_exists($checkImg)) { ?> 	
 				<div class="row">
-					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getTestimonialsBanner['image'] ?>" alt="<?php echo $getTestimonialsBanner['title'];?>" class="img-responsive">
+					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getTestimonialsBanner['image'] ?>" class="img-responsive">
 				</div>
 			<?php } else { ?>
 				<div class="row">
