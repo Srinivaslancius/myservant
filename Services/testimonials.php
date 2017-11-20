@@ -85,7 +85,7 @@
                  <?php  while($getAllTestominalsData = $getTestominalsData->fetch_assoc()) { ?> 
 				<div class="col-md-6">
 					<div class="review_strip">
-						<img src="<?php echo $base_url . 'uploads/services_testimonials_images/'.$getAllTestominalsData['image'] ?>" alt="Image" class="img-circle" style="width:75px; height:75px;">
+						<img src="<?php echo $base_url . 'uploads/services_testimonials_images/'.$getAllTestominalsData['image'] ?>" alt="<?php echo $getAllTestominalsData['title']; ?>" class="img-circle" style="width:75px; height:75px;">
 						<h4><?php echo $getAllTestominalsData['title']; ?></h4>
 						<p>
 							<?php echo substr(strip_tags($getAllTestominalsData['description']), 0,200);?>
