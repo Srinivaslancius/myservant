@@ -162,8 +162,8 @@ if($sendMail) {
 
 	<main>
 	 <div class="container-fluid page-title">
-		<?php $checkImg =$getContactUsBanner['image']; 
-		if(file_exists($checkImg)) { ?> 	
+		<?php  
+		if(isset($getContactUsBanner['image'])) { ?> 	
 				<div class="row">
 					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getContactUsBanner['image'] ?>" alt="<?php echo $getContactUsBanner['title'];?>" class="img-responsive">
 				</div>

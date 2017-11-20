@@ -64,9 +64,8 @@
 	<main>
 		
 	 <div class="container-fluid page-title">
-		<?php 
-		$checkImg =$getTestimonialsBanner['image']; 
-		if(file_exists($checkImg)) { ?> 	
+		<?php  
+		if(isset($getTestimonialsBanner['image'])) { ?> 	
 				<div class="row">
 					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getTestimonialsBanner['image'] ?>" class="img-responsive">
 				</div>
