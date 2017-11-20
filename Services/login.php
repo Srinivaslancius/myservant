@@ -9,127 +9,18 @@
 	<?php include_once 'meta.php';?>
 	<?php 
 		error_reporting(0);
-		if (isset($_POST['register']))  {
-                //If success
-                $user_full_name = $_POST['user_name'];
-                $user_email = $_POST['user_email'];
-                $user_mobile = $_POST['user_mobile'];
-                $user_password = encryptPassword($_POST['user_password']);
-                $confirm_password = encryptPassword($_POST['confirm_password']);
-                $created_admin_id = $_SESSION['services_admin_user_id'];
-                $created_at = date("Y-m-d h:i:s");
-                
-			    $dataem = $user_email;
-				//$to = "srinivas@lanciussolutions.com";
-				$to = "$dataem";
-				$from = $getSiteSettingsData["email"];
-				$subject = "Myservent - Registration ";
-				$message = "";
-				$message .= "<style>
-				        .body{
-				    width:100% !important; 
-				    margin:0 !important; 
-				    padding:0 !important; 
-				    -webkit-text-size-adjust:none;
-				    -ms-text-size-adjust:none; 
-				    background-color:#FFFFFF;
-				    font-style:normal;
-				    }
-				    .header{
-				    background-color:#f26226;
-				    color:white;
-				    width:100%;
-				    }
-				    .content{
-				    background-color:#FBFCFC;
-				    color:#17202A;
-				    width:100%;
-				    padding-top:15px;
-				    padding-bottom;15px;
-				    text-align:justify;
-				    font-size:14px;
-				    line-height:18px;
-				    font-style:normal;
-				    }
-				    h3{
-				    color: #f26226;}
-				    .footer{
-				    background-color:#f26226;
-				    color:white;
-				    width:100%;
-				    padding-top:9px;
-				    padding-bottom:5px;
-				    }
-				    .logo-responsive{
-				    max-width: 100%;
-				    height: auto !important;
-				    }
-				    @media screen and (min-width: 480px) {
-				        .content{
-				        width:50%;
-				        }
-				        .header{
-				        width:50%;
-				        }
-				        .footer{
-				        width:50%;
-				        }
-				        .logo-responsive{
-				        max-width: 100%;
-				        height: auto !important;
-				        }
-				    }
-				    </style>";
 
-				$message .= "<html><head><title>Gerrtings From Myservent</title></head>
-				<body>
-				        <div class='container header'>
-				            <div class='row'>
-				                <div class='col-lg-2 col-md-2 col-sm-2'>
-				                </div>
-				                <div class='col-lg-8 col-md-8 col-sm-8'>
-				                <center><h2>".$getSiteSettingsData['admin_title']."</h2></center>
-				                </div>
-				                <div class='col-lg-2 col-md-2 col-sm-2'>
-				                </div>
-				            </div>
-				        </div>
-				        <div class='container content'>
-				            Dear<h3>$user_full_name</h3>
-				            <p>Your Registration Successfully Completed. Please sign in.</p></br></br>
-				            <p>Thanking You</p>
-				            <p>My Servant</p>
-				        </div>
-				        <div class='container footer'>
-				            <center>".$getSiteSettingsData['footer_text']."</center>
-				        </div>
-				    </body>
-				</html>";
-
-				//echo $message; die;
-				// Always set content-type when sending HTML email
-				$headers = "MIME-Version: 1.0" . "\r\n";
-				$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-				//To send Mail
-				$mail = sendEmail($to,$subject,$message,$from);
-				// $message = "Dear $user_full_name, Your Registration Successfully Completed. Please sign in.";
-				// $sma = sendMobileSMS($message,$user_mobile);
-
-				$sql = saveUser($user_full_name, $user_email, $user_mobile, $user_password,$created_admin_id,'','','','','','');
-                if ($sql) {
-			       echo "<script type='text/javascript'>window.location='login.php?err=log-success'</script>";
-			    } else {
-			       echo "<script type='text/javascript'>window.location='login.php?err=log-fail'</script>";
-			    }
-
-            } else if(isset($_POST['login']))  { 
+		if(isset($_POST['login']))  { 
 		    //Login here
 		    $user_email = $_POST['login_email'];
 		    $user_password = encryptPassword($_POST['login_password']);
-		    $getLoginData = userLogin($user_email,$user_mobile,$user_password);
+		    $getLoginData = userLogin($user_email,$user_password);
 		    //Set variable for session
 		    if($getLoggedInDetails = $getLoginData->fetch_assoc()) {
+		    	$last_login_visit = date("Y-m-d h:i:s");
+		    	$login_count = $getLoggedInDetails['login_count']+1;
+		    	$sql = "UPDATE `users` SET login_count='$login_count', last_login_visit='$last_login_visit' WHERE user_email = '$user_email' OR user_mobile = '$user_email' ";
+		    	$row = $conn->query($sql);
 		        $_SESSION['user_login_session_id'] =  $getLoggedInDetails['id'];
 		        $_SESSION['user_login_session_name'] = $getLoggedInDetails['user_full_name'];
 		        $_SESSION['user_login_session_email'] = $getLoggedInDetails['user_email'];
@@ -222,8 +113,8 @@
                             <div class="login-or"><hr class="hr-or"><span class="span-or">or</span></div>
                        
                                 <div class="form-group">
-                                    <label>Username</label>
-                                    <input type="text" class=" form-control " name="login_email" placeholder="Username" required>
+                                    <label>Email or Mobile</label>
+                                    <input type="text" class=" form-control " name="login_email" placeholder="Email or Mobile" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
@@ -243,18 +134,20 @@
                 	<div id="login">
                     		<div class="text-center"><h2><span>Register</span></h2></div>
                             <hr>
-                           <form method="POST">
+                           <form method="post" action="mobile_otp.php">
                                 <div class="form-group">
                                 	<label>Name</label>
                                     <input type="text" name="user_name" class=" form-control"  placeholder="Name" required>
                                 </div>
                                 <div class="form-group">
                                 	<label>Mobile Number</label>
-                                    <input type="text" name="user_mobile" class=" form-control"  placeholder="Mobile Number" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)"required>
+                                    <input type="text" name="user_mobile" id="user_mobile" class=" form-control"  placeholder="Mobile Number" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" onkeyup="checkMobile();" required>
+                                    <span id="input_status1" style="color: red;"></span>
                                 </div>
                                 <div class="form-group">
                                 	<label>Email</label>
-                                    <input type="email" name="user_email" class=" form-control" placeholder="Email" required>
+                                    <input type="email" name="user_email" id="user_email" class=" form-control" placeholder="Email" onkeyup="checkEmail();" required>
+                                    <span id="input_status" style="color: red;"></span>
                                 </div>
                                 <div class="form-group">
                                 	<label>Password</label>
@@ -324,10 +217,46 @@
 		        $("#divCheckPasswordMatch").html("Passwords do not match!");
 		        $("#confirm_password").val("");
 		    } else {
-        $("#divCheckPasswordMatch").html("");
-    }
+		        $("#divCheckPasswordMatch").html("");
+		    }
 		}
-	</script>
+	    function checkMobile() {
+	        var user_mobile = document.getElementById("user_mobile").value;
+	        if (user_mobile){
+	          $.ajax({
+	          type: "POST",
+	          url: "user_avail_check.php",
+	          data: {
+	            user_mobile:user_mobile,
+	          },
+	          success: function (response) {
+	            $( '#input_status1' ).html(response);
+	            if (response == "Mobile Already Exist"){
+	              $("#user_mobile").val("");
+	            }       
+	            }
+	           });          
+	        }
+	    }
+	    function checkEmail() {
+	        var user_email = document.getElementById("user_email").value;
+	        if (user_email){
+	          $.ajax({
+	          type: "POST",
+	          url: "user_avail_check.php",
+	          data: {
+	            user_email:user_email,
+	          },
+	          success: function (response) {
+	            $( '#input_status' ).html(response);
+	            if (response == "Email Already Exist"){
+	              $("#user_email").val("");
+	            }       
+	            }
+	           });          
+	        }
+	    }
+    </script>
 
 </body>
 

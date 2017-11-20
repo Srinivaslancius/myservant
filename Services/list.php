@@ -93,9 +93,8 @@
 
 					<div class="panel-group" id="payment">
 						<?php $catid = decryptPassword($_GET['key']); $subcatid = $_GET['subcatid']; 
-						$getGroups = getAllDataWhereWithTWoConditions('services_groups','services_category_id',$catid,'services_sub_category_id',$subcatid); ?>
+						$getGroups = getAllDataWhereWithTWoConditions('services_groups','services_category_id',$catid,'services_sub_category_id',$subcatid); while ($getGroupsData = $getGroups->fetch_assoc()) { ?>
 						<div class="panel panel-default">
-							<?php while ($getGroupsData = $getGroups->fetch_assoc()) { ?>
 							<div class="panel-heading">
 								<h4 class="panel-title">
                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#payment" href="#collapse_payment<?php echo $getGroupsData['id'];?>"><?php echo $getGroupsData['group_name'];?><i class="indicator pull-right <?php if($getGroupsData['id']==1) { echo "icon-minus"; } else { echo "icon-plus";  } ?>"></i></a>
@@ -124,10 +123,9 @@
                                         </tbody>
                                     </table>
 								</div>
-							</div>
-                            <?php } ?>                         
+							</div>                         
 						</div>
-						
+						<?php } ?> 
 					</div>
 					<!-- End panel-group -->
 

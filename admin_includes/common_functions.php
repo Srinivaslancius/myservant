@@ -1,11 +1,11 @@
 <?php
     
     //common function for web / android /ios user registration
-     function saveUser($name, $email, $mobile, $password,$created_admin_id,$otp,$lkp_status_id,$login_count,$last_login_visit,$lkp_register_device_type_id,$mobile_token) {
+     function saveUser($user_full_name, $user_email, $user_mobile, $user_password,$lkp_status_id,$login_count,$last_login_visit,$lkp_register_device_type_id,$user_login_type,$mobile_token,$created_at) {
         //Save data into users table
         global $conn;
         $created_at = date("Y-m-d h:i:s");
-        $sqlIns = "INSERT INTO users (user_full_name,user_email,user_mobile,user_password,created_admin_id,otp,lkp_status_id,login_count,last_login_visit,lkp_register_device_type_id,mobile_token,created_at) VALUES ('$name','$email','$mobile','$password','$created_admin_id','$otp','$lkp_status_id','$login_count','$last_login_visit','$lkp_register_device_type_id','$mobile_token','$created_at')"; 
+        $sqlIns = "INSERT INTO users (user_full_name,user_email,user_mobile,user_password,lkp_status_id,login_count,last_login_visit,lkp_register_device_type_id,lkp_user_login_type_id,mobile_token,created_at) VALUES ('$user_full_name','$user_email','$user_mobile','$user_password','$lkp_status_id','$login_count','$last_login_visit','$lkp_register_device_type_id','$user_login_type','$mobile_token','$created_at')"; 
         if ($conn->query($sqlIns) === TRUE) {
             return 1;
         } else {
@@ -20,7 +20,7 @@
         return $result;
     }
 
-    function userLogin($user_email,$user_mobile,$user_pwd) {
+    function userLogin($user_email,$user_pwd) {
         global $conn;
         $sql="SELECT * FROM users WHERE (user_email = '$user_email' OR user_mobile = '$user_email') AND user_password = '$user_pwd' ";
         $result = $conn->query($sql);        

@@ -85,7 +85,7 @@
                  <?php  while($getAllTestominalsData = $getTestominalsData->fetch_assoc()) { ?> 
 				<div class="col-md-6">
 					<div class="review_strip">
-						<img src="<?php echo $base_url . 'uploads/services_testimonials_images/'.$getAllTestominalsData['image'] ?>" alt="Image" class="img-circle" style="width:75px; height:75px;">
+						<img src="<?php echo $base_url . 'uploads/services_testimonials_images/'.$getAllTestominalsData['image'] ?>" alt="<?php echo $getAllTestominalsData['title']; ?>" class="img-circle" style="width:75px; height:75px;">
 						<h4><?php echo $getAllTestominalsData['title']; ?></h4>
 						<p>
 							<?php echo substr(strip_tags($getAllTestominalsData['description']), 0,200);?>
@@ -96,40 +96,16 @@
 				</div>
 				<?php } ?>
 			</div>
-			<!-- End row -->
-			<!-- <div class="row">
-				<div class="col-md-6">
-					<div class="review_strip">
-						<img src="img/avatar3.jpg" alt="Image" class="img-circle">
-						<h4>Marc twain</h4>
-						<p>
-							"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus."
-						</p>
-						
-					</div>
-					
-				</div>
-
-				<div class="col-md-6">
-					<div class="review_strip">
-						<img src="img/avatar1.jpg" alt="Image" class="img-circle">
-						<h4>Peter Gabriel</h4>
-						<p>
-							"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus."
-						</p>
-						
-					</div>
-					
-				</div>
-			</div> -->
-			<!-- End row -->
+			
 
 			
 			
 			<!-- End row -->
 		</div>
 		<!-- End container -->
+		<?php include_once 'our_associate_partners.php';?>	
 	</main>
+	
 	<!-- End main -->
 <footer class="revealed">
             <?php include_once 'footer.php';?>
