@@ -86,7 +86,7 @@
                             <form method="POST">                      
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" class=" form-control " name="login_email" placeholder="Email" required>
+                                    <input type="email" class=" form-control " name="login_email" placeholder="Email" required>
                                 </div>
                                 <button type="submit" name="submit" class="btn_full">Submit</button>
                                 
