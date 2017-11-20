@@ -304,9 +304,3 @@ function isNumberKey(evt){
 	    return true;
 	}
 </script>
-<style type="text/css">
-  .error {
-    color: $errorMsgColor;
-  }
-
-</style>

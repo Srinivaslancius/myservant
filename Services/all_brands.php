@@ -74,9 +74,9 @@
 						<div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
 						</div>
 						<div class="img_container padd15">
-                        <a href="list.php">
+                        
                         	<img src="<?php echo $base_url . 'uploads/services_brand_logos/'.$getServiceBrandsData['brand_logo'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getServiceBrandsData['title']; ?>">
-						</a>
+						
 						</div>
 						<div class="tour_title">
 							<h3><?php echo $getServiceBrandsData['title']; ?></h3>		
