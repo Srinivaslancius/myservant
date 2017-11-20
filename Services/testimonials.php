@@ -81,7 +81,7 @@
 				<h2>What <span>customers </span>says</h2>				
 			</div>
 			<div class="row">
-				<?php $getTestominalsData = getAllDataWithStatusLimit('services_testimonials',0,0,6); ?>
+				<?php $getTestominalsData = getAllDataWithStatusLimit('services_testimonials',0,'',''); ?>
                  <?php  while($getAllTestominalsData = $getTestominalsData->fetch_assoc()) { ?> 
 				<div class="col-md-6">
 					<div class="review_strip">
