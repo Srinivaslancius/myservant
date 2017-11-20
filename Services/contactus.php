@@ -7,6 +7,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once 'meta.php';?>
+	<?php $getContentPageData = getAllDataWhere('services_content_pages','id',8);
+		  $getContactUsBanner = $getContentPageData->fetch_assoc();
+	?>
 	<?php
 
 if(!empty($_POST['name_contact']) && !empty($_POST['lastname_contact']) && !empty($_POST['email_contact']) && !empty($_POST['phone_contact']) && !empty($_POST['message_contact']))  {
@@ -108,15 +111,15 @@ $message .= "<html><head><title>Myservent Contactus Form</title></head>
 
 //echo $message; die;
 // Always set content-type when sending HTML email
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+//$headers = "MIME-Version: 1.0" . "\r\n";
+//$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 // More headers
-$headers .= 'From: '.$name_contact.'<'.$email_contact.'>'. "\r\n";
+//$headers .= 'From: '.$name_contact.'<'.$email_contact.'>'. "\r\n";
 // $headers .= 'Cc: myboss@example.com' . "\r\n";
-
-if(mail($to,$subject,$message,$headers)) {
-    echo  "<script>alert('Thank You For Your feedback');window.location.href('contactus.php');</script>";
+$sendMail = sendEmail($to,$subject,$message,$email_contact);
+if($sendMail) {
+	echo  "<script>alert('Thank You For Your feedback');window.location.href('contactus.php');</script>";
 }
 
 }
@@ -159,9 +162,15 @@ if(mail($to,$subject,$message,$headers)) {
 
 	<main>
 	 <div class="container-fluid page-title">
-		<div class="row">
-			<img src="img/slides/slide_1.jpg" class="img-responsive">
-		</div>
+		<?php if($getContentPageData->num_rows > 0) { ?> 	
+				<div class="row">
+					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getContactUsBanner['image'] ?>" alt="<?php echo $getContactUsBanner['title'];?>" class="img-responsive">
+				</div>
+			<?php } else { ?>
+				<div class="row">
+					<img src="img/slides/slide_1.jpg" class="img-responsive">
+				</div>
+			<?php }?>
     </div>
 		<div class="container margin_60">
 		  <div class="main_title">
@@ -239,7 +248,9 @@ if(mail($to,$subject,$message,$headers)) {
 		</div>	
 		<!-- End container -->
 		<script src="https://maps.google.com/maps/api/js?key=AIzaSyA04qekzxWtnZq6KLkabMN_4abcJt9nCDk" type="text/javascript"></script>
-		<div id="map"></div>
+		<div class="container" style="margin-bottom:70px; width:100%">
+        	<div id="map"></div>
+        </div>
             <script type="text/javascript">
                             var locations = [
                               ['Lancius it solutions', 17.445913, 78.381229],
@@ -304,3 +315,9 @@ function isNumberKey(evt){
 	    return true;
 	}
 </script>
+<style type="text/css">
+  .error {
+    color: $errorMsgColor;
+  }
+
+</style>

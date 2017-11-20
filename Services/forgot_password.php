@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
@@ -6,8 +7,20 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once 'meta.php';?>
-	<?php $getContentPageData = getAllDataWhere('services_content_pages','id',6);
-		  $getServicesBanner = $getContentPageData->fetch_assoc();
+	<?php 
+		error_reporting(0);
+		 if(isset($_POST['submit']))  { 
+		    //Login here
+		    $user_email = $_POST['login_email'];
+		    $getUserForgotData = forgotPassword($user_email);
+		    //Set variable for session
+		    if($getUserForgotData == 1) {
+		        echo  "<script>alert('Password Sent To Your Email,Please Check.');window.location.href('login.php');</script>";
+		    } else {
+		    	//echo "<script>alert('invalid username/password.  Please try again');window.location='index.php';</script>";
+		    	echo "<script>alert('Your Entered Email Not Found');</script>";
+		    }
+		}
 	?>
 
 	<!-- Favicons-->
@@ -23,11 +36,8 @@
 	<!-- BASE CSS -->
 	<link href="css/base.css" rel="stylesheet">
         <link href="site_launch/css/style.css" rel="stylesheet">
-
-	<!-- REVOLUTION SLIDER CSS -->
 	<link href="layerslider/css/layerslider.css" rel="stylesheet">
-
-
+	<!-- REVOLUTION SLIDER CSS -->
 </head>
 
 <body>
@@ -53,65 +63,46 @@
                 
         </header>
 	<!-- End Header -->
-
-	<main>
+<main>
 		<!-- Slider -->
 		 <div class="container-fluid page-title">
-		<?php if($getContentPageData->num_rows > 0) { ?> 	
-				<div class="row">
-					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getServicesBanner['image'] ?>" alt="<?php echo $getServicesBanner['title'];?>" class="img-responsive">
-				</div>
-			<?php } else { ?>
-				<div class="row">
-					<img src="img/slides/slide_1.jpg" class="img-responsive">
-				</div>
-			<?php }?>
-    	</div>
-		<div class="container margin_60">
-
-			<div class="main_title">
-				<h2>Our <span>Services</span> Categories</h2>
-				
-			</div>
-			<?php $getCategoriesData = getAllDataWithStatusLimit('services_category',0,'',''); ?>
-
-			<div class="row">
-                 <?php  while($getAllCategoriesData = $getCategoriesData->fetch_assoc()) { ?>           
-				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-					<div class="tour_container">
-						<div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
-						</div>
-						<div class="img_container padd15">
-                        <a href="sub_categories.php?key=<?php echo encryptPassword($getAllCategoriesData['id']); ?>">
-                        <img src="<?php echo $base_url . 'uploads/services_category_images/'.$getAllCategoriesData['category_image'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getAllCategoriesData['category_name']; ?>">
-								
-							</a>
-						</div>
-						<div class="tour_title">
-							<a href="sub_categories.php?key=<?php echo encryptPassword($getAllCategoriesData['id']); ?>">
-								<h3><?php echo $getAllCategoriesData['category_name']; ?></h3>
-							</a>	
-							
-							<!-- end rating -->
-						</div>
-					</div>
-					<!-- End box tour -->
-				</div>
-                 <?php } ?>    
-                                
-				<!-- End col-md-4 -->
-
-                            
-				<!-- End col-md-4 -->
-
-			</div>
-			<!-- End row -->
-			
-			<hr>
+		<div class="row">
+			<img src="img/slides/slide_3.jpg" class="img-responsive">
 		</div>
-		<?php include_once 'our_associate_partners.php';?>
-		<!-- End section -->
-		
+    </div>
+		<div class="container" style="margin-top:-70px">		
+
+           <div class="row">
+           	
+
+		    
+           	<div class="col-sm-3"></div>
+		   <div class="col-sm-6">
+
+
+                	<div id="login">
+                    		<div class="text-center"><h2><span>Forgot Password</span></h2></div>
+                            <hr>
+                            <form method="POST">                      
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class=" form-control " name="login_email" placeholder="Email" required>
+                                </div>
+                                <button type="submit" name="submit" class="btn_full">Submit</button>
+                                
+                            </form>
+                        </div>
+
+                </div>
+			<div class="col-sm-3"></div>	
+			
+				<div class="col-sm-1">
+				</div>
+				
+		   </div>
+			
+  </div>
+  
 	</main>
 	<!-- End main -->
 
@@ -132,6 +123,7 @@
 	<script src="layerslider/js/greensock.js"></script>
 	<script src="layerslider/js/layerslider.transitions.js"></script>
 	<script src="layerslider/js/layerslider.kreaturamedia.jquery.js"></script>
+	
 	<script type="text/javascript">
 		$(document).ready(function () {
 			'use strict';
