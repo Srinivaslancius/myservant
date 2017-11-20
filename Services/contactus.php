@@ -108,15 +108,15 @@ $message .= "<html><head><title>Myservent Contactus Form</title></head>
 
 //echo $message; die;
 // Always set content-type when sending HTML email
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+//$headers = "MIME-Version: 1.0" . "\r\n";
+//$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 // More headers
-$headers .= 'From: '.$name_contact.'<'.$email_contact.'>'. "\r\n";
+//$headers .= 'From: '.$name_contact.'<'.$email_contact.'>'. "\r\n";
 // $headers .= 'Cc: myboss@example.com' . "\r\n";
-
-if(mail($to,$subject,$message,$headers)) {
-    echo  "<script>alert('Thank You For Your feedback');window.location.href('contactus.php');</script>";
+$sendMail = sendEmail($to,$subject,$message,$email_contact);
+if($sendMail) {
+	echo  "<script>alert('Thank You For Your feedback');window.location.href('contactus.php');</script>";
 }
 
 }
@@ -239,7 +239,9 @@ if(mail($to,$subject,$message,$headers)) {
 		</div>	
 		<!-- End container -->
 		<script src="https://maps.google.com/maps/api/js?key=AIzaSyA04qekzxWtnZq6KLkabMN_4abcJt9nCDk" type="text/javascript"></script>
-		<div id="map"></div>
+		<div class="container" style="margin-bottom:70px; width:100%">
+        	<div id="map"></div>
+        </div>
             <script type="text/javascript">
                             var locations = [
                               ['Lancius it solutions', 17.445913, 78.381229],
@@ -283,9 +285,15 @@ if(mail($to,$subject,$message,$headers)) {
 	
 	<!-- Common scripts -->
 	<div id="toTop"></div><!-- Back to top button -->
+
+		<!-- Common scripts -->
+	<script src="../cdn-cgi/scripts/78d64697/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
+	<script src="js/common_scripts_min.js"></script>
+	<script src="js/functions.js"></script>
 	
 	<!-- Validation purpose add scripts -->
 	<?php include_once 'common_validations_scripts.php'; ?>	
+	
 	
 </body>
 
@@ -298,3 +306,9 @@ function isNumberKey(evt){
 	    return true;
 	}
 </script>
+<style type="text/css">
+  .error {
+    color: $errorMsgColor;
+  }
+
+</style>

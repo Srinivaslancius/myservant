@@ -200,7 +200,7 @@
 
 		    <?php if(isset($_GET['err']) && $_GET['err'] == 'log-fail' ) {  ?>
 		    <div class="col-sm-12 alert alert-danger" style="top:100px; display:block">
-		      <strong>Failed!</strong> Your Registration Failed.
+		      <strong>Failed!</strong> Your Login Failed.
 		    </div>
 		    <?php }?>
 
@@ -230,7 +230,7 @@
                                     <input type="password" class=" form-control" name="login_password" placeholder="Password" required>
                                 </div>
                                 <p class="small">
-                                    <a href="#">Forgot Password?</a>
+                                    <a href="forgot_password.php">Forgot Password?</a>
                                 </p>
                                 <button type="submit" name="login" class="btn_full">Sign in</button>
                                 
