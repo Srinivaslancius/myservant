@@ -67,22 +67,57 @@
 		</div>
     </div>
 		<!-- Position -->
-	<div class="container margin_60">
-		<div class="container margin20 txt">								
-            <div class="main_title">
-				<h2>Our <span>Testimonials</span></h2>				
+		<div class="container margin_60">
+
+			<div class="main_title">
+				<h2>What <span>customers </span>says</h2>				
 			</div>
 			<div class="row">
-				<div class="col-lg-12 col-md-12" id="faq-result">
-					<?php include('get_load_testimonials.php'); ?>
-					<!-- <hr>
-		
-					<!-- end pagination-->
-
+				<?php $getTestominalsData = getAllDataWithStatusLimit('services_testimonials',0,0,6); ?>
+                 <?php  while($getAllTestominalsData = $getTestominalsData->fetch_assoc()) { ?> 
+				<div class="col-md-6">
+					<div class="review_strip">
+						<img src="<?php echo $base_url . 'uploads/services_testimonials_images/'.$getAllTestominalsData['image'] ?>" alt="Image" class="img-circle" style="width:75px; height:75px;">
+						<h4><?php echo $getAllTestominalsData['title']; ?></h4>
+						<p>
+							<?php echo substr(strip_tags($getAllTestominalsData['description']), 0,200);?>
+						</p>
+						
+					</div>
+					<!-- End review strip -->
 				</div>
-				<div id="loader-icon" style="text-align:center"><img src="LoaderIcon.gif" /><div>
-				<!-- End col lg-9 -->
+				<?php } ?>
 			</div>
+			<!-- End row -->
+			<!-- <div class="row">
+				<div class="col-md-6">
+					<div class="review_strip">
+						<img src="img/avatar3.jpg" alt="Image" class="img-circle">
+						<h4>Marc twain</h4>
+						<p>
+							"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus."
+						</p>
+						
+					</div>
+					
+				</div>
+
+				<div class="col-md-6">
+					<div class="review_strip">
+						<img src="img/avatar1.jpg" alt="Image" class="img-circle">
+						<h4>Peter Gabriel</h4>
+						<p>
+							"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus."
+						</p>
+						
+					</div>
+					
+				</div>
+			</div> -->
+			<!-- End row -->
+
+			
+			
 			<!-- End row -->
 		</div>
 		<!-- End container -->
@@ -120,36 +155,5 @@
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script src="js/map_restaurants.js"></script>
 	<script src="js/infobox.js"></script>
-
-	<script>
-$(document).ready(function(){
-	function getresult(url) {
-		$.ajax({
-			url: url,
-			type: "GET",
-			data:  {rowcount:$("#rowcount").val()},
-			beforeSend: function(){
-			$('#loader-icon').show();
-			},
-			complete: function(){
-			$('#loader-icon').hide();
-			},
-			success: function(data){
-			$("#faq-result").append(data);
-			},
-			error: function(){} 	        
-	   });
-	}
-	$(window).scroll(function(){
-		if ($(window).scrollTop() == $(document).height() - $(window).height()){
-			if($(".pagenum:last").val() <= $(".total-page").val()) {
-				var pagenum = parseInt($(".pagenum:last").val()) + 1;
-				getresult('get_load_testimonials.php?page='+pagenum);
-			}
-		}
-	}); 
-});
-</script>
-
 </body>
 </html>
