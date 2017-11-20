@@ -103,7 +103,9 @@
 			<!-- End row -->
 		</div>
 		<!-- End container -->
+		<?php include_once 'our_associate_partners.php';?>	
 	</main>
+	
 	<!-- End main -->
 <footer class="revealed">
             <?php include_once 'footer.php';?>
