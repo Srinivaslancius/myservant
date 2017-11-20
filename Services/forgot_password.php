@@ -137,22 +137,6 @@
 					// except the last line!
 			});
 		});
-		function isNumberKey(evt){
-  	    var charCode = (evt.which) ? evt.which : event.keyCode
-  	    if (charCode > 31 && (charCode < 48 || charCode > 57))
-  	        return false;
-  	    return true;
-    	}
-    	function checkPasswordMatch() {
-		    var password = $("#user_password").val();
-		    var confirmPassword = $("#confirm_password").val();
-		    if (confirmPassword != password) {
-		        $("#divCheckPasswordMatch").html("Passwords do not match!");
-		        $("#confirm_password").val("");
-		    } else {
-        $("#divCheckPasswordMatch").html("");
-    }
-		}
 	</script>
 
 </body>
