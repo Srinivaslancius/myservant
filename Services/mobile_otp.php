@@ -166,7 +166,7 @@ $('#verify_otp').on('click', function () {
 	      } else {	      	
 	      	//Success
 	      	alert("OTP verified");
-	      	header('Location: index.php');
+	      	window.location.href = 'index.php';
 	      	//$("#return_msg").css("display", "none");
 	      	//$("#return_msg").html("<span style='color:green'>OTP verified</span>");
 	      }
