@@ -230,7 +230,7 @@
                                     <input type="password" class=" form-control" name="login_password" placeholder="Password" required>
                                 </div>
                                 <p class="small">
-                                    <a href="#">Forgot Password?</a>
+                                    <a href="forgot_password.php">Forgot Password?</a>
                                 </p>
                                 <button type="submit" name="login" class="btn_full">Sign in</button>
                                 
