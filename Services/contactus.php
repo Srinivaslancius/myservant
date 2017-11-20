@@ -7,6 +7,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once 'meta.php';?>
+	<?php $getContentPageData = getAllDataWhere('services_content_pages','id',8);
+		  $getContactUsBanner = $getContentPageData->fetch_assoc();
+	?>
 	<?php
 
 if(!empty($_POST['name_contact']) && !empty($_POST['lastname_contact']) && !empty($_POST['email_contact']) && !empty($_POST['phone_contact']) && !empty($_POST['message_contact']))  {
@@ -159,9 +162,15 @@ if($sendMail) {
 
 	<main>
 	 <div class="container-fluid page-title">
-		<div class="row">
-			<img src="img/slides/slide_1.jpg" class="img-responsive">
-		</div>
+		<?php if($getContentPageData->num_rows > 0) { ?> 	
+				<div class="row">
+					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getContactUsBanner['image'] ?>" alt="<?php echo $getContactUsBanner['title'];?>" class="img-responsive">
+				</div>
+			<?php } else { ?>
+				<div class="row">
+					<img src="img/slides/slide_1.jpg" class="img-responsive">
+				</div>
+			<?php }?>
     </div>
 		<div class="container margin_60">
 		  <div class="main_title">
