@@ -200,7 +200,7 @@
 
 		    <?php if(isset($_GET['err']) && $_GET['err'] == 'log-fail' ) {  ?>
 		    <div class="col-sm-12 alert alert-danger" style="top:100px; display:block">
-		      <strong>Failed!</strong> Your Registration Failed.
+		      <strong>Failed!</strong> Your Login Failed.
 		    </div>
 		    <?php }?>
 
