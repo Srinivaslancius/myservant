@@ -80,27 +80,22 @@
 							</a>
 						</div>
 						<div class="tour_title">
-							<h3><?php echo $getAllCategoriesData['category_name']; ?></h3>
+							<a href="sub_categories.php?key=<?php echo encryptPassword($getAllCategoriesData['id']); ?>">
+								<h3><?php echo $getAllCategoriesData['category_name']; ?></h3>
+							</a>	
 							
 							<!-- end rating -->
-							
 						</div>
 					</div>
 					<!-- End box tour -->
 				</div>
                  <?php } ?>    
-                            
-                            
-                           
-                            
                                 
 				<!-- End col-md-4 -->
 
                             
 				<!-- End col-md-4 -->
 
-				
-				
 			</div>
 			<!-- End row -->
 			
