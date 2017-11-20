@@ -163,11 +163,8 @@ $('#verify_otp').on('click', function () {
 	      	$("#return_msg").css("display", "block");   	
 	        $("#return_msg").html("<span style='color:red;'>Please enter valid OTP!</span>");
 	        $('#mobile_otp').val('');
-	      } else {
-	      	$_SESSION['user_login_session_id'] =  $getLoggedInDetails['id'];
-	        $_SESSION['user_login_session_name'] = $getLoggedInDetails['user_full_name'];
-	        $_SESSION['user_login_session_email'] = $getLoggedInDetails['user_email'];
-	        $_SESSION['timestamp'] = time();
+	      } else {	      	
+	      	//Success
 	      	alert("OTP verified");
 	      	header('Location: index.php');
 	      	//$("#return_msg").css("display", "none");
