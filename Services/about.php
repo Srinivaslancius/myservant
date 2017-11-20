@@ -57,10 +57,16 @@
 	<main>
 		<!-- Slider -->
 		 <div class="container-fluid page-title">
-		<div class="row">
-			<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getAboutUsData['image'] ?>" alt="<?php echo $getAboutUsData['title'];?>" class="img-responsive">
-		</div>
-    </div>
+			<?php if($getContentPageData->num_rows > 0) { ?> 	
+				<div class="row">
+					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getAboutUsData['image'] ?>" alt="<?php echo $getAboutUsData['title'];?>" class="img-responsive">
+				</div>
+			<?php } else { ?>
+				<div class="row">
+					<img src="img/slides/slide_1.jpg" class="img-responsive">
+				</div>
+			<?php }?>	
+    	</div>
 
 		<div class="white_bg">
 			<div class="container margin20 txt">								

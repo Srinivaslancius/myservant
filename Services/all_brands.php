@@ -6,7 +6,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once 'meta.php';?>
-	
+	<?php $getContentPageData = getAllDataWhere('services_content_pages','id',7);
+		  $getBrandsBanner = $getContentPageData->fetch_assoc();
+	?>
 
 	<!-- Favicons-->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -54,11 +56,17 @@
 
 	<main>
 		<!-- Slider -->
-		 <div class="container-fluid page-title">
-		<div class="row">
-			<img src="img/slides/slide_3.jpg" class="img-responsive">
-		</div>
-    </div>
+		<div class="container-fluid page-title">
+		<?php if($getContentPageData->num_rows > 0) { ?> 	
+				<div class="row">
+					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getBrandsBanner['image'] ?>" alt="<?php echo $getBrandsBanner['title'];?>" class="img-responsive">
+				</div>
+			<?php } else { ?>
+				<div class="row">
+					<img src="img/slides/slide_1.jpg" class="img-responsive">
+				</div>
+			<?php }?>
+    	</div>
 		<div class="container margin_60">
 
 			<div class="main_title">
