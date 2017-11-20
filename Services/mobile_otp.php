@@ -11,7 +11,7 @@
 	<?php //echo "<pre>"; print_r($_POST); die;?>
 	<?php 
 	if (isset($_POST['register']))  {
-		
+
 		$user_mobile = $_POST['user_mobile'];
 		$mobile_otp = rand(1000, 9999); //Your message to send, Add URL encoding here.
 
@@ -64,57 +64,56 @@
 	<!-- End Header -->
 
 	<main>
-	 <div class="container-fluid page-title">
+	 <!-- Slider -->
+		 <div class="container-fluid page-title">
 		<div class="row">
-			<img src="img/slides/slide_1.jpg" class="img-responsive">
+			<img src="img/slides/slide_3.jpg" class="img-responsive">
 		</div>
     </div>
-		<div class="container margin_60">
-		  <div class="main_title">
-				<h2>Mobile <span>OTP</span></h2>				
-			</div>
-			<div class="row">
-			
-				<div class="col-md-8 col-sm-8">
-						<div id="message-contact"></div>
-						<form method="post" id="opt_valid_mobile" name="opt_valid_mobile"> 
+		<div class="container" style="margin-top:-70px">		
 
-							<input type="hidden" name="user_name" value="<?php echo $_POST['user_name']; ?>">
+           <div class="row">
+
+		    
+           	<div class="col-sm-3"></div>
+		   <div class="col-sm-6">
+
+                	<div id="login">
+                    		<div class="text-center"><h2><span>Mobile OTP</span></h2></div>
+                            <hr>
+                            <form method="post" id="opt_valid_mobile" name="opt_valid_mobile">       
+
+                            <input type="hidden" name="user_name" value="<?php echo $_POST['user_name']; ?>">
 							<input type="hidden" name="user_mobile_cust" value="<?php echo $_POST['user_mobile']; ?>" id="user_mobile_cust">
 							<input type="hidden" name="user_email" value="<?php echo $_POST['user_email']; ?>">
 							<input type="hidden" name="user_password" value="<?php echo encryptPassword($_POST['user_password']); ?>">
-							
-							<div class="row">
 
-								<div class="col-md-6 col-sm-6">
-									<div class="form-group">
-										<label>Phone</label>
-										<input type="text" id="user_mobile" name="user_mobile" class="form-control" placeholder="Enter Phone number" value="<?php echo $_POST['user_mobile']; ?>" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" readonly required>
-									</div>
-								</div>
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="text" id="user_mobile" name="user_mobile" class="form-control" placeholder="Enter Phone number" value="<?php echo $_POST['user_mobile']; ?>" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" readonly required>
+                                </div>
 
-								<div class="col-md-6 col-sm-6">
-									<div class="form-group">
-										<label>OTP</label>
-										<input type="text" id="mobile_otp" name="mobile_otp" class="form-control" placeholder="Enter OTP" maxlength="4" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" required >
-									</div>
-								</div>
-								<span id="return_msg" style="display:none"></span>
-							</div>
-							
-							<div class="row">
-								<div class="col-md-6">									
-									<input type="button" value="Verify" id="verify_otp" class="btn_1" >
-								</div>
-							</div>
-						</form><br>
-					
+                                <div class="form-group">
+                                    <label>OTP</label>
+                                    <input type="text" id="mobile_otp" name="mobile_otp" class="form-control" placeholder="Enter OTP" maxlength="4" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" required >
+                                </div>
+                                <span id="return_msg" style="display:none"></span><br />
+                                <div class="clear_fix"></div>
+                               
+                                <input type="button" value="Verify" id="verify_otp" class="btn_full" >
+                                
+                            </form>
+                        </div>
+
+                </div>
+			<div class="col-sm-3"></div>	
+			
+				<div class="col-sm-1">
 				</div>
 				
-			</div>
+		   </div>
 			
-			<!-- End row -->
-		</div>	
+  </div>
 		
 		
 	</main>
@@ -162,11 +161,16 @@ $('#verify_otp').on('click', function () {
 	    success:function(result){
 	      if(result == 0) {
 	      	$("#return_msg").css("display", "block");   	
-	        $("#return_msg").html("<span style='color:red'>Please enter valid OTP!</span>");
+	        $("#return_msg").html("<span style='color:red;'>Please enter valid OTP!</span>");
 	        $('#mobile_otp').val('');
 	      } else {
+	      	$_SESSION['user_login_session_id'] =  $getLoggedInDetails['id'];
+	        $_SESSION['user_login_session_name'] = $getLoggedInDetails['user_full_name'];
+	        $_SESSION['user_login_session_email'] = $getLoggedInDetails['user_email'];
+	        $_SESSION['timestamp'] = time();
 	      	alert("OTP verified");
-	      	$("#return_msg").css("display", "none");
+	      	header('Location: index.php');
+	      	//$("#return_msg").css("display", "none");
 	      	//$("#return_msg").html("<span style='color:green'>OTP verified</span>");
 	      }
 	    }
