@@ -10,20 +10,22 @@
 
 	<?php //echo "<pre>"; print_r($_POST); die;?>
 	<?php 
-	$user_mobile = $_POST['user_mobile'];
-	$mobile_otp = rand(1000, 9999); //Your message to send, Add URL encoding here.
+	if (isset($_POST['register']))  {
+		
+		$user_mobile = $_POST['user_mobile'];
+		$mobile_otp = rand(1000, 9999); //Your message to send, Add URL encoding here.
 
-	$selOTP = getAllDataWhere('user_mobile_otp','user_mobile',$user_mobile);	
-	$getNoRows = $selOTP->num_rows; 
+		$selOTP = getAllDataWhere('user_mobile_otp','user_mobile',$user_mobile);	
+		$getNoRows = $selOTP->num_rows; 
 
-	if($getNoRows > 0) {
-		$mobOtpSave = "UPDATE user_mobile_otp SET mobile_otp = '$mobile_otp' WHERE user_mobile = '$user_mobile' ";
-		$saveOTP = $conn->query($mobOtpSave);
-	} else {
-		$mobOtpSave = "INSERT INTO `user_mobile_otp`(`user_mobile`, `mobile_otp`) VALUES ('$user_mobile', '$mobile_otp') ";
-		$saveOTP = $conn->query($mobOtpSave);
-	}		
-
+		if($getNoRows > 0) {
+			$mobOtpSave = "UPDATE user_mobile_otp SET mobile_otp = '$mobile_otp' WHERE user_mobile = '$user_mobile' ";
+			$saveOTP = $conn->query($mobOtpSave);
+		} else {
+			$mobOtpSave = "INSERT INTO `user_mobile_otp`(`user_mobile`, `mobile_otp`) VALUES ('$user_mobile', '$mobile_otp') ";
+			$saveOTP = $conn->query($mobOtpSave);
+		}		
+	}
 	?>
 
 	<!-- Favicons-->
