@@ -10,6 +10,8 @@
 	<?php 
 		error_reporting(0);
 		if (isset($_POST['register']))  {
+
+				header('Location: mobile_otp.php');
                 //If success
                 $user_full_name = $_POST['user_name'];
                 $user_email = $_POST['user_email'];
@@ -223,7 +225,7 @@
                        
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input type="text" class=" form-control " name="login_email" placeholder="Username" required>
+                                    <input type="text" class=" form-control " name="login_email" placeholder="Email" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
@@ -243,7 +245,7 @@
                 	<div id="login">
                     		<div class="text-center"><h2><span>Register</span></h2></div>
                             <hr>
-                           <form method="POST">
+                           <form method="post" action="mobile_otp.php">
                                 <div class="form-group">
                                 	<label>Name</label>
                                     <input type="text" name="user_name" class=" form-control"  placeholder="Name" required>
