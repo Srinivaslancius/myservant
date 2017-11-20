@@ -228,8 +228,6 @@ hr {
     border-radius: 3px;
     text-transform: uppercase;
     font-weight: 700;
-    margin-top: 20px;
-    text-align: center;
 }
 
 .btn_1.green,a.btn_1.green {
@@ -901,10 +899,9 @@ a#email_footer:before {
     background: #fff;
     margin-bottom: 30px;
     color: #888;
-    text-align: justify;
     -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
     -moz-box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
-    box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.1)
 }
 
 .feature_home h3 {
@@ -968,14 +965,14 @@ a#email_footer:before {
 }
 
 #hero {
-    height: 600px;
-    background: url(../img/slide_hero.jpg) center center no-repeat #4d536d;
+    height: 76px;
+    /* background: url(../img/slide_hero.jpg) center center no-repeat #4d536d; */
     background-size: cover;
     color: #fff;
     width: 100%;
     font-size: 16px;
     display: table;
-    z-index: 99
+    z-index: 99;
 }
 
 .intro_title {
@@ -1058,7 +1055,7 @@ video {
     overflow: hidden;
     position: absolute;
     top: 0;
-    background: #6ccef5
+    background: #f26226;
 }
 
 #nav-search-in #nav-search-in-content {
@@ -2024,12 +2021,12 @@ input.qty2 {
 }
 
 .feature {
-    padding: 30px 30px 20px 120px;
+    padding: 30px 30px 20px 20px;
     position: relative;
     background: #fff;
     margin-bottom: 30px;
     color: #888;
-    box-shadow: 0 0 5px 0 rgba(0,0,0,.1)
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
 }
 
 .review_strip,.transfer_container {
@@ -4800,4 +4797,14 @@ header.sticky nav.full-horizontal {
 .btn-default{
     background-color:#f26226 !important;
     color: white !important;
+}
+.carousel-control.right {
+    background-image: none !important;
+    color: #f4511e !important;
+    padding-left:120px !important;
+}
+.carousel-control.left{
+      background-image: none !important;
+    color: #f4511e !important;
+    padding-right:130px !important;
 }

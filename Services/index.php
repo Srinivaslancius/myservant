@@ -66,8 +66,8 @@
                             <form method="post" action="sub_categories.php" id="newsletter" name="newsletter"  autocomplete="off">
 							<div class="row">
                                                             
-                            	<div class="col-md-9 first-nogutter">
-                                    <div class="col-md-4 padd0">
+                            	<div class="col-md-12 first-nogutter">
+                                    <div class="col-md-3 padd0">
                                         
 								<div class="form-group">
 									<?php $getCategoriesData = getAllDataWithActiveRecent('services_category'); ?>
@@ -79,12 +79,12 @@
 								</div>
 							
                                     </div>
-                                    <div class="col-md-8 padd0">
+                                    <div class="col-md-7 padd0">
                                 	<input name="category_name" id="category_name" type="text" placeholder="Search your related service" class="form-control">
                                     </div>
-                                </div>
-                                <div class="col-md-3 nogutter">
+                                    <div class="col-md-2 padd0">
                                 	<button type="submit" name="search" class="btn-check" id="submit-newsletter">Search</button>
+                                </div>
                                 </div>
                              </div>                            	
                             </form>
@@ -127,26 +127,34 @@
 
 			<hr>
 
-			<div class="main_title">
-				<h2>Our <span>Associate</span> Partners</h2>
-				
-			</div>
+			
 
-			<div class="row">
-                <?php $getServiceProvider =  getServicesProviderDataLimit(0,6); ?>
-                <?php  while($getAllgetServiceProvider = $getServiceProvider->fetch_assoc()) { ?> 
-				<div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
-					<div class="feature">
-						 <i class="icon_set_1_icon-57"></i> 
-					<!--	<img src="<?php echo $base_url . 'uploads/service_provider_business_logo/'.$getAllgetServiceProvider['logo'] ?>" class="img-responsive" alt="<?php echo $getAllgetServiceProvider['company_name']; ?>" style="width:65px; height:65px;">-->
-						<h3><span><?php echo $getAllgetServiceProvider['company_name']; ?></span></h3>
-						<p>
-							<?php echo substr(strip_tags($getAllgetServiceProvider['description']), 0,200);?>
-						</p>
-					</div>
-				</div>
-                <?php } ?>      	      
-			</div>
+      <div class="main_title">
+        <h2>Our <span>Associate</span> Partners</h2>
+        
+      </div>
+
+      <div class="row">
+        <?php $getServiceProvider =  getServicesProviderDataLimit(0,6); ?>
+                <?php  while($getAllgetServiceProvider = $getServiceProvider->fetch_assoc()) { ?>
+        <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
+          <div class="feature">
+          <div class="row">
+          <div class="col-sm-2">
+            <center><img src="<?php echo $base_url . 'uploads/service_provider_business_logo/'.$getAllgetServiceProvider['logo'] ?>" class="img-responsive" alt="<?php echo $getAllgetServiceProvider['company_name']; ?>" style="width:65px; height:65px;"></center>
+            </div>
+            <div class="col-sm-10">
+            <h3><?php echo $getAllgetServiceProvider['company_name']; ?></h3>
+            <p>
+              <?php echo substr(strip_tags($getAllgetServiceProvider['description']), 0,200);?>
+            </p>
+          </div>
+          </div>
+          
+          </div>
+        </div>
+                <?php } ?>
+      </div>
 			<!-- End row -->
 			<!-- End row -->
 			<p class="text-center nopadding">
