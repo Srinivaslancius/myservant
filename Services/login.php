@@ -17,6 +17,10 @@
 		    $getLoginData = userLogin($user_email,$user_password);
 		    //Set variable for session
 		    if($getLoggedInDetails = $getLoginData->fetch_assoc()) {
+		    	$last_login_visit = date("Y-m-d h:i:s");
+		    	$login_count = $getLoggedInDetails['login_count']+1;
+		    	$sql = "UPDATE `users` SET login_count='$login_count', last_login_visit='$last_login_visit' WHERE user_email = '$user_email' OR user_mobile = '$user_email' ";
+		    	$row = $conn->query($sql);
 		        $_SESSION['user_login_session_id'] =  $getLoggedInDetails['id'];
 		        $_SESSION['user_login_session_name'] = $getLoggedInDetails['user_full_name'];
 		        $_SESSION['user_login_session_email'] = $getLoggedInDetails['user_email'];
@@ -109,8 +113,8 @@
                             <div class="login-or"><hr class="hr-or"><span class="span-or">or</span></div>
                        
                                 <div class="form-group">
-                                    <label>Username</label>
-                                    <input type="text" class=" form-control " name="login_email" placeholder="Email" required>
+                                    <label>Email or Mobile</label>
+                                    <input type="text" class=" form-control " name="login_email" placeholder="Email or Mobile" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
@@ -137,11 +141,13 @@
                                 </div>
                                 <div class="form-group">
                                 	<label>Mobile Number</label>
-                                    <input type="text" name="user_mobile" class=" form-control"  placeholder="Mobile Number" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)"required>
+                                    <input type="text" name="user_mobile" id="user_mobile" class=" form-control"  placeholder="Mobile Number" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" onkeyup="checkMobile();" required>
+                                    <span id="input_status1" style="color: red;"></span>
                                 </div>
                                 <div class="form-group">
                                 	<label>Email</label>
-                                    <input type="email" name="user_email" class=" form-control" placeholder="Email" required>
+                                    <input type="email" name="user_email" id="user_email" class=" form-control" placeholder="Email" onkeyup="checkEmail();" required>
+                                    <span id="input_status" style="color: red;"></span>
                                 </div>
                                 <div class="form-group">
                                 	<label>Password</label>
@@ -211,10 +217,46 @@
 		        $("#divCheckPasswordMatch").html("Passwords do not match!");
 		        $("#confirm_password").val("");
 		    } else {
-        $("#divCheckPasswordMatch").html("");
-    }
+		        $("#divCheckPasswordMatch").html("");
+		    }
 		}
-	</script>
+	    function checkMobile() {
+	        var user_mobile = document.getElementById("user_mobile").value;
+	        if (user_mobile){
+	          $.ajax({
+	          type: "POST",
+	          url: "user_avail_check.php",
+	          data: {
+	            user_mobile:user_mobile,
+	          },
+	          success: function (response) {
+	            $( '#input_status1' ).html(response);
+	            if (response == "Mobile Already Exist"){
+	              $("#user_mobile").val("");
+	            }       
+	            }
+	           });          
+	        }
+	    }
+	    function checkEmail() {
+	        var user_email = document.getElementById("user_email").value;
+	        if (user_email){
+	          $.ajax({
+	          type: "POST",
+	          url: "user_avail_check.php",
+	          data: {
+	            user_email:user_email,
+	          },
+	          success: function (response) {
+	            $( '#input_status' ).html(response);
+	            if (response == "Email Already Exist"){
+	              $("#user_email").val("");
+	            }       
+	            }
+	           });          
+	        }
+	    }
+    </script>
 
 </body>
 
