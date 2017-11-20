@@ -96,33 +96,7 @@
 				</div>
 				<?php } ?>
 			</div>
-			<!-- End row -->
-			<!-- <div class="row">
-				<div class="col-md-6">
-					<div class="review_strip">
-						<img src="img/avatar3.jpg" alt="Image" class="img-circle">
-						<h4>Marc twain</h4>
-						<p>
-							"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus."
-						</p>
-						
-					</div>
-					
-				</div>
-
-				<div class="col-md-6">
-					<div class="review_strip">
-						<img src="img/avatar1.jpg" alt="Image" class="img-circle">
-						<h4>Peter Gabriel</h4>
-						<p>
-							"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus."
-						</p>
-						
-					</div>
-					
-				</div>
-			</div> -->
-			<!-- End row -->
+			
 
 			
 			
