@@ -70,7 +70,7 @@
     	</div>
 
 		<div class="white_bg">
-			<div class="container margin20 txt">								
+			<div class="container margin_60">							
             <div class="main_title">
 				<h2><span><?php echo $getAboutUsData['title'];?></span></h2>				
 			</div>
