@@ -9,22 +9,32 @@
 	<?php include_once 'meta.php';?>
 	<?php 
 		error_reporting(0);
+		if (isset($_POST['register']))  {
+                //If success
+                $user_full_name = $_POST['user_name'];
+                $user_email = $_POST['user_email'];
+                $user_mobile = $_POST['user_mobile'];
+                $user_password = encryptPassword($_POST['user_password']);
+                $confirm_password = encryptPassword($_POST['confirm_password']);
+                $created_admin_id = $_SESSION['services_admin_user_id'];
+                $created_at = date("Y-m-d h:i:s");
+                $sql = saveUser($user_full_name, $user_email, $user_mobile, $user_password,$created_admin_id,'','','','','','');
+                if ($sql) {
+			       echo "<script type='text/javascript'>window.location='login.php?err=log-success'</script>";
+			    } else {
+			       echo "<script type='text/javascript'>window.location='login.php?err=log-fail'</script>";
+			    }
 
-		if(isset($_POST['login']))  { 
+            } else if(isset($_POST['login']))  { 
 		    //Login here
 		    $user_email = $_POST['login_email'];
 		    $user_password = encryptPassword($_POST['login_password']);
-		    $getLoginData = userLogin($user_email,$user_password);
+		    $getLoginData = userLogin($user_email,$user_mobile,$user_password);
 		    //Set variable for session
 		    if($getLoggedInDetails = $getLoginData->fetch_assoc()) {
-		    	$last_login_visit = date("Y-m-d h:i:s");
-		    	$login_count = $getLoggedInDetails['login_count']+1;
-		    	$sql = "UPDATE `users` SET login_count='$login_count', last_login_visit='$last_login_visit' WHERE user_email = '$user_email' OR user_mobile = '$user_email' ";
-		    	$row = $conn->query($sql);
 		        $_SESSION['user_login_session_id'] =  $getLoggedInDetails['id'];
 		        $_SESSION['user_login_session_name'] = $getLoggedInDetails['user_full_name'];
 		        $_SESSION['user_login_session_email'] = $getLoggedInDetails['user_email'];
-		        $_SESSION['timestamp'] = time();
 		        header('Location: index.php');
 		    } else {
 		    	//echo "<script>alert('invalid username/password.  Please try again');window.location='index.php';</script>";
@@ -91,7 +101,7 @@
 
 		    <?php if(isset($_GET['err']) && $_GET['err'] == 'log-fail' ) {  ?>
 		    <div class="col-sm-12 alert alert-danger" style="top:100px; display:block">
-		      <strong>Failed!</strong> Your Login Failed.
+		      <strong>Failed!</strong> Your Registration Failed.
 		    </div>
 		    <?php }?>
 
@@ -113,15 +123,15 @@
                             <div class="login-or"><hr class="hr-or"><span class="span-or">or</span></div>
                        
                                 <div class="form-group">
-                                    <label>Email or Mobile</label>
-                                    <input type="text" class=" form-control " name="login_email" placeholder="Email or Mobile" required>
+                                    <label>Username</label>
+                                    <input type="text" class=" form-control " name="login_email" placeholder="Username" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
                                     <input type="password" class=" form-control" name="login_password" placeholder="Password" required>
                                 </div>
                                 <p class="small">
-                                    <a href="forgot_password.php">Forgot Password?</a>
+                                    <a href="#">Forgot Password?</a>
                                 </p>
                                 <button type="submit" name="login" class="btn_full">Sign in</button>
                                 
@@ -134,20 +144,18 @@
                 	<div id="login">
                     		<div class="text-center"><h2><span>Register</span></h2></div>
                             <hr>
-                           <form method="post" action="mobile_otp.php">
+                           <form method="POST">
                                 <div class="form-group">
                                 	<label>Name</label>
                                     <input type="text" name="user_name" class=" form-control"  placeholder="Name" required>
                                 </div>
                                 <div class="form-group">
                                 	<label>Mobile Number</label>
-                                    <input type="text" name="user_mobile" id="user_mobile" class=" form-control"  placeholder="Mobile Number" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" onkeyup="checkMobile();" required>
-                                    <span id="input_status1" style="color: red;"></span>
+                                    <input type="text" name="user_mobile" class=" form-control"  placeholder="Mobile Number" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)"required>
                                 </div>
                                 <div class="form-group">
                                 	<label>Email</label>
-                                    <input type="email" name="user_email" id="user_email" class=" form-control" placeholder="Email" onkeyup="checkEmail();" required>
-                                    <span id="input_status" style="color: red;"></span>
+                                    <input type="email" name="user_email" class=" form-control" placeholder="Email" required>
                                 </div>
                                 <div class="form-group">
                                 	<label>Password</label>
@@ -217,46 +225,10 @@
 		        $("#divCheckPasswordMatch").html("Passwords do not match!");
 		        $("#confirm_password").val("");
 		    } else {
-		        $("#divCheckPasswordMatch").html("");
-		    }
+        $("#divCheckPasswordMatch").html("");
+    }
 		}
-	    function checkMobile() {
-	        var user_mobile = document.getElementById("user_mobile").value;
-	        if (user_mobile){
-	          $.ajax({
-	          type: "POST",
-	          url: "user_avail_check.php",
-	          data: {
-	            user_mobile:user_mobile,
-	          },
-	          success: function (result) {
-	            if (result == 0){
-	            	$("#input_status1").html("<span style='color:red;'>Mobile Already Exist</span>");
-	        		$('#user_mobile').val('');
-	            }       
-	            }
-	           });          
-	        }
-	    }
-	    function checkEmail() {
-	        var user_email = document.getElementById("user_email").value;
-	        if (user_email){
-	          $.ajax({
-	          type: "POST",
-	          url: "user_avail_check.php",
-	          data: {
-	            user_email:user_email,
-	          },
-	          success: function (result) {
-	            if (result == 0){
-	            	$("#input_status").html("<span style='color:red;'>Email Already Exist</span>");
-	        		$('#user_email').val('');
-	            }       
-	            }
-	           });          
-	        }
-	    }
-    </script>
+	</script>
 
 </body>
 
