@@ -76,12 +76,12 @@
            	
 
 		    
-
-		   <div class="col-sm-5">
+           	<div class="col-sm-3"></div>
+		   <div class="col-sm-6">
 
 
                 	<div id="login">
-                    		<div class="text-center"><h2><span>Login</span></h2></div>
+                    		<div class="text-center"><h2><span>Forgot Password</span></h2></div>
                             <hr>
                             <form method="POST">                      
                                 <div class="form-group">
@@ -94,7 +94,7 @@
                         </div>
 
                 </div>
-				
+			<div class="col-sm-3"></div>	
 			
 				<div class="col-sm-1">
 				</div>
