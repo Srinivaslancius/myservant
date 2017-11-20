@@ -116,7 +116,7 @@
                                         	<?php while ($getServiceNamesData = $getServiceNames->fetch_assoc()) { ?>
                                             <tr>
                                                 <td><?php echo $getServiceNamesData['group_service_name'];?></td>
-                                                <td>Price After our Visit</td>
+                                                <td><?php if($getServiceNamesData['service_price_type_id'] == 1) { echo $getServiceNamesData['service_price']; } elseif($getServiceNamesData['price_after_visit_type_id'] == 1) { echo "Price After our Visit"; } else { echo $getServiceNamesData['service_min_price'].'-'.$getServiceNamesData['service_max_price']; } ?></td>
                                                 <td><a href="" class="btn_full_outline wdth50">Add to Cart</a></td>
                                             </tr>
                                             <?php } ?>
