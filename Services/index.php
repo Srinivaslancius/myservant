@@ -63,28 +63,28 @@
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
 			<div id="newsletter_wp" >
-                            <form method="post" action="#" id="newsletter" name="newsletter"  autocomplete="off">
+                            <form method="post" action="sub_categories.php" id="newsletter" name="newsletter"  autocomplete="off">
 							<div class="row">
                                                             
                             	<div class="col-md-9 first-nogutter">
                                     <div class="col-md-4 padd0">
                                         
 								<div class="form-group">
-									
-									<select name="country" class="form-control">
-												<option>Home Service</option>
-												<option>Laundry</option>
-												
-											</select>
+									<?php $getCategoriesData = getAllDataWithActiveRecent('services_category'); ?>
+									<select name="id" class="form-control">
+										<?php while($row = $getCategoriesData->fetch_assoc()) {  ?>
+				                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['category_name']; ?></option>
+				                       <?php } ?>
+									</select>
 								</div>
 							
                                     </div>
                                     <div class="col-md-8 padd0">
-                                	<input name="email_newsletter" id="email_newsletter" type="email" placeholder="Search your related service" class="form-control">
+                                	<input name="category_name" id="category_name" type="text" placeholder="Search your related service" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-3 nogutter">
-                                	    <button type="submit" class="btn-check" id="submit-newsletter">Search</button>
+                                	<button type="submit" name="search" class="btn-check" id="submit-newsletter">Search</button>
                                 </div>
                              </div>                            	
                             </form>
@@ -110,11 +110,11 @@
 						<div class="img_container padd15">
                            <a href="sub_categories.php?key=<?php echo encryptPassword($getAllCategoriesData['id']); ?>">
                            <img src="<?php echo $base_url . 'uploads/services_category_images/'.$getAllCategoriesData['category_image'] ?>" class="img-responsive" alt="<?php echo $getAllCategoriesData['category_name']; ?>" style="width:64px; height:64px;">
-						   </a>
 						</div>
 						<div class="tour_title">
 							<h3><?php echo $getAllCategoriesData['category_name']; ?></h3>
 						</div>
+						</a>
 					</div>
 					<!-- End box tour -->
 				</div>
