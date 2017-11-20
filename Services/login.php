@@ -9,127 +9,12 @@
 	<?php include_once 'meta.php';?>
 	<?php 
 		error_reporting(0);
-		if (isset($_POST['register']))  {
 
-				header('Location: mobile_otp.php');
-                //If success
-                $user_full_name = $_POST['user_name'];
-                $user_email = $_POST['user_email'];
-                $user_mobile = $_POST['user_mobile'];
-                $user_password = encryptPassword($_POST['user_password']);
-                $confirm_password = encryptPassword($_POST['confirm_password']);
-                $created_admin_id = $_SESSION['services_admin_user_id'];
-                $created_at = date("Y-m-d h:i:s");
-                
-			    $dataem = $user_email;
-				//$to = "srinivas@lanciussolutions.com";
-				$to = "$dataem";
-				$from = $getSiteSettingsData["email"];
-				$subject = "Myservent - Registration ";
-				$message = "";
-				$message .= "<style>
-				        .body{
-				    width:100% !important; 
-				    margin:0 !important; 
-				    padding:0 !important; 
-				    -webkit-text-size-adjust:none;
-				    -ms-text-size-adjust:none; 
-				    background-color:#FFFFFF;
-				    font-style:normal;
-				    }
-				    .header{
-				    background-color:#f26226;
-				    color:white;
-				    width:100%;
-				    }
-				    .content{
-				    background-color:#FBFCFC;
-				    color:#17202A;
-				    width:100%;
-				    padding-top:15px;
-				    padding-bottom;15px;
-				    text-align:justify;
-				    font-size:14px;
-				    line-height:18px;
-				    font-style:normal;
-				    }
-				    h3{
-				    color: #f26226;}
-				    .footer{
-				    background-color:#f26226;
-				    color:white;
-				    width:100%;
-				    padding-top:9px;
-				    padding-bottom:5px;
-				    }
-				    .logo-responsive{
-				    max-width: 100%;
-				    height: auto !important;
-				    }
-				    @media screen and (min-width: 480px) {
-				        .content{
-				        width:50%;
-				        }
-				        .header{
-				        width:50%;
-				        }
-				        .footer{
-				        width:50%;
-				        }
-				        .logo-responsive{
-				        max-width: 100%;
-				        height: auto !important;
-				        }
-				    }
-				    </style>";
-
-				$message .= "<html><head><title>Gerrtings From Myservent</title></head>
-				<body>
-				        <div class='container header'>
-				            <div class='row'>
-				                <div class='col-lg-2 col-md-2 col-sm-2'>
-				                </div>
-				                <div class='col-lg-8 col-md-8 col-sm-8'>
-				                <center><h2>".$getSiteSettingsData['admin_title']."</h2></center>
-				                </div>
-				                <div class='col-lg-2 col-md-2 col-sm-2'>
-				                </div>
-				            </div>
-				        </div>
-				        <div class='container content'>
-				            Dear<h3>$user_full_name</h3>
-				            <p>Your Registration Successfully Completed. Please sign in.</p></br></br>
-				            <p>Thanking You</p>
-				            <p>My Servant</p>
-				        </div>
-				        <div class='container footer'>
-				            <center>".$getSiteSettingsData['footer_text']."</center>
-				        </div>
-				    </body>
-				</html>";
-
-				//echo $message; die;
-				// Always set content-type when sending HTML email
-				$headers = "MIME-Version: 1.0" . "\r\n";
-				$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-				//To send Mail
-				$mail = sendEmail($to,$subject,$message,$from);
-				// $message = "Dear $user_full_name, Your Registration Successfully Completed. Please sign in.";
-				// $sma = sendMobileSMS($message,$user_mobile);
-
-				$sql = saveUser($user_full_name, $user_email, $user_mobile, $user_password,$created_admin_id,'','','','','','');
-                if ($sql) {
-			       echo "<script type='text/javascript'>window.location='login.php?err=log-success'</script>";
-			    } else {
-			       echo "<script type='text/javascript'>window.location='login.php?err=log-fail'</script>";
-			    }
-
-            } else if(isset($_POST['login']))  { 
+		if(isset($_POST['login']))  { 
 		    //Login here
 		    $user_email = $_POST['login_email'];
 		    $user_password = encryptPassword($_POST['login_password']);
-		    $getLoginData = userLogin($user_email,$user_mobile,$user_password);
+		    $getLoginData = userLogin($user_email,$user_password);
 		    //Set variable for session
 		    if($getLoggedInDetails = $getLoginData->fetch_assoc()) {
 		        $_SESSION['user_login_session_id'] =  $getLoggedInDetails['id'];
