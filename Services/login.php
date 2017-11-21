@@ -27,7 +27,6 @@
 		        $_SESSION['timestamp'] = time();
 		        header('Location: index.php');
 		    } else {
-		    	//echo "<script>alert('invalid username/password.  Please try again');window.location='index.php';</script>";
 		    	header('Location: login.php?err=log-fail');
 		    }
 		}

@@ -111,12 +111,8 @@ $message .= "<html><head><title>Myservent Contactus Form</title></head>
 
 //echo $message; die;
 // Always set content-type when sending HTML email
-//$headers = "MIME-Version: 1.0" . "\r\n";
-//$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-// More headers
-//$headers .= 'From: '.$name_contact.'<'.$email_contact.'>'. "\r\n";
-// $headers .= 'Cc: myboss@example.com' . "\r\n";
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $sendMail = sendEmail($to,$subject,$message,$email_contact);
 if($sendMail) {
 	echo  "<script>alert('Thank You For Your feedback');window.location.href('contactus.php');</script>";
