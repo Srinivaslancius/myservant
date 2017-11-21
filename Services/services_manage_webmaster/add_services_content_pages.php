@@ -24,7 +24,6 @@
             } else {
                echo "<script type='text/javascript'>window.location='services_content_pages.php?msg=fail'</script>";
             }
-            //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
         } else {
             echo "Sorry, there was an error uploading your file.";
         }

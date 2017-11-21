@@ -170,26 +170,5 @@ if (!isset($_POST['submit']))  {
     }
 
   });
-}); 
-function getSubCategory(val) {
-    $.ajax({
-    type: "POST",
-    url: "get_subcategories.php",
-    data:'services_category_id='+val,
-    success: function(data){
-        $("#services_sub_category_id").html(data);
-    }
-    });
-}
-
-function getGroupsData(val) { 
-    $.ajax({
-    type: "POST",
-    url: "get_groups.php",
-    data:'services_sub_category_id='+val,
-    success: function(data){
-        $("#services_group_id").html(data);
-    }
-    });
-}
+});
 </script>
