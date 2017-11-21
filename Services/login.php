@@ -134,7 +134,7 @@
                 	<div id="login">
                     		<div class="text-center"><h2><span>Register</span></h2></div>
                             <hr>
-                           <form method="post" action="mobile_otp.php">
+                           <form autocomplete="off" method="post" action="mobile_otp.php">
                                 <div class="form-group">
                                 	<label>Name</label>
                                     <input type="text" name="user_name" class=" form-control"  placeholder="Name" required>
