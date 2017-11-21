@@ -234,14 +234,14 @@ if($sendMail) {
 					/*echo $getSiteSettingsData; die;*/
 					
 				 ?> 
-				<div class="col-md-4 col-sm-4">
-					<div class="box_style_1">
-						<h3><span>Information</span></h3>
-						 <p><span style="color:#f26226">Adress:</span>&nbsp;&nbsp;<?php echo $getSiteSettingsData['address']; ?></p>
-						  <p><span style="color:#f26226">Mobile:</span>&nbsp;&nbsp;<?php echo $getSiteSettingsData['mobile']; ?></p>
-                        <p><span style="color:#f26226">Email:</span>&nbsp;&nbsp;<?php echo $getSiteSettingsData['email']; ?> </p>
-					</div>
-				</div>
+				 <div class="col-md-4 col-sm-4">
+                    <div class="box_style_1">
+                        <h3><span>Information</span></h3>
+                         <p><span class=" icon-location" style="color:#f26226 ;"></span><?php echo $getSiteSettingsData['address']; ?></p>
+                          <p><span class = "icon-mobile" style="color:#f26226 ;"></span><?php echo $getSiteSettingsData['mobile']; ?></p>
+                        <p><span class=" icon-mail-alt" style="color:#f26226 ;"></span><?php echo $getSiteSettingsData['email']; ?></p>
+                    </div>
+                </div>
 				
 			</div>
 			
