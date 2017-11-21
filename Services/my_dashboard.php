@@ -98,7 +98,7 @@
                                             <p>TOTAL<br>$399.00</p>
                                         </div>
                                         <div class="col-sm-3">
-                                            <p>SHIP TO<br><a href="javascript:void(0);">Swapna</a></p>
+                                            <p>SHIP TO<br><a href="javascript:void(0);">Gunavardhan</a></p>
                                         </div>
                                         <div class="col-sm-4">
                                             <p>ORDER #406-299-789546-108<br><a href="javascript:void(0);">Order details</a> &nbsp; <a href="javascript:void(0);">Invoice</a></p>
@@ -119,7 +119,7 @@
                                         </div>
                                         <div class="col-sm-1"></div>
                                         <div class="col-sm-4">
-                                            <p style="font-size: 30px; font-weight: bold;"><span style="color: gold;">&#9733;&#9733;&#9733;&#9733;</span>&#9734;</p>
+                                            <p style="font-size: 27px; font-weight: bold;"><span style="color: gold;">&#9733;&#9733;&#9733;&#9733;</span>&#9734;</p>
                                         </div>
                                     </div>
                                 </div>
