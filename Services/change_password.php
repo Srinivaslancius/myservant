@@ -113,8 +113,6 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h4><b>Change Password</b></h4>
-                                </div>
-                                <div class="col-sm-12">
                                     <form autocomplete="off" method="POST">
                                         
                                         <div class="form-group has-float-label">
@@ -133,6 +131,9 @@
                                         <input type="submit" value="Submit" name="submit" class="btn btn-primary" style="background-color:#56529c">
                                     </form>
                                 </div>
+                                <!-- <div class="col-sm-12">
+                                    
+                                </div> -->
                             </div>
                         </div>
                     </div>
