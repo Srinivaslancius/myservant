@@ -21,8 +21,10 @@ if (!isset($_POST['submit']))  {
   $working_hours1 = $_POST['working_hours1'];
   $contact_numbers = $_POST['contact_numbers'];
   $email_id = $_POST['email_id'];
-  $specialization = $_POST['specialization'];
-  $specialization1 = $_POST['specialization1'];
+  $sub_category_id = $_POST['sub_category_id'];
+  $specialization_name = $_POST['specialization_name'];
+  $sub_category_id1 = $_POST['sub_category_id1'];
+  $specialization_name1 = $_POST['specialization_name1'];
   $associate_or_not = $_POST['associate_or_not'];
   $experience = $_POST['experience'];
   $lkp_status_id = $_POST['lkp_status_id'];
@@ -43,7 +45,7 @@ if (!isset($_POST['submit']))  {
       $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-          $sql = "INSERT INTO service_provider_business_registration (`service_provider_registration_id`,`service_provider_type_id`, `company_name`,`est_year`, `total_no_of_emp`, `description`, `certification`, `working_hours`, `contact_numbers`, `email_id`, `specialization`, `associate_or_not`,`logo`) VALUES ('$last_id','$service_provider_type_id', '$company_name', '$est_year', '$total_no_of_emp', '$description', '$certification', '$working_hours', '$contact_numbers', '$email_id', '$specialization', '$associate_or_not','$fileToUpload')"; 
+          $sql = "INSERT INTO service_provider_business_registration (`service_provider_registration_id`,`service_provider_type_id`, `company_name`,`est_year`, `total_no_of_emp`, `description`, `certification`, `working_hours`, `contact_numbers`, `email_id`, `sub_category_id`, `specialization_name`, `associate_or_not`,`logo`) VALUES ('$last_id','$service_provider_type_id', '$company_name', '$est_year', '$total_no_of_emp', '$description', '$certification', '$working_hours', '$contact_numbers', '$email_id','$sub_category_id', '$specialization_name', '$associate_or_not','$fileToUpload')"; 
           $res = $conn->query($sql);
       }
     }
@@ -56,7 +58,7 @@ if (!isset($_POST['submit']))  {
       $imageFileType = pathinfo($target_file1,PATHINFO_EXTENSION);
 
       if (move_uploaded_file($_FILES["fileToUpload1"]["tmp_name"], $target_file1)) {
-          $sql1 = "INSERT INTO service_provider_personal_registration (`service_provider_registration_id`,`service_provider_type_id`, `experience`,`image`, `working_hours`, `specialization`) VALUES ('$last_id','$service_provider_type_id', '$experience', '$fileToUpload1', '$working_hours1', '$specialization1')"; 
+          $sql1 = "INSERT INTO service_provider_personal_registration (`service_provider_registration_id`,`service_provider_type_id`, `experience`,`image`, `working_hours`, `sub_category_id`, `specialization_name`) VALUES ('$last_id','$service_provider_type_id', '$experience', '$fileToUpload1', '$working_hours1','$sub_category_id1', '$specialization_name1')"; 
           $res = $conn->query($sql1);
       }
     }
@@ -176,9 +178,22 @@ if (!isset($_POST['submit']))  {
                     <div class="help-block with-errors"></div>
                   </div>
 
+                  <?php $getSubCategories = getAllDataWithStatus('services_sub_category','0');?>
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">Specialization</label>
-                    <input type="text" name="specialization" class="form-control service_provider_business" id="form-control-2" placeholder="Specialization" data-error="Please enter Specialization">
+                    <label for="form-control-3" class="control-label">Choose your Specialization</label>
+                    <select name="sub_category_id" class="custom-select" id="sub_category_id1" data-error="This field is required.">
+                      <option value="">Select Specialization</option>
+                      <?php while($row = $getSubCategories->fetch_assoc()) {  ?>
+                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['sub_category_name']; ?></option>
+                      <?php } ?>
+                      <option value="0">Others</option>
+                   </select>
+                    <div class="help-block with-errors"></div>
+                  </div>
+
+                  <div class="form-group" id="specialization_name1">
+                    <label for="form-control-2" class="control-label">Specialization Name</label>
+                    <input type="text" name="specialization_name" class="form-control" id="form-control-2" placeholder="Specialization" data-error="Please enter Specialization">
                     <div class="help-block with-errors"></div>
                   </div>
 
@@ -200,9 +215,22 @@ if (!isset($_POST['submit']))  {
                     <div class="help-block with-errors"></div>
                   </div>
 
+                  <?php $getSubCategories = getAllDataWithStatus('services_sub_category','0');?>
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">Specialization</label>
-                    <input type="text" name="specialization1" class="form-control service_provider_personal" id="form-control-2" placeholder="Specialization" data-error="Please enter Specialization" >
+                    <label for="form-control-3" class="control-label">Choose your Specialization</label>
+                    <select name="sub_category_id1" class="custom-select" id="sub_category_id" data-error="This field is required.">
+                      <option value="">Select Specialization</option>
+                      <?php while($row = $getSubCategories->fetch_assoc()) {  ?>
+                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['sub_category_name']; ?></option>
+                      <?php } ?>
+                      <option value="0">Others</option>
+                   </select>
+                    <div class="help-block with-errors"></div>
+                  </div>
+
+                  <div class="form-group" id="specialization_name">
+                    <label for="form-control-2" class="control-label">Specialization Name</label>
+                    <input type="text" name="specialization_name1" class="form-control" id="form-control-2" placeholder="Specialization" data-error="Please enter Specialization">
                     <div class="help-block with-errors"></div>
                   </div>
 
@@ -214,7 +242,7 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-4" class="control-label">image</label>
-                    <img id="output" height="100" width="100"/>
+                    <img id="output1" height="100" width="100"/>
                     <label class="btn btn-default file-upload-btn">
                       Choose file...
                         <input id="form-control-22" class="file-upload-input service_provider_personal" type="file" accept="image/*" name="fileToUpload1" id="fileToUpload1"  onchange="loadFile(event)"  multiple="multiple" >
@@ -225,7 +253,7 @@ if (!isset($_POST['submit']))  {
                   <?php $getStatus = getAllData('lkp_status');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your status</label>
-                    <select id="form-control-3" name="lkp_status_id" class="custom-select" data-error="This field is required." required>
+                    <select id="form-control-3" name="lkp_status_id" class="custom-select" data-error="This field is required.">
                       <option value="">Select Status</option>
                       <?php while($row = $getStatus->fetch_assoc()) {  ?>
                           <option value="<?php echo $row['id']; ?>"><?php echo $row['status']; ?></option>
@@ -247,7 +275,7 @@ if (!isset($_POST['submit']))  {
 <!-- Script for Service Probiders -->
 <script type="text/javascript">
   $(document).ready(function () { 
-    $('#service_provider_business_type, #service_provider_personal_type').hide();
+    $('#service_provider_business_type, #service_provider_personal_type,#specialization_name').hide();
     $('.service_provider_type_id').change(function() {
 
       if($(this).val() == 1) {
@@ -259,6 +287,22 @@ if (!isset($_POST['submit']))  {
         $('.service_provider_personal').val("");
         $('#service_provider_personal_type').show();
       }  
+    });
+    $('#sub_category_id').change(function() {
+
+      if($(this).val() == 0) {
+        $('#specialization_name').show();
+      } else{
+        $('#specialization_name').hide();
+      }
+    });
+    $('#sub_category_id1').change(function() {
+
+      if($(this).val() == 0) {
+        $('#specialization_name1').show();
+      } else{
+        $('#specialization_name1').hide();
+      }
     });
   });  
 </script>
