@@ -230,7 +230,7 @@
 	            user_mobile:user_mobile,
 	          },
 	          success: function (result) {
-	            if (result == 0){
+	            if (result > 0){
 	            	$("#input_status1").html("<span style='color:red;'>Mobile Already Exist</span>");
 	        		$('#user_mobile').val('');
 	            }       
@@ -248,7 +248,7 @@
 	            user_email:user_email,
 	          },
 	          success: function (result) {
-	            if (result == 0){
+	            if (result > 0){
 	            	$("#input_status").html("<span style='color:red;'>Email Already Exist</span>");
 	        		$('#user_email').val('');
 	            }       
