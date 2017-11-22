@@ -97,6 +97,14 @@
         return $result;
     }
 
+    function getIndividualDetails($table,$clause,$id)  {
+        global $conn;
+        $sql="select * from `$table` where `$clause` = '$id' ";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();        
+        return $row;
+    }
+
     function getAllDataWhere($table,$clause,$value)  {
         global $conn;
         $sql="select * from `$table` WHERE `$clause` = '$value' ";
