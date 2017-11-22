@@ -164,16 +164,29 @@
         return $noRows;
     }
 
-    /* encrypt and decrypt password */
-     function encryptPassword($pwd) {
+    /* encrypt and decrypt password for login*/
+     function encryptPassword1($pwd) {
         $key = "123";
         $admin_pwd = bin2hex(openssl_encrypt($pwd,'AES-128-CBC', $key));
         return $admin_pwd;
     }
 
-    function decryptPassword($admin_password) {
+    function decryptPassword1($admin_password) {
         $key = "123";
         $admin_pwd = openssl_decrypt(hex2bin($admin_password),'AES-128-CBC',$key);
+        return $admin_pwd;
+    }
+
+    /* encrypt and decrypt password */
+     function encryptPassword($pwd) {
+        $key = "123";
+        $admin_pwd = openssl_encrypt($pwd,'AES-128-CBC', $key);
+        return $admin_pwd;
+    }
+
+    function decryptPassword($admin_password) {
+        $key = "123";
+        $admin_pwd = openssl_decrypt($admin_password,'AES-128-CBC',$key);
         return $admin_pwd;
     }
 
