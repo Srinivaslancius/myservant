@@ -84,7 +84,7 @@
 					<div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
 					</div>
 					<div class="img_container padd15">
-						<a href="list.php?key=<?php echo encryptPassword($id); ?>&subcatid=<?php echo $getAllSubCategoriesData1['id'];; ?>">
+						<a href="list.php?key1=<?php echo encryptPassword($id); ?>&key2=<?php echo encryptPassword($getAllSubCategoriesData1['id']); ?>">
 	                        <img src="<?php echo $base_url . 'uploads/services_sub_category_images/'.$getAllSubCategoriesData1['sub_category_image'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getAllSubCategoriesData1['sub_category_name']; ?>">
 							</div>
 							<div class="tour_title">
@@ -106,7 +106,7 @@
 						<div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
 						</div>
 						<div class="img_container padd15">
-                        <a href="list.php?key=<?php echo encryptPassword($cat_id); ?>&subcatid=<?php echo $getAllSubCategoriesData['id']; ?>">
+                        <a href="list.php?key1=<?php echo encryptPassword($cat_id); ?>&key2=<?php echo encryptPassword($getAllSubCategoriesData['id']); ?>">
                         <img src="<?php echo $base_url . 'uploads/services_sub_category_images/'.$getAllSubCategoriesData['sub_category_image'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getAllSubCategoriesData['sub_category_name']; ?>">
 						</div>
 						<div class="tour_title">

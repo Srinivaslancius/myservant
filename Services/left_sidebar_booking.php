@@ -2,84 +2,63 @@
 					
 					<div class="box_style_1 expose">
 						<h3 class="inner">- Booking -</h3>
-						<!--<div class="row">
-							<div class="col-md-6 col-sm-6">
-								<div class="form-group">
-									<label><i class="icon-calendar-7"></i> Select a date</label>
-									<input class="date-pick form-control" data-date-format="M d, D" type="text">
-								</div>
-							</div>
-							<div class="col-md-6 col-sm-6">
-								<div class="form-group">
-									<label><i class=" icon-clock"></i> Time</label>
-									<input class="time-pick form-control" value="12:00 AM" type="text">
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6 col-sm-6">
-								<div class="form-group">
-									<label>Adults</label>
-									<div class="numbers-row">
-										<input type="text" value="1" id="adults" class="qty2 form-control" name="quantity">
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 col-sm-6">
-								<div class="form-group">
-									<label>Children</label>
-									<div class="numbers-row">
-										<input type="text" value="0" id="children" class="qty2 form-control" name="quantity">
-									</div>
-								</div>
-							</div>
-						</div>
-						<br>-->
+
+                        <?php
+                            if($_SESSION['CART_TEMP_RANDOM'] == "") {
+                                $_SESSION['CART_TEMP_RANDOM'] = rand(10, 10).sha1(crypt(time())).time();
+                            }
+                            $session_cart_id = $_SESSION['CART_TEMP_RANDOM'];
+                            if(isset($_SESSION['user_login_session_id']) && $_SESSION['user_login_session_id']!='') {
+                                $user_session_id = $_SESSION['user_login_session_id'];
+                                $cartItems = getAllDataWhere('services_cart','user_id',$user_session_id);
+                            } else {                                       
+                                $cartItems = getAllDataWhere('services_cart','session_cart_id',$session_cart_id);
+                            } 
+                        ?>
+                        <?php if($cartItems->num_rows > 0) { ?>
+						
 						<table class="table table_summary">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Particular</th>
-                                                            <th>Price</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-							<tbody>
-                                                            <tr>
-                                                                <td>1 BHK</td>
-                                                                <td>Rs. 3499/-</td>
-                                                                <td><a href="#"><i class="icon-minus-circled"></i></a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1 Washroom</td>
-                                                                <td>Rs. 3499/-</td>
-                                                                <td><a href="#"><i class="icon-minus-circled"></i></a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Kitchen Deep Clening</td>
-                                                                <td>Rs. 3499/-</td>
-                                                                <td><a href="#"><i class="icon-minus-circled"></i></a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Kitchen Sanitization</td>
-                                                                <td>Rs. 3499/-</td>
-                                                                <td><a href="#"><i class="icon-minus-circled"></i></a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Glass Cleaning</td>
-                                                                <td>Rs. 3499/-</td>
-                                                                <td><a href="#"><i class="icon-minus-circled"></i></a></td>
-                                                            </tr>
-                                                            
-							</tbody>
-                                                        <tfoot>
-                                                            <tr>
-                                                                <th>Total Amount</th>
-                                                                <th  colspan="2">Rs. 12000/-</th>
-                                                            </tr>
-                                                        </tfoot>
+                            <thead>
+                                <tr>
+                                    <th>Particular</th>
+                                    <th>Price</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+							<tbody> 
+                                    <?php                                     
+                                    $cartTotal = 0;  
+                                    while ($getCartItems = $cartItems->fetch_assoc()) { 
+                                    ?>
+                                    <tr>
+                                        <?php $getSerName= getIndividualDetails('services_group_service_names','id',$getCartItems['service_id']); ?>
+                                        <td><?php echo $getSerName['group_service_name']; ?></td>
+                                        <?php if($getSerName['service_price_type_id'] == 1) {
+                                             $cartTotal += $getSerName['service_price'];
+                                         ?>
+                                            <td><?php echo $getSerName['service_price']; ?></td>
+                                        <?php } elseif($getSerName['price_after_visit_type_id'] == 1) { ?>
+                                            <td><?php echo "Price After our Visit"; ?></td>
+                                        <?php } else { ?>
+                                            <td><?php echo $getSerName['service_min_price']; ?> - <?php echo $getSerName['service_max_price']; ?></td>
+                                        <?php } ?>
+                                        <td><a href="#"><i class="icon-minus-circled"></i></a></td>
+                                    </tr>
+                                    <?php } ?>                               
+                                                                       
+								</tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Total Amount</th>
+                                        <th  colspan="2">Rs. <?php echo $cartTotal; ?>/-</th>
+                                    </tr>
+                                </tfoot>
 						</table>
-                                                <a class="btn_full" href="cart.php">Book now</a>
+                        <a class="btn_full" href="cart.php">Book now</a>
 						<a class="btn_full_outline" href="index.php">Continue</a>
+                        <?php } else { ?>
+                            <p style="text-align:center; color:#e04f67">No Services In Your Cart</p>
+                        <?php } ?>
 					</div>
 					<!--/box_style_1 -->
 

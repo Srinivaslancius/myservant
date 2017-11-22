@@ -86,9 +86,22 @@
 			</div>
 		</div>
 		<!-- End Position -->
+<?php
+    if($_SESSION['CART_TEMP_RANDOM'] == "") {
+        $_SESSION['CART_TEMP_RANDOM'] = rand(10, 10).sha1(crypt(time())).time();
+    }
+    $session_cart_id = $_SESSION['CART_TEMP_RANDOM'];
+    if(isset($_SESSION['user_login_session_id']) && $_SESSION['user_login_session_id']!='') {
+        $user_session_id = $_SESSION['user_login_session_id'];
+        $cartItems = getAllDataWhere('services_cart','user_id',$user_session_id);
+    } else {                                       
+        $cartItems = getAllDataWhere('services_cart','session_cart_id',$session_cart_id);
+    } 
+?>
 
 		<div class="container margin_60">
 			<div class="cart-section">
+				 <?php if($cartItems->num_rows > 0) { ?>
 				<table class="table table-striped cart-list shopping-cart">
 					<thead>
 						<tr>
@@ -101,38 +114,51 @@
 							<th>
 								Date
 							</th>
-                                                        <th>
-                                                            Time
-                                                        </th>
-                                                        <th>
+                            <th>
+                                Time
+                            </th>
+                            <!-- <th>
 								Quantity
-							</th>
+							</th> 
                                                         
 							<th>
 								Total
-							</th>
+							</th> -->
 							<th>
 								Remove
 							</th>
 						</tr>
 					</thead>
 					<tbody>
+						<?php $cartTotal = 0;  
+                              while ($getCartItems = $cartItems->fetch_assoc()) { 
+                              
+                        ?>
 						<tr>
-                                                    <td>1 BHK</td>
-                                                    <td>Rs. 3499/-</td>
-                                                    <td><input class="date-pick form-control" data-date-format="M d, D" type="text"></td>
-                                                    <td><input class="time-pick form-control" value="12:00 AM" type="text"></td>
-                                                    <td>
-                                                        <div class="numbers-row">
-                                                            <input type="text" value="1" id="quantity_2" class="qty2 form-control" name="quantity_2">
-                                                        </div>
-                                                    </td>
-                                                    <td>Rs. 3499/-</td>
+						<?php $getSerName= getIndividualDetails('services_group_service_names','id',$getCartItems['service_id']); ?>
+                        <td><?php echo $getSerName['group_service_name']; ?></td>
+                        <?php if($getSerName['service_price_type_id'] == 1) {
+                             $cartTotal += $getSerName['service_price'];
+                         ?>
+                            <td><?php echo $getSerName['service_price']; ?></td>
+                        <?php } elseif($getSerName['price_after_visit_type_id'] == 1) { ?>
+                            <td><?php echo "Price After our Visit"; ?></td>
+                        <?php } else { ?>
+                            <td><?php echo $getSerName['service_min_price']; ?> - <?php echo $getSerName['service_max_price']; ?></td>
+                        <?php } ?>
+                        <td><input class="date-pick form-control" data-date-format="M d, D" type="text"></td>
+                        <td><input class="time-pick form-control" value="12:00 AM" type="text"></td>
+                        <!-- <td>
+                            <div class="numbers-row">
+                                <input type="text" value="1" id="quantity_2" class="qty2 form-control" name="quantity_2">
+                            </div>
+                        </td> 
+                        <td>Rs. 3499/-</td>-->
 							<td class="options">
 								<a href="#"><i class=" icon-trash"></i></a>
 							</td>
 						</tr>
-						
+						<?php } ?>
 					</tbody>
 				</table>
 
@@ -154,16 +180,20 @@
 				<div class="row">
 					<div class="column pull-right col-md-4 col-sm-6 col-xs-12">
 						<ul class="totals-table">
-							<li class="clearfix"><span class="col">Sub Total</span><span class="col">Rs. 3499.00</span>
+							<li class="clearfix"><span class="col">Sub Total</span><span class="col">Rs. <?php echo $cartTotal; ?></span>
 							</li>
-							<li class="clearfix total"><span class="col">Order Total</span><span class="col">Rs. 3499/-</span>
+							<li class="clearfix total"><span class="col">Order Total</span><span class="col">Rs. <?php echo $cartTotal; ?>/-</span>
 							</li>
 						</ul>
-                                            <a href="checkout.php" class="btn_full">Proceed to Checkout <i class="icon-left"></i></a>
+                        <a href="checkout.php" class="btn_full">Proceed to Checkout <i class="icon-left"></i></a>
 					</div>
 				</div>
-			</div>
+				<?php }  else { ?>
+        			<p style="text-align:center; color:#e04f67">No Services In Your Cart</p>
+        		<?php } ?>
+			</div>			
 		</div>
+		
 		<!-- End Container -->
 	</main>
 	<!-- End main -->

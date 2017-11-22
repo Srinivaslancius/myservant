@@ -62,27 +62,13 @@
 
 	<section class="parallax-window" data-parallax="scroll" data-image-src="img/home_bg_1.jpg" data-natural-width="1400" data-natural-height="470">
 		<div class="parallax-content-1">
-			<div class="animated fadeInDown">
-				<h1>Sample Heading</h1>
-				<p>Sample text will be replaced with original text</p>
+			<div class="animated fadeInDown">	
 			</div>
 		</div>
 	</section>
 	<!-- End section -->
 
 	<main>
-		<div id="position">
-			<div class="container">
-				<ul>
-					<li><a href="#">Home</a>
-					</li>
-					<li><a href="#">Category</a>
-					</li>
-					<li>Page active</li>
-				</ul>
-			</div>
-		</div>
-		<!-- Position -->
 
 		<div class="container margin_60">
 			<div class="row">
@@ -92,16 +78,18 @@
 					<h3 class="nomargin_top">Group Level</h3>
 
 					<div class="panel-group" id="payment">
-						<?php $catid = decryptPassword($_GET['key']); $subcatid = $_GET['subcatid']; 
+						<?php $catid = decryptPassword($_GET['key1']); $subcatid = decryptPassword($_GET['key2']); 
 						$getGroups = getAllDataWhereWithTWoConditions('services_groups','services_category_id',$catid,'services_sub_category_id',$subcatid); while ($getGroupsData = $getGroups->fetch_assoc()) { ?>
-						<div class="panel panel-default">
+						<?php $services_group_id = $getGroupsData['id'];
+							$getServiceNames = getAllDataWhereWithThreeConditions('services_group_service_names','services_category_id',$catid,'services_sub_category_id',$subcatid,'services_group_id',$services_group_id); 
+							if($getServiceNames->num_rows > 0) { ?>
+						<div class="panel panel-default" id="divId<?php echo $services_group_id; ?>">
 							<div class="panel-heading">
 								<h4 class="panel-title">
                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#payment" href="#collapse_payment<?php echo $getGroupsData['id'];?>"><?php echo $getGroupsData['group_name'];?><i class="indicator pull-right <?php if($getGroupsData['id']==1) { echo "icon-minus"; } else { echo "icon-plus";  } ?>"></i></a>
                       </h4>
 							</div>
-							<?php $services_group_id = $getGroupsData['id'];
-							$getServiceNames = getAllDataWhereWithThreeConditions('services_group_service_names','services_category_id',$catid,'services_sub_category_id',$subcatid,'services_group_id',$services_group_id); ?>
+							
 							<div id="collapse_payment<?php echo $getGroupsData['id'];?>" class="panel-collapse collapse  <?php if($getGroupsData['id']==1) { echo "in"; } ?>">
 								<div class="panel-body">
                                     <table class="table table-striped cart-list shopping-cart">
@@ -112,20 +100,45 @@
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
+                                        <form name="services_cart" method="post">  
                                         <tbody>
+
+                                        	<input type="hidden" name="services_cat_id" value="<?php echo $_GET['key']; ?>">
+                                    		<input type="hidden" name="services_sub_cat_id" value="<?php echo $subcatid; ?>">
+                                    		<input type="hidden" name="services_group_id" value="<?php echo $getGroupsData['id']; ?>">
+
                                         	<?php while ($getServiceNamesData = $getServiceNames->fetch_assoc()) { ?>
-                                            <tr>
-                                                <td><?php echo $getServiceNamesData['group_service_name'];?></td>
-                                                <td><?php if($getServiceNamesData['service_price_type_id'] == 1) { echo $getServiceNamesData['service_price']; } elseif($getServiceNamesData['price_after_visit_type_id'] == 1) { echo "Price After our Visit"; } else { echo $getServiceNamesData['service_min_price'].'-'.$getServiceNamesData['service_max_price']; } ?></td>
-                                                <td><a href="" class="btn_full_outline wdth50">Add to Cart</a></td>
-                                            </tr>
+                                        	          		
+                                        		<input type="hidden" name="services_service_id" value="<?php echo $getServiceNamesData['id']; ?>">
+
+                                        		<?php 
+                                        		if($getServiceNamesData['service_price_type_id'] == 1) {
+													$servicePrice = $getServiceNamesData['service_price'];
+                                        		} elseif($getServiceNamesData['price_after_visit_type_id'] == 1) {
+                                        			$servicePrice = "Price After our Visit";
+                                        		} else {
+                                        			$servicePrice = $getServiceNamesData['service_min_price'].'-'.$getServiceNamesData['service_max_price']; 
+                                        		}
+
+                                        		?>
+                                        		<input type="hidden" name="service_price" value="<?php echo $servicePrice; ?>">
+                                        		<input type="hidden" name="service_price_type_id" value="<?php echo $getServiceNamesData['service_price_type_id']; ?>">
+
+	                                            <tr>
+	                                                <td><?php echo $getServiceNamesData['group_service_name'];?></td>
+	                                                <td><?php echo $servicePrice; ?></td>
+	                                                <td><a class="btn_full_outline wdth50 check_cart" data-cat-id=<?php echo $_GET['key']; ?> data-sub-cat-id=<?php echo $subcatid; ?> data-group-id=<?php echo $getGroupsData['id']; ?> data-service-id=<?php echo $getServiceNamesData['id']; ?> data-price-type-id=<?php echo $getServiceNamesData['service_price_type_id']; ?> data-services-price=<?php echo $servicePrice; ?>>Add to Cart</a> </td>
+	                                            </tr>                                            
                                             <?php } ?>
                                         </tbody>
+                                        </form>
                                     </table>
 								</div>
 							</div>                         
 						</div>
-						<?php } ?> 
+						<?php } else { ?>
+						<script type="text/javascript">document.getElementById('divId<?php echo $services_group_id; ?>').style.display = 'none';</script> 
+						<?php } } ?>
 					</div>
 					<!-- End panel-group -->
 
@@ -164,6 +177,41 @@
 	<script src="/cdn-cgi/scripts/84a23a00/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
 	<script src="js/common_scripts_min.js"></script>
 	<script src="js/functions.js"></script>	
+
+	<!-- Cart items add services script with custom alerts -->
+	<script type="text/javascript" src="js/modernAlert.min.js"></script>	
+
+	<script type="text/javascript">
+	$('.check_cart').on('click', function () {
+		var catId = $(this).data("cat-id");
+		var subCatId = $(this).data("sub-cat-id");
+		var groupId = $(this).data("group-id");
+		var serviceId = $(this).data("service-id");
+		var priceTypeId = $(this).data("price-type-id");
+		var servicesPrice = $(this).data("services-price");
+
+		  $.ajax({
+		    type:"post",
+		    url:"save_cart.php",
+		    //data:$("form").serialize(),
+		    data: {
+	            services_cat_id:catId,services_sub_cat_id:subCatId,services_group_id:groupId,service_price:servicesPrice,services_service_id:serviceId,service_price_type_id:priceTypeId,
+	        },
+		    success:function(result){
+		    	//Custom alert 
+		    	modernAlert();
+		    	if(result == 0){
+		    		alert('Your service add successfully');
+		    		location.reload();
+		    	} else {	    		
+		    		alert('Same service alert exists in cart! Please select another service');
+		    		return false;
+		    	}
+		    }
+		  }); 
+	});
+	</script>
+
 
 </body>
 

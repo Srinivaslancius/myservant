@@ -17,7 +17,6 @@
 		    if($getUserForgotData == 1) {
 		        echo  "<script>alert('Password Sent To Your Email,Please Check.');window.location.href('login.php');</script>";
 		    } else {
-		    	//echo "<script>alert('invalid username/password.  Please try again');window.location='index.php';</script>";
 		    	echo "<script>alert('Your Entered Email Not Found');</script>";
 		    }
 		}

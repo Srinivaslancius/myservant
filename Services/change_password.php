@@ -131,9 +131,6 @@
                                         <input type="submit" value="Submit" name="submit" class="btn btn-primary" style="background-color:#56529c">
                                     </form>
                                 </div>
-                                <!-- <div class="col-sm-12">
-                                    
-                                </div> -->
                             </div>
                         </div>
                     </div>

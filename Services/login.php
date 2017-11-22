@@ -13,7 +13,7 @@
 		if(isset($_POST['login']))  { 
 		    //Login here
 		    $user_email = $_POST['login_email'];
-		    $user_password = encryptPassword($_POST['login_password']);
+		    $user_password = encryptPassword1($_POST['login_password']);
 		    $getLoginData = userLogin($user_email,$user_password);
 		    //Set variable for session
 		    if($getLoggedInDetails = $getLoginData->fetch_assoc()) {
@@ -27,7 +27,6 @@
 		        $_SESSION['timestamp'] = time();
 		        header('Location: index.php');
 		    } else {
-		    	//echo "<script>alert('invalid username/password.  Please try again');window.location='index.php';</script>";
 		    	header('Location: login.php?err=log-fail');
 		    }
 		}
@@ -134,7 +133,7 @@
                 	<div id="login">
                     		<div class="text-center"><h2><span>Register</span></h2></div>
                             <hr>
-                           <form method="post" action="mobile_otp.php">
+                           <form autocomplete="off" method="post" action="mobile_otp.php">
                                 <div class="form-group">
                                 	<label>Name</label>
                                     <input type="text" name="user_name" class=" form-control"  placeholder="Name" required>
@@ -230,7 +229,7 @@
 	            user_mobile:user_mobile,
 	          },
 	          success: function (result) {
-	            if (result == 0){
+	            if (result > 0){
 	            	$("#input_status1").html("<span style='color:red;'>Mobile Already Exist</span>");
 	        		$('#user_mobile').val('');
 	            }       
@@ -248,7 +247,7 @@
 	            user_email:user_email,
 	          },
 	          success: function (result) {
-	            if (result == 0){
+	            if (result > 0){
 	            	$("#input_status").html("<span style='color:red;'>Email Already Exist</span>");
 	        		$('#user_email').val('');
 	            }       
