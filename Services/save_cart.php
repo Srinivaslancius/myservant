@@ -17,7 +17,7 @@ $services_service_id = $_POST['services_service_id'];
 $service_price_type_id = $_POST['service_price_type_id'];
 $created_at = date("Y-m-d h:i:s");
 
-$checkCartItems = "SELECT * FROM services_cart WHERE category_id ='$category_id' AND sub_cat_id='$sub_cat_id' AND group_id = '$group_id' AND  service_id='$services_service_id' ";
+$checkCartItems = "SELECT * FROM services_cart WHERE category_id ='$category_id' AND sub_cat_id='$sub_cat_id' AND group_id = '$group_id' AND  service_id='$services_service_id' AND session_cart_id ='$session_cart_id' ";
 $getCartCount = $conn->query($checkCartItems);
 $getTotalCount = $getCartCount->num_rows;
 if($getTotalCount > 0) {

@@ -202,7 +202,8 @@
 		    	modernAlert();
 		    	if(result == 0){
 		    		alert('Your service add successfully');
-		    	} else {		    		
+		    		location.reload();
+		    	} else {	    		
 		    		alert('Same service alert exists in cart! Please select another service');
 		    		return false;
 		    	}
