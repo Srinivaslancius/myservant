@@ -22,7 +22,6 @@ if (!isset($_POST['submit']))  {
         } else {
            echo "<script type='text/javascript'>window.location='services_brand_logos.php?msg=fail'</script>";
         }
-        //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

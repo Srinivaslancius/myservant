@@ -28,6 +28,16 @@ div.bhoechie-tab-container {
          div.bhoechie-tab-menu .list-group-item.sub p {
              margin-left: 32px;
          }
+         @media only screen and (max-width: 480px) {
+             .bhoechie-tab-menu .list-group-item.sub p {
+             text-align:center !important;
+             font-size:11px !important;
+              margin-left: 0px !important;
+            }
+            h5{
+             font-size:11px !important;
+            }
+        }
          div.bhoechie-tab-menu .list-group-item .fa {
              margin-right: 20px;
          }

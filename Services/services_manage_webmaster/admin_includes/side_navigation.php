@@ -117,8 +117,8 @@
                 <span class="menu-text">Testimonials</span>
               </a>
             </li>
-            <li  class="<?php if($page_name == 'services_newletter.php' ) { echo "active"; } ?>">
-              <a href="services_newletter.php" aria-haspopup="true">
+            <li  class="<?php if($page_name == 'services_newsletter.php' ) { echo "active"; } ?>">
+              <a href="services_newsletter.php" aria-haspopup="true">
                 <span class="menu-icon">
                    <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
                 </span>

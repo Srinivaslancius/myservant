@@ -104,15 +104,3 @@ if (!isset($_POST['submit']))  {
       </div>
   
 <?php include_once 'admin_includes/footer.php'; ?>
-<script type="text/javascript">
-  function getSubCategory(val) {
-    $.ajax({
-    type: "POST",
-    url: "get_subcategories.php",
-    data:'services_category_id='+val,
-    success: function(data){
-        $("#services_sub_category_id").html(data);
-    }
-    });
-  }
-</script>

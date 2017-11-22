@@ -62,27 +62,13 @@
 
 	<section class="parallax-window" data-parallax="scroll" data-image-src="img/home_bg_1.jpg" data-natural-width="1400" data-natural-height="470">
 		<div class="parallax-content-1">
-			<div class="animated fadeInDown">
-				<h1>Sample Heading</h1>
-				<p>Sample text will be replaced with original text</p>
+			<div class="animated fadeInDown">	
 			</div>
 		</div>
 	</section>
 	<!-- End section -->
 
 	<main>
-		<div id="position">
-			<div class="container">
-				<ul>
-					<li><a href="#">Home</a>
-					</li>
-					<li><a href="#">Category</a>
-					</li>
-					<li>Page active</li>
-				</ul>
-			</div>
-		</div>
-		<!-- Position -->
 
 		<div class="container margin_60">
 			<div class="row">
@@ -94,14 +80,16 @@
 					<div class="panel-group" id="payment">
 						<?php $catid = decryptPassword($_GET['key']); $subcatid = $_GET['subcatid']; 
 						$getGroups = getAllDataWhereWithTWoConditions('services_groups','services_category_id',$catid,'services_sub_category_id',$subcatid); while ($getGroupsData = $getGroups->fetch_assoc()) { ?>
-						<div class="panel panel-default">
+						<?php $services_group_id = $getGroupsData['id'];
+							$getServiceNames = getAllDataWhereWithThreeConditions('services_group_service_names','services_category_id',$catid,'services_sub_category_id',$subcatid,'services_group_id',$services_group_id); 
+							if($getServiceNames->num_rows > 0) { ?>
+						<div class="panel panel-default" id="divId<?php echo $services_group_id; ?>">
 							<div class="panel-heading">
 								<h4 class="panel-title">
                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#payment" href="#collapse_payment<?php echo $getGroupsData['id'];?>"><?php echo $getGroupsData['group_name'];?><i class="indicator pull-right <?php if($getGroupsData['id']==1) { echo "icon-minus"; } else { echo "icon-plus";  } ?>"></i></a>
                       </h4>
 							</div>
-							<?php $services_group_id = $getGroupsData['id'];
-							$getServiceNames = getAllDataWhereWithThreeConditions('services_group_service_names','services_category_id',$catid,'services_sub_category_id',$subcatid,'services_group_id',$services_group_id); ?>
+							
 							<div id="collapse_payment<?php echo $getGroupsData['id'];?>" class="panel-collapse collapse  <?php if($getGroupsData['id']==1) { echo "in"; } ?>">
 								<div class="panel-body">
                                     <table class="table table-striped cart-list shopping-cart">
@@ -148,7 +136,9 @@
 								</div>
 							</div>                         
 						</div>
-						<?php } ?> 
+						<?php } else { ?>
+						<script type="text/javascript">document.getElementById('divId<?php echo $services_group_id; ?>').style.display = 'none';</script> 
+						<?php } } ?>
 					</div>
 					<!-- End panel-group -->
 
