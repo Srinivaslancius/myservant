@@ -13,7 +13,7 @@
 		if(isset($_POST['login']))  { 
 		    //Login here
 		    $user_email = $_POST['login_email'];
-		    $user_password = encryptPassword($_POST['login_password']);
+		    $user_password = encryptPassword1($_POST['login_password']);
 		    $getLoginData = userLogin($user_email,$user_password);
 		    //Set variable for session
 		    if($getLoggedInDetails = $getLoginData->fetch_assoc()) {
