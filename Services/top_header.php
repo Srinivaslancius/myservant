@@ -6,7 +6,7 @@
 					<div class="col-md-3 col-sm-3 col-xs-3">
 					<ul id="top_links">
 
-					 <li><span class="icon-location" data-toggle="popover" data-placement="bottom" data-content="TOP SEARCHED: <br> Vijayawda, Hyderabad, Karimnagar, Chennai, Warangal, Pune, Bangalore" style="cursor:pointer">Vijayawda</span></li>
+					 <li><span class="icon-location" data-toggle="popover" data-placement="bottom" data-content="TOP SEARCHED: <br> Vijayawada, Hyderabad, Karimnagar, Chennai, Warangal, Pune, Bangalore" style="cursor:pointer">Vijayawada</span></li>
 
 					 <li><form>
 					 <select class="language" style="cursor:pointer">

@@ -136,8 +136,12 @@
                         <?php } else { ?>
                             <td><?php echo $getSerName['service_min_price']; ?> - <?php echo $getSerName['service_max_price']; ?></td>
                         <?php } ?>
-                        <td><input class="date-pick form-control" type="text" name="service_visit_date[]" value="<?php echo $getCartItems['service_selected_date'] ?>"></td>
-                        <td><input class="time-pick form-control" type="text" name="service_visit_time[]" value="<?php echo $getCartItems['service_visit_time'] ?>"></td>
+                        <?php $service_selected_date = $getCartItems['service_selected_date'];
+                        $service_selected_date1 = date('d/m/Y', strtotime($service_selected_date));?>
+                        <?php $service_visit_time = $getCartItems['service_selected_time'];
+                        $service_visit_time1 = date('H:i', strtotime($service_visit_time));?>
+                        <td><input class="date-pick form-control" type="text" name="service_visit_date[]" value="<?php echo $service_selected_date1; ?>"></td>
+                        <td><input class="time-pick form-control" type="text" name="service_visit_time[]" value="<?php echo $service_visit_time1; ?>"></td>
                         <!-- <td>
                             <div class="numbers-row">
                                 <input type="text" value="1" id="quantity_2" class="qty2 form-control" name="quantity_2">
