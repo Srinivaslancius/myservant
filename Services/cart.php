@@ -66,7 +66,6 @@
 	<section class="parallax-window" data-parallax="scroll" data-image-src="img/home_bg_1.jpg" data-natural-width="1400" data-natural-height="470">
 		<div class="parallax-content-1">
 			<div class="animated fadeInDown">
-				<h1>Shopping cart</h1>
 				<p></p>
 			</div>
 		</div>
@@ -193,7 +192,7 @@
 	</main>
 	<!-- End main -->
 
-	<footer class="revealed">
+	<footer>
             <?php include_once 'footer.php';?>
         </footer><!-- End footer -->
 
