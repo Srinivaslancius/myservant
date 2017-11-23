@@ -76,7 +76,7 @@
 			</div>
 			<?php if (isset($_POST['search'])) { 
 			$category_name = $_POST['category_name']; $id = $_POST['id']; 
-			$getAllSubCategories1 = getAllDataWhereWithActive('services_sub_category','id',$id);
+			$getAllSubCategories1 = getAllDataWhereWithActive('services_sub_category','services_category_id',$id);
 			if($getAllSubCategories1->num_rows > 0) { 
 	        while($getAllSubCategoriesData1 = $getAllSubCategories1->fetch_assoc()) { ?>
 			<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">

@@ -13,7 +13,7 @@
 		if(isset($_POST['login']))  { 
 		    //Login here
 		    $user_email = $_POST['login_email'];
-		    $user_password = encryptPassword1($_POST['login_password']);
+		    $user_password = encryptPassword($_POST['login_password']);
 		    $getLoginData = userLogin($user_email,$user_password);
 		    //Set variable for session
 		    if($getLoggedInDetails = $getLoginData->fetch_assoc()) {
@@ -25,7 +25,7 @@
 		        $_SESSION['user_login_session_name'] = $getLoggedInDetails['user_full_name'];
 		        $_SESSION['user_login_session_email'] = $getLoggedInDetails['user_email'];
 		        $_SESSION['timestamp'] = time();
-		        header('Location: index.php');
+		        echo "<script>history.go(-2);</script>";
 		    } else {
 		    	header('Location: login.php?err=log-fail');
 		    }
