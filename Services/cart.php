@@ -135,8 +135,14 @@
                         <?php } else { ?>
                             <td><?php echo $getSerName['service_min_price']; ?> - <?php echo $getSerName['service_max_price']; ?></td>
                         <?php } ?>
-                        <?php $service_selected_date = $getCartItems['service_selected_date'];
-                        $service_selected_date1 = date('d/m/Y', strtotime($service_selected_date));?>
+                        <?php 
+                        if($getCartItems['service_selected_date'] != '0000-00-00') {
+                        	$service_selected_date1 = date('d/m/Y', strtotime($getCartItems['service_selected_date']));
+                        } else {
+                        	$service_selected_date1 = date('d/m/Y');
+                        }
+                        
+                        ?>
                         <?php $service_visit_time = $getCartItems['service_selected_time'];
                         $service_visit_time1 = date('H:i', strtotime($service_visit_time));?>
                         <td><input class="date-pick form-control" type="text" name="service_visit_date[]" value="<?php echo $service_selected_date1; ?>"></td>
