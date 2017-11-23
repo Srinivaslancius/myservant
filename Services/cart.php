@@ -143,8 +143,16 @@
                         }
                         
                         ?> 
-                        <?php $service_visit_time = $getCartItems['service_selected_time'];
-                        $service_visit_time1 = date('H:i', strtotime($service_visit_time));?>
+                        <?php 
+
+                        if($getCartItems['service_selected_time'] != '00:00:00') {
+                        	$service_visit_time1 = date('H:i:s A', strtotime($getCartItems['service_selected_time']));
+                        } else {
+                        	$getCurDate = date('Y-m-d H:i:s A');
+                        	$service_visit_time1 = date('H:i:s A', strtotime($getCurDate));
+                        }
+
+                        ?>
                         <td><input class="date-pick form-control" type="text" name="service_visit_date[]" value="<?php echo $service_selected_date1; ?>"></td>
                         <td><input class="time-pick form-control" type="text" name="service_visit_time[]" value="<?php echo $service_visit_time1; ?>"></td>
                         <!-- <td>
