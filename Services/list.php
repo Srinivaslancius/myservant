@@ -36,10 +36,6 @@
 
 <body>
 
-	<!--[if lte IE 8]>
-    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
-<![endif]-->
-
 	
 	<!-- End Preload -->
 
@@ -197,8 +193,10 @@
 		    success:function(result){
 		    	if(result == 0){
 		    		alert('Your service add successfully');
-		    		location.reload();
-		    	} else {	    		
+		    		setTimeout(function() {
+					    location.reload();
+					}, 600);
+		    	} else {
 		    		alert('Same service alert exists in cart! Please select another service');
 		    		return false;
 		    	}

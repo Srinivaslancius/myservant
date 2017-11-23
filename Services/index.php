@@ -74,7 +74,7 @@
 			                    </select>
 			                    </span>
 			                    <div class="nav-searchfield-outer">
-			                    <input type="text" autocomplete="off" name="category_name" placeholder="search your related service" id="twotabsearchtextbox">
+			                    <input type="text" autocomplete="off" name="category_name" placeholder="Search your related service" id="twotabsearchtextbox">
 			                    </div>
 			                   <div class="nav-submit-button">
 		                            <button type="submit" class="btn btn-default" name="search" style="height:45px"><span class="icon icon-search pull-right"></span></button>
