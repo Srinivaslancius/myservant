@@ -351,7 +351,7 @@ a.btn_full_outline {
     background: 0 0;
     border: 2px solid #f26226;
     cursor: pointer;
-    padding: 10px 20px;
+    padding: 10px 12px;
     outline: 0;
     font-size: 12px;
     -webkit-transition: all .3s;
@@ -363,7 +363,7 @@ a.btn_full_outline {
     text-transform: uppercase;
     font-weight: 700;
     display: block;
-    text-align: center
+    text-align: center;
 }
 
 .sticky ul#top_tools a,header#plain ul#top_links :hover a,header#plain ul#top_tools a {
@@ -816,7 +816,7 @@ a#email_footer:hover,a#phone:hover,footer a {
 }
 
 footer a:hover {
-    color: #999
+    color: #f26226 !important;
 }
 
 footer ul {
@@ -1097,11 +1097,11 @@ video {
 .nav-facade-active #searchDropdownBox {
     cursor: pointer;
     height: 45px;
-    left: 15px;
+    left: -1px;
     opacity: 0;
     top: 0;
     visibility: visible;
-    width: auto
+    width: 100%;
 }
 
 #searchDropdownBox {

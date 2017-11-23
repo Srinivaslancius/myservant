@@ -58,43 +58,34 @@
                     <?php include_once './slider.php';?>
 		</div>
 		<!-- End layerslider -->
-                <div class="container-fluid marg10 search_back">
-                    <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
-			<div id="newsletter_wp" >
-                            <form method="post" action="sub_categories.php" id="newsletter" name="newsletter"  autocomplete="off">
-							<div class="row">
-                                                            
-                            	<div class="col-md-12 first-nogutter">
-                                    <div class="col-md-3 padd0">
-                                        
-								<div class="form-group">
-									<?php $getCategoriesData = getAllDataWithActiveRecent('services_category'); ?>
-									<select name="id" class="form-control">
-										<?php while($row = $getCategoriesData->fetch_assoc()) {  ?>
-				                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['category_name']; ?></option>
-				                       <?php } ?>
-									</select>
-								</div>
-							
-                                    </div>
-                                    <div class="col-md-7 padd0">
-                                	<input name="category_name" id="category_name" type="text" placeholder="Search your related service" class="form-control">
-                                    </div>
-                                    <div class="col-md-2 padd0">
-                                	<button type="submit" name="search" class="btn-check" id="submit-newsletter">Search</button>
-                                </div>
-                                </div>
-                             </div>                            	
-                            </form>
-                     <div id="message-newsletter"></div>
-                         
-                        </div><!-- End newsletter_wp -->	
-                    </div><!-- End row -->
-                    <div class="col-md-2"></div>
-                </div>
-                </div>
+                <section id="hero">
+			        <div id="search_bar_container">
+			            <div class="container">
+			            <form method="post" action="sub_categories.php">
+			                <div class="search_bar">
+			                <span class="nav-facade-active" id="nav-search-in">
+			                    <span id="nav-search-in-content"></span>
+			                    <span class="nav-down-arrow nav-sprite"></span>
+			                    <select title="Search in" class="searchSelect" id="searchDropdownBox" name="tours_category">
+			                    <?php $getCategoriesData = getAllDataWithActiveRecent('services_category'); ?>
+			                    <?php while($row = $getCategoriesData->fetch_assoc()) {  ?>
+		                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['category_name']; ?></option>
+		                       <?php } ?>                                    
+			                    </select>
+			                    </span>
+			                    <div class="nav-searchfield-outer">
+			                        <input type="text" autocomplete="off" name="field-keywords" placeholder="search your related service" id="twotabsearchtextbox">
+			                    </div>
+			                    <div>
+			                        <button type="submit" class="btn btn-default"><span class="icon icon-search pull-right"></span> 
+</button>
+			                    </div>
+			                </div>
+			            </form>
+			            
+			            </div>
+			        </div>
+			    </section>
 		<div class="container margin_60">
 
 			<div class="main_title">
@@ -236,6 +227,17 @@
     }
   });
 }());
+</script>
+<script>
+//Search bar
+$(function () {
+"use strict";
+$("#searchDropdownBox").change(function(){
+    var Search_Str = $(this).val();
+    //replace search str in span value
+    $("#nav-search-in-content").text(Search_Str);
+  });
+});
 </script>
 
 </body>
