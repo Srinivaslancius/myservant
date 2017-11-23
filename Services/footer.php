@@ -70,3 +70,7 @@
 			</div>
 			<!-- End row -->
 		</div>
+		<script>
+		//Custom alert 
+		modernAlert();
+		</script>

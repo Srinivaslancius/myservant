@@ -10,7 +10,8 @@
                             $session_cart_id = $_SESSION['CART_TEMP_RANDOM'];
                             if(isset($_SESSION['user_login_session_id']) && $_SESSION['user_login_session_id']!='') {
                                 $user_session_id = $_SESSION['user_login_session_id'];
-                                $cartItems = getAllDataWhere('services_cart','user_id',$user_session_id);
+                                $cartItems1 = "SELECT * FROM services_cart WHERE user_id = '$user_session_id' OR session_cart_id='$session_cart_id' ";
+                                $cartItems = $conn->query($cartItems1);
                             } else {                                       
                                 $cartItems = getAllDataWhere('services_cart','session_cart_id',$session_cart_id);
                             } 
@@ -42,7 +43,7 @@
                                         <?php } else { ?>
                                             <td><?php echo $getSerName['service_min_price']; ?> - <?php echo $getSerName['service_max_price']; ?></td>
                                         <?php } ?>
-                                        <td><a href="#"><i class="icon-minus-circled"></i></a></td>
+                                        <td><a href="delete_cart_items.php?cart_id=<?php echo $getCartItems['id']; ?>"><i class="icon-minus-circled" onclick="return confirm('Are you sure you want to delete?');"></i></a></td>
                                     </tr>
                                     <?php } ?>                               
                                                                        

@@ -178,9 +178,6 @@
 	<script src="js/common_scripts_min.js"></script>
 	<script src="js/functions.js"></script>	
 
-	<!-- Cart items add services script with custom alerts -->
-	<script type="text/javascript" src="js/modernAlert.min.js"></script>	
-
 	<script type="text/javascript">
 	$('.check_cart').on('click', function () {
 		var catId = $(this).data("cat-id");
@@ -198,8 +195,6 @@
 	            services_cat_id:catId,services_sub_cat_id:subCatId,services_group_id:groupId,service_price:servicesPrice,services_service_id:serviceId,service_price_type_id:priceTypeId,
 	        },
 		    success:function(result){
-		    	//Custom alert 
-		    	modernAlert();
 		    	if(result == 0){
 		    		alert('Your service add successfully');
 		    		location.reload();

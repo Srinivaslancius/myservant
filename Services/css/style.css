@@ -1080,7 +1080,7 @@ video {
 }
 
 .button_inc,.nav-submit-button {
-    /*! text-indent: -9999px; */
+    /*text-indent: -9999px;*/
     cursor: pointer
 }
 
@@ -4919,9 +4919,7 @@ ul.slides-container li img{
        
         background-color: #f7f7f7;
         border-top: 1px solid #ebebeb;
-        text-align: center;
         color:black;
-         text-align: justify;
          width: 250px;
          word-spacing:0.1px !important;
     }

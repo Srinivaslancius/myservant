@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 	$admin_email = $_POST["admin_email"];
 	//Set Password encrypt and decrypt	
 	$pwd=$_POST["admin_password"];	
-	$admin_password = encryptPassword1($pwd);
+	$admin_password = encryptPassword($pwd);
 	$sql = "SELECT * FROM admin_users WHERE admin_email = '$admin_email' AND admin_password = '$admin_password' AND lkp_status_id = 0 AND lkp_admin_user_type_id = 1 AND lkp_admin_service_type_id = 1";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();

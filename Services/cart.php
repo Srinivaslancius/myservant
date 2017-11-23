@@ -74,18 +74,6 @@
 	<!-- End Section -->
 
 	<main>
-		<div id="position">
-			<div class="container">
-				<ul>
-					<li><a href="#">Home</a>
-					</li>
-					<li><a href="#">Category</a>
-					</li>
-					<li>Page active</li>
-				</ul>
-			</div>
-		</div>
-		<!-- End Position -->
 <?php
     if($_SESSION['CART_TEMP_RANDOM'] == "") {
         $_SESSION['CART_TEMP_RANDOM'] = rand(10, 10).sha1(crypt(time())).time();
@@ -93,7 +81,8 @@
     $session_cart_id = $_SESSION['CART_TEMP_RANDOM'];
     if(isset($_SESSION['user_login_session_id']) && $_SESSION['user_login_session_id']!='') {
         $user_session_id = $_SESSION['user_login_session_id'];
-        $cartItems = getAllDataWhere('services_cart','user_id',$user_session_id);
+        $cartItems1 = "SELECT * FROM services_cart WHERE user_id = '$user_session_id' OR session_cart_id='$session_cart_id' ";
+        $cartItems = $conn->query($cartItems1);
     } else {                                       
         $cartItems = getAllDataWhere('services_cart','session_cart_id',$session_cart_id);
     } 
@@ -147,8 +136,8 @@
                         <?php } else { ?>
                             <td><?php echo $getSerName['service_min_price']; ?> - <?php echo $getSerName['service_max_price']; ?></td>
                         <?php } ?>
-                        <td><input class="date-pick form-control" type="text" name="service_visit_date[]"></td>
-                        <td><input class="time-pick form-control" type="text" name="service_visit_time[]"></td>
+                        <td><input class="date-pick form-control" type="text" name="service_visit_date[]" value="<?php echo $getCartItems['service_selected_date'] ?>"></td>
+                        <td><input class="time-pick form-control" type="text" name="service_visit_time[]" value="<?php echo $getCartItems['service_visit_time'] ?>"></td>
                         <!-- <td>
                             <div class="numbers-row">
                                 <input type="text" value="1" id="quantity_2" class="qty2 form-control" name="quantity_2">
@@ -156,7 +145,7 @@
                         </td> 
                         <td>Rs. 3499/-</td>-->
 							<td class="options">
-								<a href="#"><i class=" icon-trash"></i></a>
+								<a href="delete_cart_items.php?cart_id=<?php echo $getCartItems['id']; ?>"><i class=" icon-trash" onclick="return confirm('Are you sure you want to delete?')"></i></a>
 							</td>
 						</tr>
 						<?php } ?>
@@ -223,7 +212,7 @@
         <script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/bootstrap-timepicker.js"></script>
         <script>
-		$('input.date-pick').datepicker('setDate', 'today');
+		$('input.date-pick').datepicker();
 		$('input.time-pick').timepicker({
 			minuteStep: 15,
 			showInpunts: false

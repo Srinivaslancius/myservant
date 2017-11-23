@@ -66,7 +66,7 @@
 			                <span class="nav-facade-active" id="nav-search-in">
 			                    <span id="nav-search-in-content"></span>
 			                    <span class="nav-down-arrow nav-sprite"></span>
-			                    <select title="Search in" class="searchSelect" id="searchDropdownBox" name="tours_category">
+			                    <select name="id" class="searchSelect" id="searchDropdownBox">
 			                    <?php $getCategoriesData = getAllDataWithActiveRecent('services_category'); ?>
 			                    <?php while($row = $getCategoriesData->fetch_assoc()) {  ?>
 		                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['category_name']; ?></option>
@@ -74,11 +74,12 @@
 			                    </select>
 			                    </span>
 			                    <div class="nav-searchfield-outer">
-			                        <input type="text" autocomplete="off" name="field-keywords" placeholder="search your related service" id="twotabsearchtextbox">
+			                    <input type="text" autocomplete="off" name="category_name" placeholder="search your related service" id="twotabsearchtextbox">
 			                    </div>
-			                    <div class="nav-submit-button">
-                                    <button type="submit" class="btn btn-default" style="height:45px"><span class="icon icon-search pull-right"></span></button>
-                               </div>
+			                   <div class="nav-submit-button">
+		                            <button type="submit" class="btn btn-default" name="search" style="height:45px"><span class="icon icon-search pull-right"></span></button>
+		                       </div>
+
 			                </div>
 			            </form>
 			            
@@ -230,7 +231,6 @@
 <script>
 //Search bar
 $(function () {
-"use strict";
 $("#searchDropdownBox").change(function(){
     var Search_Str = $(this).val();
     //replace search str in span value
