@@ -137,9 +137,9 @@
                         <?php } ?>
                         <?php 
                         if($getCartItems['service_selected_date'] != '0000-00-00') {
-                        	$service_selected_date1 = date('d/m/Y', strtotime($getCartItems['service_selected_date']));
+                        	$service_selected_date1 = date('m/d/Y', strtotime($getCartItems['service_selected_date']));
                         } else {
-                        	$service_selected_date1 = date('d/m/Y');
+                        	$service_selected_date1 = date('m/d/Y');
                         }
                         
                         ?> 
