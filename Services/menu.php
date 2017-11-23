@@ -49,8 +49,8 @@
                     <ul id="top_tools">
                        
                         <li>
-                            <div class="dropdown dropdown-cart">
-                                <a href="cart.php" class="dropdown-toggle" data-toggle="dropdown"><i class=" icon-basket-1"></i>Cart (<?php echo $cartItems->num_rows; ?>) </a>
+                            <div>
+                                <a href="cart.php" class="dropdown-toggle"><i class=" icon-basket-1"></i>Cart (<?php echo $cartItems->num_rows; ?>) </a>
                                 <ul class="dropdown-menu" id="cart_items">
                                     
                                 </ul>
