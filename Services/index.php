@@ -232,7 +232,8 @@
 //Search bar
 $(function () {
 $("#searchDropdownBox").change(function(){
-    var Search_Str = $(this).val();
+	var Search_Str = $(this).find('option:selected').text();	
+    //var Search_Str = $(this).val();
     //replace search str in span value
     $("#nav-search-in-content").text(Search_Str);
   });
