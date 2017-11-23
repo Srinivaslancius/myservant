@@ -32,11 +32,25 @@
                         </ul>
                          
                     </div><!-- End main-menu -->
+                    
+                    <?php
+                        if($_SESSION['CART_TEMP_RANDOM'] == "") {
+                            $_SESSION['CART_TEMP_RANDOM'] = rand(10, 10).sha1(crypt(time())).time();
+                        }
+                        $session_cart_id = $_SESSION['CART_TEMP_RANDOM'];
+                        if(isset($_SESSION['user_login_session_id']) && $_SESSION['user_login_session_id']!='') {
+                            $user_session_id = $_SESSION['user_login_session_id'];
+                            $cartItems1 = "SELECT * FROM services_cart WHERE user_id = '$user_session_id' OR session_cart_id='$session_cart_id' ";
+                            $cartItems = $conn->query($cartItems1);
+                        } else {                                       
+                            $cartItems = getAllDataWhere('services_cart','session_cart_id',$session_cart_id);
+                        } 
+                    ?>
                     <ul id="top_tools">
                        
                         <li>
-                            <div class="dropdown dropdown-cart">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class=" icon-basket-1"></i>Cart (0) </a>
+                            <div>
+                                <a href="cart.php" class="dropdown-toggle"><i class=" icon-basket-1"></i>Cart (<?php echo $cartItems->num_rows; ?>) </a>
                                 <ul class="dropdown-menu" id="cart_items">
                                     
                                 </ul>

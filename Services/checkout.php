@@ -74,7 +74,6 @@
 	<section class="parallax-window" data-parallax="scroll" data-image-src="img/home_bg_1.jpg" data-natural-width="1400" data-natural-height="470">
 		<div class="parallax-content-1">
 			<div class="animated fadeInDown">
-				<h1>Shopping cart</h1>
 			</div>
 		</div>
 	</section>
@@ -84,14 +83,15 @@
 
 		<div class="container margin_60">
 			<div class="checkout-page">
-
+				
 				<?php if(!isset($_SESSION['user_login_session_id'])) { ?>
 				<ul class="default-links">
 					<li>Exisitng Customer? <a href="login.php">Click here to login</a>
 					</li>
 				</ul>
+				<?php } ?>
 
-				<?php } else {
+				<?php
 				$id = $_SESSION['user_login_session_id'];
 				$getUserData = getAllDataWhere('users','id',$id);
 				$getUser = $getUserData->fetch_assoc();?>
@@ -108,12 +108,12 @@
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>First name <sup>*</sup>
 											</label>
-											<input type="text" name="first_name" value="<?php echo $getUser['user_full_name']; ?>" placeholder="" class="form-control">
+											<input type="text" name="first_name" value="<?php echo $getUser['user_full_name']; ?>" placeholder="" class="form-control" required>
 										</div>
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>Last name <sup>*</sup>
 											</label>
-											<input type="text" name="last_name" value="" placeholder="" class="form-control">
+											<input type="text" name="last_name" value="" placeholder="" class="form-control" required>
 										</div>
 										<div class="form-group col-md-12 col-sm-12 col-xs-12">
 											<label>Company name</label>
@@ -122,17 +122,17 @@
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>Email Address <sup>*</sup>
 											</label>
-											<input type="email" name="email" value="<?php echo $getUser['user_email']; ?>" placeholder="" class="form-control">
+											<input type="email" name="email" value="<?php echo $getUser['user_email']; ?>" placeholder="" class="form-control" required>
 										</div>
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>Phone <sup>*</sup>
 											</label>
-											<input type="text" name="mobile" value="<?php echo $getUser['user_mobile']; ?>" placeholder="" class="form-control">
+											<input type="text" name="mobile" value="<?php echo $getUser['user_mobile']; ?>" placeholder="" class="form-control" required>
 										</div>
 										<div class="form-group col-md-12 col-sm-12 col-xs-12">
 											<label>Address <sup>*</sup>
 											</label>
-											<input type="text" name="address" value="" placeholder="" class="form-control">
+											<input type="text" name="address" value="" placeholder="" class="form-control" required>
 										</div>
 										<?php $getCountriesData = getAllDataWithActiveRecent('lkp_countries'); ?>
 										<div class="form-group col-md-12 col-sm-12 col-xs-12">
@@ -157,12 +157,6 @@
 												<option><?php echo $getCities['city_name']; ?></option>
 												<?php } ?>
 											</select>
-										</div>
-										<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-											<div class="check-box">
-												<input type="checkbox" name="shipping-option" id="account-option"> &ensp;
-												<label for="account-option">Create an account?</label>
-											</div>
 										</div>
 										<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
 											<label>Order note</label>
@@ -279,13 +273,16 @@
 									</li>
 								</ul>
 							</div>
-							<button type="button" class="btn_full">Place Order <i class="icon-left"></i>
-							</button>
+							<div id="divId">
+								<button type="button" class="btn_full">Place Order <i class="icon-left"></i></button>
+							</div>
 						</div>
 						<!--End Place Order-->
 
 					</div>
 				</div>
+				<?php if(!isset($_SESSION['user_login_session_id'])) { ?>
+				<script type="text/javascript">document.getElementById('divId').style.display = 'none';</script>
 				<?php } ?>
 			</div>
 		</div>
@@ -293,7 +290,7 @@
 	</main>
 	<!-- End main -->
 
-	<footer class="revealed">
+	<footer>
             <?php include_once 'footer.php';?>
         </footer><!-- End footer -->
 
