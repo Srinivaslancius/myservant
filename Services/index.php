@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
-<html lang="en">
+<html lang="en" style="overflow-x:hidden">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -76,10 +76,9 @@
 			                    <div class="nav-searchfield-outer">
 			                        <input type="text" autocomplete="off" name="field-keywords" placeholder="search your related service" id="twotabsearchtextbox">
 			                    </div>
-			                    <div>
-			                        <button type="submit" class="btn btn-default"><span class="icon icon-search pull-right"></span> 
-</button>
-			                    </div>
+			                    <div class="nav-submit-button">
+                                    <button type="submit" class="btn btn-default" style="height:45px"><span class="icon icon-search pull-right"></span></button>
+                               </div>
 			                </div>
 			            </form>
 			            
@@ -168,7 +167,7 @@
 	</main>
 	<!-- End main -->
 
-	<footer class="revealed">
+	<footer>
             <?php include_once 'footer.php';?>
     </footer><!-- End footer -->
 
