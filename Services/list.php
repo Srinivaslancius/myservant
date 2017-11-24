@@ -197,7 +197,7 @@
 					    location.reload();
 					}, 600);
 		    	} else {
-		    		alert('Same service alert exists in cart! Please select another service');
+		    		alert('Same service item exists in cart! Please select another service');
 		    		return false;
 		    	}
 		    }

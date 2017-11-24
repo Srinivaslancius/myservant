@@ -256,7 +256,7 @@
             var element = $(this);
             var del_id = element.attr("data-cart-id");
             var info = 'cart_id=' + del_id;
-            if(confirm('Delete Item ?', 'Delete Cart Item', function(input){var str = input === true ? 'Ok' : 'Cancel'; 
+            if(confirm('Are You Sure You Want to Delete ?', 'You Want to Delete Cart Item', function(input){var str = input === true ? 'Ok' : 'Cancel'; 
                 if(str == 'Ok') {
                     $.ajax({
                        type: "POST",
