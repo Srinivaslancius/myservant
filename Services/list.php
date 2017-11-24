@@ -74,7 +74,7 @@
 					<h3 class="nomargin_top">Group Level</h3>
 
 					<div class="panel-group" id="payment">
-						<?php $catid = decryptPassword($_GET['key1']); $subcatid = decryptPassword($_GET['key2']); 
+						<?php $catid = decryptPassword($_GET['key1']); $subcatid = $_GET['key2']; 
 						$getGroups = getAllDataWhereWithTWoConditions('services_groups','services_category_id',$catid,'services_sub_category_id',$subcatid); while ($getGroupsData = $getGroups->fetch_assoc()) { ?>
 						<?php $services_group_id = $getGroupsData['id'];
 							$getServiceNames = getAllDataWhereWithThreeConditions('services_group_service_names','services_category_id',$catid,'services_sub_category_id',$subcatid,'services_group_id',$services_group_id); 

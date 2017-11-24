@@ -64,7 +64,7 @@
 			            <form method="post" action="sub_categories.php">
 			                <div class="search_bar">
 			                <span class="nav-facade-active" id="nav-search-in">
-			                    <span id="nav-search-in-content"></span>
+			                    <span id="nav-search-in-content">Category Name</span>
 			                    <span class="nav-down-arrow nav-sprite"></span>
 			                    <select name="id" class="searchSelect" id="searchDropdownBox">
 			                    <?php $getCategoriesData = getAllDataWithActiveRecent('services_category'); ?>
@@ -96,17 +96,17 @@
 			<div class="row">
                  <?php  while($getAllCategoriesData = $getCategoriesData->fetch_assoc()) { ?> 
 				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
+					<a href="sub_categories.php?key=<?php echo encryptPassword($getAllCategoriesData['id']); ?>">
 					<div class="tour_container">
 						<div class="ribbon_3 popular"><!-- <span>Popular</span> --></div>
 						<div class="img_container padd15">
-                           <a href="sub_categories.php?key=<?php echo encryptPassword($getAllCategoriesData['id']); ?>">
                            <img src="<?php echo $base_url . 'uploads/services_category_images/'.$getAllCategoriesData['category_image'] ?>" class="img-responsive" alt="<?php echo $getAllCategoriesData['category_name']; ?>" style="width:64px; height:64px;">
 						</div>
 						<div class="tour_title">
 							<h3><?php echo $getAllCategoriesData['category_name']; ?></h3>
 						</div>
-						</a>
 					</div>
+					</a>
 					<!-- End box tour -->
 				</div>
                   <?php } ?>  

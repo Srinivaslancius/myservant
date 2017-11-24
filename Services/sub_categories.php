@@ -85,11 +85,11 @@
                  <?php if($getSubCategoriesData->num_rows > 0) { 
                  while($getAllSubCategoriesData = $getSubCategoriesData->fetch_assoc()) { ?>           
 				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
+					<a href="list.php?key1=<?php echo encryptPassword($cat_id); ?>&key2=<?php echo $getAllSubCategoriesData['id']; ?>">
 					<div class="tour_container">
 						<div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
 						</div>
 						<div class="img_container padd15">
-                        <a href="list.php?key1=<?php echo encryptPassword($cat_id); ?>&key2=<?php echo encryptPassword($getAllSubCategoriesData['id']); ?>">
                         <img src="<?php echo $base_url . 'uploads/services_sub_category_images/'.$getAllSubCategoriesData['sub_category_image'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getAllSubCategoriesData['sub_category_name']; ?>">
 						</div>
 						<div class="tour_title">
@@ -97,9 +97,9 @@
 							
 							<!-- end rating -->
 						</div>
-						</a>
 						</div>
 					</div>
+					</a>
 					<!-- End box tour -->
 				</div>
                  <?php } } else { echo "<h3 style='text-align:center;'>Sorry! Items Not found</h3>"; } ?>

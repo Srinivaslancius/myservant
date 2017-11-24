@@ -80,23 +80,19 @@
 			<div class="row">
                  <?php  while($getAllCategoriesData = $getCategoriesData->fetch_assoc()) { ?>           
 				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
+					<a href="sub_categories.php?key=<?php echo encryptPassword($getAllCategoriesData['id']); ?>">
 					<div class="tour_container">
 						<div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
 						</div>
 						<div class="img_container padd15">
-                        <a href="sub_categories.php?key=<?php echo encryptPassword($getAllCategoriesData['id']); ?>">
                         <img src="<?php echo $base_url . 'uploads/services_category_images/'.$getAllCategoriesData['category_image'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getAllCategoriesData['category_name']; ?>">
-								
-							</a>
 						</div>
 						<div class="tour_title">
-							<a href="sub_categories.php?key=<?php echo encryptPassword($getAllCategoriesData['id']); ?>">
-								<h3><?php echo $getAllCategoriesData['category_name']; ?></h3>
-							</a>	
-							
+							<h3><?php echo $getAllCategoriesData['category_name']; ?></h3>
 							<!-- end rating -->
 						</div>
 					</div>
+					</a>
 					<!-- End box tour -->
 				</div>
                  <?php } ?>    

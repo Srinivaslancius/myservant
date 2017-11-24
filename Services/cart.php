@@ -162,7 +162,7 @@
                         </td> 
                         <td>Rs. 3499/-</td>-->
 							<td class="options">
-								<a href="delete_cart_items.php?cart_id=<?php echo $getCartItems['id']; ?>"><i class=" icon-trash" onclick="return confirm('Are you sure you want to delete?')"></i></a>
+								<a <a class="delete_cart_item" data-cart-id ="<?php echo $getCartItems['id']; ?>"><i class=" icon-trash"></i></a>
 							</td>
 						</tr>
 						<?php } ?>
@@ -251,6 +251,35 @@
 
 		}
 	</script>
+	<script type="text/javascript">
+        $(".delete_cart_item").click(function(){
+            var element = $(this);
+            var del_id = element.attr("data-cart-id");
+            var info = 'cart_id=' + del_id;
+            if(confirm('Delete Item ?', 'Delete Cart Item', function(input){var str = input === true ? 'Ok' : 'Cancel'; 
+                if(str == 'Ok') {
+                    $.ajax({
+                       type: "POST",
+                       url: "delete_cart_items.php",
+                       data: info,
+                       success: function(result){
+                        if(result == 1) {
+                            alert('Cart Item Deleted Successfully');
+                            setTimeout(function() {
+                                location.reload();
+                            }, 600);
+                           
+                        } else {
+                            alert('Cart Item Not Deleted');
+                            return false;
+                        }
+                     }
+                    });
+                }
+            }))  
+            return false;
+        });
+        </script>
 
 </body>
 
