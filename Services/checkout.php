@@ -95,6 +95,7 @@
 				$id = $_SESSION['user_login_session_id'];
 				$getUserData = getAllDataWhere('users','id',$id);
 				$getUser = $getUserData->fetch_assoc();?>
+				<form method="" action="" name="form">
 				<div class="row">
 					<div class="col-md-7 col-sm-12 col-xs-12">
 
@@ -108,12 +109,12 @@
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>First name <sup>*</sup>
 											</label>
-											<input type="text" name="first_name" value="<?php echo $getUser['user_full_name']; ?>" placeholder="" class="form-control" required>
+											<input type="text" name="first_name" id="name_contact" value="<?php echo $getUser['user_full_name']; ?>" placeholder="" class="form-control" required>
 										</div>
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>Last name <sup>*</sup>
 											</label>
-											<input type="text" name="last_name" value="" placeholder="" class="form-control" required>
+											<input type="text" name="last_name" id="lastname_contact" value="" placeholder="" class="form-control" required>
 										</div>
 										<div class="form-group col-md-12 col-sm-12 col-xs-12">
 											<label>Company name</label>
@@ -122,12 +123,12 @@
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>Email Address <sup>*</sup>
 											</label>
-											<input type="email" name="email" value="<?php echo $getUser['user_email']; ?>" placeholder="" class="form-control" required>
+											<input type="email" name="email" id="email_contact" value="<?php echo $getUser['user_email']; ?>" placeholder="" class="form-control" required>
 										</div>
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>Phone <sup>*</sup>
 											</label>
-											<input type="text" name="mobile" value="<?php echo $getUser['user_mobile']; ?>" placeholder="" class="form-control" required>
+											<input type="text" name="mobile" id="phone_contact" value="<?php echo $getUser['user_mobile']; ?>" placeholder="" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" class="form-control" required>
 										</div>
 										<div class="form-group col-md-12 col-sm-12 col-xs-12">
 											<label>Address <sup>*</sup>
@@ -138,9 +139,9 @@
 										<div class="form-group col-md-12 col-sm-12 col-xs-12">
 											<label>Country <sup>*</sup>
 											</label>
-											<select name="country" class="form-control">
+											<select name="country" id="lkp_country_id" class="form-control" onChange="getCities(this.value);" required>
 												<?php while($getCountries = $getCountriesData->fetch_assoc()) { ?>
-												<option><?php echo $getCountries['country_name']; ?></option>
+												<option value="<?php echo $getCountries['id']; ?>"><?php echo $getCountries['country_name']; ?></option>
 												<?php } ?>
 											</select>
 										</div>
@@ -152,9 +153,10 @@
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>City <sup>*</sup>
 											</label>
-											<select name="state" class="form-control">
+											<select name="city" id="lkp_city_id" class="form-control" required>
+												<option>Select City</option>
 												<?php while($getCities = $getCitiesData->fetch_assoc()) { ?>
-												<option><?php echo $getCities['city_name']; ?></option>
+												<option value=""></option>
 												<?php } ?>
 											</select>
 										</div>
@@ -274,13 +276,14 @@
 								</ul>
 							</div>
 							<div id="divId">
-								<button type="button" class="btn_full">Place Order <i class="icon-left"></i></button>
+								<button type="submit" class="btn_full">Place Order <i class="icon-left"></i></button>
 							</div>
 						</div>
 						<!--End Place Order-->
 
 					</div>
 				</div>
+				</form>
 				<?php if(!isset($_SESSION['user_login_session_id'])) { ?>
 				<script type="text/javascript">document.getElementById('divId').style.display = 'none';</script>
 				<?php } ?>
@@ -308,8 +311,11 @@
 
 	<!-- Common scripts -->
 	<script src="/cdn-cgi/scripts/84a23a00/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
+	<!-- Validation purpose add scripts -->
+	<?php include_once 'common_validations_scripts.php'; ?>
 	<script src="js/common_scripts_min.js"></script>
 	<script src="js/functions.js"></script>
+
 
 	<script>
 		if ($('.prod-tabs .tab-btn').length) {
@@ -326,6 +332,34 @@
 
 		}
 	</script>
+	<!-- Script to get Cities -->
+    <script type="text/javascript">
+    function getCities(val) { 
+        $.ajax({
+        type: "POST",
+        url: "get_cities.php",
+        data:'lkp_country_id='+val,
+        success: function(data){
+            $("#lkp_city_id").html(data);
+        }
+        });
+    }
+    </script>	
+	
+	<script type="text/javascript">
+	function isNumberKey(evt){
+		    var charCode = (evt.which) ? evt.which : event.keyCode
+		    if (charCode > 31 && (charCode < 48 || charCode > 57))
+		        return false;
+		    return true;
+		}
+	</script>
+	<style type="text/css">
+	  .error {
+	    color: $errorMsgColor;
+	  }
+
+	</style>
 
 </body>
 
