@@ -64,7 +64,7 @@
 			            <form method="post" action="sub_categories.php">
 			                <div class="search_bar">
 			                <span class="nav-facade-active" id="nav-search-in">
-			                    <span id="nav-search-in-content">Category Name</span>
+			                    <span id="nav-search-in-content">Service Category</span>
 			                    <span class="nav-down-arrow nav-sprite"></span>
 			                    <select name="id" class="searchSelect" id="searchDropdownBox">
 			                    <?php $getCategoriesData = getAllDataWithActiveRecent('services_category'); ?>

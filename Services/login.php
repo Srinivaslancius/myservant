@@ -10,6 +10,7 @@
 	<?php 
 		error_reporting(0);
 
+		$cart_id = decryptPassword($_GET['cart_id']);
 		if(isset($_POST['login']))  { 
 		    //Login here
 		    $user_email = $_POST['login_email'];
@@ -25,7 +26,9 @@
 		        $_SESSION['user_login_session_name'] = $getLoggedInDetails['user_full_name'];
 		        $_SESSION['user_login_session_email'] = $getLoggedInDetails['user_email'];
 		        $_SESSION['timestamp'] = time();
-		        echo "<script>history.go(-2);</script>";
+		        if($cart_id == 1) {
+		        	header('Location: checkout.php');
+		        } else { echo "<script>history.go(-2);</script>"; }
 		    } else {
 		    	header('Location: login.php?err=log-fail');
 		    }

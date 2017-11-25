@@ -173,10 +173,13 @@
 					<div class="pull-left">
 						<div class="apply-coupon">
 							<div class="form-group">
-								<input type="text" name="coupon-code" value="" placeholder="Your Coupon Code" class="form-control">
+								<input type="text" name="coupon_code" id="coupon_code" value="" placeholder="Your Coupon Code" class="form-control">
 							</div>
 							<div class="form-group">
-								<button type="button" class="btn_cart_outine">Apply Coupon</button>
+								<button type="button" class="btn_cart_outine coupon">Apply Coupon</button>
+							</div>
+							<div class="form-group">
+								<div id="remove_icon"></div>
 							</div>
 						</div>
 					</div>
@@ -187,12 +190,16 @@
 				<div class="row">
 					<div class="column pull-right col-md-4 col-sm-6 col-xs-12">
 						<ul class="totals-table">
-							<li class="clearfix"><span class="col">Sub Total</span><span class="col">Rs. <?php echo $cartTotal; ?></span>
+							<li class="clearfix"><span class="col">Sub Total</span><span class="col" id="cart_total"><?php echo $cartTotal; ?></span>
 							</li>
 							<li class="clearfix total"><span class="col">Order Total</span><span class="col">Rs. <?php echo $cartTotal; ?>/-</span>
 							</li>
 						</ul>
+						<?php if(!isset($_SESSION['user_login_session_id'])) { ?>
+						<a href="login.php?cart_id=<?php echo encryptPassword(1);?>" class="btn_full">Proceed to Checkout <i class="icon-left"></i></a>
+						<?php } else { ?>
                         <a href="checkout.php" class="btn_full">Proceed to Checkout <i class="icon-left"></i></a>
+                        <?php } ?>
 					</div>
 				</div>
 				</form>
@@ -279,6 +286,24 @@
             }))  
             return false;
         });
+        </script>
+        <script type="text/javascript">
+	        $(".coupon").click(function(){
+	            var coupon_code = $("#coupon_code").val();
+	            var cart_total = $('#cart_total').html();
+	            $.ajax({
+	               type: "POST",
+	               url: "apply_coupon.php",
+	               data: "coupon_code="+coupon_code+"&cart_total="+cart_total,
+	               success: function(result){
+	               		$('#cart_total').html(result);
+	               		$("#remove_icon").html("<span class='close'>&times;</span>");
+	            	}
+	            });
+	        });
+	        $("#remove_icon").click(function(){
+	            $("#coupon_code").val('');
+	        });
         </script>
 
 </body>
