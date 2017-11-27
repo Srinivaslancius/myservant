@@ -95,77 +95,75 @@
 				$id = $_SESSION['user_login_session_id'];
 				$getUserData = getAllDataWhere('users','id',$id);
 				$getUser = $getUserData->fetch_assoc();?>
-				<form method="" action="" name="form">
+				<form method="post" action="save_order.php" name="form">
 				<div class="row">
 					<div class="col-md-7 col-sm-12 col-xs-12">
 
 						<div class="billing-details">
 							<div class="shop-form">
-								<form method="post">
-									<div class="default-title">
-										<h2>Billing Details</h2>
+								<div class="default-title">
+									<h2>Billing Details</h2>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-6 col-sm-6 col-xs-12">
+										<label>First name <sup>*</sup>
+										</label>
+										<input type="text" name="first_name" id="name_contact" value="<?php echo $getUser['user_full_name']; ?>" placeholder="" class="form-control" required>
 									</div>
-									<div class="row">
-										<div class="form-group col-md-6 col-sm-6 col-xs-12">
-											<label>First name <sup>*</sup>
-											</label>
-											<input type="text" name="first_name" id="name_contact" value="<?php echo $getUser['user_full_name']; ?>" placeholder="" class="form-control" required>
-										</div>
-										<div class="form-group col-md-6 col-sm-6 col-xs-12">
-											<label>Last name <sup>*</sup>
-											</label>
-											<input type="text" name="last_name" id="lastname_contact" value="" placeholder="" class="form-control" required>
-										</div>
-										<div class="form-group col-md-12 col-sm-12 col-xs-12">
-											<label>Company name</label>
-											<input type="text" name="company_name" value="" placeholder="" class="form-control">
-										</div>
-										<div class="form-group col-md-6 col-sm-6 col-xs-12">
-											<label>Email Address <sup>*</sup>
-											</label>
-											<input type="email" name="email" id="email_contact" value="<?php echo $getUser['user_email']; ?>" placeholder="" class="form-control" required>
-										</div>
-										<div class="form-group col-md-6 col-sm-6 col-xs-12">
-											<label>Phone <sup>*</sup>
-											</label>
-											<input type="text" name="mobile" id="phone_contact" value="<?php echo $getUser['user_mobile']; ?>" placeholder="" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" class="form-control" required>
-										</div>
-										<div class="form-group col-md-12 col-sm-12 col-xs-12">
-											<label>Address <sup>*</sup>
-											</label>
-											<input type="text" name="address" value="" placeholder="" class="form-control" required>
-										</div>
-										<?php $getCountriesData = getAllDataWithActiveRecent('lkp_countries'); ?>
-										<div class="form-group col-md-12 col-sm-12 col-xs-12">
-											<label>Country <sup>*</sup>
-											</label>
-											<select name="country" id="lkp_country_id" class="form-control" onChange="getCities(this.value);" required>
-												<?php while($getCountries = $getCountriesData->fetch_assoc()) { ?>
-												<option value="<?php echo $getCountries['id']; ?>"><?php echo $getCountries['country_name']; ?></option>
-												<?php } ?>
-											</select>
-										</div>
-										<div class="form-group col-md-6 col-sm-6 col-xs-12">
-											<label>Zip / Postal Code</label>
-											<input type="text" name="code" value="" placeholder="Zip / Postal Code" class="form-control">
-										</div>
-										<?php $getCitiesData = getAllDataWithActiveRecent('lkp_cities'); ?>
-										<div class="form-group col-md-6 col-sm-6 col-xs-12">
-											<label>City <sup>*</sup>
-											</label>
-											<select name="city" id="lkp_city_id" class="form-control" required>
-												<option>Select City</option>
-												<?php while($getCities = $getCitiesData->fetch_assoc()) { ?>
-												<option value=""></option>
-												<?php } ?>
-											</select>
-										</div>
-										<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-											<label>Order note</label>
-											<textarea placeholder="Notes about your order, e.g. special notes for delivery" class="form-control"></textarea>
-										</div>
+									<div class="form-group col-md-6 col-sm-6 col-xs-12">
+										<label>Last name <sup>*</sup>
+										</label>
+										<input type="text" name="last_name" id="lastname_contact" value="" placeholder="" class="form-control" required>
 									</div>
-								</form>
+									<div class="form-group col-md-12 col-sm-12 col-xs-12">
+										<label>Company name</label>
+										<input type="text" name="company_name" value="" placeholder="" class="form-control">
+									</div>
+									<div class="form-group col-md-6 col-sm-6 col-xs-12">
+										<label>Email Address <sup>*</sup>
+										</label>
+										<input type="email" name="email" id="email_contact" value="<?php echo $getUser['user_email']; ?>" placeholder="" class="form-control" required>
+									</div>
+									<div class="form-group col-md-6 col-sm-6 col-xs-12">
+										<label>Phone <sup>*</sup>
+										</label>
+										<input type="text" name="mobile" id="phone_contact" value="<?php echo $getUser['user_mobile']; ?>" placeholder="" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" class="form-control" required>
+									</div>
+									<div class="form-group col-md-12 col-sm-12 col-xs-12">
+										<label>Address <sup>*</sup>
+										</label>
+										<input type="text" name="address" value="" placeholder="" class="form-control" required>
+									</div>
+									<?php $getCountriesData = getAllDataWithActiveRecent('lkp_countries'); ?>
+									<div class="form-group col-md-12 col-sm-12 col-xs-12">
+										<label>Country <sup>*</sup>
+										</label>
+										<select name="country" id="lkp_country_id" class="form-control" onChange="getCities(this.value);" required>
+											<?php while($getCountries = $getCountriesData->fetch_assoc()) { ?>
+											<option value="<?php echo $getCountries['id']; ?>"><?php echo $getCountries['country_name']; ?></option>
+											<?php } ?>
+										</select>
+									</div>
+									<div class="form-group col-md-6 col-sm-6 col-xs-12">
+										<label>Zip / Postal Code</label>
+										<input type="text" name="postal_code" value="" placeholder="Zip / Postal Code" class="form-control">
+									</div>
+									<?php $getCitiesData = getAllDataWithActiveRecent('lkp_cities'); ?>
+									<div class="form-group col-md-6 col-sm-6 col-xs-12">
+										<label>City <sup>*</sup>
+										</label>
+										<select name="city" id="lkp_city_id" class="form-control" required>
+											<option>Select City</option>
+											<?php while($getCities = $getCitiesData->fetch_assoc()) { ?>
+											<option value=""></option>
+											<?php } ?>
+										</select>
+									</div>
+									<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<label>Order note</label>
+										<textarea id="order_note" name="order_note" placeholder="Notes about your order, e.g. special notes for delivery" class="form-control"></textarea>
+									</div>
+								</div>
 							</div>
 						</div>
 						<!--End Billing Details-->
@@ -202,6 +200,23 @@
 								<?php $cartTotal = 0;  
                               		while ($getCartItems = $cartItems->fetch_assoc()) { 
                                		$getSerName= getIndividualDetails('services_group_service_names','id',$getCartItems['service_id']); ?>
+
+                               	<input type="hidden" name="category_id[]" value="<?php echo $getCartItems['category_id']; ?>">
+                                <input type="hidden" name="sub_cat_id[]" value="<?php echo $getCartItems['sub_cat_id']; ?>">
+                                <input type="hidden" name="group_id[]" value="<?php echo $getCartItems['group_id']; ?>">
+                                <input type="hidden" name="service_id[]" value="<?php echo $getCartItems['service_id']; ?>">
+                                	<?php if($getSerName['service_price_type_id'] == 1) {
+			                            $cartTotal1 += $getSerName['service_price'];
+			                        ?>
+									<input type="hidden" name="service_price[]" value="<?php echo $getSerName['service_price']; ?>">
+									<?php } elseif($getSerName['price_after_visit_type_id'] == 1) { ?>
+									<input type="hidden" name="service_price[]" value="<?php echo "Price After our Visit"; ?>">
+									<?php } else { ?>
+									<input type="hidden" name="service_price[]" value="<?php echo $getSerName['service_min_price']; ?> - <?php echo $getSerName['service_max_price']; ?>">
+									<?php } ?>
+                                <input type="hidden" name="service_selected_date[]" value="<?php echo $getCartItems['service_selected_date']; ?>">
+                                <input type="hidden" name="service_selected_time[]" value="<?php echo $getCartItems['service_selected_time']; ?>">
+
 								<li class="clearfix">
 									<div class="col" style="text-transform:none;">
 										<?php echo $getSerName['group_service_name']; ?>
@@ -223,19 +238,21 @@
 									<?php } ?>
 								</li>
 								<?php } ?>
+								<input type="hidden" name="sub_total" value="<?php echo $cartTotal1; ?>">
+                                <input type="hidden" name="order_total" id="cart_total1" value="<?php echo $cartTotal1; ?>">
 								<li class="clearfix">
 									<div class="col" style="text-transform:none;">
 										SubTotal
 									</div>
-									<div class="col second">
-										Rs. <?php echo $cartTotal; ?>
+									<div class="col second" id="cart_total">
+										<?php echo $cartTotal; ?>
 									</div>
 								</li>
 								<li class="clearfix total">
 									<div class="col">
 										<strong>Order Total</strong>
 									</div>
-									<div class="col second">
+									<div class="col second" id="cart_total2">
 										<strong>Rs. <?php echo $cartTotal; ?></strong>
 									</div>
 								</li>
@@ -243,10 +260,13 @@
 							<div class="coupon-code">
 								<div class="form-group">
 									<div class="field-group">
-										<input type="text" name="code" value="" placeholder="Coupon Code" class="form-control">
+										<input type="text" name="coupon_code" id="coupon_code" value="" placeholder="Coupon Code" class="form-control">
+									</div>
+									<div class="form-group">
+										<div id="remove_icon"></div>
 									</div>
 									<div class="field-group btn-field">
-										<button type="submit" class="btn_cart_outine">Apply</button>
+										<button type="button" class="btn_cart_outine apply_coupon">Apply</button>
 									</div>
 								</div>
 							</div>
@@ -262,13 +282,13 @@
 									
 									<li>
 										<div class="radio-option">
-											<input type="radio" name="payment-group" id="payment-2">
+											<input type="radio" name="payment_group" id="payment-2" value="Online Payment" required>
 											<label for="payment-2">Online Payment</label>
 										</div>
 									</li>
 									<li>
 										<div class="radio-option">
-											<input type="radio" name="payment-group" id="payment-3">
+											<input type="radio" name="payment_group" id="payment-3" value="COD" required>
 											<label for="payment-3">COD
 											</label>
 										</div>
@@ -276,7 +296,7 @@
 								</ul>
 							</div>
 							<div id="divId">
-								<button type="submit" class="btn_full">Place Order <i class="icon-left"></i></button>
+								<input type="submit" name="submit" class="btn_full" value="Place Order"></i>
 							</div>
 						</div>
 						<!--End Place Order-->
@@ -304,7 +324,7 @@
 		<span class="search-overlay-close"><i class="icon_set_1_icon-77"></i></span>
 		<form role="search" id="searchform" method="get">
 			<input value="" name="q" type="search" placeholder="Search..." />
-			<button type="submit"><i class="icon_set_1_icon-78"></i>
+			<button type="button"><i class="icon_set_1_icon-78"></i>
 			</button>
 		</form>
 	</div><!-- End Search Menu -->
@@ -344,7 +364,36 @@
         }
         });
     }
-    </script>	
+    </script>
+    <script type="text/javascript">
+	        $(".apply_coupon").click(function(){
+	            var coupon_code = $("#coupon_code").val();
+	            var cart_total = $('#cart_total').text();
+	            $.ajax({
+	               type: "POST",
+	               url: "apply_coupon.php",
+	               data: "coupon_code="+coupon_code+"&cart_total="+cart_total,
+	               success: function(result){
+	               		if(result == 0) {
+	               			alert('Please Login');
+	               			$("#coupon_code").val('');
+	               		} else if(result == 1) {
+	               			alert('Enter Valid Coupon');
+	               			$("#coupon_code").val('');
+	               		} else{
+		               		$('#cart_total2').html(result);
+		               		$('#cart_total1').val(result);
+		               		$("#remove_icon").html("<span class='close'>&times;</span>");
+		               	}
+	            	}
+	            });
+	            $("#remove_icon").click(function(){
+		            $("#coupon_code").val('');
+		            $('#cart_total').html(cart_total);
+		            $(".close").html('');
+		        });
+	        });
+        </script>	
 	
 	<script type="text/javascript">
 	function isNumberKey(evt){

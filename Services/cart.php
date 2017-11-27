@@ -176,10 +176,10 @@
 								<input type="text" name="coupon_code" id="coupon_code" value="" placeholder="Your Coupon Code" class="form-control">
 							</div>
 							<div class="form-group">
-								<button type="button" class="btn_cart_outine coupon">Apply Coupon</button>
+								<div id="remove_icon"></div>
 							</div>
 							<div class="form-group">
-								<div id="remove_icon"></div>
+								<button type="button" class="btn_cart_outine coupon">Apply Coupon</button>
 							</div>
 						</div>
 					</div>
@@ -296,13 +296,23 @@
 	               url: "apply_coupon.php",
 	               data: "coupon_code="+coupon_code+"&cart_total="+cart_total,
 	               success: function(result){
-	               		$('#cart_total').html(result);
-	               		$("#remove_icon").html("<span class='close'>&times;</span>");
+	               		if(result == 0) {
+	               			alert('Please Login');
+	               			$("#coupon_code").val('');
+	               		} else if(result == 1) {
+	               			alert('Enter Valid Coupon');
+	               			$("#coupon_code").val('');
+	               		} else{
+		               		$('#cart_total').html(result);
+		               		$("#remove_icon").html("<span class='close'>&times;</span>");
+		               	}
 	            	}
 	            });
-	        });
-	        $("#remove_icon").click(function(){
-	            $("#coupon_code").val('');
+	            $("#remove_icon").click(function(){
+		            $("#coupon_code").val('');
+		            $(".close").html('');
+		            $('#cart_total').html(cart_total);
+		        });
 	        });
         </script>
 
