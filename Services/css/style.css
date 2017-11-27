@@ -1071,12 +1071,12 @@ video {
     font-size: 12px;
     height: 45px;
     line-height: 35px;
-    margin: 5px 65px 0 15px;
+    margin: 5px 40px 0 1px;
     text-indent: 1px;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 60px;
-    overflow: visible
+    width: 100%;
+    overflow: visible;
 }
 
 .button_inc,.nav-submit-button {
@@ -1086,7 +1086,7 @@ video {
 
 #nav-search-in.nav-facade-active .nav-down-arrow {
     display: inline-block;
-    right: 15px;
+    right: 1px;
     top: 20px;
     background: url(../img/arrow_down_2.png);
     height: 6px;
@@ -1097,7 +1097,7 @@ video {
 .nav-facade-active #searchDropdownBox {
     cursor: pointer;
     height: 45px;
-    left: -1px;
+    left: 0px;
     opacity: 0;
     top: 0;
     visibility: visible;
@@ -1143,9 +1143,9 @@ video {
     color: #333;
     font-size: 14px;
     height: 30px;
-    padding: 3px 0 0 150px;
+    padding: 3px 0 0 175px;
     outline: 0;
-    font-weight: 700
+    font-weight: 700;
 }
 
 .feature,.strip_all_tour_list {
@@ -1153,7 +1153,7 @@ video {
 }
 
 .nav-submit-button {
-    /*! background: url(../img/search-bt.png) center center no-repeat #fff; */
+    
     border: none;
     display: block;
     height: 45px;
@@ -2238,7 +2238,9 @@ ul#contact-info {
 }
 
 .img-circle.styled {
-    border: 5px solid #fff
+    -ms-border: 5px solid #fff;
+    -webkit-border: 5px solid #fff;
+    -moz-border: 5px solid #fff;
 }
 
 #filters {
@@ -4919,9 +4921,12 @@ ul.slides-container li img{
        
         background-color: #f7f7f7;
         border-top: 1px solid #ebebeb;
+        text-align: center;
         color:black;
+         text-align: justify;
          width: 250px;
          word-spacing:0.1px !important;
+         padding: 9px 6px;
     }
     .popover-footer{
         padding: 6px 14px;
@@ -4939,10 +4944,12 @@ ul.slides-container li img{
         background-color:transparent !important;
         color:white !important;
         width:75px !important;
+        -webkit-height:20px !important;
         height:22px !important;
+        
+        
     }
-
-@media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 480px) {
 
 /*footer h3,li{
     text-align:center !important;
@@ -4955,14 +4962,22 @@ ul.slides-container li img{
     margin-top:350px !important;
 }
 .nav-facade-active #searchDropdownBox {
-    left: -8px !important;
+    left: -1px !important;
 }
 #twotabsearchtextbox{
     font-size:12px !important;
-    padding: 3px 0 0 140px !important;
+    padding: 3px 0 0 120px !important;
 }
 .search_bar{
     width:100% !important;
+}
+#nav-search-in #nav-search-in-content{
+    font-size:10px !important;
+    margin: 5px 5px 0 1px !important;
+
+}
+#nav-search-in.nav-facade-active .nav-down-arrow{
+    right: 0px !important;
 }
     }
     /*@media (max-width: 480px){

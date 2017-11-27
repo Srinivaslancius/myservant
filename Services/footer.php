@@ -11,7 +11,7 @@
 				<div class="col-md-2 col-sm-2">
 					<h3>QUICK LINKS</h3>
 					<ul>
-						<li><a href="about.php">About us</a>
+						<li><a href="about.php">About Us</a>
 						</li>
 						<li><a href="services.php">Services</a>
 						</li>
@@ -44,7 +44,7 @@
 					</ul>
 				</div>
 				<div class="col-md-3 col-sm-3">
-					<h3>Download Our App</h3>
+					<h3>DOWNLOAD OUR APP</h3>
 					<a href="https://play.google.com/store/apps/details?id=com.myservant&hl=en"  target="_blank"><img src="img/googleplay.png"></a><br>
 					<a href="https://itunes.apple.com/us/app/my-servant/id1227443324?mt=8&ign-mpt=uo%3D4"  target="_blank"><img src="img/applestore.png" style="margin-top:10px"></a>
 					

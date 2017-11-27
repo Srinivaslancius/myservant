@@ -7,8 +7,8 @@ $getImgUnlink = getImageUnlink('sub_category_image','services_sub_category','id'
 $qry = "DELETE FROM services_sub_category WHERE id ='$id'";
 $result = $conn->query($qry);
 if(isset($result)) {
-   echo "<script>alert('Sub Category Image Deleted Successfully');window.location.href='services_sub_category.php';</script>";
+   echo "<script>alert('Sub Category Deleted Successfully');window.location.href='services_sub_category.php';</script>";
 } else {
-   echo "<script>alert('Sub Category Image Not Deleted');window.location.href='services_sub_category.php';</script>";
+   echo "<script>alert('Sub Category Not Deleted');window.location.href='services_sub_category.php';</script>";
 }
 ?>
