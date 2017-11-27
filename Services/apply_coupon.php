@@ -7,7 +7,7 @@ if(!empty($_POST['coupon_code']) && !empty($_POST['cart_total']))  {
 	$coupon_code = $_POST['coupon_code'];
 	$cart_total = $_POST['cart_total'];
 	if(isset($_SESSION['user_login_session_id']) && $_SESSION['user_login_session_id']!='') {
-		$sql="SELECT * FROM services_coupons WHERE coupon_code='$coupon_code' ";
+		$sql="SELECT * FROM services_coupons WHERE coupon_code='$coupon_code' AND lkp_status_id = 0";
 		$getCouponPrice = $conn->query($sql);
 		$getCouponPriceData = $getCouponPrice->fetch_assoc();
 		if($getCouponPrice->num_rows > 0) {

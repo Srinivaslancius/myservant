@@ -139,6 +139,7 @@
 										<label>Country <sup>*</sup>
 										</label>
 										<select name="country" id="lkp_country_id" class="form-control" onChange="getCities(this.value);" required>
+											<option>Select Country</option>
 											<?php while($getCountries = $getCountriesData->fetch_assoc()) { ?>
 											<option value="<?php echo $getCountries['id']; ?>"><?php echo $getCountries['country_name']; ?></option>
 											<?php } ?>

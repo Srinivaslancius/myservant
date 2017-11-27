@@ -131,6 +131,10 @@ if(isset($_POST["submit"]) && $_POST["submit"]!="") {
 		$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 		$sendMail = sendEmail($to,$subject,$message,$from);
 
+		//after placing order that item will delete in cart
+		$delCart ="DELETE FROM services_cart WHERE user_id = '$user_id' ";
+		$conn->query($delCart);
+
 		header("Location: thankyou.php?odi=".$order_id."");
 	} else {
 		echo "<script>alert('Online Payment Method is Not avaliable');window.location='checkout.php';</script>";

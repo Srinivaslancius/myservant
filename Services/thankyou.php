@@ -89,7 +89,7 @@
                             <span class="icon-ok" style="color:green;font-size:100px;"></span>
                             <p style="text-align:center"><b>Your order has been received</b></p>
                             <p style="text-align:center">Your Order is: <strong><?php echo $orderId; ?></strong></p>
-                            <p style="text-align:center">Billing & Shipping Information: somthing somthing</p>
+                            <p style="text-align:center">Billing & Shipping Information: <?php echo $getservicesOrders['address']; ?></p>
                             <p style="text-align:center">You will be redirected to the Home in 10 seconds.</p>  
                         </div>
                         </div>
