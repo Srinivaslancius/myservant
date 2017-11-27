@@ -389,7 +389,7 @@
 	            });
 	            $("#remove_icon").click(function(){
 		            $("#coupon_code").val('');
-		            $('#cart_total').html(cart_total);
+		            $('#cart_total2').html(cart_total);
 		            $(".close").html('');
 		        });
 	        });
