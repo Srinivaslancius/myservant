@@ -6,6 +6,7 @@ if (!isset($_POST['submit']))  {
 } else  {
     
     //Save data into database
+    $restaurant_id = $_POST['restaurant_id'];
     $product_name = $_POST['product_name'];
     $category_id = $_POST['category_id'];
     $specifications = $_POST['specifications'];
@@ -14,7 +15,7 @@ if (!isset($_POST['submit']))  {
     $created_at = date("Y-m-d h:i:s");
     $created_by = $_SESSION['food_admin_user_id'];
     //save product images into product_images table    
-    $sql1 = "UPDATE food_products SET product_name = '$product_name',category_id ='$category_id', specifications = '$specifications', availability_id ='$availability_id', lkp_status_id = '$lkp_status_id' WHERE id = '$id'"; 
+    $sql1 = "UPDATE food_products SET restaurant_id = '$restaurant_id',product_name = '$product_name',category_id ='$category_id', specifications = '$specifications', availability_id ='$availability_id', lkp_status_id = '$lkp_status_id' WHERE id = '$id'"; 
     
     if ($conn->query($sql1) === TRUE) {
     echo "Record updated successfully";
@@ -84,7 +85,17 @@ if (!isset($_POST['submit']))  {
                 
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <form data-toggle="validator" method="post" enctype="multipart/form-data">
-
+                  <?php $getResturants = getAllDataWithStatus('food_restaurants','0');?>
+                  <div class="form-group">
+                    <label for="form-control-3" class="control-label">Choose your Resturant</label>
+                    <select name="restaurant_id" class="custom-select" data-error="This field is required." required>
+                      <option value="">Select Resturant</option>
+                      <?php while($row = $getResturants->fetch_assoc()) {  ?>
+                          <option <?php if($row['id'] == $getProducts['restaurant_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['restaurant_name']; ?></option>
+                      <?php } ?>
+                   </select>
+                    <div class="help-block with-errors"></div>
+                  </div>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your Category</label>
                     <select id="form-control-3" name="category_id" class="custom-select" data-error="This field is required." required>
