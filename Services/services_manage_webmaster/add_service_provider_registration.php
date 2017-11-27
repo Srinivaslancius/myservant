@@ -253,7 +253,7 @@ if (!isset($_POST['submit']))  {
                   <?php $getStatus = getAllData('lkp_status');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your status</label>
-                    <select id="form-control-3" name="lkp_status_id" class="custom-select" data-error="This field is required.">
+                    <select id="form-control-3" name="lkp_status_id" class="custom-select" data-error="This field is required." required>
                       <option value="">Select Status</option>
                       <?php while($row = $getStatus->fetch_assoc()) {  ?>
                           <option value="<?php echo $row['id']; ?>"><?php echo $row['status']; ?></option>
@@ -275,7 +275,7 @@ if (!isset($_POST['submit']))  {
 <!-- Script for Service Probiders -->
 <script type="text/javascript">
   $(document).ready(function () { 
-    $('#service_provider_business_type, #service_provider_personal_type,#specialization_name').hide();
+    $('#service_provider_business_type, #service_provider_personal_type,#specialization_name,#specialization_name1').hide();
     $('.service_provider_type_id').change(function() {
 
       if($(this).val() == 1) {
