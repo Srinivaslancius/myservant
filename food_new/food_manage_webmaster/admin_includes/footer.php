@@ -113,6 +113,16 @@
         }
         });
     }
+    function getLocations(val) { 
+        $.ajax({
+        type: "POST",
+        url: "get_locations.php",
+        data:'lkp_city_id='+val,
+        success: function(data){
+            $("#lkp_location_id").html(data);
+        }
+        });
+    }
     </script>
     <!-- Below script for ck editor -->
     <script src="//cdn.ckeditor.com/4.7.0/full/ckeditor.js"></script>

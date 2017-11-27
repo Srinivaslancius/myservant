@@ -5,6 +5,11 @@
               echo "fail";
           } else  { 
       $restaurant_name = $_POST['restaurant_name'];
+      $lkp_state_id = $_POST['lkp_state_id'];
+      $lkp_city_id = $_POST['lkp_city_id'];
+      $lkp_district_id = $_POST['lkp_district_id'];
+      $lkp_location_id = $_POST['lkp_location_id'];
+      $lkp_pincode_id = $_POST['lkp_pincode_id'];
       $description = $_POST['description'];
       $delivery_type = $_POST['delivery_type'];
       $meta_title = $_POST['meta_title'];
@@ -19,7 +24,7 @@
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            $sql = "INSERT INTO food_restaurants (`restaurant_name`,`image`, `description`, `delivery_type`,`meta_title`,`meta_keywords`,`meta_desc`, `lkp_status_id`) VALUES ('$restaurant_name','$fileToUpload',  '$description','$delivery_type','$meta_title','$meta_keywords','$meta_desc','$lkp_status_id')";
+            $sql = "INSERT INTO food_restaurants (`restaurant_name`,`lkp_state_id`, `lkp_city_id`, `lkp_district_id`,`lkp_location_id`,`lkp_pincode_id`,`image`, `description`, `delivery_type`,`meta_title`,`meta_keywords`,`meta_desc`, `lkp_status_id`) VALUES ('$restaurant_name','$lkp_state_id','$lkp_city_id','$lkp_district_id','$lkp_location_id','$lkp_pincode_id','$fileToUpload','$description','$delivery_type','$meta_title','$meta_keywords','$meta_desc','$lkp_status_id')";
             if($conn->query($sql) === TRUE){
                echo "<script type='text/javascript'>window.location='food_restaurants.php?msg=success'</script>";
             } else {
@@ -64,8 +69,22 @@
 
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your City</label>
-                    <select name="lkp_city_id" id="lkp_city_id" class="custom-select" data-error="This field is required." required>
+                    <select name="lkp_city_id" id="lkp_city_id" class="custom-select" data-error="This field is required." required onChange="getLocations(this.value);">
                       <option value="">Select City</option>
+                   </select>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-3" class="control-label">Choose your Location</label>
+                    <select name="lkp_location_id" id="lkp_location_id" class="custom-select" data-error="This field is required." required onChange="getPincode(this.value);">
+                      <option value="">Select Location</option>
+                   </select>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-3" class="control-label">Choose your Pincode</label>
+                    <select name="lkp_pincode_id" id="lkp_pincode_id" class="custom-select" data-error="This field is required." required >
+                      <option value="">Select Pincode</option>
                    </select>
                     <div class="help-block with-errors"></div>
                   </div>

@@ -79,6 +79,12 @@
                             <div class="col-sm-4">Category Name: </div>
                             <div class="col-sm-6"><?php $getCategories = getAllDataWhere('food_category','id',$row['category_id']);
                               $getCategory = $getCategories->fetch_assoc(); echo $getCategory['category_name']; ?> </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-4">Resturant Name: </div>
+                            <div class="col-sm-6"><?php $getResturants = getAllDataWhere('food_restaurants','id',$row['restaurant_id']);
+                              $getResturantsName = $getResturants->fetch_assoc(); echo $getResturantsName['restaurant_name']; ?> </div>
                           </div>                                                
                           <div class="row">
                             <div class="col-sm-2"></div>
