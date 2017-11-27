@@ -11,6 +11,7 @@ if (!isset($_POST['submit'])) {
       $lkp_city_id = $_POST['lkp_city_id'];
       $lkp_district_id = $_POST['lkp_district_id'];
       $lkp_location_id = $_POST['lkp_location_id'];
+      $lkp_pincode_id = $_POST['lkp_pincode_id'];
       $description = $_POST['description'];
       $delivery_type = $_POST['delivery_type'];
       $meta_title = $_POST['meta_title'];
@@ -28,7 +29,7 @@ if (!isset($_POST['submit'])) {
               $getImgUnlink = getImageUnlink('image','food_restaurants','id',$id,$target_dir);
                 //Send parameters for img val,tablename,clause,id,imgpath for image ubnlink from folder
               if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    $sql = "UPDATE `food_restaurants` SET restaurant_name = '$restaurant_name',lkp_state_id = '$lkp_state_id',lkp_city_id = '$lkp_city_id',lkp_district_id = '$lkp_district_id',lkp_location_id = '$lkp_location_id',description = '$description',delivery_type = '$delivery_type', image = '$fileToUpload', meta_title = '$meta_title', meta_keywords = '$meta_keywords', meta_desc = '$meta_desc', lkp_status_id = '$lkp_status_id' WHERE id = '$id' ";
+                    $sql = "UPDATE `food_restaurants` SET restaurant_name = '$restaurant_name',lkp_state_id = '$lkp_state_id',lkp_city_id = '$lkp_city_id',lkp_district_id = '$lkp_district_id',lkp_location_id = '$lkp_location_id',lkp_pincode_id = '$lkp_pincode_id',description = '$description',delivery_type = '$delivery_type', image = '$fileToUpload', meta_title = '$meta_title', meta_keywords = '$meta_keywords', meta_desc = '$meta_desc', lkp_status_id = '$lkp_status_id' WHERE id = '$id' ";
                     if($conn->query($sql) === TRUE){
                        echo "<script type='text/javascript'>window.location='food_restaurants.php?msg=success'</script>";
                     } else {
@@ -40,7 +41,7 @@ if (!isset($_POST['submit'])) {
                 }
       } else {
 
-          $sql = "UPDATE `food_restaurants` SET restaurant_name = '$restaurant_name',lkp_state_id = '$lkp_state_id',lkp_city_id = '$lkp_city_id',lkp_district_id = '$lkp_district_id',lkp_location_id = '$lkp_location_id', description = '$description',delivery_type = '$delivery_type', meta_title = '$meta_title', meta_keywords = '$meta_keywords', meta_desc = '$meta_desc', lkp_status_id = '$lkp_status_id' WHERE id = '$id' ";
+          $sql = "UPDATE `food_restaurants` SET restaurant_name = '$restaurant_name',lkp_state_id = '$lkp_state_id',lkp_city_id = '$lkp_city_id',lkp_district_id = '$lkp_district_id',lkp_location_id = '$lkp_location_id',lkp_pincode_id = '$lkp_pincode_id', description = '$description',delivery_type = '$delivery_type', meta_title = '$meta_title', meta_keywords = '$meta_keywords', meta_desc = '$meta_desc', lkp_status_id = '$lkp_status_id' WHERE id = '$id' ";
           if($conn->query($sql) === TRUE){
              echo "<script type='text/javascript'>window.location='food_restaurants.php?msg=success'</script>";
           } else {
@@ -97,10 +98,21 @@ if (!isset($_POST['submit'])) {
                   <?php $getCities = getAllDataWithStatus('lkp_locations','0');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your Location</label>
-                    <select name="lkp_location_id" id="lkp_location_id" class="custom-select" data-error="This field is required." required>
+                    <select name="lkp_location_id" id="lkp_location_id" class="custom-select" data-error="This field is required." required onChange="getPincode(this.value);">
                       <option value="">Select Location</option>
                       <?php while($row = $getCities->fetch_assoc()) {  ?>
                           <option <?php if($row['id'] == $getResturantsData['lkp_location_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['location_name']; ?></option>
+                      <?php } ?>
+                   </select>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <?php $getCities1 = getAllDataWithStatus('lkp_locations','0');?>
+                  <div class="form-group">
+                    <label for="form-control-3" class="control-label">Choose your Pincode</label>
+                    <select name="lkp_pincode_id" id="lkp_pincode_id" class="custom-select" data-error="This field is required." required>
+                      <option value="">Select Pincode</option>
+                      <?php while($row = $getCities1->fetch_assoc()) {  ?>
+                          <option <?php if($row['id'] == $getResturantsData['lkp_pincode_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['location_pincode']; ?></option>
                       <?php } ?>
                    </select>
                     <div class="help-block with-errors"></div>
