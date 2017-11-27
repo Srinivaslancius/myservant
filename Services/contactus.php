@@ -177,7 +177,7 @@ if($sendMail) {
 			
 				<div class="col-md-8 col-sm-8">
 						<div id="message-contact"></div>
-						<form method="post" action="" id="contactform" name="contactform"> 
+						<form method="post" action="" id="contactform" name="form"> 
 							<div class="row">
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
@@ -284,7 +284,7 @@ if($sendMail) {
 	</main>
 	<!-- End main -->
 
-	<footer class="revealed">
+	<footer>
             <?php include_once 'footer.php';?>
     </footer><!-- End footer -->
 

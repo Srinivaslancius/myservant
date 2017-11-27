@@ -10,10 +10,11 @@
 	<?php 
 		error_reporting(0);
 
+		$cart_id = decryptPassword($_GET['cart_id']);
 		if(isset($_POST['login']))  { 
 		    //Login here
 		    $user_email = $_POST['login_email'];
-		    $user_password = encryptPassword1($_POST['login_password']);
+		    $user_password = encryptPassword($_POST['login_password']);
 		    $getLoginData = userLogin($user_email,$user_password);
 		    //Set variable for session
 		    if($getLoggedInDetails = $getLoginData->fetch_assoc()) {
@@ -25,7 +26,9 @@
 		        $_SESSION['user_login_session_name'] = $getLoggedInDetails['user_full_name'];
 		        $_SESSION['user_login_session_email'] = $getLoggedInDetails['user_email'];
 		        $_SESSION['timestamp'] = time();
-		        header('Location: index.php');
+		        if($cart_id == 1) {
+		        	header('Location: checkout.php');
+		        } else { echo "<script>history.go(-2);</script>"; }
 		    } else {
 		    	header('Location: login.php?err=log-fail');
 		    }
@@ -172,7 +175,7 @@
 	</main>
 	<!-- End main -->
 
-	<footer class="revealed">
+	<footer>
             <?php include_once 'footer.php';?>
     </footer><!-- End footer -->
 

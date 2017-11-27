@@ -1,11 +1,15 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <div id="top_line">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-3 col-sm-3 col-xs-3">
 					<ul id="top_links">
-					 <li><span class="icon-location" data-toggle="popover" data-placement="bottom" data-content="TOP SEARCHED: <br> Hyderabad, Karimnagar, Chennai, Warangal, Pune, Bangalore">Hyderabad</span></li>
+
+					 <li><span class="icon-location" data-toggle="popover" data-placement="bottom" data-content="TOP SEARCHED: <br> Vijayawada, Hyderabad, Karimnagar, Chennai, Warangal, Pune, Bangalore" style="cursor:pointer">Vijayawada</span></li>
+
 					 <li><form>
-					 <select class="language">
+					 <select class="language" style="cursor:pointer">
 			            <option value="" style="color:black">English</option>
 			            <option value="" style="color:black">Hindi</option>
 			            <option value="" style="color:black">Telugu</option>
@@ -35,6 +39,7 @@
 			</div>
 			<!-- End container-->
 		</div>
+		
 		<script type="text/javascript">
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover({

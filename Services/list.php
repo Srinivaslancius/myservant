@@ -36,10 +36,6 @@
 
 <body>
 
-	<!--[if lte IE 8]>
-    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
-<![endif]-->
-
 	
 	<!-- End Preload -->
 
@@ -78,7 +74,7 @@
 					<h3 class="nomargin_top">Group Level</h3>
 
 					<div class="panel-group" id="payment">
-						<?php $catid = decryptPassword($_GET['key1']); $subcatid = decryptPassword($_GET['key2']); 
+						<?php $catid = decryptPassword($_GET['key1']); $subcatid = $_GET['key2']; 
 						$getGroups = getAllDataWhereWithTWoConditions('services_groups','services_category_id',$catid,'services_sub_category_id',$subcatid); while ($getGroupsData = $getGroups->fetch_assoc()) { ?>
 						<?php $services_group_id = $getGroupsData['id'];
 							$getServiceNames = getAllDataWhereWithThreeConditions('services_group_service_names','services_category_id',$catid,'services_sub_category_id',$subcatid,'services_group_id',$services_group_id); 
@@ -156,7 +152,7 @@
 	</main>
 	<!-- End main -->
 
-	<footer class="revealed">
+	<footer>
             <?php include_once 'footer.php';?>
     </footer><!-- End footer -->
 	<!-- End footer -->
@@ -178,9 +174,6 @@
 	<script src="js/common_scripts_min.js"></script>
 	<script src="js/functions.js"></script>	
 
-	<!-- Cart items add services script with custom alerts -->
-	<script type="text/javascript" src="js/modernAlert.min.js"></script>	
-
 	<script type="text/javascript">
 	$('.check_cart').on('click', function () {
 		var catId = $(this).data("cat-id");
@@ -198,13 +191,13 @@
 	            services_cat_id:catId,services_sub_cat_id:subCatId,services_group_id:groupId,service_price:servicesPrice,services_service_id:serviceId,service_price_type_id:priceTypeId,
 	        },
 		    success:function(result){
-		    	//Custom alert 
-		    	modernAlert();
 		    	if(result == 0){
 		    		alert('Your service add successfully');
-		    		location.reload();
-		    	} else {	    		
-		    		alert('Same service alert exists in cart! Please select another service');
+		    		setTimeout(function() {
+					    location.reload();
+					}, 600);
+		    	} else {
+		    		alert('Same service item exists in cart! Please select another service');
 		    		return false;
 		    	}
 		    }

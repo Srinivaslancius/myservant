@@ -54,7 +54,7 @@
 
 	<main>
 		<!-- Slider -->
-		<?php $cat_id = decryptPassword($_GET['key']); $getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id); ?>
+		<?php $cat_id = decryptPassword($_GET['key']); ?>
 		<div class="container-fluid page-title">
 			 <?php	$getBanners = getAllDataWhere('services_banners','service_category_id',$cat_id); 
 			 if($getBannersData = $getBanners->fetch_assoc()) { ?>
@@ -74,39 +74,22 @@
 				<h2>Our <span>Services</span> Sub Categories</h2>
 				
 			</div>
-			<?php if (isset($_POST['search'])) { 
-			$category_name = $_POST['category_name']; $id = $_POST['id']; 
-			$getAllSubCategories1 = getAllDataWhereWithActive('services_sub_category','id',$id);
-			if($getAllSubCategories1->num_rows > 0) { 
-	        while($getAllSubCategoriesData1 = $getAllSubCategories1->fetch_assoc()) { ?>
-			<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-				<div class="tour_container">
-					<div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
-					</div>
-					<div class="img_container padd15">
-						<a href="list.php?key1=<?php echo encryptPassword($id); ?>&key2=<?php echo encryptPassword($getAllSubCategoriesData1['id']); ?>">
-	                        <img src="<?php echo $base_url . 'uploads/services_sub_category_images/'.$getAllSubCategoriesData1['sub_category_image'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getAllSubCategoriesData1['sub_category_name']; ?>">
-							</div>
-							<div class="tour_title">
-								<h3><?php echo $getAllSubCategoriesData1['sub_category_name']; ?></h3>
-								<!-- end rating -->
-							</div>
-						</a>
-					</div>
-				</div>
-				<!-- End box tour -->
-			</div>
-			<?php }  } else { echo "<h3 style='text-align:center;'>Sorry! Items Not found</h3>"; } } else { ?>
+			<?php if (isset($_POST['search'])) {
+				$cat_id = $_POST['id']; 
+				$getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id); 
+			} else {
+				$getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id);
+			} ?>
 
 			<div class="row">
                  <?php if($getSubCategoriesData->num_rows > 0) { 
                  while($getAllSubCategoriesData = $getSubCategoriesData->fetch_assoc()) { ?>           
 				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
+					<a href="list.php?key1=<?php echo encryptPassword($cat_id); ?>&key2=<?php echo $getAllSubCategoriesData['id']; ?>">
 					<div class="tour_container">
 						<div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
 						</div>
 						<div class="img_container padd15">
-                        <a href="list.php?key1=<?php echo encryptPassword($cat_id); ?>&key2=<?php echo encryptPassword($getAllSubCategoriesData['id']); ?>">
                         <img src="<?php echo $base_url . 'uploads/services_sub_category_images/'.$getAllSubCategoriesData['sub_category_image'] ?>" style="width:64px; height:64px;" class="img-responsive" alt="<?php echo $getAllSubCategoriesData['sub_category_name']; ?>">
 						</div>
 						<div class="tour_title">
@@ -114,13 +97,12 @@
 							
 							<!-- end rating -->
 						</div>
-						</a>
 						</div>
 					</div>
+					</a>
 					<!-- End box tour -->
 				</div>
-                 <?php } ?>
-                 <?php } else { echo "<h3 style='text-align:center;'>Sorry! Items Not found</h3>"; } ?> 
+                 <?php } } else { echo "<h3 style='text-align:center;'>Sorry! Items Not found</h3>"; } ?>
 				<!-- End col-md-4 -->
 				<!-- End col-md-4 -->
 			</div>
@@ -128,14 +110,13 @@
 			
 			<hr>
 		</div>
-		<?php } ?>
 		<?php include_once 'our_associate_partners.php';?>
 		<!-- End section -->
 		
 	</main>
 	<!-- End main -->
 
-	<footer class="revealed">
+	<footer>
             <?php include_once 'footer.php';?>
     </footer><!-- End footer -->
 

@@ -10,7 +10,8 @@
                             $session_cart_id = $_SESSION['CART_TEMP_RANDOM'];
                             if(isset($_SESSION['user_login_session_id']) && $_SESSION['user_login_session_id']!='') {
                                 $user_session_id = $_SESSION['user_login_session_id'];
-                                $cartItems = getAllDataWhere('services_cart','user_id',$user_session_id);
+                                $cartItems1 = "SELECT * FROM services_cart WHERE user_id = '$user_session_id' OR session_cart_id='$session_cart_id' ";
+                                $cartItems = $conn->query($cartItems1);
                             } else {                                       
                                 $cartItems = getAllDataWhere('services_cart','session_cart_id',$session_cart_id);
                             } 
@@ -42,7 +43,7 @@
                                         <?php } else { ?>
                                             <td><?php echo $getSerName['service_min_price']; ?> - <?php echo $getSerName['service_max_price']; ?></td>
                                         <?php } ?>
-                                        <td><a href="#"><i class="icon-minus-circled"></i></a></td>
+                                        <td><a class="delete_cart_item" data-cart-id ="<?php echo $getCartItems['id']; ?>" ><i class="icon-minus-circled"></i></a></td>
                                     </tr>
                                     <?php } ?>                               
                                                                        
@@ -65,3 +66,33 @@
 					
 
 				</aside>
+                
+                <script type="text/javascript">
+                $(".delete_cart_item").click(function(){
+                    var element = $(this);
+                    var del_id = element.attr("data-cart-id");                               
+                    var info = 'cart_id=' + del_id;
+                    if(confirm('Are You Sure You Want to Delete ?', 'You Want to Delete Cart Item', function(input){var str = input === true ? 'Ok' : 'Cancel'; 
+                        if(str == 'Ok') {
+                            $.ajax({
+                               type: "POST",
+                               url: "delete_cart_items.php",
+                               data: info,
+                               success: function(result){
+                                if(result == 1) {
+                                    alert('Cart Item Deleted Successfully');
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 600);
+                                   
+                                } else {
+                                    alert('Cart Item Not Deleted');
+                                    return false;                            
+                                }
+                             }
+                            });
+                        }
+                    }))  
+                    return false;
+                });
+                </script>

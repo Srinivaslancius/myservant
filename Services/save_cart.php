@@ -7,7 +7,7 @@ if($_SESSION['CART_TEMP_RANDOM'] == "") {
 
 	$_SESSION['CART_TEMP_RANDOM'] = rand(10, 10).sha1(crypt(time())).time();
 }
-
+$user_id = $_SESSION['user_login_session_id'];
 $session_cart_id = $_SESSION['CART_TEMP_RANDOM'];
 $category_id = decryptPassword($_POST['services_cat_id']);
 $sub_cat_id = $_POST['services_sub_cat_id'];

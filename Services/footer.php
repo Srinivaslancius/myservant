@@ -64,9 +64,13 @@
 							<li><a href="https://itunes.apple.com/us/app/my-servant/id1227443324?mt=8&ign-mpt=uo%3D4" target="_blank"><i class="icon-linkedin"></i></a>
 							</li>
 						</ul>
-						<p style="text-align:center"><?php echo $getSiteSettingsData['footer_text'];?> : Designed by Lancius IT Solutions  <a href="https://lanciussolutions.com/" target="_blank"> Lancius IT Solutions</a></p>
+						<p style="text-align:center"><?php echo $getSiteSettingsData['footer_text'];?> : Designed by <a href="https://lanciussolutions.com/" target="_blank"> Lancius IT Solutions</a></p>
 					</div>
 				</div>
 			</div>
 			<!-- End row -->
 		</div>
+		<script>
+		//Custom alert 
+		modernAlert();
+		</script>

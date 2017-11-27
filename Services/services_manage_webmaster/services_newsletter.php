@@ -13,6 +13,7 @@
                     <th>S.No</th>
                     <th>Email</th>
                     <th>Created Date</th>
+                    <th>Email</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -21,6 +22,7 @@
                     <td><?php echo $i;?></td>
                     <td><?php echo $row['email'];?></td>
                     <td><?php echo $row['created_at'];?></td>
+                    <td><a href="mailto:<?php echo $row['email'];?>"><i class="zmdi zmdi-email"></i></i></td>
                   </tr>
                   <?php  $i++; } ?>
                 </tbody>

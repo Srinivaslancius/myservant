@@ -86,7 +86,7 @@
 						<div class="col-sm-10">
 						<h3><?php echo $getAllgetServiceProvider['company_name']; ?></h3>
 						<p>
-							<?php echo substr(strip_tags($getAllgetServiceProvider['description']), 0,200);?>
+							<?php echo substr(strip_tags($getAllgetServiceProvider['description']), 0,150);?>
 						</p>
 					</div>
 					</div>
@@ -105,7 +105,7 @@
 	</main>
 	<!-- End main -->
 
-	<footer class="revealed">
+	<footer>
             <?php include_once 'footer.php';?>
     </footer><!-- End footer -->
 

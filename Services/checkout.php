@@ -74,35 +74,28 @@
 	<section class="parallax-window" data-parallax="scroll" data-image-src="img/home_bg_1.jpg" data-natural-width="1400" data-natural-height="470">
 		<div class="parallax-content-1">
 			<div class="animated fadeInDown">
-				<h1>Shopping cart</h1>
-				<p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p>
 			</div>
 		</div>
 	</section>
 	<!-- End Section -->
 
 	<main>
-		<div id="position">
-			<div class="container">
-				<ul>
-					<li><a href="#">Home</a>
-					</li>
-					<li><a href="#">Category</a>
-					</li>
-					<li>Page active</li>
-				</ul>
-			</div>
-		</div>
-		<!-- End Position -->
 
 		<div class="container margin_60">
 			<div class="checkout-page">
-
+				
+				<?php if(!isset($_SESSION['user_login_session_id'])) { ?>
 				<ul class="default-links">
-					<li>Exisitng Customer? <a href="#">Click here to login</a>
+					<li>Exisitng Customer? <a href="login.php">Click here to login</a>
 					</li>
 				</ul>
+				<?php } ?>
 
+				<?php
+				$id = $_SESSION['user_login_session_id'];
+				$getUserData = getAllDataWhere('users','id',$id);
+				$getUser = $getUserData->fetch_assoc();?>
+				<form method="" action="" name="form">
 				<div class="row">
 					<div class="col-md-7 col-sm-12 col-xs-12">
 
@@ -116,63 +109,56 @@
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>First name <sup>*</sup>
 											</label>
-											<input type="text" name="field-name" value="" placeholder="" class="form-control">
+											<input type="text" name="first_name" id="name_contact" value="<?php echo $getUser['user_full_name']; ?>" placeholder="" class="form-control" required>
 										</div>
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>Last name <sup>*</sup>
 											</label>
-											<input type="text" name="field-name" value="" placeholder="" class="form-control">
+											<input type="text" name="last_name" id="lastname_contact" value="" placeholder="" class="form-control" required>
 										</div>
 										<div class="form-group col-md-12 col-sm-12 col-xs-12">
 											<label>Company name</label>
-											<input type="text" name="field-name" value="" placeholder="" class="form-control">
+											<input type="text" name="company_name" value="" placeholder="" class="form-control">
 										</div>
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>Email Address <sup>*</sup>
 											</label>
-											<input type="email" name="field-name" value="" placeholder="" class="form-control">
+											<input type="email" name="email" id="email_contact" value="<?php echo $getUser['user_email']; ?>" placeholder="" class="form-control" required>
 										</div>
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>Phone <sup>*</sup>
 											</label>
-											<input type="text" name="field-name" value="" placeholder="" class="form-control">
+											<input type="text" name="mobile" id="phone_contact" value="<?php echo $getUser['user_mobile']; ?>" placeholder="" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" class="form-control" required>
 										</div>
 										<div class="form-group col-md-12 col-sm-12 col-xs-12">
 											<label>Address <sup>*</sup>
 											</label>
-											<input type="text" name="field-name" value="" placeholder="" class="form-control">
+											<input type="text" name="address" value="" placeholder="" class="form-control" required>
 										</div>
+										<?php $getCountriesData = getAllDataWithActiveRecent('lkp_countries'); ?>
 										<div class="form-group col-md-12 col-sm-12 col-xs-12">
 											<label>Country <sup>*</sup>
 											</label>
-											<select name="country" class="form-control">
-												<option>United Kingdom (UK)</option>
-												<option>Pakistan</option>
-												<option>USA</option>
-												<option>CANADA</option>
-												<option>INDIA</option>
+											<select name="country" id="lkp_country_id" class="form-control" onChange="getCities(this.value);" required>
+												<?php while($getCountries = $getCountriesData->fetch_assoc()) { ?>
+												<option value="<?php echo $getCountries['id']; ?>"><?php echo $getCountries['country_name']; ?></option>
+												<?php } ?>
 											</select>
 										</div>
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>Zip / Postal Code</label>
 											<input type="text" name="code" value="" placeholder="Zip / Postal Code" class="form-control">
 										</div>
+										<?php $getCitiesData = getAllDataWithActiveRecent('lkp_cities'); ?>
 										<div class="form-group col-md-6 col-sm-6 col-xs-12">
 											<label>City <sup>*</sup>
 											</label>
-											<select name="state" class="form-control">
-												<option>City</option>
-												<option>Maharshtra</option>
-												<option>NY</option>
-												<option>ALabama</option>
-												<option>Mexico</option>
+											<select name="city" id="lkp_city_id" class="form-control" required>
+												<option>Select City</option>
+												<?php while($getCities = $getCitiesData->fetch_assoc()) { ?>
+												<option value=""></option>
+												<?php } ?>
 											</select>
-										</div>
-										<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-											<div class="check-box">
-												<input type="checkbox" name="shipping-option" id="account-option"> &ensp;
-												<label for="account-option">Create an account?</label>
-											</div>
 										</div>
 										<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
 											<label>Order note</label>
@@ -186,6 +172,19 @@
 					</div>
 					<!--End Col-->
 
+					<?php
+					    if($_SESSION['CART_TEMP_RANDOM'] == "") {
+					        $_SESSION['CART_TEMP_RANDOM'] = rand(10, 10).sha1(crypt(time())).time();
+					    }
+					    $session_cart_id = $_SESSION['CART_TEMP_RANDOM'];
+					    if(isset($_SESSION['user_login_session_id']) && $_SESSION['user_login_session_id']!='') {
+					        $user_session_id = $_SESSION['user_login_session_id'];
+					        $cartItems1 = "SELECT * FROM services_cart WHERE user_id = '$user_session_id' OR session_cart_id='$session_cart_id' ";
+        					$cartItems = $conn->query($cartItems1);
+					    } else {                                       
+					        $cartItems = getAllDataWhere('services_cart','session_cart_id',$session_cart_id);
+					    } 
+					?>
 					<div class="col-md-5 col-sm-12 col-xs-12">
 						<div class="your-order">
 							<div class="default-title">
@@ -200,20 +199,36 @@
 										<strong>Total</strong>
 									</div>
 								</li>
+								<?php $cartTotal = 0;  
+                              		while ($getCartItems = $cartItems->fetch_assoc()) { 
+                               		$getSerName= getIndividualDetails('services_group_service_names','id',$getCartItems['service_id']); ?>
 								<li class="clearfix">
 									<div class="col" style="text-transform:none;">
-										 Home Deep Clening
+										<?php echo $getSerName['group_service_name']; ?>
 									</div>
+									<?php if($getSerName['service_price_type_id'] == 1) {
+			                            $cartTotal += $getSerName['service_price'];
+			                        ?>
 									<div class="col second">
-										Rs. 3499
+										Rs. <?php echo $getSerName['service_price']; ?>
 									</div>
+									<?php } elseif($getSerName['price_after_visit_type_id'] == 1) { ?>
+									<div class="col second">
+										<?php echo "Price After our Visit"; ?>
+									</div>
+									<?php } else { ?>
+									<div class="col second">
+										Rs. <?php echo $getSerName['service_min_price']; ?> - <?php echo $getSerName['service_max_price']; ?>
+									</div>
+									<?php } ?>
 								</li>
+								<?php } ?>
 								<li class="clearfix">
 									<div class="col" style="text-transform:none;">
 										SubTotal
 									</div>
 									<div class="col second">
-										Rs. 3499.00
+										Rs. <?php echo $cartTotal; ?>
 									</div>
 								</li>
 								<li class="clearfix total">
@@ -221,7 +236,7 @@
 										<strong>Order Total</strong>
 									</div>
 									<div class="col second">
-										<strong>Rs. 3499.00</strong>
+										<strong>Rs. <?php echo $cartTotal; ?></strong>
 									</div>
 								</li>
 							</ul>
@@ -260,20 +275,25 @@
 									</li>
 								</ul>
 							</div>
-							<button type="button" class="btn_full">Place Order <i class="icon-left"></i>
-							</button>
+							<div id="divId">
+								<button type="submit" class="btn_full">Place Order <i class="icon-left"></i></button>
+							</div>
 						</div>
 						<!--End Place Order-->
 
 					</div>
 				</div>
+				</form>
+				<?php if(!isset($_SESSION['user_login_session_id'])) { ?>
+				<script type="text/javascript">document.getElementById('divId').style.display = 'none';</script>
+				<?php } ?>
 			</div>
 		</div>
 		<!-- End Container -->
 	</main>
 	<!-- End main -->
 
-	<footer class="revealed">
+	<footer>
             <?php include_once 'footer.php';?>
         </footer><!-- End footer -->
 
@@ -291,8 +311,11 @@
 
 	<!-- Common scripts -->
 	<script src="/cdn-cgi/scripts/84a23a00/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
+	<!-- Validation purpose add scripts -->
+	<?php include_once 'common_validations_scripts.php'; ?>
 	<script src="js/common_scripts_min.js"></script>
 	<script src="js/functions.js"></script>
+
 
 	<script>
 		if ($('.prod-tabs .tab-btn').length) {
@@ -309,6 +332,34 @@
 
 		}
 	</script>
+	<!-- Script to get Cities -->
+    <script type="text/javascript">
+    function getCities(val) { 
+        $.ajax({
+        type: "POST",
+        url: "get_cities.php",
+        data:'lkp_country_id='+val,
+        success: function(data){
+            $("#lkp_city_id").html(data);
+        }
+        });
+    }
+    </script>	
+	
+	<script type="text/javascript">
+	function isNumberKey(evt){
+		    var charCode = (evt.which) ? evt.which : event.keyCode
+		    if (charCode > 31 && (charCode < 48 || charCode > 57))
+		        return false;
+		    return true;
+		}
+	</script>
+	<style type="text/css">
+	  .error {
+	    color: $errorMsgColor;
+	  }
+
+	</style>
 
 </body>
 
