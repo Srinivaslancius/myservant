@@ -4926,6 +4926,7 @@ ul.slides-container li img{
          text-align: justify;
          width: 250px;
          word-spacing:0.1px !important;
+         padding: 9px 6px;
     }
     .popover-footer{
         padding: 6px 14px;
