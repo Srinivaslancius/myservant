@@ -78,7 +78,7 @@ if (!isset($_POST['submit'])) {
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Category Position</label>
-                    <input type="text" name="category_position" class="form-control" id="form-control-2" data-error="Please enter a Category Position" required value="<?php echo $getCategoriesData['category_position'];?>">
+                    <input type="text" name="category_position" class="form-control" id="form-control-2" data-error="Please enter a Category Position" required value="<?php echo $getCategoriesData['category_position'];?>" onkeypress="return isNumberKey(event)">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
