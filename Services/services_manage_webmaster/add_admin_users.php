@@ -46,7 +46,7 @@
                     <input type="password" name="admin_password" class="form-control" id="form-control-2" placeholder="Password" data-error="Please enter Correct Password." required>
                     <div class="help-block with-errors"></div>
                   </div>
-                  <?php $getAdminSetviceTypes = getAllDataWithStatusLimit('lkp_admin_service_types','0','0','1');?>
+                  <?php $getAdminSetviceTypes = getAllDataWhereWithActive('lkp_admin_service_types','id',1);?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose Admin Service Types</label>
                     <select id="form-control-3" name="lkp_admin_service_type_id" class="custom-select" data-error="This field is required." required>

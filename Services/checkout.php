@@ -249,6 +249,14 @@
 										<?php echo $cartTotal; ?>
 									</div>
 								</li>
+								<li class="clearfix" id="discount_price">
+									<div class="col" style="text-transform:none;">
+										Discount Price
+									</div>
+									<div class="col second" id="discount_price1">
+										<?php echo $cartTotal; ?>
+									</div>
+								</li>
 								<li class="clearfix total">
 									<div class="col">
 										<strong>Order Total</strong>
@@ -367,34 +375,39 @@
     }
     </script>
     <script type="text/javascript">
-	        $(".apply_coupon").click(function(){
-	            var coupon_code = $("#coupon_code").val();
-	            var cart_total = $('#cart_total').text();
-	            $.ajax({
-	               type: "POST",
-	               url: "apply_coupon.php",
-	               data: "coupon_code="+coupon_code+"&cart_total="+cart_total,
-	               success: function(result){
-	               		if(result == 0) {
-	               			alert('Please Login');
-	               			$("#coupon_code").val('');
-	               		} else if(result == 1) {
-	               			alert('Enter Valid Coupon');
-	               			$("#coupon_code").val('');
-	               		} else{
-		               		$('#cart_total2').html(result);
-		               		$('#cart_total1').val(result);
-		               		$("#remove_icon").html("<span class='close'>&times;</span>");
-		               	}
-	            	}
-	            });
-	            $("#remove_icon").click(function(){
-		            $("#coupon_code").val('');
-		            $('#cart_total2').html(cart_total);
-		            $(".close").html('');
-		        });
+    $('#discount_price').hide();
+        $(".apply_coupon").click(function(){
+            var coupon_code = $("#coupon_code").val();
+            var cart_total = $('#cart_total').text();
+            $.ajax({
+               type: "POST",
+               url: "apply_coupon.php",
+               data: "coupon_code="+coupon_code+"&cart_total="+cart_total,
+               success: function(value){
+               		if(value == 0) {
+               			alert('Please Login');
+               			$("#coupon_code").val('');
+               		} else if(value == 1) {
+               			alert('Enter Valid Coupon');
+               			$("#coupon_code").val('');
+               		} else{
+               			var data = value.split(",");
+		          		$('#cart_total2').html(data[0]);
+			            $('#cart_total1').val(data[0]);
+	               		$('#discount_price').show();
+	               		$('#discount_price1').html(data[1]);
+	               		$("#remove_icon").html("<span class='close'>&times;</span>");
+	               	}
+            	}
+            });
+            $("#remove_icon").click(function(){
+	            $("#coupon_code").val('');
+	            $('#cart_total2').html(cart_total);
+	            $(".close").html('');
+	            $('#discount_price').hide();
 	        });
-        </script>	
+        });
+    </script>	
 	
 	<script type="text/javascript">
 	function isNumberKey(evt){

@@ -10,13 +10,16 @@ if(!empty($_POST['coupon_code']) && !empty($_POST['cart_total']))  {
 		$sql="SELECT * FROM services_coupons WHERE coupon_code='$coupon_code' AND lkp_status_id = 0";
 		$getCouponPrice = $conn->query($sql);
 		$getCouponPriceData = $getCouponPrice->fetch_assoc();
+		
 		if($getCouponPrice->num_rows > 0) {
 			if($getCouponPriceData['price_type_id'] == 1) {
+				$discount_price = $getCouponPriceData['discount_price'];
 				$cartTotal = $cart_total - $getCouponPriceData['discount_price'];
 			} else {
+				$discount_price = ($cart_total/100) * $getCouponPriceData['discount_price'];
 				$cartTotal = $cart_total - ( ($cart_total/100) * $getCouponPriceData['discount_price'] );
 			}
-			echo $cartTotal;
+			echo $cartTotal.",".$discount_price;
 		} else {
 			echo 1;
 		}
