@@ -37,7 +37,7 @@ if (!isset($_POST['submit']))  {
           <div class="panel-body">
             <div class="row">
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-                <form data-toggle="validator" method="POST" enctype="multipart/form-data">
+                <form autocomplete="off" data-toggle="validator" method="POST" enctype="multipart/form-data">
                   <?php $getStates = getAllDataWithStatus('lkp_states','0');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your State</label>
@@ -72,7 +72,10 @@ if (!isset($_POST['submit']))  {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="form-control-2" class="control-label">Location Name</label>
-                          <input type="text" name="location_name[]" class="form-control" id="form-control-2" placeholder="Location Name" data-error="Please enter Location Name" required>
+                          <input type="text" name="location_name[]" class="form-control" id="user_input" placeholder="Location Name" data-error="Please enter Location Name" onkeyup="checkUserAvailTest()" required>
+                          <span id="input_status" style="color: red;"></span>
+                          <input type="hidden" id="table_name" value="lkp_locations">
+                          <input type="hidden" id="column_name" value="location_name">
                           <div class="help-block with-errors"></div>
                         </div>
                       </div>

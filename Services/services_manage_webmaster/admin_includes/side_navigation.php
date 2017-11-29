@@ -106,7 +106,7 @@
                 <span class="menu-icon">
                    <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
                 </span>
-                <span class="menu-text">Service Coupns</span>
+                <span class="menu-text">Service Coupons</span>
               </a>
             </li>
             <li  class="<?php if($page_name == 'services_brand_logos.php' || $page_name == 'add_services_brand_logos.php' || $page_name == 'edit_services_brand_logos.php' ) { echo "active"; } ?>">

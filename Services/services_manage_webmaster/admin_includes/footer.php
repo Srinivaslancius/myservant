@@ -82,8 +82,8 @@
             userInput:userInput,table:table,columnName:columnName,
           },
           success: function (response) {
-            $( '#input_status' ).html(response);
-            if (response == "User Already Exist"){
+            if (response > 0){
+              $('#input_status').html("<span>Already Exist</span>");
               $("#user_input").val("");
             }        
             }

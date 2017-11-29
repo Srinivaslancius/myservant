@@ -112,7 +112,7 @@ $message .= "<html><head><title>Myservent Contactus Form</title></head>
 //echo $message; die;
 
 $sendMail = sendEmail($to,$subject,$message,$email_contact);
-if($sendMail) {
+if($sendMail == 0) {
 	echo  "<script>alert('Thank You For Your feedback');window.location.href('contactus.php');</script>";
 }
 

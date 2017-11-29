@@ -22,7 +22,7 @@
 
     function userLogin($user_email,$user_pwd) {
         global $conn;
-        $sql="SELECT * FROM users WHERE (user_email = '$user_email' OR user_mobile = '$user_email') AND user_password = '$user_pwd' ";
+        $sql="SELECT * FROM users WHERE (user_email = '$user_email' OR user_mobile = '$user_email') AND user_password = '$user_pwd' AND lkp_status_id = 0";
         $result = $conn->query($sql);        
         return $result;
     }
@@ -69,10 +69,7 @@
         global $conn;
         $sql = "SELECT * FROM `$table` WHERE `$clause`= '$value' ";
         $result = $conn->query($sql);
-        if($result->num_rows>0){
-            $returnStmt = "User Already Exist";
-            return $returnStmt;
-        }
+        return $result->num_rows;
     }
 
     function sendEmail($to,$subject,$message,$from) {
@@ -82,7 +79,11 @@
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";     
         $headers = 'From: "'.$from.'"' . "\r\n" .            
             'X-Mailer: PHP/' . phpversion();
-        mail($to, $subject, $message, $headers);
+        if(mail($to, $subject, $message, $headers)) {
+            return 0;
+        } else {
+            return 1;
+        }
 
     }
 

@@ -103,6 +103,7 @@ if (!isset($_POST['submit']))  {
 <?php include_once 'admin_includes/footer.php'; ?>
 <!-- Script for display category based on banner type -->
 <script type="text/javascript">
+$("#service_category_id").hide();
   $(document).ready(function () {
     $("input[name='lkp_banner_type_id']").click(function () {
       if ($("#lkp_banner_type_id").is(":checked")) {

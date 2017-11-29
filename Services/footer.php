@@ -29,17 +29,17 @@
 				<div class="col-md-3 col-sm-3">
 					<h3>CUSTOMER SERVICE</h3>
 					<ul>
-						<li><a href="#">My Account</a>
+						<li><a href="my_dashboard">My Account</a>
 						</li>
 						<li><a href="#">Track Order</a>
 						</li>
-						<li><a href="#">Help Center</a>
+						<li><a href="help_center.php">Help Center</a>
 						</li>
-						<li><a href="#">Delivery Areas</a>
+						<li><a href="delivery_areas.php">Delivery Areas</a>
 						</li>
-						<li><a href="#">Privacy Policy/Terms & Conditions</a>
+						<li><a href="terms_privacy_policy.php">Privacy Policy/Terms & Conditions</a>
 						</li>
-						<li><a href="#">Return Policy</a>
+						<li><a href="return_policy.php">Return Policy</a>
 						</li>
 					</ul>
 				</div>
