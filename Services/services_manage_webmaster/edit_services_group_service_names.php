@@ -211,6 +211,7 @@ if (!isset($_POST['submit'])) {
     if(parseInt($('#min_price').val()) > parseInt($('#max_price').val())) {
       alert("The Maximum Price must be larger than the Minimum Price");
       $('#min_price').val('');
+      $('#max_price').val('');
       return false;
     }
  });
