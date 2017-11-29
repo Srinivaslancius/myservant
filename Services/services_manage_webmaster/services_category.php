@@ -29,7 +29,8 @@
                     <td><?php echo $row['meta_title'];?></td>
                     <td><?php echo $row['meta_keywords'];?></td>
                     <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='services_category'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='services_category'>In Active</span>" ;} ?></td>
-                    <td> <a href="edit_services_category.php?cid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a> &nbsp; <a href="delete_services_category.php?cid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-delete zmdi-hc-fw" onclick="return confirm('Are you sure you want to delete?')"></i></a> &nbsp;<a href="#"><i class="zmdi zmdi-eye zmdi-hc-fw" data-toggle="modal" data-target="#<?php echo $row['id']; ?>" class=""></i></a></td>
+                    <td> <a href="edit_services_category.php?cid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a> &nbsp; <a href="delete_services_category.php?cid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-delete zmdi-hc-fw" onclick="return confirm('Are you sure you want to delete?')"></i></a> &nbsp;
+                    <!-- <a href="#"><i class="zmdi zmdi-eye zmdi-hc-fw" data-toggle="modal" data-target="#<?php echo $row['id']; ?>" class=""></i></a> --></td>
                      <!-- Open Modal Box  here -->
                     <div id="<?php echo $row['id']; ?>" class="modal fade" tabindex="-1" role="dialog">
                       <div class="modal-dialog">
@@ -47,37 +48,12 @@
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Category Name:</div>
                               <div class="col-sm-6"><?php echo $row['category_name'];?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-2"></div>
-                              <div class="col-sm-4">Category Description:</div>
-                              <div class="col-sm-6"><?php echo $row['category_description'];?></div>
-                            </div>
+                            </div>                            
                             <div class="row">
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Category Image:</div>
                               <div class="col-sm-6"><img src="<?php echo $base_url . 'uploads/services_category_images/'.$row['category_image'] ?>" height="100" width="100"/></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-2"></div>
-                              <div class="col-sm-4">Category Position:</div>
-                              <div class="col-sm-6"><?php echo $row['category_position'];?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-2"></div>
-                              <div class="col-sm-4">Meta Title:</div>
-                              <div class="col-sm-6"><?php echo $row['meta_title'];?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-2"></div>
-                              <div class="col-sm-4">Meta Keywords:</div>
-                              <div class="col-sm-6"><?php echo $row['meta_keywords'];?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-2"></div>
-                              <div class="col-sm-4">Meta Description:</div>
-                              <div class="col-sm-6"><?php echo $row['meta_desc'];?></div>
-                            </div>
+                            </div>                            
                             <div class="row">
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Status:</div>
