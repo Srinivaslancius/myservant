@@ -139,10 +139,7 @@
 										<label>Country <sup>*</sup>
 										</label>
 										<select name="country" id="lkp_country_id" class="form-control" onChange="getCities(this.value);" required>
-											<option>Select Country</option>
-											<?php while($getCountries = $getCountriesData->fetch_assoc()) { ?>
-											<option value="<?php echo $getCountries['id']; ?>"><?php echo $getCountries['country_name']; ?></option>
-											<?php } ?>
+											<option value="99">India</option>
 										</select>
 									</div>
 									<div class="form-group col-md-6 col-sm-6 col-xs-12">
@@ -156,7 +153,7 @@
 										<select name="city" id="lkp_city_id" class="form-control" required>
 											<option>Select City</option>
 											<?php while($getCities = $getCitiesData->fetch_assoc()) { ?>
-											<option value=""></option>
+											<option value=""><?php echo $getCities['city_name'];?></option>
 											<?php } ?>
 										</select>
 									</div>

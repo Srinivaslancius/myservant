@@ -173,6 +173,14 @@
                 <span class="menu-text">Locations</span>
               </a>
             </li>
+            <li  class="<?php if($page_name == 'services_orders.php' ) { echo "active"; } ?>">
+              <a href="services_orders.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Orders</span>
+              </a>
+            </li>
             <li  class="<?php if($page_name == 'customer_enquireis.php' ) { echo "active"; } ?>">
               <a href="customer_enquireis.php" aria-haspopup="true">
                 <span class="menu-icon">
