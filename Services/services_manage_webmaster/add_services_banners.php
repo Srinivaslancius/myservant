@@ -5,11 +5,17 @@ if (!isset($_POST['submit']))  {
   echo "fail";
 }else  {
   //If success
-  $lkp_banner_type_id = $_POST['lkp_banner_type_id'];
-  $service_category_id = $_POST['service_category_id'];
+  //echo "<pre>"; print_r($_POST); die;
+  $lkp_banner_type_id = $_POST['lkp_banner_type_id'];  
   $title = $_POST['title'];
   $lkp_status_id = $_POST['lkp_status_id'];
   $fileToUpload = $_FILES["fileToUpload"]["name"];
+
+  if($lkp_banner_type_id == 2) {
+    $service_category_id = "0";
+  } else {
+    $service_category_id = $_POST['service_category_id'];
+  }
   
   if($fileToUpload!='') {
 
