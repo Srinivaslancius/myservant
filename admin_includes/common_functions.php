@@ -44,7 +44,12 @@
                 </html>
                 ";
             $from = "info@myservant.com";
-            sendEmail($to,$subject,$message,$from);
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";     
+            $headers = 'From: "'.$from.'"' . "\r\n" .            
+                'X-Mailer: PHP/' . phpversion();
+            mail($to, $subject, $message, $headers)
+            //sendEmail($to,$subject,$message,$from);
             return 1;
         } else {
             return 0;
