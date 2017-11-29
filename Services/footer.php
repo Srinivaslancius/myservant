@@ -29,7 +29,7 @@
 				<div class="col-md-3 col-sm-3">
 					<h3>CUSTOMER SERVICE</h3>
 					<ul>
-						<li><a href="my_dashboard">My Account</a>
+						<li><a href="my_dashboard.php">My Account</a>
 						</li>
 						<li><a href="#">Track Order</a>
 						</li>
