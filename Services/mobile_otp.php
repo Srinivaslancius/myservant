@@ -13,8 +13,8 @@
 	if (isset($_POST['register']))  {
 
 		$user_mobile = $_POST['user_mobile'];
-		$mobile_otp = rand(1000, 9999); //Your message to send, Add URL encoding here.
-
+		//$mobile_otp = rand(1000, 9999); //Your message to send, Add URL encoding here.
+        $mobile_otp = "1234";
 		$selOTP = getAllDataWhere('user_mobile_otp','user_mobile',$user_mobile);	
 		$getNoRows = $selOTP->num_rows; 
 
