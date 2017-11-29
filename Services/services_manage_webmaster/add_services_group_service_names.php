@@ -6,6 +6,7 @@ if (!isset($_POST['submit']))  {
   echo "fail";
 }else  {
   //If success
+  //echo "<pre>"; print_r($_POST); die;
   $services_category_id = $_POST['services_category_id'];
   $services_sub_category_id = $_POST['services_sub_category_id'];
   $services_group_id = $_POST['services_group_id'];
@@ -13,12 +14,25 @@ if (!isset($_POST['submit']))  {
   $group_service_description = $_POST['group_service_description'];
   $service_price_type_id = $_POST['service_price_type_id'];
   $service_price = $_POST['service_price'];
-  $price_after_visit_type_id = $_POST['price_after_visit_type_id'];
-  $service_min_price = $_POST['service_min_price'];
-  $service_max_price = $_POST['service_max_price'];
-  $lkp_status_id = $_POST['lkp_status_id'];
+  $price_after_visit_type_id = $_POST['price_after_visit_type_id'];  
   
-    $sql = "INSERT INTO services_group_service_names (`services_category_id`, `services_sub_category_id`, `services_group_id`, `group_service_name`,`group_service_description`, `service_price_type_id`, `service_price`, `price_after_visit_type_id`, `service_min_price`, `service_max_price`, `lkp_status_id`) VALUES ('$services_category_id', '$services_sub_category_id', '$services_group_id', '$group_service_name','$group_service_description', '$service_price_type_id', '$service_price', '$price_after_visit_type_id', '$service_min_price', '$service_max_price', '$lkp_status_id')"; 
+  $lkp_status_id = $_POST['lkp_status_id'];
+
+  if($price_after_visit_type_id == 2) {
+    $service_min_price = $_POST['service_min_price'];
+    $service_max_price = $_POST['service_max_price'];
+  } else {
+    $service_min_price = "0";
+    $service_max_price = "0";
+  }
+
+  if($service_price_type_id  == 1) {
+    $sql = "INSERT INTO services_group_service_names (`services_category_id`, `services_sub_category_id`, `services_group_id`, `group_service_name`,`group_service_description`, `service_price_type_id`, `service_price`, `lkp_status_id`) VALUES ('$services_category_id', '$services_sub_category_id', '$services_group_id', '$group_service_name','$group_service_description', '$service_price_type_id', '$service_price', '$lkp_status_id')"; 
+  } else {
+    $sql = "INSERT INTO services_group_service_names (`services_category_id`, `services_sub_category_id`, `services_group_id`, `group_service_name`,`group_service_description`, `service_price_type_id`, ``price_after_visit_type_id`, `service_min_price`, `service_max_price`, `lkp_status_id`) VALUES ('$services_category_id', '$services_sub_category_id', '$services_group_id', '$group_service_name','$group_service_description', '$service_price_type_id', '$price_after_visit_type_id', '$service_min_price', '$service_max_price', '$lkp_status_id')"; 
+  }
+  
+    
     if($conn->query($sql) === TRUE){
        echo "<script type='text/javascript'>window.location='services_group_service_names.php?msg=success'</script>";
     } else {
