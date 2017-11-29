@@ -17,9 +17,11 @@ if (!isset($_POST['submit'])) {
         $created_at = date("Y-m-d h:i:s");
         $employee_belongs_to = $_POST['employee_belongs_to'];
         $service_provider_registration_id = $_POST['service_provider_registration_id'];
-       if ($employee_belongs_to  == 1) {
+       if($_POST['employee_belongs_to'] == 1) {
           $service_provider_registration_id = 0;
-       }
+        } else {
+          $service_provider_registration_id = $_POST['service_provider_registration_id'];
+        }
         $status = $_POST['lkp_status_id'];
 
     if($_FILES["fileToUpload"]["name"]!='') {

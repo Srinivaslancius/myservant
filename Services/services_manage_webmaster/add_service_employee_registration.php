@@ -4,7 +4,7 @@
   if (!isset($_POST['submit']))  {
               echo "fail";
           } else  {
-         //echo "<pre>";print_r($_POST);  
+        //echo "<pre>";print_r($_POST);  exit;
         $name = $_POST['name'];
         $email = $_POST['email'];
         $mobile_number = $_POST['mobile_number'];
@@ -17,6 +17,11 @@
         $employee_belongs_to = $_POST['employee_belongs_to'];
         $service_provider_registration_id = $_POST['service_provider_registration_id'];
         $status = $_POST['lkp_status_id'];
+        if($_POST['employee_belongs_to'] == 1) {
+          $service_provider_registration_id = 0;
+        } else {
+          $service_provider_registration_id = $_POST['service_provider_registration_id'];
+        }
         if($fileToUpload!='') {
           $target_dir = "../../uploads/service_employee_photo/";
           $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);

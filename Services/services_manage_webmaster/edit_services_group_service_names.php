@@ -13,11 +13,23 @@ if (!isset($_POST['submit'])) {
     $group_service_name = $_POST['group_service_name'];
     $group_service_description = $_POST['group_service_description'];
     $service_price_type_id = $_POST['service_price_type_id'];
-    $service_price = $_POST['service_price'];
     $price_after_visit_type_id = $_POST['price_after_visit_type_id'];
-    $service_min_price = $_POST['service_min_price'];
-    $service_max_price = $_POST['service_max_price'];
     $lkp_status_id = $_POST['lkp_status_id'];
+    if($_POST['service_price_type_id'] == 1) {
+      $price_after_visit_type_id = 0;
+      $service_price = $_POST['service_price'];
+    } else {
+      $price_after_visit_type_id = $_POST['price_after_visit_type_id'];
+      $service_price = 0;
+    }
+
+    if($price_after_visit_type_id == 2) {
+      $service_min_price = $_POST['service_min_price'];
+      $service_max_price = $_POST['service_max_price'];
+    } else {
+      $service_min_price = "0";
+      $service_max_price = "0";
+    }
 
       $sql = "UPDATE `services_group_service_names` SET services_category_id = '$services_category_id', services_sub_category_id = '$services_sub_category_id', services_group_id = '$services_group_id', group_service_name = '$group_service_name',group_service_description = '$group_service_description',service_price_type_id = '$service_price_type_id',service_price = '$service_price',price_after_visit_type_id = '$price_after_visit_type_id',service_min_price = '$service_min_price',service_max_price = '$service_max_price', lkp_status_id='$lkp_status_id' WHERE id = '$id' ";
       if($conn->query($sql) === TRUE){

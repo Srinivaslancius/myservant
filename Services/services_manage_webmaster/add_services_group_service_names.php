@@ -18,6 +18,14 @@ if (!isset($_POST['submit']))  {
   
   $lkp_status_id = $_POST['lkp_status_id'];
 
+  if($_POST['service_price_type_id'] == 1) {
+      $price_after_visit_type_id = 0;
+      $service_price = $_POST['service_price'];
+    } else {
+      $price_after_visit_type_id = $_POST['price_after_visit_type_id'];
+      $service_price = 0;
+    }
+
   if($price_after_visit_type_id == 2) {
     $service_min_price = $_POST['service_min_price'];
     $service_max_price = $_POST['service_max_price'];
@@ -26,11 +34,7 @@ if (!isset($_POST['submit']))  {
     $service_max_price = "0";
   }
 
-  if($service_price_type_id  == 1) {
-    $sql = "INSERT INTO services_group_service_names (`services_category_id`, `services_sub_category_id`, `services_group_id`, `group_service_name`,`group_service_description`, `service_price_type_id`, `service_price`, `lkp_status_id`) VALUES ('$services_category_id', '$services_sub_category_id', '$services_group_id', '$group_service_name','$group_service_description', '$service_price_type_id', '$service_price', '$lkp_status_id')"; 
-  } else {
-    $sql = "INSERT INTO services_group_service_names (`services_category_id`, `services_sub_category_id`, `services_group_id`, `group_service_name`,`group_service_description`, `service_price_type_id`, ``price_after_visit_type_id`, `service_min_price`, `service_max_price`, `lkp_status_id`) VALUES ('$services_category_id', '$services_sub_category_id', '$services_group_id', '$group_service_name','$group_service_description', '$service_price_type_id', '$price_after_visit_type_id', '$service_min_price', '$service_max_price', '$lkp_status_id')"; 
-  }
+ $sql = "INSERT INTO services_group_service_names (`services_category_id`, `services_sub_category_id`, `services_group_id`, `group_service_name`,`group_service_description`, `service_price_type_id`,  `service_price`,`price_after_visit_type_id`, `service_min_price`, `service_max_price`, `lkp_status_id`) VALUES ('$services_category_id', '$services_sub_category_id', '$services_group_id', '$group_service_name','$group_service_description', '$service_price_type_id','$service_price', '$price_after_visit_type_id', '$service_min_price', '$service_max_price', '$lkp_status_id')";
   
     
     if($conn->query($sql) === TRUE){
