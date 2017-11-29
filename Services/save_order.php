@@ -127,10 +127,11 @@ if(isset($_POST["submit"]) && $_POST["submit"]!="") {
 
 		//echo $message; die;
 		//$sendMail = sendEmail($to,$subject,$message,$from);
+		$name = "My Servant";
+		$from = "info@myservant.com";
 		$headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";     
-        $headers = 'From: "'.$from.'"' . "\r\n" .            
-            'X-Mailer: PHP/' . phpversion();
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";  
+        $headers .= 'From: '.$name.'<'.$from.'>'. "\r\n";
         mail($to, $subject, $message, $headers);            
 
 		//after placing order that item will delete in cart
