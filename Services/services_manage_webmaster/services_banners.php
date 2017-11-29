@@ -50,10 +50,13 @@
                               <div class="col-sm-6"><?php if($row['lkp_banner_type_id'] == 1 ){ echo "Category";} else{ echo "Normal";}?></div>
                             </div>
                             <div class="row">
-                              <?php $getServicesCategories = getAllDataWithStatus('services_category','0'); ?>
+                              <?php $getServicesCategories = getAllDataWithStatus('services_category','0'); 
+                              $getServicesCategories1 = $getServicesCategories->fetch_assoc();
+                               if($row['service_category_id'] == $getServicesCategories1['id']) { ?>
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Service Category:</div>
-                              <div class="col-sm-6"><?php while($getServicesCategories1 = $getServicesCategories->fetch_assoc()) { if($row['service_category_id'] == $getServicesCategories1['id']) { echo $getServicesCategories1['category_name']; } } ?></div>
+                              <div class="col-sm-6"><?php echo $getServicesCategories1['category_name']; ?></div>
+                              <?php } ?>
                             </div>
                             <div class="row">
                               <div class="col-sm-2"></div>
