@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
@@ -6,21 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<?php include_once 'meta.php';?>
-	<?php 
-		error_reporting(0);
-		 if(isset($_POST['submit']))  { 
-		    //Login here
-		    $user_email = $_POST['login_email'];
-		    $getUserForgotData = forgotPassword($user_email);
-		    //Set variable for session
-		    if($getUserForgotData == 1) {
-		        echo  "<script>alert('Password Sent To Your Email,Please Check.');window.location.href('login.php');</script>";
-		    } else {
-		    	echo "<script>alert('Your Entered Email Not Found');</script>";
-		    }
-		}
-	?>
+	<?php include_once 'meta.php';?>	
 
 	<!-- Favicons-->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -40,6 +25,22 @@
 </head>
 
 <body>
+
+<?php 
+		error_reporting(0);
+		 if(isset($_POST['submit']))  { 
+		    //Login here
+		    $user_email = $_POST['login_email'];
+		    $getUserForgotData = forgotPassword($user_email);
+		    //Set variable for session
+		    if($getUserForgotData == 1) {
+		        echo  "<script>alert('Password Sent To Your Email,Please Check.');window.location.href('login.php');</script>";
+		    } else {
+		    	echo "<script>alert('Your Entered Email Not Found');</script>";
+		    }
+		}
+	?>
+
 
 	<!--[if lte IE 8]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
