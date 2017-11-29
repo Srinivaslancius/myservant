@@ -30,7 +30,7 @@ $id = $_GET['coupon_id'];
                 <form data-toggle="validator" method="POST" autocomplete="off">
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Coupon Code</label>
-                    <input type="text" name="coupon_code" class="form-control" id="form-control-2" placeholder="Admin Name" data-error="Please enter Name" required value="<?php echo $getServicesCouponsData['coupon_code'];?>">
+                    <input type="text" name="coupon_code" class="form-control" id="form-control-2" placeholder="Coupon Code" data-error="Please enter Coupon Code" required value="<?php echo $getServicesCouponsData['coupon_code'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
