@@ -148,7 +148,7 @@ if (!isset($_POST['submit']))  {
                       <!-- <img id="output" height="100" width="100"/> -->
                       <label class="btn btn-default file-upload-btn">
                         Choose file...
-                          <input id="form-control-22" class="file-upload-input service_provider_business" type="file" accept="image/*" name="fileToUpload" id="fileToUpload"  onchange="loadFile(event)"  multiple="multiple" >
+                          <input id="form-control-22" class="file-upload-input" type="file" accept="image/*" name="fileToUpload" id="fileToUpload"  onchange="loadFile(event)"  multiple="multiple" >
                         </label>
                     </div>
 
@@ -257,7 +257,7 @@ if (!isset($_POST['submit']))  {
                       <!-- <img id="output1" height="100" width="100"/> -->
                       <label class="btn btn-default file-upload-btn">
                         Choose file...
-                          <input id="form-control-22" class="file-upload-input service_provider_personal" type="file" accept="image/*" name="fileToUpload1" id="fileToUpload1"  onchange="loadFile(event)"  multiple="multiple" >
+                          <input id="form-control-22" class="file-upload-input" type="file" accept="image/*" name="fileToUpload1" id="fileToUpload1"  onchange="loadFile(event)"  multiple="multiple" >
                         </label>
                     </div>
                   </div>
