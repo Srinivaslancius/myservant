@@ -89,7 +89,7 @@ if (!isset($_POST['submit'])) {
                   <?php $getServicesCategories = getAllDataWithStatus('services_category','0');?>
                   <div class="form-group" id="service_category_id">
                     <label for="form-control-3" class="control-label">Choose your Services Categories</label>
-                    <select id="form-control-3" name="service_category_id" class="custom-select" data-error="This field is required.">
+                    <select id="form-control-3" name="service_category_id" class="custom-select check_valid_cust" data-error="This field is required.">
                       <option value="">Select Services Categories</option>
                       <?php while($row = $getServicesCategories->fetch_assoc()) {  ?>
                           <option <?php if($row['id'] == $getBannersData['service_category_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['category_name']; ?></option>
@@ -131,8 +131,10 @@ if (!isset($_POST['submit'])) {
     $("input[name='lkp_banner_type_id']").click(function () {
       if ($("#lkp_banner_type_id").is(":checked")) {
           $("#service_category_id").show();
+          $(".check_valid_cust").attr("required", "true");
       } else {
           $("#service_category_id").hide();
+          $('.check_valid_cust').removeAttr('required');
       }
     });
   });
