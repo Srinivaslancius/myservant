@@ -188,5 +188,13 @@ if (!isset($_POST['submit'])) {
     }
 
   });
+  //Minimum Price should be less than Maximum Price
+  $("#max_price").blur(function () {
+    if(parseInt($('#min_price').val()) > parseInt($('#max_price').val())) {
+      alert("The Maximum Price must be larger than the Minimum Price");
+      $('#min_price').val('');
+      return false;
+    }
+ });
 });
 </script>

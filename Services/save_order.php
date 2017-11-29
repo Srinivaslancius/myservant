@@ -126,9 +126,6 @@ if(isset($_POST["submit"]) && $_POST["submit"]!="") {
 		</html>";
 
 		//echo $message; die;
-		// Always set content-type when sending HTML email
-		$headers = "MIME-Version: 1.0" . "\r\n";
-		$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 		$sendMail = sendEmail($to,$subject,$message,$from);
 
 		//after placing order that item will delete in cart

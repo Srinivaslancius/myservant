@@ -56,10 +56,10 @@
                               <div class="col-sm-6"><?php while($getServicesSubCategories1 = $getServicesSubCategories->fetch_assoc()) { if($row['services_sub_category_id'] == $getServicesSubCategories1['id']) { echo $getServicesSubCategories1['sub_category_name']; } } ?></div>
                             </div>
                             <div class="row">
-                              <?php $getGroupsData = getAllData('services_groups'); ?>
+                              <?php $getServiceGroups = getAllData('services_groups'); ?>
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Group Name:</div>
-                              <div class="col-sm-6"><?php while($getGroupsData1 = $getGroupsData->fetch_assoc()) { if($row['services_sub_category_id'] == $getGroupsData1['id']) { echo $getGroupsData1['group_name']; } } ?></div>
+                              <div class="col-sm-6"><?php while($getServiceGroups1 = $getServiceGroups->fetch_assoc()) { if($row['services_group_id'] == $getServiceGroups1['id']) { echo $getServiceGroups1['group_name']; } } ?></div>
                             </div>
                             <div class="row">
                               <div class="col-sm-2"></div>

@@ -156,7 +156,7 @@ if (!isset($_POST['submit']))  {
 <?php include_once 'admin_includes/footer.php'; ?>
 <!-- Script for display Price Type -->
 <script type="text/javascript">
-  $(document).ready(function () { 
+$(document).ready(function () { 
     $('#service_price, #price_after_visit_type_id1, #service_min_price, #service_max_price').hide();
     $('.service_price_type_id').on('click', function() {
 
@@ -184,5 +184,13 @@ if (!isset($_POST['submit']))  {
     }
 
   });
+  //Minimum Price should be less than Maximum Price
+  $("#max_price").blur(function () {
+    if(parseInt($('#min_price').val()) > parseInt($('#max_price').val())) {
+      alert("The Maximum Price must be larger than the Minimum Price");
+      $('#min_price').val('');
+      return false;
+    }
+ });
 });
 </script>

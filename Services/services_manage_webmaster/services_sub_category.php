@@ -15,7 +15,7 @@
                     <th>Category Name</th>
                     <th>Sub Category Name</th>
                     <th>Meta Title</th>
-                    <th>Meta KeyWwords</th>
+                    <th>Meta Keywords</th>
                     <th>Status</th>
                     <th>Actions</th>
                   </tr>
