@@ -129,7 +129,7 @@ if (!isset($_POST['submit'])) {
                     <div class="form-group">
                       <label for="form-control-3" class="control-label">Choose Service Provider</label>
                       <select id="service-provider-type1" name="service_provider_registration_id" class="custom-select service_provider_type1" data-error="This field is required.">
-                        <option value="0">Select Service Provider</option>
+                        <option value="">Select Service Provider</option>
                         <?php while($row1 = $getServiceProReg->fetch_assoc()) {  ?>
                             <option <?php if($row1['id'] == $getServiceEmployeesData['service_provider_registration_id']) { echo "Selected"; } ?> value="<?php echo $row1['id']; ?>"><?php echo $row1['name']; ?></option>
                         <?php } ?>
@@ -161,9 +161,11 @@ if (!isset($_POST['submit'])) {
           $('#employee_belongs_to').change(function() {
              if($(this).val() == 2) {
                 $('#select_service_provider_id').show();
+                $(".service_provider_type1").attr("required", "true");
              }else{
                 $('#service_provider_type1').val(0);
                 $('#select_service_provider_id').hide();
+                $(".service_provider_type1").removeAttr('required');
              }  
           });
           if ($('#employee_belongs_to').val() == 1) {

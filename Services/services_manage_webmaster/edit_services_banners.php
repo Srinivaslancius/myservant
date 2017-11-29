@@ -124,8 +124,10 @@ if (!isset($_POST['submit'])) {
 
     if ($("#lkp_banner_type_id").is(":checked")) {
           $("#service_category_id").show();
+          $(".check_valid_cust").attr("required", "true");
       } else {
           $("#service_category_id").hide();
+          $('.check_valid_cust').removeAttr('required');
       }
       
     $("input[name='lkp_banner_type_id']").click(function () {

@@ -149,7 +149,7 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Description</label>
-                    <textarea name="description" class="form-control service_provider_business" id="meta_desc" placeholder="Description" data-error="Please enter Address."></textarea>
+                    <textarea name="description" class="form-control service_provider_business" id="meta_desc" placeholder="Description" data-error="Please enter Description."></textarea>
                     <div class="help-block with-errors"></div>
                   </div>
 
@@ -181,7 +181,7 @@ if (!isset($_POST['submit']))  {
                   <?php $getSubCategories = getAllDataWithStatus('services_sub_category','0');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your Specialization</label>
-                    <select name="sub_category_id" class="custom-select" id="sub_category_id1" data-error="This field is required.">
+                    <select name="sub_category_id" class="custom-select service_provider_business" id="sub_category_id1" data-error="This field is required.">
                       <option value="">Select Specialization</option>
                       <?php while($row = $getSubCategories->fetch_assoc()) {  ?>
                           <option value="<?php echo $row['id']; ?>" ><?php echo $row['sub_category_name']; ?></option>
@@ -193,7 +193,7 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group" id="specialization_name1">
                     <label for="form-control-2" class="control-label">Specialization Name</label>
-                    <input type="text" name="specialization_name" class="form-control" id="form-control-2" placeholder="Specialization" data-error="Please enter Specialization">
+                    <input type="text" name="specialization_name" class="form-control specialization_name" id="form-control-2" placeholder="Specialization" data-error="Please enter Specialization">
                     <div class="help-block with-errors"></div>
                   </div>
 
@@ -201,9 +201,9 @@ if (!isset($_POST['submit']))  {
                       <!--- //if associate value = 0 (Yes) & if associate value = 1 (No) -->
                         <h4>Associate With Us</h4>
                         <label>
-                          <input type="checkbox"  value="0" name="associate_or_not" />&nbsp;Yes</label>&nbsp;&nbsp;
+                          <input type="checkbox" class="service_provider_business" value="0" name="associate_or_not" />&nbsp;Yes</label>&nbsp;&nbsp;
                         <label>
-                          <input type="checkbox"  value="1" name="associate_or_not"/>&nbsp;No</label>
+                          <input type="checkbox" class="service_provider_business" value="1" name="associate_or_not"/>&nbsp;No</label>
                         <label>
                    </div>
                 </div>
@@ -218,7 +218,7 @@ if (!isset($_POST['submit']))  {
                   <?php $getSubCategories = getAllDataWithStatus('services_sub_category','0');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your Specialization</label>
-                    <select name="sub_category_id1" class="custom-select" id="sub_category_id" data-error="This field is required.">
+                    <select name="sub_category_id1" class="custom-select service_provider_personal" id="sub_category_id" data-error="This field is required.">
                       <option value="">Select Specialization</option>
                       <?php while($row = $getSubCategories->fetch_assoc()) {  ?>
                           <option value="<?php echo $row['id']; ?>" ><?php echo $row['sub_category_name']; ?></option>
@@ -230,7 +230,7 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group" id="specialization_name">
                     <label for="form-control-2" class="control-label">Specialization Name</label>
-                    <input type="text" name="specialization_name1" class="form-control" id="form-control-2" placeholder="Specialization" data-error="Please enter Specialization">
+                    <input type="text" name="specialization_name1" class="form-control specialization_name1" id="form-control-2" placeholder="Specialization" data-error="Please enter Specialization">
                     <div class="help-block with-errors"></div>
                   </div>
 
@@ -282,26 +282,34 @@ if (!isset($_POST['submit']))  {
         $('#service_provider_business_type').show();
         $('.service_provider_business').val("");
         $('#service_provider_personal_type').hide();
+        $(".service_provider_business").attr("required", "true");
+        $(".service_provider_personal").removeAttr('required');
       } else if($(this).val() == 2) {
         $('#service_provider_business_type').hide();
         $('.service_provider_personal').val("");
         $('#service_provider_personal_type').show();
+        $(".service_provider_personal").attr("required", "true");
+        $(".service_provider_business").removeAttr('required');
       }  
     });
     $('#sub_category_id').change(function() {
 
       if($(this).val() == 0) {
         $('#specialization_name').show();
+        $(".specialization_name").attr("required", "true");
       } else{
         $('#specialization_name').hide();
+        $(".specialization_name").removeAttr('required');
       }
     });
     $('#sub_category_id1').change(function() {
 
       if($(this).val() == 0) {
         $('#specialization_name1').show();
+        $(".specialization_name1").attr("required", "true");
       } else{
         $('#specialization_name1').hide();
+        $(".specialization_name1").removeAttr('required');
       }
     });
   });  

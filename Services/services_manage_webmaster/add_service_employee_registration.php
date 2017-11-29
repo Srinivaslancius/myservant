@@ -146,9 +146,11 @@
              if($(this).val() == 2) {
                 $('#select_service_provider_id').show();
                 $('.service_provider_type1').val("");
+                $(".service_provider_type1").attr("required", "true");
              }else{
                 $('#select_service_provider_id').hide();
                 $('.service_provider_type1').val("");
+                $(".service_provider_type1").removeAttr('required');
              }   
           });
         });  

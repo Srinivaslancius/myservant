@@ -108,7 +108,7 @@ if (!isset($_POST['submit'])) {
                   </div>
                   <div class="form-group" id="service_price">
                     <label for="form-control-2" class="control-label">Service Price</label>
-                    <input type="text" name="service_price" class="form-control" id="service_price_txt" value="<?php echo $getGroupNamesData['service_price'];?>">
+                    <input type="text" name="service_price" class="form-control service_price" id="service_price_txt" value="<?php echo $getGroupNamesData['service_price'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <?php $getPriceAfterVisitTypes = getAllDataWithStatus('price_after_visit_types','0');?>
@@ -162,16 +162,22 @@ if (!isset($_POST['submit'])) {
           $('#service_price').show();
           $('#price_after_visit_type_id1, #service_min_price1, #service_max_price1').hide();
           $('#min_price, #max_price').val("");
+          $(".service_price").attr("required", "true");
+          $(".price_after_visit_type_id").removeAttr('required');
       } else {
           $('#service_price').hide();
           $('#service_price_txt').val("");
           $('#price_after_visit_type_id1').show();
+          $(".price_after_visit_type_id").attr("required", "true");
+          $(".service_price").removeAttr('required');
       }
       if ($("#price_after_visit_type_id").is(":checked")) {
           $('#service_min_price1, #service_max_price1').hide();
           $('#service_min_price1, #service_max_price1').val('');
+          $("#min_price, #max_price").removeAttr('required');
       } else {
           $('#service_min_price, #service_max_price').show();
+          $("#min_price, #max_price").attr("required", "true");
       }
 
     $('.service_price_type_id').on('click', function() {
@@ -181,10 +187,15 @@ if (!isset($_POST['submit'])) {
         $('#price_after_visit_type_id1, #service_min_price1, #service_max_price1').hide();
         $('#min_price, #max_price').val("");
         $('.price_after_visit_type_id').prop('checked', false);
+        $(".service_price").attr("required", "true");
+        $(".price_after_visit_type_id").removeAttr('required');
+        $("#min_price, #max_price").removeAttr('required');
       } else if($(this).val() == 2) {
         $('#service_price').hide();
         $('#service_price_txt').val("");
         $('#price_after_visit_type_id1').show();
+        $(".price_after_visit_type_id").attr("required", "true");
+        $(".service_price").removeAttr('required');
       }  
 
    });
@@ -194,9 +205,11 @@ if (!isset($_POST['submit'])) {
     $('#service_min_price1, #service_max_price1').show();
     if($(this).val() == 2) {
       $('#service_min_price1, #service_max_price1').show();
+      $("#min_price, #max_price").attr("required", "true");
     } else if($(this).val() == 1) {
       $('#service_min_price1, #service_max_price1').hide();
       $('#service_min_price1, #service_max_price1').val('');
+      $("#min_price, #max_price").removeAttr('required');
     }
 
   });
