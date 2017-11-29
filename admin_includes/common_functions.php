@@ -31,24 +31,7 @@
         global $conn;
         $sql="SELECT * from users WHERE user_email = '$email' ";
         $result = $conn->query($sql);
-        if ($row = $result->fetch_assoc()) {
-            $pwd = decryptPassword($row['user_password']);
-            $to = $email;
-            $subject =  "User Forgot Password";
-            $message = "<html><head><title>User New Password</title></head>
-                <body>
-                    <table rules='all' style='border-color: #666;' cellpadding='10'>
-                        <tr><td><strong>Your Password:  </strong>$pwd</td></tr>
-                    </table>
-                </body>
-                </html>
-                ";
-            $from = "info@myservant.com";
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";     
-            $headers = 'From: "'.$from.'"' . "\r\n" .            
-                'X-Mailer: PHP/' . phpversion();
-            mail($to, $subject, $message, $headers)
+        if ($row = $result->fetch_assoc()) {            
             //sendEmail($to,$subject,$message,$from);
             return 1;
         } else {

@@ -9,7 +9,7 @@ $id = $_GET['coupon_id'];
     $price_type_id = $_POST['price_type_id'];
     $discount_price = $_POST['discount_price'];
     $status = $_POST['lkp_status_id'];
-    $sql = "UPDATE `services_coupons` SET coupon_code='$coupon_code', price_type_id='$price_type_id', discount_price='$discount_price', lkp_status_id = '$lkp_status_id' WHERE id = '$id' ";
+    $sql = "UPDATE `services_coupons` SET coupon_code='$coupon_code', price_type_id='$price_type_id', discount_price='$discount_price', lkp_status_id = '$status' WHERE id = '$id' ";
     if($conn->query($sql) === TRUE){
       echo "<script type='text/javascript'>window.location='services_coupons.php?msg=success'</script>";
     } else {

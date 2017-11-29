@@ -34,8 +34,27 @@
 		    $getUserForgotData = forgotPassword($user_email);
 		    //Set variable for session
 		    if($getUserForgotData == 1) {
-		        echo  "<script>alert('Password Sent To Your Email,Please Check.');window.location.href('login.php');</script>";
-		    } else {
+
+		    	$pwd = decryptPassword($row['user_password']);
+	            //$to = $email;
+	            $subject =  "User Forgot Password";
+	            $message = "<html><head><title>User New Password</title></head>
+	                <body>
+	                    <table rules='all' style='border-color: #666;' cellpadding='10'>
+	                        <tr><td><strong>Your Password:  </strong>$pwd</td></tr>
+	                    </table>
+	                </body>
+	                </html>
+	                ";
+	            $from = "info@myservant.com";
+	            $headers = "MIME-Version: 1.0" . "\r\n";
+	            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";    
+	            $headers = 'From: "'.$from.'"' . "\r\n" .            
+	                'X-Mailer: PHP/' . phpversion();
+	            mail($to, $subject, $message, $headers);
+
+			        echo  "<script>alert('Password Sent To Your Email,Please Check.');window.location.href('login.php');</script>";
+			    } else {
 		    	echo "<script>alert('Your Entered Email Not Found');</script>";
 		    }
 		}
