@@ -209,9 +209,9 @@ if (!isset($_POST['submit']))  {
                       <!--- //if associate value = 0 (Yes) & if associate value = 1 (No) -->
                         <h4>Associate With Us</h4>
                         <label>
-                          <input type="checkbox" value="0" name="associate_or_not" />&nbsp;Yes</label>&nbsp;&nbsp;
+                          <input type="radio" value="0" name="associate_or_not" />&nbsp;Yes</label>&nbsp;&nbsp;
                         <label>
-                          <input type="checkbox" value="1" name="associate_or_not"/>&nbsp;No</label>
+                          <input type="radio" value="1" name="associate_or_not"/>&nbsp;No</label>
                         <label>
                   </div>
                   </div>
@@ -290,34 +290,34 @@ if (!isset($_POST['submit']))  {
         $('#service_provider_business_type').show();
         $('.service_provider_business').val("");
         $('#service_provider_personal_type').hide();
-        //$(".service_provider_business").attr("required", "true");
-        //$(".service_provider_personal").removeAttr('required');
+        $(".service_provider_business").attr("required", "true");
+        $(".service_provider_personal").removeAttr('required');
       } else if($(this).val() == 2) {
         $('#service_provider_business_type').hide();
         $('.service_provider_personal').val("");
         $('#service_provider_personal_type').show();
-        //$(".service_provider_personal").attr("required", "true");
-        //$(".service_provider_business").removeAttr('required');
+        $(".service_provider_personal").attr("required", "true");
+        $(".service_provider_business").removeAttr('required');
       }  
     });
     $('#sub_category_id').change(function() {
 
       if($(this).val() == 0) {
         $('#specialization_name').show();
-        //$(".specialization_name").attr("required", "true");
+        $(".specialization_name").attr("required", "true");
       } else{
         $('#specialization_name').hide();
-        //$(".specialization_name").removeAttr('required');
+        $(".specialization_name").removeAttr('required');
       }
     });
     $('#sub_category_id1').change(function() {
 
       if($(this).val() == 0) {
         $('#specialization_name1').show();
-        //$(".specialization_name1").attr("required", "true");
+        $(".specialization_name1").attr("required", "true");
       } else{
         $('#specialization_name1').hide();
-        //$(".specialization_name1").removeAttr('required');
+        $(".specialization_name1").removeAttr('required');
       }
     });
   });  
