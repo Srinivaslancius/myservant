@@ -146,7 +146,7 @@
 										<label>Zip / Postal Code</label>
 										<input type="text" name="postal_code" value="" placeholder="Zip / Postal Code" class="form-control">
 									</div>
-									<?php $getCitiesData = getAllDataWithActiveRecent('lkp_cities'); ?>
+									<?php $getCitiesData = getAllDataWhere('lkp_cities','lkp_status_id',0); ?>
 									<div class="form-group col-md-6 col-sm-6 col-xs-12">
 										<label>City <sup>*</sup>
 										</label>

@@ -56,7 +56,7 @@
 		<!-- Slider -->
 		<?php $cat_id = decryptPassword($_GET['key']); ?>
 		<div class="container-fluid page-title">
-			 <?php	$getBanners = getAllDataWhere('services_banners','service_category_id',$cat_id); 
+			 <?php	$getBanners = getAllDataWhereWithActive('services_banners','service_category_id',$cat_id); 
 			 if($getBannersData = $getBanners->fetch_assoc()) { ?>
 				<div class="row">
 					<img src="<?php echo $base_url . 'uploads/services_banner_images/'.$getBannersData['banner'] ?>" class="img-responsive">

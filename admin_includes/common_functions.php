@@ -84,7 +84,7 @@
 
     function getAllDataWithActiveRecent($table)  {
         global $conn;
-        $sql="select * from `$table` WHERE lkp_status_id = 0 ORDER BY lkp_status_id, id DESC ";
+        $sql="select * from `$table` ORDER BY lkp_status_id, id DESC ";
         $result = $conn->query($sql); 
         return $result;
     }

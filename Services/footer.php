@@ -29,8 +29,13 @@
 				<div class="col-md-3 col-sm-3">
 					<h3>CUSTOMER SERVICE</h3>
 					<ul>
+						<?php if(!isset($_SESSION['user_login_session_id'])) { ?>
+							<li><a href="login.php">My Account</a>
+							</li>
+						<?php } else { ?>
 						<li><a href="my_dashboard.php">My Account</a>
 						</li>
+						<?php } ?>
 						<li><a href="#">Track Order</a>
 						</li>
 						<li><a href="help_center.php">Help Center</a>
@@ -55,13 +60,13 @@
 				<div class="col-md-12">
 					<div id="social_footer">
 						<ul>
-							<li><a href="https://www.facebook.com/MyServantOnline/" target="_blank"><i class="icon-facebook"></i></a>
+							<li><a href="<?php echo $getSiteSettingsData['fb_link'] ?>" target="_blank"><i class="icon-facebook"></i></a>
 							</li>
-							<li><a href="https://twitter.com/myservant" target="_blank"><i class="icon-twitter"></i></a>
+							<li><a href="<?php echo $getSiteSettingsData['twitter_link'] ?>" target="_blank"><i class="icon-twitter"></i></a>
 							</li>
-							<li><a href="https://plus.google.com/myservant" target="_blank"><i class="icon-google"></i></a>
+							<li><a href="<?php echo $getSiteSettingsData['gplus_link'] ?>" target="_blank"><i class="icon-google"></i></a>
 							</li>
-							<li><a href="https://itunes.apple.com/us/app/my-servant/id1227443324?mt=8&ign-mpt=uo%3D4" target="_blank"><i class="icon-linkedin"></i></a>
+							<li><a href="<?php echo $getSiteSettingsData['inst_link'] ?>" target="_blank"><i class="icon-linkedin"></i></a>
 							</li>
 						</ul>
 						<p style="text-align:center"><?php echo $getSiteSettingsData['footer_text'];?> : Designed by <a href="https://lanciussolutions.com/" target="_blank"> Lancius IT Solutions</a></p>

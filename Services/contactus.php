@@ -22,7 +22,7 @@ if(!empty($_POST['name_contact']) && !empty($_POST['lastname_contact']) && !empt
 
 $dataem = $getSiteSettingsData["email"];
 //$to = "srinivas@lanciussolutions.com";
-$to = "$dataem";
+$to = $dataem;
 $subject = "Myservent - Contact Us ";
 $message = "";
 $message .= "<style>
@@ -111,8 +111,13 @@ $message .= "<html><head><title>Myservent Contactus Form</title></head>
 
 //echo $message; die;
 
-$sendMail = sendEmail($to,$subject,$message,$email_contact);
-if($sendMail == 0) {
+//$sendMail = sendEmail($to,$subject,$message,$email_contact);
+$name = "My Servant";
+$from = "info@myservant.com";
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";  
+$headers .= 'From: '.$name.'<'.$from.'>'. "\r\n";
+if(mail($to, $subject, $message, $headers)) {
 	echo  "<script>alert('Thank You For Your feedback');window.location.href('contactus.php');</script>";
 }
 
