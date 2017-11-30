@@ -80,78 +80,19 @@
 				<h2>Help<span> Center</span></h2>				
 				</div>
 					<div class="panel-group" id="accordion">
+						<?php $getHelpCentersData = getAllDataWhere('service_faqs','lkp_status_id',0); 
+                  		while($getHelpCenters = $getHelpCentersData->fetch_assoc()) { ?>
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Intellectual Propertly<i class="indicator icon-plus pull-right"></i></div></a>
-                      </h4>
+		                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $getHelpCenters['id'];?>"><?php echo $getHelpCenters['title'];?><i class="indicator pull-right  <?php if($getHelpCenters['id']==1) { echo "icon-minus"; } else { echo "icon-plus";  } ?>"></i></a>
+		                      </h4>
 							</div>
-							<div id="collapseOne" class="panel-collapse collapse in">
-								<div class="panel-body">
-									<ol>
-									<li>I want to change the address for delivery of my order. Is it possible now?</li>
-									<li>The address for delivery of your order can be changed depending on its status. Please check My Orders for the following:</li>
-									<li><strong>Approved:</strong> If this is your order status, then you can contact us to request an address change.</li>
-									<li><strong>Processing:</strong> Address change at this stage depends on a few factors and may or may not be possible. Please contact us to know more.</li>
-									<li><strong>Shipped and Delivered:</strong> As the item would already be dispatched by the seller at this point, or delivered, the address cannot be changed at these stages.</li>
-									</ol>
-								</div>
+							<div id="collapse<?php echo $getHelpCenters['id'];?>" class="panel-collapse collapse  <?php if($getHelpCenters['id']==1) { echo "in"; } ?>">
+								<div class="panel-body"><?php echo $getHelpCenters['description'];?></div>
 							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">what Items can I exchange?<i class="indicator icon-plus pull-right"></i></a>
-                      </h4>
-							</div>
-							<div id="collapseTwo" class="panel-collapse collapse">
-								<div class="panel-body">
-								<ol>
-								<li>You can exchange items such as Apparels & Footwear for size/color of your choice.</li>
-								<li>For information on other items you can exchange, please check the Exchange or Return policy on the product page.</li>
-								</ol>
-								</div>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">I have requested for a return of my item. When will it happen?<i class="indicator icon-plus pull-right"></i></a>
-                      </h4>
-							</div>
-							<div id="collapseThree" class="panel-collapse collapse">
-								<div class="panel-body">
-									<p>You can now track the status of your return the easy way right from your Myservant account or mobile app. Just visit the
-									order details page to see its status along with the date of pick-up and status of your refund if applicable. You will also
-									receive an email & SMS with the details of your return.</p>
-								</div>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Offer Validations:<i class="indicator icon-plus pull-right"></i></a>
-                      </h4>
-							</div>
-							<div id="collapseFour" class="panel-collapse collapse">
-								<div class="panel-body">
-									<p>Multiple offers can't be applied on a single order.</p>
-								</div>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Contact Us<i class="indicator icon-plus pull-right"></i></a>
-                      </h4>
-							</div>
-							<div id="collapseFive" class="panel-collapse collapse">
-								<div class="panel-body">
-									<p>If you have any questions about this Agreement, please contact us filling this contact form</p>
-								</div>
-							</div>
-						</div>
-						
+						</div><br>
+						<?php } ?>
 					</div>
 
 
