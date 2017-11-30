@@ -91,7 +91,7 @@
 							<div id="collapse<?php echo $getHelpCenters['id'];?>" class="panel-collapse collapse  <?php if($getHelpCenters['id']==1) { echo "in"; } ?>">
 								<div class="panel-body"><?php echo $getHelpCenters['description'];?></div>
 							</div>
-						</div>
+						</div><br>
 						<?php } ?>
 					</div>
 
