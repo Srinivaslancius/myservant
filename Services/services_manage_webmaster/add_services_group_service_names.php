@@ -171,6 +171,7 @@ $(document).ready(function () {
         $('.price_after_visit_type_id').prop('checked', false);
         $(".service_price").attr("required", "true");
         $(".price_after_visit_type_id").removeAttr('required');
+        $("#min_price, #max_price").removeAttr('required');
       } else if($(this).val() == 2) {
         $('#service_price').hide();
         $('#service_price_txt').val("");

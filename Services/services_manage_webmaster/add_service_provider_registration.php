@@ -288,7 +288,7 @@ if (!isset($_POST['submit']))  {
 
       if($(this).val() == 1) {
         $('#service_provider_business_type').show();
-        $('.service_provider_business').val("");
+        $('.service_provider_business').val('');
         $('#service_provider_personal_type').hide();
         $(".service_provider_business").attr("required", "true");
         $(".service_provider_personal").removeAttr('required');
@@ -304,6 +304,7 @@ if (!isset($_POST['submit']))  {
 
       if($(this).val() == 0) {
         $('#specialization_name').show();
+        $('.specialization_name').val("");
         $(".specialization_name").attr("required", "true");
       } else{
         $('#specialization_name').hide();
@@ -314,6 +315,7 @@ if (!isset($_POST['submit']))  {
 
       if($(this).val() == 0) {
         $('#specialization_name1').show();
+        $('.specialization_name1').val("");
         $(".specialization_name1").attr("required", "true");
       } else{
         $('#specialization_name1').hide();
