@@ -105,13 +105,13 @@
                             <th>
                                 Time
                             </th>
-                            <!-- <th>
+                             <th>
 								Quantity
 							</th> 
                                                         
 							<th>
 								Total
-							</th> -->
+							</th> 
 							<th>
 								Remove
 							</th>
@@ -127,7 +127,7 @@
 						<?php $getSerName= getIndividualDetails('services_group_service_names','id',$getCartItems['service_id']); ?>
                         <td><?php echo $getSerName['group_service_name']; ?></td>
                         <?php if($getSerName['service_price_type_id'] == 1) {
-                             $cartTotal += $getSerName['service_price'];
+                             $cartTotal += $getSerName['service_price']*$getCartItems['service_quantity'];
                          ?>
                             <td><?php echo $getSerName['service_price']; ?></td>
                         <?php } elseif($getSerName['price_after_visit_type_id'] == 1) { ?>
@@ -155,12 +155,12 @@
                         ?>
                         <td><input class="date-pick form-control" type="text" name="service_visit_date[]" value="<?php echo $service_selected_date1; ?>"></td>
                         <td><input class="time-pick form-control" type="text" name="service_visit_time[]" value="<?php echo $service_visit_time1; ?>"></td>
-                        <!-- <td>
-                            <div class="numbers-row">
-                                <input type="text" value="1" id="quantity_2" class="qty2 form-control" name="quantity_2">
+                         <td>
+                            <div class="">
+                               <input type="number" name="service_quantity[]" min="1" max="5" value="<?php echo $getCartItems['service_quantity'];?>">
                             </div>
                         </td> 
-                        <td>Rs. 3499/-</td>-->
+                        <td>Rs. <?php echo $getSerName['service_price']*$getCartItems['service_quantity']; ?> /-</td>
 							<td class="options">
 								<a <a class="delete_cart_item" data-cart-id ="<?php echo $getCartItems['id']; ?>"><i class=" icon-trash"></i></a>
 							</td>
@@ -190,7 +190,7 @@
 				<div class="row">
 					<div class="column pull-right col-md-4 col-sm-6 col-xs-12">
 						<ul class="totals-table">
-							<li class="clearfix"><span class="col">Sub Total</span><span class="col" id="cart_total"><?php echo $cartTotal; ?></span>
+							<li class="clearfix"><span class="col">Sub Total</span><span class="col" id="cart_total">Rs. <?php echo $cartTotal; ?></span>
 							</li>
 							<li class="clearfix total"><span class="col">Order Total</span><span class="col">Rs. <?php echo $cartTotal; ?>/-</span>
 							</li>
