@@ -44,12 +44,17 @@
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover({
         html: true,
-        template: '<div class="popover"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-body"><div class="form-group"><input type="email" class="form-control" id="email" placeholder="ENTER YOUR CITY" style="height:30px"></div></div><div class="popover-content"></div><div class="popover-footer"><a href="#" class="btn btn-info btn-sm">Submit</a></div></div>'
+        template: '<div class="popover"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-body"><div class="form-group"><input type="text" class="form-control" id="email" placeholder="ENTER YOUR CITY" style="height:30px" required></div></div><div class="popover-content"></div><div class="popover-footer"><a href="index.php" class="btn btn-info btn-sm">Submit</a></div></div>'
     });
     
     // Custom jQuery to hide popover on click of the close button
     $(document).on("click", ".popover-footer .btn" , function(){
         $(this).parents(".popover").popover('hide');
     });
+});
+</script>
+<script type="text/javascript">
+$(".language").change(function(){
+	window.location = "index.php";   
 });
 </script>

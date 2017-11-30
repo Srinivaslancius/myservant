@@ -6,9 +6,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once 'meta.php';?>
-	<?php $getContentPageData = getAllDataWhere('services_content_pages','id',10);
-		  $getHelpCenterData = $getContentPageData->fetch_assoc();
-	?>
+	
 
 	<!-- Favicons-->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -20,14 +18,28 @@
 	<!-- Google web fonts -->
     <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Lato:300,400|Montserrat:400,400i,700,700i" rel="stylesheet">
 
-	<!-- BASE CSS -->
+	<!-- CSS -->
 	<link href="css/base.css" rel="stylesheet">
-        <link href="site_launch/css/style.css" rel="stylesheet">
 
-	<!-- REVOLUTION SLIDER CSS -->
-	<link href="layerslider/css/layerslider.css" rel="stylesheet">
+	<!-- Radio and check inputs -->
+	<link href="css/skins/square/grey.css" rel="stylesheet">
 
-
+	<!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+	<style>
+.accordion-box .accordion .accord-btn {
+    position: relative;
+    display: block;
+    min-height: 40px;
+    line-height: 30px;
+    padding: 10px 0px 5px;
+    color: #2f2f31;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+</style>
 </head>
 
 <body>
@@ -35,88 +47,222 @@
 	<!--[if lte IE 8]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
 <![endif]-->
-
-	
+	<!-- End Preload -->
 
 	<div class="layer"></div>
 	<!-- Mobile menu overlay mask -->
 
 	<!-- Header================================================== -->
 	<header>
-		<?php include_once './top_header.php';?>
+	<?php include_once './top_header.php';?>
 		<!-- End top line-->
-
 		<div class="container">
-                    <?php include_once './menu.php';?>
+            <?php include_once './menu.php';?>
 		</div>
 		<!-- container -->
-                
-        </header>
+	</header>
 	<!-- End Header -->
-
 	<main>
-		<!-- Slider -->
-		 <div class="container-fluid page-title">
-		 	<?php 
-				if(isset($getHelpCenterData['image'])) { ?> 	
-				<div class="row">
-					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getHelpCenterData['image'] ?>" alt="<?php echo $getHelpCenterData['title'];?>" class="img-responsive">
-				</div>
-			<?php } else { ?>
-				<div class="row">
-					<img src="img/slides/slide_1.jpg" class="img-responsive">
-				</div>
-			<?php }?>	
-    	</div>
+		<div class="container-fluid page-title">
+		<div class="row">
+			<img src="img/slides/slide_1.jpg" class="img-responsive">
+		</div>
+    </div>
+		<!-- Position -->
 
-		<div class="white_bg">
-			<div class="container margin_60">							
-            <div class="main_title">
-				<h2><span><?php echo $getHelpCenterData['title'];?></span></h2>				
+		<div class="container margin_60">
+
+			<div class="row">
+				
+				<!--End aside -->
+				<div class="col-lg-12 col-md-12" id="faq">
+					 <div class="main_title">
+				<h2>Help<span> Center</span></h2>				
+				</div>
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Intellectual Propertly<i class="indicator icon-plus pull-right"></i></div></a>
+                      </h4>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse in">
+								<div class="panel-body">
+									<ol>
+									<li>I want to change the address for delivery of my order. Is it possible now?</li>
+									<li>The address for delivery of your order can be changed depending on its status. Please check My Orders for the following:</li>
+									<li><strong>Approved:</strong> If this is your order status, then you can contact us to request an address change.</li>
+									<li><strong>Processing:</strong> Address change at this stage depends on a few factors and may or may not be possible. Please contact us to know more.</li>
+									<li><strong>Shipped and Delivered:</strong> As the item would already be dispatched by the seller at this point, or delivered, the address cannot be changed at these stages.</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">what Items can I exchange?<i class="indicator icon-plus pull-right"></i></a>
+                      </h4>
+							</div>
+							<div id="collapseTwo" class="panel-collapse collapse">
+								<div class="panel-body">
+								<ol>
+								<li>You can exchange items such as Apparels & Footwear for size/color of your choice.</li>
+								<li>For information on other items you can exchange, please check the Exchange or Return policy on the product page.</li>
+								</ol>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">I have requested for a return of my item. When will it happen?<i class="indicator icon-plus pull-right"></i></a>
+                      </h4>
+							</div>
+							<div id="collapseThree" class="panel-collapse collapse">
+								<div class="panel-body">
+									<p>You can now track the status of your return the easy way right from your Myservant account or mobile app. Just visit the
+									order details page to see its status along with the date of pick-up and status of your refund if applicable. You will also
+									receive an email & SMS with the details of your return.</p>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Offer Validations:<i class="indicator icon-plus pull-right"></i></a>
+                      </h4>
+							</div>
+							<div id="collapseFour" class="panel-collapse collapse">
+								<div class="panel-body">
+									<p>Multiple offers can't be applied on a single order.</p>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Contact Us<i class="indicator icon-plus pull-right"></i></a>
+                      </h4>
+							</div>
+							<div id="collapseFive" class="panel-collapse collapse">
+								<div class="panel-body">
+									<p>If you have any questions about this Agreement, please contact us filling this contact form</p>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+
+
+
+
+				</div>
+				<!-- End col lg-9 -->
 			</div>
-			<?php echo $getHelpCenterData['description'];?>
+			<!-- End row -->
+		</div>
+		<!-- End container -->
+		
+		<div class="white_bg">
+			<div class="container margin20">
+								
+
+				<div class="banner colored">
+					<h4>Are You  <span>Professional</span> Looking to grow your service Business</h4>
+					<a href="#" class="btn_1 white">Join Now</a>
+				</div>
 				
 				<!-- End row -->
 			</div>
 			<!-- End container -->
 		</div>
 		<!-- End white_bg -->
-		<?php include_once 'our_associate_partners.php';?>	
+
+		
+		<!-- End section -->
+
+		<div class="container margin_60">
+
+			<div class="main_title">
+				<h2>Some <span>good</span> reasons</h2>
+			
+			</div>
+
+			<div class="row">
+
+				<div class="col-md-4 wow zoomIn" data-wow-delay="0.2s">
+					<div class="feature_home">
+						<i class="icon_set_1_icon-41"></i>
+						<h3><span>+50</span> Premium Services</h3>
+						<p>
+							Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
+						</p>
+						<a href="#" class="btn_1 outline">Read more</a>
+					</div>
+				</div>
+
+				<div class="col-md-4 wow zoomIn" data-wow-delay="0.4s">
+					<div class="feature_home">
+						<i class="icon_set_1_icon-30"></i>
+						<h3><span>+1000</span> Customers</h3>
+						<p>
+							Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
+						</p>
+						<a href="#" class="btn_1 outline">Read more</a>
+					</div>
+				</div>
+
+				<div class="col-md-4 wow zoomIn" data-wow-delay="0.6s">
+					<div class="feature_home">
+						<i class="icon_set_1_icon-57"></i>
+						<h3><span>24 * 7 </span> Support</h3>
+						<p>
+							Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
+						</p>
+						<a href="about.html" class="btn_1 outline">Read more</a>
+					</div>
+				</div>
+
+			</div>
+			<!--End row -->
+
+			
+			
+
+		</div>
 	</main>
 	<!-- End main -->
 
 	<footer>
             <?php include_once 'footer.php';?>
     </footer><!-- End footer -->
+	<!-- End footer -->
 
 	<div id="toTop"></div><!-- Back to top button -->
 	
 	<!-- Search Menu -->
-	
+	<div class="search-overlay-menu">
+		<span class="search-overlay-close"><i class="icon_set_1_icon-77"></i></span>
+		<form role="search" id="searchform" method="get">
+			<input value="" name="q" type="search" placeholder="Search..." />
+			<button type="submit"><i class="icon_set_1_icon-78"></i>
+			</button>
+		</form>
+	</div><!-- End Search Menu -->
+
 	<!-- Common scripts -->
-	<script src="../cdn-cgi/scripts/78d64697/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
+	<script src="../cdn-cgi/scripts/0e574bed/cloudflare-static/email-decode.min.js"></script>
+	
 	<script src="js/common_scripts_min.js"></script>
 	<script src="js/functions.js"></script>
 
 	<!-- Specific scripts -->
-	<script src="layerslider/js/greensock.js"></script>
-	<script src="layerslider/js/layerslider.transitions.js"></script>
-	<script src="layerslider/js/layerslider.kreaturamedia.jquery.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			'use strict';
-			$('#layerslider').layerSlider({
-				autoStart: true,
-				responsive: true,
-				responsiveUnder: 1280,
-				layersContainer: 1170,
-				skinsPath: 'layerslider/skins/'
-					// Please make sure that you didn't forget to add a comma to the line endings
-					// except the last line!
-			});
-		});
+	<!-- Cat nav mobile -->
+	<script src="js/cat_nav_mobile.js"></script>
+	<script>
+		$('#cat_nav').mobileMenu();
 	</script>
 
 </body>
-
 </html>

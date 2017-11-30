@@ -146,14 +146,14 @@
 										<label>Zip / Postal Code</label>
 										<input type="text" name="postal_code" value="" placeholder="Zip / Postal Code" class="form-control">
 									</div>
-									<?php $getCitiesData = getAllDataWithActiveRecent('lkp_cities'); ?>
+									<?php $getCitiesData = getAllDataWhere('lkp_cities','lkp_status_id',0); ?>
 									<div class="form-group col-md-6 col-sm-6 col-xs-12">
 										<label>City <sup>*</sup>
 										</label>
 										<select name="city" id="lkp_city_id" class="form-control" required>
-											<option>Select City</option>
+											<option value="">Select City</option>
 											<?php while($getCities = $getCitiesData->fetch_assoc()) { ?>
-											<option value=""><?php echo $getCities['city_name'];?></option>
+											<option value="<?php echo $getCities['id'];?>"><?php echo $getCities['city_name'];?></option>
 											<?php } ?>
 										</select>
 									</div>

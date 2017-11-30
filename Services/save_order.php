@@ -135,7 +135,11 @@ if(isset($_POST["submit"]) && $_POST["submit"]!="") {
         mail($to, $subject, $message, $headers);            
 
 		//after placing order that item will delete in cart
-		$delCart ="DELETE FROM services_cart WHERE user_id = '$user_id' ";
+		if($_SESSION['CART_TEMP_RANDOM'] == "") {
+	        $_SESSION['CART_TEMP_RANDOM'] = rand(10, 10).sha1(crypt(time())).time();
+	    }
+	    $session_cart_id = $_SESSION['CART_TEMP_RANDOM'];
+		$delCart ="DELETE FROM services_cart WHERE user_id = '$user_id' OR session_cart_id='$session_cart_id' ";
 		$conn->query($delCart);
 
 		header("Location: thankyou.php?odi=".$order_id."");
