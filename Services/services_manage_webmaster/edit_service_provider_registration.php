@@ -23,14 +23,23 @@ if (!isset($_POST['submit']))  {
   $contact_numbers = $_POST['contact_numbers'];
   $email_id = $_POST['email_id'];
   $sub_category_id = $_POST['sub_category_id'];
-  $specialization_name = $_POST['specialization_name'];
   $sub_category_id1 = $_POST['sub_category_id1'];
-  $specialization_name1 = $_POST['specialization_name1'];
   $associate_or_not = $_POST['associate_or_not'];
   $experience = $_POST['experience'];
   $lkp_status_id = $_POST['lkp_status_id'];
+  $created_at = date("Y-m-d h:i:s");
   $fileToUpload = $_FILES["fileToUpload"]["name"];
   $fileToUpload1 = $_FILES["fileToUpload1"]["name"];
+  if($sub_category_id == 0) {
+    $specialization_name = $_POST['specialization_name'];
+  } else {
+    $specialization_name = 0;
+  }
+  if($sub_category_id1 == 0) {
+    $specialization_name1 = $_POST['specialization_name1'];
+  } else {
+    $specialization_name1 = 0;
+  }
   
    $service_provider = "UPDATE service_provider_registration SET name = '$name',email ='$email',mobile_number ='$mobile_number',address = '$address',lkp_status_id ='$lkp_status_id' WHERE id = '$id'";
     $result1 = $conn->query($service_provider);
@@ -87,7 +96,7 @@ if (!isset($_POST['submit']))  {
               $getServiceProviderRegistrationsData = $getServiceProviderRegistrations->fetch_assoc(); ?>
             <div class="row">
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-                <form data-toggle="validator" method="POST" enctype="multipart/form-data">
+                <form autocomplete="off" data-toggle="validator" method="POST" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Name</label>
                     <input type="text" name="name" class="form-control" id="form-control-2" placeholder="Name" data-error="Please enter Name" value="<?php echo $getServiceProviderRegistrationsData['name'];?>" required>
@@ -291,47 +300,47 @@ if (!isset($_POST['submit']))  {
     if ($("#service_provider_type_id").val() == 'Business') {
       $('#service_provider_business_type').show();
       $('#service_provider_personal_type').hide();
-      //$(".service_provider_business").attr("required", "true");
-      //$(".service_provider_personal").removeAttr('required');
+      $(".service_provider_business").attr("required", "true");
+      $(".service_provider_personal").removeAttr('required');
     } else {
       $('#service_provider_personal_type').show();
       $('#service_provider_business_type').hide();
-      //$(".service_provider_personal").attr("required", "true");
-      //$(".service_provider_business").removeAttr('required');
+      $(".service_provider_personal").attr("required", "true");
+      $(".service_provider_business").removeAttr('required');
     }
     $('#sub_category_id').change(function() {
 
       if($(this).val() == 0) {
         $('#specialization_name').show();
-        //$(".specialization_name").attr("required", "true");
+        $(".specialization_name").attr("required", "true");
       } else{
         $('#specialization_name').hide();
-        //$(".specialization_name").removeAttr('required');
+        $(".specialization_name").removeAttr('required');
       }
     });
     if ($("#sub_category_id").val() == '0') {
       $('#specialization_name').show();
-      //$(".specialization_name").attr("required", "true");
+      $(".specialization_name").attr("required", "true");
     } else {
       $('#specialization_name').hide();
-      //$(".specialization_name").removeAttr('required');
+      $(".specialization_name").removeAttr('required');
     }
     $('#sub_category_id1').change(function() {
 
       if($(this).val() == 0) {
         $('#specialization_name1').show();
-        //$(".specialization_name1").attr("required", "true");
+        $(".specialization_name1").attr("required", "true");
       } else{
         $('#specialization_name1').hide();
-        //$(".specialization_name1").removeAttr('required');
+        $(".specialization_name1").removeAttr('required');
       }
     });
     if ($("#sub_category_id1").val() == '0') {
       $('#specialization_name1').show();
-      //$(".specialization_name1").attr("required", "true");
+      $(".specialization_name1").attr("required", "true");
     } else {
       $('#specialization_name1').hide();
-      //$(".specialization_name1").removeAttr('required');
+      $(".specialization_name1").removeAttr('required');
     }
   });  
 </script>
