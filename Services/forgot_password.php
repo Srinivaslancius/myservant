@@ -33,27 +33,102 @@
 		    $user_email = $_POST['login_email'];
 		    $getUserForgotData = forgotPassword($user_email);
 		    //Set variable for session
-		    if($getUserForgotData == 1) {
+		    if($getUserForgotPassword = $getUserForgotData->fetch_assoc()) {
 
-		    	$pwd = decryptPassword($row['user_password']);
-	            //$to = $email;
+		    	$pwd = decryptPassword($getUserForgotPassword['user_password']);
+	            $to = $email;
 	            $subject =  "User Forgot Password";
-	            $message = "<html><head><title>User New Password</title></head>
-	                <body>
-	                    <table rules='all' style='border-color: #666;' cellpadding='10'>
-	                        <tr><td><strong>Your Password:  </strong>$pwd</td></tr>
-	                    </table>
-	                </body>
-	                </html>
-	                ";
-	            $from = "info@myservant.com";
-	            $headers = "MIME-Version: 1.0" . "\r\n";
-	            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";    
-	            $headers = 'From: "'.$from.'"' . "\r\n" .            
-	                'X-Mailer: PHP/' . phpversion();
+	            $message = "";
+				$message .= "<style>
+				        .body{
+				    width:100% !important; 
+				    margin:0 !important; 
+				    padding:0 !important; 
+				    -webkit-text-size-adjust:none;
+				    -ms-text-size-adjust:none; 
+				    background-color:#FFFFFF;
+				    font-style:normal;
+				    }
+				    .header{
+				    background-color:#c90000;
+				    color:white;
+				    width:100%;
+				    }
+				    .content{
+				    background-color:#FBFCFC;
+				    color:#17202A;
+				    width:100%;
+				    padding-top:15px;
+				    padding-bottom;15px;
+				    text-align:justify;
+				    font-size:14px;
+				    line-height:18px;
+				    font-style:normal;
+				    }
+				    h3{
+				    color: #c90000;}
+				    .footer{
+				    background-color:#c90000;
+				    color:white;
+				    width:100%;
+				    padding-top:9px;
+				    padding-bottom:5px;
+				    }
+				    .logo-responsive{
+				    max-width: 100%;
+				    height: auto !important;
+				    }
+				    @media screen and (min-width: 480px) {
+				        .content{
+				        width:50%;
+				        }
+				        .header{
+				        width:50%;
+				        }
+				        .footer{
+				        width:50%;
+				        }
+				        .logo-responsive{
+				        max-width: 100%;
+				        height: auto !important;
+				        }
+				    }
+				    </style>";
+
+				$message .= "<html><head><title>Myservent Services</title></head>
+				<body>
+				        <div class='container header'>
+				            <div class='row'>
+				                <div class='col-lg-2 col-md-2 col-sm-2'>
+				                </div>
+				                <div class='col-lg-8 col-md-8 col-sm-8'>
+				                <center><h2>".$getSiteSettingsData['admin_title']."</h2></center>
+				                </div>
+				                <div class='col-lg-2 col-md-2 col-sm-2'>
+				                    
+				                </div>
+				            </div>
+				        </div>
+				        <div class='container content'>
+				            <h3>You have a new password!</h3>
+				            <h4>Dear: ".$getUserForgotPassword['user_full_name']."</h4>
+				            <h4>Your New Password is: ".$pwd." .</h4>  
+				        </div>
+				        <div class='container footer'>
+				            <center>".$getSiteSettingsData['footer_text']."</center>
+				        </div>
+				    </body>
+				</html>";
+
+				//echo $message; die;
+	            $name = "My Servant";
+				$from = "info@myservant.com";
+				$headers = "MIME-Version: 1.0" . "\r\n";
+				$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";  
+				$headers .= 'From: '.$name.'<'.$from.'>'. "\r\n";
 	            mail($to, $subject, $message, $headers);
 
-			        echo  "<script>alert('Password Sent To Your Email,Please Check.');window.location.href('login.php');</script>";
+			        echo  "<script>alert('Password Sent To Your Email,Please Check.');window.location='login.php';</script>";
 			    } else {
 		    	echo "<script>alert('Your Entered Email Not Found');</script>";
 		    }

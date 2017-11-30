@@ -90,7 +90,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">Instagram Link</label>
+                    <label for="form-control-2" class="control-label">LinkedIn Link</label>
                     <input type="url" name="inst_link" class="form-control" id="form-control-2" placeholder="Instagram Link" data-error="Please enter a valid Instagram Link." value="<?php echo $getSiteSettingsData['inst_link'];?>" required>
                     <div class="help-block with-errors"></div>
                   </div>

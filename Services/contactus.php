@@ -214,7 +214,7 @@ if(mail($to, $subject, $message, $headers)) {
 								<div class="col-md-12">
 									<div class="form-group">
 										<label>Message</label>
-										<textarea rows="5" id="message_contact" name="message_contact" class="form-control" placeholder="Write your message" style="height:200px;" ></textarea>
+										<textarea rows="5" id="message_contact" name="message_contact" class="form-control" placeholder="Write your message" style="height:200px;" required></textarea>
 									</div>
 								</div>
 							</div>

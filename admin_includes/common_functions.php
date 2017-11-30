@@ -31,12 +31,13 @@
         global $conn;
         $sql="SELECT * from users WHERE user_email = '$email' ";
         $result = $conn->query($sql);
-        if ($row = $result->fetch_assoc()) {            
-            //sendEmail($to,$subject,$message,$from);
-            return 1;
-        } else {
-            return 0;
-        }
+        return $result;
+        // if ($row = $result->fetch_assoc()) {            
+        //     //sendEmail($to,$subject,$message,$from);
+        //     return 1;
+        // } else {
+        //     return 0;
+        // }
     }
 
     function sendMobileSMS($message,$user_mobile) {

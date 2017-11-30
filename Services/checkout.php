@@ -151,9 +151,9 @@
 										<label>City <sup>*</sup>
 										</label>
 										<select name="city" id="lkp_city_id" class="form-control" required>
-											<option>Select City</option>
+											<option value="">Select City</option>
 											<?php while($getCities = $getCitiesData->fetch_assoc()) { ?>
-											<option value=""><?php echo $getCities['city_name'];?></option>
+											<option value="<?php echo $getCities['id'];?>"><?php echo $getCities['city_name'];?></option>
 											<?php } ?>
 										</select>
 									</div>

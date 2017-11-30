@@ -97,7 +97,6 @@
 							
 							<!-- end rating -->
 						</div>
-						</div>
 					</div>
 					</a>
 					<!-- End box tour -->
