@@ -203,8 +203,9 @@
                                 <input type="hidden" name="sub_cat_id[]" value="<?php echo $getCartItems['sub_cat_id']; ?>">
                                 <input type="hidden" name="group_id[]" value="<?php echo $getCartItems['group_id']; ?>">
                                 <input type="hidden" name="service_id[]" value="<?php echo $getCartItems['service_id']; ?>">
+                                <input type="hidden" name="service_quantity[]" value="<?php echo $getCartItems['service_quantity']; ?>">
                                 	<?php if($getSerName['service_price_type_id'] == 1) {
-			                            $cartTotal1 += $getSerName['service_price'];
+			                            $cartTotal1 += $getSerName['service_price']*$getCartItems['service_quantity'];
 			                        ?>
 									<input type="hidden" name="service_price[]" value="<?php echo $getSerName['service_price']; ?>">
 									<?php } elseif($getSerName['price_after_visit_type_id'] == 1) { ?>
@@ -220,7 +221,7 @@
 										<?php echo $getSerName['group_service_name']; ?>
 									</div>
 									<?php if($getSerName['service_price_type_id'] == 1) {
-			                            $cartTotal += $getSerName['service_price'];
+			                            $cartTotal += $getSerName['service_price']*$getCartItems['service_quantity'];
 			                        ?>
 									<div class="col second">
 										Rs. <?php echo $getSerName['service_price']; ?>
