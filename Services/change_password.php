@@ -50,6 +50,9 @@
         </header>
     <!-- End Header -->
 <?php 
+    if($_SESSION['user_login_session_id'] == '') {
+        header ("Location: logout.php");
+    }
     if(isset($_POST["submit"]) && $_POST["submit"]!="") {
         $uid = $_SESSION["user_login_session_id"];
         $changePass = "SELECT * FROM users WHERE id = '$uid'";

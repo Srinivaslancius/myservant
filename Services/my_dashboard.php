@@ -52,6 +52,11 @@
     <!-- End Header -->
 
 <main>
+    <?php
+    if($_SESSION['user_login_session_id'] == '') {
+        header ("Location: logout.php");
+    } 
+    ?>
     <div class="container-fluid page-title">
             <?php if($getContentPageData->num_rows > 0) { ?>    
                 <div class="row">

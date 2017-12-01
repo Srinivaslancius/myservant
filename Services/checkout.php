@@ -80,7 +80,11 @@
 	<!-- End Section -->
 
 	<main>
-
+		<?php
+	    if($_SESSION['user_login_session_id'] == '') {
+	        header ("Location: logout.php");
+	    } 
+	    ?>
 		<div class="container margin_60">
 			<div class="checkout-page">
 				
