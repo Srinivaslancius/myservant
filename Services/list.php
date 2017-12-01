@@ -69,24 +69,23 @@
 		<div class="container margin_60">
 			<div class="row">
 				
-				<!--End aside -->
 				<div class="col-lg-7 col-md-7" id="faq">
 					<h3 class="nomargin_top">Group Level</h3>
 
 					<div class="panel-group" id="payment">
 						<?php $catid = $_GET['key1']; $subcatid = $_GET['key2']; 
-						$getGroups = getAllDataWhereWithTWoConditions('services_groups','services_category_id',$catid,'services_sub_category_id',$subcatid); while ($getGroupsData = $getGroups->fetch_assoc()) { ?>
+						$getGroups = getAllDataWhereWithTWoConditions('services_groups','services_category_id',$catid,'services_sub_category_id',$subcatid); $i=1; while ($getGroupsData = $getGroups->fetch_assoc()) { ?>
 						<?php $services_group_id = $getGroupsData['id'];
 							$getServiceNames = getAllDataWhereWithThreeConditions('services_group_service_names','services_category_id',$catid,'services_sub_category_id',$subcatid,'services_group_id',$services_group_id); 
 							if($getServiceNames->num_rows > 0) { ?>
-						<div class="panel panel-default" id="divId<?php echo $services_group_id; ?>">
+
+						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#payment" href="#collapse_payment<?php echo $getGroupsData['id'];?>"><?php echo $getGroupsData['group_name'];?><i class="indicator pull-right <?php if($getGroupsData['id']==1) { echo "icon-minus"; } else { echo "icon-plus";  } ?>"></i></a>
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#payment" href="#collapse<?php echo $getGroupsData['id'];?>_payment"><?php echo $getGroupsData['group_name'];?><i class="indicator <?php if($i==1) { ?> icon-minus <?php } else { ?> icon-plus <?php } ?>pull-right"></i></a>
                       </h4>
 							</div>
-							
-							<div id="collapse_payment<?php echo $getGroupsData['id'];?>" class="panel-collapse collapse  <?php if($getGroupsData['id']==1) { echo "in"; } ?>">
+							<div id="collapse<?php echo $getGroupsData['id'];?>_payment" class="panel-collapse collapse <?php if($i==1) { ?> in <?php } ?>">
 								<div class="panel-body">
                                     <table class="table table-striped cart-list shopping-cart">
                                         <thead>
@@ -125,16 +124,19 @@
 	                                                <td><?php echo $servicePrice; ?></td>
 	                                                <td><a class="btn_full_outline wdth50 check_cart" data-cat-id=<?php echo $_GET['key']; ?> data-sub-cat-id=<?php echo $subcatid; ?> data-group-id=<?php echo $getGroupsData['id']; ?> data-service-id=<?php echo $getServiceNamesData['id']; ?> data-price-type-id=<?php echo $getServiceNamesData['service_price_type_id']; ?> data-services-price=<?php echo $servicePrice; ?>>Add to Cart</a> </td>
 	                                            </tr>                                            
-                                            <?php } ?>
+                                            <?php $i++; } ?>
                                         </tbody>
                                         </form>
                                     </table>
 								</div>
-							</div>                         
+							</div>
+                                                        
 						</div>
-						<?php } else { ?>
+                            
+                        <?php } else { ?>
 						<script type="text/javascript">document.getElementById('divId<?php echo $services_group_id; ?>').style.display = 'none';</script> 
 						<?php } } ?>
+						
 					</div>
 					<!-- End panel-group -->
 
@@ -170,7 +172,7 @@
 	</div><!-- End Search Menu -->
 
 	<!-- Common scripts -->
-	<script src="/cdn-cgi/scripts/84a23a00/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
+	
 	<script src="js/common_scripts_min.js"></script>
 	<script src="js/functions.js"></script>	
 
