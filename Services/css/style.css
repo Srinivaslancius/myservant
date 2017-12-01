@@ -1097,11 +1097,13 @@ video {
 .nav-facade-active #searchDropdownBox {
     cursor: pointer;
     height: 45px;
-    left: 0px;
+    left: -1px;
+    -moz-left:0px;
     opacity: 0;
     top: 0;
     visibility: visible;
     width: 100%;
+    font-size: 13px;
 }
 
 #searchDropdownBox {
