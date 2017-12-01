@@ -36,7 +36,7 @@
 		    if($getUserForgotPassword = $getUserForgotData->fetch_assoc()) {
 
 		    	$pwd = decryptPassword($getUserForgotPassword['user_password']);
-	            $to = $email;
+	            $to = $user_email;
 	            $subject =  "User Forgot Password";
 	            $message = "";
 				$message .= "<style>

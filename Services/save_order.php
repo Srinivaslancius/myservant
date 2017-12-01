@@ -30,12 +30,12 @@ if(isset($_POST["submit"]) && $_POST["submit"]!="") {
 
 	//Saving user id and coupon id
 	$user_id = $_SESSION['user_login_session_id'];
-	$appliedCupons="INSERT INTO services_applied_coupons(`user_id`,`coupon_code`,`created_at`) VALUES ('$user_id', '$coupon_code', '$order_date')";
-	$appliedCupons1 = $conn->query($appliedCupons);
+	//$appliedCupons="INSERT INTO services_applied_coupons(`user_id`,`coupon_code`,`created_at`) VALUES ('$user_id', '$coupon_code', '$order_date')";
+	//$appliedCupons1 = $conn->query($appliedCupons);
 
 	if($_POST['payment_group'] == "COD") {
 		for($i=0;$i<$servicesCount;$i++) {
-			$orders = "INSERT INTO services_orders (`first_name`, `last_name`, `company_name`, `email`, `mobile`, `address`, `country`, `postal_code`, `city`, `order_note`, `category_id`, `sub_category_id`, `group_id`, `service_id`, `service_price`, `service_selected_date`, `service_selected_time`, `sub_total`, `order_total`, `coupon_code`, `payment_method`, `order_id`, `created_at`) VALUES ('$first_name','$last_name', '$company_name','$email','$mobile','$address','$country','$postal_code','$city','$order_note','" . $_POST["category_id"][$i] . "','" . $_POST["sub_cat_id"][$i] . "','" . $_POST["group_id"][$i] . "','" . $_POST["service_id"][$i] . "','" . $_POST["service_price"][$i] . "','" . $_POST["service_selected_date"][$i] . "','" . $_POST["service_selected_time"][$i] . "','$sub_total','$order_total','$coupon_code','$payment_group','$order_id','$order_date')";
+			$orders = "INSERT INTO services_orders (`first_name`, `last_name`, `company_name`, `email`, `mobile`, `address`, `country`, `postal_code`, `city`, `order_note`, `group_id`, `service_id`, `service_price`, `service_selected_date`, `service_selected_time`, `sub_total`, `order_total`, `coupon_code`, `payment_method`, `order_id`, `created_at`) VALUES ('$first_name','$last_name', '$company_name','$email','$mobile','$address','$country','$postal_code','$city','$order_note','" . $_POST["group_id"][$i] . "','" . $_POST["service_id"][$i] . "','" . $_POST["service_price"][$i] . "','" . $_POST["service_selected_date"][$i] . "','" . $_POST["service_selected_time"][$i] . "','$sub_total','$order_total','$coupon_code','$payment_group','$order_id','$order_date')";
 			$servicesOrders = $conn->query($orders);
 		}
 		$dataem = $_POST["email"];
