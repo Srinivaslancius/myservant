@@ -1,6 +1,5 @@
 <?php
-include "../admin_includes/config.php";
-include "../admin_includes/common_functions.php";
+include_once 'meta.php';
 //echo "<pre>"; print_r($_POST); die;
 if(!empty($_POST['user_mobile']) && !empty($_POST['mobile_otp']))  {
 	//echo "<pre>"; print_r($_POST); die;
