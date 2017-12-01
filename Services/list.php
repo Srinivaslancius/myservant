@@ -108,7 +108,7 @@
 
                                         		<?php 
                                         		if($getServiceNamesData['service_price_type_id'] == 1) {
-													$servicePrice = $getServiceNamesData['service_price'];
+													$servicePrice = "Rs.".$getServiceNamesData['service_price'];
                                         		} elseif($getServiceNamesData['price_after_visit_type_id'] == 1) {
                                         			$servicePrice = "Price After our Visit";
                                         		} else {
