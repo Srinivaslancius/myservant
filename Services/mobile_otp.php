@@ -9,11 +9,6 @@
 	<?php include_once 'meta.php';?>
 
 	<?php //echo "<pre>"; print_r($_POST); die;?>
-	<?php
-    if($_SESSION['user_login_session_id'] == '') {
-        header ("Location: logout.php");
-    } 
-    ?>
 	<?php 
 	if (isset($_POST['register']))  {
 
