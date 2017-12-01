@@ -136,14 +136,14 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Years</label>
-                    <input type="text" name="est_year" class="form-control service_provider_business" id="form-control-2" placeholder="Years" data-error="Please enter Years">
-                    <div class="help-block with-errors"  onkeypress="return isNumberKey(event)"></div>
+                    <input type="text" name="est_year" class="form-control service_provider_business" id="form-control-2" placeholder="Years" data-error="Please enter Years" onkeypress="return isNumberKey(event)">
+                    <div class="help-block with-errors"></div>
                   </div>
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Total Number of Employees</label>
-                    <input type="text" name="total_no_of_emp" class="form-control service_provider_business" id="form-control-2" placeholder="Total Number of Employees" data-error="Please enter Total Number of Employees">
-                    <div class="help-block with-errors"  onkeypress="return isNumberKey(event)"></div>
+                    <input type="text" name="total_no_of_emp" class="form-control service_provider_business" id="form-control-2" placeholder="Total Number of Employees" data-error="Please enter Total Number of Employees" onkeypress="return isNumberKey(event)">
+                    <div class="help-block with-errors"></div>
                   </div>
 
                   <div class="form-group">
@@ -169,7 +169,7 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Working Hours</label>
-                    <input type="text" name="working_hours" class="form-control service_provider_business" id="form-control-2" placeholder="Working Hours" data-error="Please enter Working Hours">
+                    <input type="text" name="working_hours" class="form-control service_provider_business" id="form-control-2" placeholder="Working Hours" data-error="Please enter Working Hours" onkeypress="return isNumberKey(event)">
                     <div class="help-block with-errors"></div>
                   </div>
 
@@ -219,7 +219,7 @@ if (!isset($_POST['submit']))  {
                   <div id="service_provider_personal_type">
                     <div class="form-group">
                     <label for="form-control-2" class="control-label">Working Hours</label>
-                    <input type="text" name="working_hours1" class="form-control service_provider_personal" id="form-control-2" placeholder="Working Hours" data-error="Please enter Working Hours">
+                    <input type="text" name="working_hours1" class="form-control service_provider_personal" id="form-control-2" placeholder="Working Hours" data-error="Please enter Working Hours" onkeypress="return isNumberKey(event)">
                     <div class="help-block with-errors"></div>
                   </div>
 
