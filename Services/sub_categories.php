@@ -85,9 +85,8 @@
                  <?php if($getSubCategoriesData->num_rows > 0) { 
                  while($getAllSubCategoriesData = $getSubCategoriesData->fetch_assoc()) { ?>           
 				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-
 					<a href="list.php?key1=<?php echo encryptPassword($cat_id); ?>&key2=<?php echo $getAllSubCategoriesData['id']; ?>">
-					<div class="tour_container">
+					<div class="tour_container" style="height:180px">
 
 						<div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
 						</div>
