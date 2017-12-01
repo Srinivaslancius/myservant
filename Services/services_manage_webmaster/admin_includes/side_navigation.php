@@ -181,7 +181,7 @@
                 <span class="menu-text">Orders</span>
               </a>
             </li>
-            <li  class="<?php if($page_name == 'services_faqs.php' || $page_name == 'edit_services_faqs.php' ) { echo "active"; } ?>">
+            <li  class="<?php if($page_name == 'services_faqs.php' || $page_name == 'add_services_faqs.php' || $page_name == 'edit_services_faqs.php' ) { echo "active"; } ?>">
               <a href="services_faqs.php" aria-haspopup="true">
                 <span class="menu-icon">
                    <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
