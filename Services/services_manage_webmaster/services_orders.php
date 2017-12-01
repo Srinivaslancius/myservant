@@ -34,6 +34,12 @@
                     <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='services_orders'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='services_orders'>In Active</span>" ;} ?></td>
                     <td> <a href="edit_services_orders.php?order_id=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a> &nbsp;<a href="#"><i class="zmdi zmdi-eye zmdi-hc-fw" data-toggle="modal" data-target="#<?php echo $row['id']; ?>" class=""></i></a></td>
                     <!-- Open Modal Box  here -->
+                    <?php $getGroupsData = getAllDataWhereWithActive('services_groups','id',$row['group_id']); 
+                    $getGroups = $getGroupsData->fetch_assoc();
+                    $getCountriesData = getAllDataWhereWithActive('lkp_countries','id',$row['country']); 
+                    $getCountries = $getCountriesData->fetch_assoc();
+                    $getCitiesData = getAllDataWhereWithActive('lkp_cities','id',$row['city']); 
+                    $getCities = $getCitiesData->fetch_assoc();?>
                     <div id="<?php echo $row['id']; ?>" class="modal fade" tabindex="-1" role="dialog">
                       <div class="modal-dialog">
                         <div class="modal-content animated flipInX">
@@ -58,18 +64,100 @@
                             </div>
                             <div class="row">
                               <div class="col-sm-2"></div>
-                              <div class="col-sm-4">Date:</div>
+                              <div class="col-sm-4">Company Name:</div>
+                              <div class="col-sm-6"><?php echo $row['company_name'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Email:</div>
+                              <div class="col-sm-6"><?php echo $row['email'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Mobile:</div>
+                              <div class="col-sm-6"><?php echo $row['mobile'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Address:</div>
+                              <div class="col-sm-6"><?php echo $row['address'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Country:</div>
+                              <div class="col-sm-6"><?php echo $getCountries['country_name'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Postal Code:</div>
+                              <div class="col-sm-6"><?php echo $row['postal_code'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">City:</div>
+                              <div class="col-sm-6"><?php echo $getCities['city_name'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Order Note:</div>
+                              <div class="col-sm-6"><?php echo $row['order_note'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Group Name:</div>
+                              <div class="col-sm-6"><?php echo $getGroups['group_name'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Service Name:</div>
+                              <div class="col-sm-6"><?php echo $getServicenames['group_service_name'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Service Price:</div>
+                              <div class="col-sm-6"><?php echo $row['service_price'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Selected Date:</div>
+                              <div class="col-sm-6"><?php echo $row['service_selected_date'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Selected Time:</div>
+                              <div class="col-sm-6"><?php echo $row['service_selected_time'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Sub Total:</div>
+                              <div class="col-sm-6"><?php echo $row['sub_total'];?></div>
+                            </div>
+                            <?php if($row['coupon_code'] != '') { ?>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Coupon Code:</div>
+                              <div class="col-sm-6"><?php echo $row['coupon_code'];?></div>
+                            </div>
+                            <?php } ?>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Order Total:</div>
+                              <div class="col-sm-6"><?php echo $row['order_total'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Payment Method:</div>
+                              <div class="col-sm-6"><?php echo $row['payment_method'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Created Date:</div>
                               <div class="col-sm-6"><?php echo $row['created_at'];?></div>
                             </div>
                             <div class="row">
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Order ID</div>
                               <div class="col-sm-6"><?php echo $row['order_id'];?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-2"></div>
-                              <div class="col-sm-4">Admin User Type:</div>
-                              <div class="col-sm-6"><?php echo $getServicenames['group_service_name'];?></div>
                             </div>
                             <div class="row">
                               <div class="col-sm-2"></div>
