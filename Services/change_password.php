@@ -120,7 +120,7 @@
                                             <label for="cur-password">Current password</label>
                                         </div>
                                         <div class="form-group has-float-label">
-                                            <input type="password" name="newPassword" required class="form-control" id="user_password" placeholder="*********" autocomplete="off">
+                                            <input type="password" name="newPassword" minlength="8" required class="form-control" id="user_password" placeholder="*********" autocomplete="off">
                                             <label for="new-password">New password</label>
                                         </div>
                                         <div class="form-group has-float-label">

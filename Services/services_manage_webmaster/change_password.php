@@ -37,7 +37,7 @@ if (!isset($_POST['submit']))  {
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">New Password</label>
-                    <input type="password" name="new_password" class="form-control" id="new_password" placeholder="*********" data-error="Please enter New Password." required>
+                    <input type="password" name="new_password" class="form-control" id="new_password" minlength="8" placeholder="*********" data-error="Please enter New Password(minimum 8 characters)." required>
                     <span id="email_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
                   </div>
@@ -62,6 +62,8 @@ function checkPasswordMatch() {
     if (confirmPassword != password) {
         $("#divCheckPasswordMatch").html("Passwords do not match!");
         $("#confirm_password").val("");
+    } else {
+        $("#divCheckPasswordMatch").html("");
     }
 }
 </script>
