@@ -37,7 +37,7 @@
                                         <?php if($getSerName['service_price_type_id'] == 1) {
                                              $cartTotal += $getSerName['service_price'];
                                          ?>
-                                            <td><?php echo $getSerName['service_price']; ?></td>
+                                            <td>Rs. <?php echo $getSerName['service_price']; ?></td>
                                         <?php } elseif($getSerName['price_after_visit_type_id'] == 1) { ?>
                                             <td><?php echo "Price After our Visit"; ?></td>
                                         <?php } else { ?>
