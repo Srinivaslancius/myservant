@@ -289,10 +289,12 @@ if (!isset($_POST['submit']))  {
       if($(this).val() == 1) {
         $('#service_provider_business_type').show();
         $('.service_provider_business').val('');
+        $('#output1').removeAttr('src');
         $('#service_provider_personal_type').hide();
         $(".service_provider_business").attr("required", "true");
         $(".service_provider_personal").removeAttr('required');
       } else if($(this).val() == 2) {
+        $('#output').removeAttr('src');
         $('#service_provider_business_type').hide();
         $('.service_provider_personal').val("");
         $('#service_provider_personal_type').show();

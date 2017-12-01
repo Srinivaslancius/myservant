@@ -302,7 +302,9 @@ if (!isset($_POST['submit']))  {
       $('#service_provider_personal_type').hide();
       $(".service_provider_business").attr("required", "true");
       $(".service_provider_personal").removeAttr('required');
+      $('#output1').removeAttr('src');
     } else {
+      $('#output').removeAttr('src');
       $('#service_provider_personal_type').show();
       $('#service_provider_business_type').hide();
       $(".service_provider_personal").attr("required", "true");
