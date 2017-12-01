@@ -33,89 +33,25 @@ if(!empty($_POST['user_mobile']) && !empty($_POST['mobile_otp']))  {
 		$to = $dataem;
 		//$from = $getSiteSettingsData["email"];
 		$subject = "Myservent - Services ";
-		$message = "";
-		$message .= "<style>
-		        .body{
-		    width:100% !important; 
-		    margin:0 !important; 
-		    padding:0 !important; 
-		    -webkit-text-size-adjust:none;
-		    -ms-text-size-adjust:none; 
-		    background-color:#FFFFFF;
-		    font-style:normal;
-		    }
-		    .header{
-		    background-color:#c90000;
-		    color:white;
-		    width:100%;
-		    }
-		    .content{
-		    background-color:#FBFCFC;
-		    color:#17202A;
-		    width:100%;
-		    padding-top:15px;
-		    padding-bottom;15px;
-		    text-align:justify;
-		    font-size:14px;
-		    line-height:18px;
-		    font-style:normal;
-		    }
-		    h3{
-		    color: #c90000;}
-		    .footer{
-		    background-color:#c90000;
-		    color:white;
-		    width:100%;
-		    padding-top:9px;
-		    padding-bottom:5px;
-		    }
-		    .logo-responsive{
-		    max-width: 100%;
-		    height: auto !important;
-		    }
-		    @media screen and (min-width: 480px) {
-		        .content{
-		        width:50%;
-		        }
-		        .header{
-		        width:50%;
-		        }
-		        .footer{
-		        width:50%;
-		        }
-		        .logo-responsive{
-		        max-width: 100%;
-		        height: auto !important;
-		        }
-		    }
-		    </style>";
+		$message = '';		
+		$message .= '<body>
+			<div class="container" style=" width:50%;border: 5px solid #fe6003;margin:0 auto">
+			<header style="padding:0.8em;color: white;background-color: #fe6003;clear: left;text-align: center;">
+			 <center><img src="http://palle2patnam.com/lancius/myservant/logo2.png" class="logo-responsive"></center>
+			</header>
+			<article style=" border-left: 1px solid gray;overflow: hidden;text-align:justify; word-spacing:0.1px;line-height:25px;padding:15px">
+			  <h1 style="color:#fe6003">Welcome To Myservant</h1>
+			  <p>A very special welcome to you '.$getLoggedInDetails["user_full_name"].', Thank you for joining myservant.com!</p>
+				<p>Your pasword is <span style="color:#fe6003;">abcd@123$</span></p>
+						<p>Please keep it secret, keep it safe!</p>
+						<p>We hope you enjoy your stay at myservant.com, if you have any problems, questions, opinions, praise, comments, suggestions, please free not to contact us at any time.</p>
+						<p>Warm Regards,<br>The Myservant Team </p>
+			</article>
+			<footer style="padding: 1em;color: white;background-color: #fe6003;clear: left;text-align: center;">© 2017 Myservant All rights reserved | A Unit Of CMR Enterprises
+</footer>
+			</div>
 
-		$message .= "<html><head><title>Myservent Services</title></head>
-		<body>
-		        <div class='container header'>
-		            <div class='row'>
-		                <div class='col-lg-2 col-md-2 col-sm-2'>
-		                </div>
-		                <div class='col-lg-8 col-md-8 col-sm-8'>
-		                <center><h2>".$getSiteSettingsData['admin_title']."</h2></center>
-		                </div>
-		                <div class='col-lg-2 col-md-2 col-sm-2'>
-		                    
-		                </div>
-		            </div>
-		        </div>
-		        <div class='container content'>
-		            <h3>Hi, Welcome to MY SERVANT</h3>
-		            <h4>Dear: ".$getLoggedInDetails["user_full_name"]."</h4>
-		            <h4>Your Registration has been successfully completed. Please check your mail for confirmation.</h4>
-		            <p>Your Email ID : ".$getLoggedInDetails["user_email"]."</p>
-		            <p>Password : ".decryptPassword($getLoggedInDetails["user_password"])."</p>
-		        </div>
-		        <div class='container footer'>
-		            <center>".$getSiteSettingsData['footer_text']."</center>
-		        </div>
-		    </body>
-		</html>";
+			</body>';
 
 		//echo $message; die;
 		//$sendMail = sendEmail($to,$subject,$message,$from);
