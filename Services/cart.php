@@ -170,7 +170,7 @@
 				</table>
 
 				<div class="cart-options clearfix">
-					<div class="pull-left">
+					<!-- <div class="pull-left">
 						<div class="apply-coupon">
 							<div class="form-group">
 								<input type="text" name="coupon_code" id="coupon_code" value="" placeholder="Your Coupon Code" class="form-control">
@@ -182,7 +182,7 @@
 								<button type="button" class="btn_cart_outine coupon">Apply Coupon</button>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<div class="pull-right fix_mobile">
 						<input type="submit" class="btn_cart_outine" value="Update Cart" name="submit">
 					</div>
