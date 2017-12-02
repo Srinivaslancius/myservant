@@ -163,7 +163,7 @@ if (!isset($_POST['submit']))  {
 
                     <div class="form-group">
                       <label for="form-control-2" class="control-label">Description</label>
-                      <textarea name="description" class="form-control service_provider_business" id="meta_desc" placeholder="Description" data-error="Please enter Address."><?php echo $getServiceProviderBusinessRegistrationsData['description'];?></textarea>
+                      <textarea name="description" class="form-control" id="meta_desc" placeholder="Description" data-error="Please enter Address."><?php echo $getServiceProviderBusinessRegistrationsData['description'];?></textarea>
                       <div class="help-block with-errors"></div>
                     </div>
 
@@ -219,9 +219,9 @@ if (!isset($_POST['submit']))  {
                           ?>
                           <h4>Associate With Us</h4>
                           <label>
-                            <input type="checkbox"  value="0" <?php if($getAssoc == 0) echo $checked; ?> name="associate_or_not" />&nbsp;Yes</label>&nbsp;&nbsp;
+                            <input type="radio"  value="0" <?php if($getAssoc == 0) echo $checked; ?> name="associate_or_not" />&nbsp;Yes</label>&nbsp;&nbsp;
                           <label>
-                            <input type="checkbox"  value="1" <?php if($getAssoc == 1) echo $checked; ?> name="associate_or_not"/>&nbsp;No</label>
+                            <input type="radio"  value="1" <?php if($getAssoc == 1) echo $checked; ?> name="associate_or_not"/>&nbsp;No</label>
                           <label>
                     </div>
                   </div>
@@ -256,7 +256,7 @@ if (!isset($_POST['submit']))  {
 
                     <div class="form-group">
                       <label for="form-control-2" class="control-label">Experience</label>
-                      <input type="text" name="experience" class="form-control service_provider_personal" id="form-control-2" placeholder="Experience" data-error="Please enter Experience" value="<?php echo $getServiceProviderPersonalRegistrationsData['experience'];?>">
+                      <input type="text" name="experience" class="form-control service_provider_personal" id="form-control-2" placeholder="Experience" data-error="Please enter Experience" value="<?php echo $getServiceProviderPersonalRegistrationsData['experience'];?>" onkeypress="return isNumberKey(event)">
                       <div class="help-block with-errors"></div>
                     </div>
 

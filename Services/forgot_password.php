@@ -5,7 +5,52 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<?php include_once 'meta.php';?>	
+	<?php include_once 'meta.php';?>
+
+<?php 
+	error_reporting(0);
+	if(isset($_POST['submit']))  { 
+	    //Login here
+	    $user_email = $_POST['login_email'];
+	    $getUserForgotData = forgotPassword($user_email);
+	    //Set variable for session
+	    if($getUserForgotPassword = $getUserForgotData->fetch_assoc()) {
+
+	    	$pwd = decryptPassword($getUserForgotPassword['user_password']);
+            $to = $user_email;
+            $subject =  "User Forgot Password";
+            $message = '';
+            $message .= '<body>
+			<div class="container" style=" width:50%;border: 5px solid #fe6003;margin:0 auto">
+			<header style="padding:0.8em;color: white;background-color: #fe6003;clear: left;text-align: center;">
+			 <center><img src='.$base_url . "uploads/logo/".$getSiteSettingsData["logo"].' class="logo-responsive"></center>
+			</header>
+			<article style=" border-left: 1px solid gray;overflow: hidden;text-align:justify; word-spacing:0.1px;line-height:25px;padding:15px">
+			  <h1 style="color:#fe6003">Welcome To Myservant</h1>
+			  <p>A very special welcome to you <span style="color:#fe6003;">'.$getUserForgotPassword["user_full_name"].'</span>, Thank you for joining myservant.com!</p>
+				<p>Your New pasword is <span style="color:#fe6003;">'.$pwd.'</span></p>
+				<p>We hope you enjoy your stay at myservant.com, if you have any problems, questions, opinions, praise, comments, suggestions, please free to contact us at any time.</p>
+				<p>Warm Regards,<br>The Myservant Team </p>
+			</article>
+			<footer style="padding: 1em;color: white;background-color: #fe6003;clear: left;text-align: center;">'.$getSiteSettingsData['footer_text'].'</footer>
+			</div>
+
+			</body>';
+
+			//echo $message; die;
+            $name = "My Servant";
+			$from = "info@myservant.com";
+			$headers = "MIME-Version: 1.0" . "\r\n";
+			$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";  
+			$headers .= 'From: '.$name.'<'.$from.'>'. "\r\n";
+            mail($to, $subject, $message, $headers);
+
+		        echo  "<script>alert('Password Sent To Your Email,Please Check.');window.location='login.php';</script>";
+		    } else {
+	    	echo "<script>alert('Your Entered Email Not Found');</script>";
+	    }
+	}
+?>	
 
 	<!-- Favicons-->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -25,116 +70,6 @@
 </head>
 
 <body>
-
-<?php 
-		error_reporting(0);
-		 if(isset($_POST['submit']))  { 
-		    //Login here
-		    $user_email = $_POST['login_email'];
-		    $getUserForgotData = forgotPassword($user_email);
-		    //Set variable for session
-		    if($getUserForgotPassword = $getUserForgotData->fetch_assoc()) {
-
-		    	$pwd = decryptPassword($getUserForgotPassword['user_password']);
-	            $to = $user_email;
-	            $subject =  "User Forgot Password";
-	            $message = "";
-				$message .= "<style>
-				        .body{
-				    width:100% !important; 
-				    margin:0 !important; 
-				    padding:0 !important; 
-				    -webkit-text-size-adjust:none;
-				    -ms-text-size-adjust:none; 
-				    background-color:#FFFFFF;
-				    font-style:normal;
-				    }
-				    .header{
-				    background-color:#c90000;
-				    color:white;
-				    width:100%;
-				    }
-				    .content{
-				    background-color:#FBFCFC;
-				    color:#17202A;
-				    width:100%;
-				    padding-top:15px;
-				    padding-bottom;15px;
-				    text-align:justify;
-				    font-size:14px;
-				    line-height:18px;
-				    font-style:normal;
-				    }
-				    h3{
-				    color: #c90000;}
-				    .footer{
-				    background-color:#c90000;
-				    color:white;
-				    width:100%;
-				    padding-top:9px;
-				    padding-bottom:5px;
-				    }
-				    .logo-responsive{
-				    max-width: 100%;
-				    height: auto !important;
-				    }
-				    @media screen and (min-width: 480px) {
-				        .content{
-				        width:50%;
-				        }
-				        .header{
-				        width:50%;
-				        }
-				        .footer{
-				        width:50%;
-				        }
-				        .logo-responsive{
-				        max-width: 100%;
-				        height: auto !important;
-				        }
-				    }
-				    </style>";
-
-				$message .= "<html><head><title>Myservent Services</title></head>
-				<body>
-				        <div class='container header'>
-				            <div class='row'>
-				                <div class='col-lg-2 col-md-2 col-sm-2'>
-				                </div>
-				                <div class='col-lg-8 col-md-8 col-sm-8'>
-				                <center><h2>".$getSiteSettingsData['admin_title']."</h2></center>
-				                </div>
-				                <div class='col-lg-2 col-md-2 col-sm-2'>
-				                    
-				                </div>
-				            </div>
-				        </div>
-				        <div class='container content'>
-				            <h3>You have a new password!</h3>
-				            <h4>Dear: ".$getUserForgotPassword['user_full_name']."</h4>
-				            <h4>Your New Password is: ".$pwd." .</h4>  
-				        </div>
-				        <div class='container footer'>
-				            <center>".$getSiteSettingsData['footer_text']."</center>
-				        </div>
-				    </body>
-				</html>";
-
-				//echo $message; die;
-	            $name = "My Servant";
-				$from = "info@myservant.com";
-				$headers = "MIME-Version: 1.0" . "\r\n";
-				$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";  
-				$headers .= 'From: '.$name.'<'.$from.'>'. "\r\n";
-	            mail($to, $subject, $message, $headers);
-
-			        echo  "<script>alert('Password Sent To Your Email,Please Check.');window.location='login.php';</script>";
-			    } else {
-		    	echo "<script>alert('Your Entered Email Not Found');</script>";
-		    }
-		}
-	?>
-
 
 	<!--[if lte IE 8]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>

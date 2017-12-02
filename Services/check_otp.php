@@ -37,18 +37,17 @@ if(!empty($_POST['user_mobile']) && !empty($_POST['mobile_otp']))  {
 		$message .= '<body>
 			<div class="container" style=" width:50%;border: 5px solid #fe6003;margin:0 auto">
 			<header style="padding:0.8em;color: white;background-color: #fe6003;clear: left;text-align: center;">
-			 <center><img src="http://palle2patnam.com/lancius/myservant/logo2.png" class="logo-responsive"></center>
+			 <center><img src='.$base_url . "uploads/logo/".$getSiteSettingsData["logo"].' class="logo-responsive"></center>
 			</header>
 			<article style=" border-left: 1px solid gray;overflow: hidden;text-align:justify; word-spacing:0.1px;line-height:25px;padding:15px">
 			  <h1 style="color:#fe6003">Welcome To Myservant</h1>
-			  <p>A very special welcome to you '.$getLoggedInDetails["user_full_name"].', Thank you for joining myservant.com!</p>
-				<p>Your pasword is <span style="color:#fe6003;">abcd@123$</span></p>
-						<p>Please keep it secret, keep it safe!</p>
-						<p>We hope you enjoy your stay at myservant.com, if you have any problems, questions, opinions, praise, comments, suggestions, please free not to contact us at any time.</p>
-						<p>Warm Regards,<br>The Myservant Team </p>
+			  <p>A very special welcome to you <span style="color:#fe6003;">'.$getLoggedInDetails["user_full_name"].'</span>, Thank you for joining myservant.com!</p>
+				<p>Your pasword is <span style="color:#fe6003;">'.decryptePassword($getLoggedInDetails["user_password"]).'</span></p>
+				<p>Please keep it secret, keep it safe!</p>
+				<p>We hope you enjoy your stay at myservant.com, if you have any problems, questions, opinions, praise, comments, suggestions, please free to contact us at any time.</p>
+				<p>Warm Regards,<br>The Myservant Team </p>
 			</article>
-			<footer style="padding: 1em;color: white;background-color: #fe6003;clear: left;text-align: center;">© 2017 Myservant All rights reserved | A Unit Of CMR Enterprises
-</footer>
+			<footer style="padding: 1em;color: white;background-color: #fe6003;clear: left;text-align: center;">'.$getSiteSettingsData['footer_text'].'</footer>
 			</div>
 
 			</body>';

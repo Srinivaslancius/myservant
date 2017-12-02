@@ -24,96 +24,30 @@ $dataem = $getSiteSettingsData["email"];
 //$to = "srinivas@lanciussolutions.com";
 $to = $dataem;
 $subject = "Myservent - Contact Us ";
-$message = "";
-$message .= "<style>
-        .body{
-    width:100% !important; 
-    margin:0 !important; 
-    padding:0 !important; 
-    -webkit-text-size-adjust:none;
-    -ms-text-size-adjust:none; 
-    background-color:#FFFFFF;
-    font-style:normal;
-    }
-    .header{
-    background-color:#c90000;
-    color:white;
-    width:100%;
-    }
-    .content{
-    background-color:#FBFCFC;
-    color:#17202A;
-    width:100%;
-    padding-top:15px;
-    padding-bottom;15px;
-    text-align:justify;
-    font-size:14px;
-    line-height:18px;
-    font-style:normal;
-    }
-    h3{
-    color: #c90000;}
-    .footer{
-    background-color:#c90000;
-    color:white;
-    width:100%;
-    padding-top:9px;
-    padding-bottom:5px;
-    }
-    .logo-responsive{
-    max-width: 100%;
-    height: auto !important;
-    }
-    @media screen and (min-width: 480px) {
-        .content{
-        width:50%;
-        }
-        .header{
-        width:50%;
-        }
-        .footer{
-        width:50%;
-        }
-        .logo-responsive{
-        max-width: 100%;
-        height: auto !important;
-        }
-    }
-    </style>";
+$message = '';		
+$message .= '<body>
+	<div class="container" style=" width:50%;border: 5px solid #fe6003;margin:0 auto">
+	<header style="padding:0.8em;color: white;background-color: #fe6003;clear: left;text-align: center;">
+	 <center><img src='.$base_url . "uploads/logo/".$getSiteSettingsData["logo"].' class="logo-responsive"></center>
+	</header>
+	<article style=" border-left: 1px solid gray;overflow: hidden;text-align:justify; word-spacing:0.1px;line-height:25px;padding:15px">
+	  	<h1 style="color:#fe6003">Welcome To Myservant</h1>
+	  	<h4>First Name: </h4><p>'.$name_contact.'</p>
+        <h4>Last Name: </h4><p>'.$lastname_contact.'</p>
+        <h4>Email: </h4><p>'.$email_contact.'</p>
+        <h4>Mobile: </h4><p>'.$phone_contact.'</p>
+        <h4>Message: </h4><p>'.$message_contact.'</p>
+	</article>
+	<footer style="padding: 1em;color: white;background-color: #fe6003;clear: left;text-align: center;">'.$getSiteSettingsData['footer_text'].'</footer>
+	</div>
 
-$message .= "<html><head><title>Myservent Contactus Form</title></head>
-<body>
-        <div class='container header'>
-            <div class='row'>
-                <div class='col-lg-2 col-md-2 col-sm-2'>
-                </div>
-                <div class='col-lg-8 col-md-8 col-sm-8'>
-                <center><h2>".$getSiteSettingsData['admin_title']."</h2></center>
-                </div>
-                <div class='col-lg-2 col-md-2 col-sm-2'>
-                    
-                </div>
-            </div>
-        </div>
-        <div class='container content'>
-            <h3>Contact Us Information!</h3>
-            <h4>First Name: </h4><p>".$name_contact."</p>
-            <h4>Last Name: </h4><p>".$lastname_contact."</p>
-            <h4>Email: </h4><p>".$email_contact."</p>
-            <h4>Mobile: </h4><p>".$phone_contact."</p>
-            <h4>Message: </h4><p>".$message_contact."</p>  
-        </div>
-        <div class='container footer'>
-            <center>".$getSiteSettingsData['footer_text']."</center>
-        </div>
-    </body>
-</html>";
+	</body>';
 
 //echo $message; die;
 
 //$sendMail = sendEmail($to,$subject,$message,$email_contact);
 $name = "My Servant";
-$from = "info@myservant.com";
+$from = $email_contact;
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";  
 $headers .= 'From: '.$name.'<'.$from.'>'. "\r\n";
