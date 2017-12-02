@@ -22,7 +22,7 @@ $service_price = $_POST['service_price'];
 $services_service_id = $_POST['services_service_id'];
 $service_price_type_id = $_POST['service_price_type_id'];
 $created_at = date("Y-m-d h:i:s");
-$service_selected_time = date('H:i:s A', strtotime($created_at));
+$service_selected_time = date('H:i:s', strtotime($created_at));
 $service_selected_date = date("Y-m-d h:i:s");
 
 $checkCartItems = "SELECT * FROM services_cart WHERE group_id = '$group_id' AND service_id='$services_service_id' AND session_cart_id ='$session_cart_id' ";
