@@ -30,6 +30,8 @@ if(!empty($_POST['user_mobile']) && !empty($_POST['mobile_otp']))  {
         $_SESSION['timestamp'] = time();
 
         $dataem = $getLoggedInDetails["user_email"];
+
+        $user_password = decryptPassword($getLoggedInDetails["user_password"]);
 		//$to = "srinivas@lanciussolutions.com";
 		$to = $dataem;
 		//$from = $getSiteSettingsData["email"];
@@ -43,7 +45,7 @@ if(!empty($_POST['user_mobile']) && !empty($_POST['mobile_otp']))  {
 			<article style=" border-left: 1px solid gray;overflow: hidden;text-align:justify; word-spacing:0.1px;line-height:25px;padding:15px">
 			  <h1 style="color:#fe6003">Welcome To Myservant</h1>
 			  <p>A very special welcome to you <span style="color:#fe6003;">'.$getLoggedInDetails["user_full_name"].'</span>, Thank you for joining myservant.com!</p>
-				<p>Your pasword is <span style="color:#fe6003;">'.decryptePassword($getLoggedInDetails["user_password"]).'</span></p>
+				<p>Your pasword is <span style="color:#fe6003;">'.$user_password.'</span></p>
 				<p>Please keep it secret, keep it safe!</p>
 				<p>We hope you enjoy your stay at myservant.com, if you have any problems, questions, opinions, praise, comments, suggestions, please free to contact us at any time.</p>
 				<p>Warm Regards,<br>The Myservant Team </p>

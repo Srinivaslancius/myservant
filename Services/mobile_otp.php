@@ -145,7 +145,7 @@ $('#verify_otp').on('click', function () {
 	    type:"post",
 	    url:"check_otp.php",
 	    data:$("form").serialize(),
-	    success:function(result){   	
+	    success:function(result){	
 	      if(result == 0) {
 	      	$("#return_msg").css("display", "block");   	
 	        $("#return_msg").html("<span style='color:red;'>Please enter valid OTP!</span>");
@@ -158,10 +158,6 @@ $('#verify_otp').on('click', function () {
 	    }
 	  });
 
-  } else {
-  	alert("Please enter OTP!");
-  	$("#return_msg").css("display", "none");  
-  	return false;
   }
   
 });
