@@ -205,13 +205,7 @@
 					// Please make sure that you didn't forget to add a comma to the line endings
 					// except the last line!
 			});
-		});
-		function isNumberKey(evt){
-  	    var charCode = (evt.which) ? evt.which : event.keyCode
-  	    if (charCode > 31 && (charCode < 48 || charCode > 57))
-  	        return false;
-  	    return true;
-    	}
+		});		
     	function checkPasswordMatch() {
 		    var password = $("#user_password").val();
 		    var confirmPassword = $("#confirm_password").val();
