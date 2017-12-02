@@ -122,7 +122,7 @@
 	                                            <tr>
 	                                                <td><?php echo wordwrap($getServiceNamesData['group_service_name'],22,"<br>\n",TRUE);?></td>
 	                                                <td><?php echo wordwrap($servicePrice,22,"<br>\n",TRUE); ?></td>
-	                                                <td><a class="btn_full_outline wdth50 check_cart" data-cat-id=<?php echo $_GET['key']; ?> data-sub-cat-id=<?php echo $subcatid; ?> data-group-id=<?php echo $getGroupsData['id']; ?> data-service-id=<?php echo $getServiceNamesData['id']; ?> data-price-type-id=<?php echo $getServiceNamesData['service_price_type_id']; ?> data-services-price=<?php echo $servicePrice; ?>>Add to Cart</a> </td>
+	                                                <td><a class="btn_full_outline wdth50 check_cart" data-cat-id=<?php echo $_GET['key1']; ?> data-sub-cat-id=<?php echo $subcatid; ?> data-group-id=<?php echo $getGroupsData['id']; ?> data-service-id=<?php echo $getServiceNamesData['id']; ?> data-price-type-id=<?php echo $getServiceNamesData['service_price_type_id']; ?> data-services-price=<?php echo $servicePrice; ?>>Add to Cart</a> </td>
 	                                            </tr>                                            
                                             <?php $i++; } ?>
                                         </tbody>

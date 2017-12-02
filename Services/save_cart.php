@@ -31,7 +31,7 @@ $getTotalCount = $getCartCount->num_rows;
 if($getTotalCount > 0) {
 	echo $getTotalCount;
 } else {
-	$saveItems = "INSERT INTO `services_cart`(`user_id`, `session_cart_id`, `group_id`, `service_id`, `services_price_type_id`, `service_price`,`service_selected_date`, `service_selected_time`, `created_at`) VALUES ('$user_id','$session_cart_id','$group_id','$services_service_id','$service_price_type_id','$service_price','$service_selected_date','$service_selected_time','$created_at')";
+	$saveItems = "INSERT INTO `services_cart`(`user_id`, `session_cart_id`, `service_category_id`, `service_sub_category_id`, `group_id`, `service_id`, `services_price_type_id`, `service_price`,`service_selected_date`, `service_selected_time`, `created_at`) VALUES ('$user_id','$session_cart_id','$category_id','$sub_cat_id','$group_id','$services_service_id','$service_price_type_id','$service_price','$service_selected_date','$service_selected_time','$created_at')";
 	$saveCart = $conn->query($saveItems);
 	echo $getTotalCount;
 } 
