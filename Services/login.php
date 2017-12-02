@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="form-group">
                                 	<label>Mobile Number</label>
-                                    <input type="text" name="user_mobile" id="user_mobile" class=" form-control"  placeholder="Mobile Number" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" onkeyup="checkMobile();" required>
+                                    <input type="text" name="user_mobile" id="user_mobile" class=" form-control valid_mobile_num"  placeholder="Mobile Number" maxlength="10" pattern="[0-9]{10}" onkeyup="checkMobile();" required>
                                     <span id="input_status1" style="color: red;"></span>
                                 </div>
                                 <div class="form-group">

@@ -147,8 +147,8 @@
 										</select>
 									</div>
 									<div class="form-group col-md-6 col-sm-6 col-xs-12">
-										<label>Zip / Postal Code</label>
-										<input type="text" name="postal_code" value="" placeholder="Zip / Postal Code" class="form-control">
+										<label>Zip / Postal Code  <sup>*</sup></label>
+										<input type="text" name="postal_code" value="" placeholder="Zip / Postal Code" class="form-control" required>
 									</div>
 									<?php $getCitiesData = getAllDataWhere('lkp_cities','lkp_status_id',0); ?>
 									<div class="form-group col-md-6 col-sm-6 col-xs-12">
@@ -228,7 +228,7 @@
 			                            $cartTotal += $getSerName['service_price']*$getCartItems['service_quantity'];
 			                        ?>
 									<div class="col second">
-										Rs. <?php echo $getSerName['service_price']; ?>
+										Rs. <?php echo $getSerName['service_price']; ?> * <?php echo $getCartItems['service_quantity'];?>
 									</div>
 									<?php } elseif($getSerName['price_after_visit_type_id'] == 1) { ?>
 									<div class="col second">
