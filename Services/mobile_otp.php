@@ -90,12 +90,12 @@
 
                                 <div class="form-group">
                                     <label>Phone</label>
-                                    <input type="text" id="user_mobile" name="user_mobile" class="form-control" placeholder="Enter Phone number" value="<?php echo $_POST['user_mobile']; ?>" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" readonly required>
+                                    <input type="text" id="user_mobile" name="user_mobile" class="form-control valid_mobile_num" placeholder="Enter Phone number" value="<?php echo $_POST['user_mobile']; ?>" maxlength="10" pattern="[0-9]{10}" readonly required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>OTP</label>
-                                    <input type="text" id="mobile_otp" name="mobile_otp" class="form-control" placeholder="Enter OTP" maxlength="4" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" required >
+                                    <input type="text" id="mobile_otp" name="mobile_otp" class="form-control valid_mobile_num" placeholder="Enter OTP" maxlength="4" pattern="[0-9]{10}"  required >
                                 </div>
                                 <span id="return_msg" style="display:none"></span><br />
                                 <div class="clear_fix"></div>
@@ -128,25 +128,12 @@
 	<div id="toTop"></div><!-- Back to top button -->
 
 		<!-- Common scripts -->
-	<script src="../cdn-cgi/scripts/78d64697/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
-	<script src="js/common_scripts_min.js"></script>
-	<script src="js/functions.js"></script>
-	
-	<!-- Validation purpose add scripts -->
-	<?php include_once 'common_validations_scripts.php'; ?>	
 	
 	
 </body>
 
 </html>
 <script type="text/javascript">
-function isNumberKey(evt){
-    var charCode = (evt.which) ? evt.which : event.keyCode
-    if (charCode > 31 && (charCode < 48 || charCode > 57))
-        return false;
-    return true;
-}
-
 
 $('#verify_otp').on('click', function () {
 
@@ -158,12 +145,12 @@ $('#verify_otp').on('click', function () {
 	    type:"post",
 	    url:"check_otp.php",
 	    data:$("form").serialize(),
-	    success:function(result){
+	    success:function(result){   	
 	      if(result == 0) {
 	      	$("#return_msg").css("display", "block");   	
 	        $("#return_msg").html("<span style='color:red;'>Please enter valid OTP!</span>");
 	        $('#mobile_otp').val('');
-	      } else {	      	
+	      } else {
 	      	//Success
 	      	alert("OTP verified");
 	      	window.location.href = 'index.php';
@@ -171,6 +158,10 @@ $('#verify_otp').on('click', function () {
 	    }
 	  });
 
+  } else {
+  	alert("Please enter OTP!");
+  	$("#return_msg").css("display", "none");  
+  	return false;
   }
   
 });
