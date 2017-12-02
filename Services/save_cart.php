@@ -22,6 +22,8 @@ $service_price = $_POST['service_price'];
 $services_service_id = $_POST['services_service_id'];
 $service_price_type_id = $_POST['service_price_type_id'];
 $created_at = date("Y-m-d h:i:s");
+$service_selected_time = date('H:i:s A', strtotime($created_at));
+$service_selected_date = date("Y-m-d h:i:s");
 
 $checkCartItems = "SELECT * FROM services_cart WHERE group_id = '$group_id' AND service_id='$services_service_id' AND session_cart_id ='$session_cart_id' ";
 $getCartCount = $conn->query($checkCartItems);
@@ -29,7 +31,7 @@ $getTotalCount = $getCartCount->num_rows;
 if($getTotalCount > 0) {
 	echo $getTotalCount;
 } else {
-	$saveItems = "INSERT INTO `services_cart`(`user_id`, `session_cart_id`, `group_id`, `service_id`, `services_price_type_id`, `service_price`, `created_at`) VALUES ('$user_id','$session_cart_id','$group_id','$services_service_id','$service_price_type_id','$service_price','$created_at')";
+	$saveItems = "INSERT INTO `services_cart`(`user_id`, `session_cart_id`, `group_id`, `service_id`, `services_price_type_id`, `service_price`,`service_selected_date`, `service_selected_time`, `created_at`) VALUES ('$user_id','$session_cart_id','$group_id','$services_service_id','$service_price_type_id','$service_price','$service_selected_date','$service_selected_time','$created_at')";
 	$saveCart = $conn->query($saveItems);
 	echo $getTotalCount;
 } 

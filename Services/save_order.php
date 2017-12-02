@@ -50,8 +50,8 @@ if(isset($_POST["submit"]) && $_POST["submit"]!="") {
 			 <center><img src='.$base_url . "uploads/logo/".$getSiteSettingsData["logo"].' class="logo-responsive"></center>
 			</header>
 			<article style=" border-left: 1px solid gray;overflow: hidden;text-align:justify; word-spacing:0.1px;line-height:25px;padding:15px">
-			  <h1 style="color:#fe6003">Welcome To Myservant</h1>
-			  <p>A very special welcome to you <span style="color:#fe6003;">'.$first_name.'</span>, Thank you for Ordering myservant.com!</p>
+			  <h1 style="color:#fe6003">Greetings From Myservant</h1>
+			  <p>Dear <span style="color:#fe6003;">'.$first_name.'</span>, Thank you for Ordering myservant.com!</p>
 				<p>Your Order Number is: <span style="color:#fe6003;">'.$order_id.'</span></p>
 				<p>Your Order Total: Rs. <span style="color:#fe6003;">'.$order_total.'</span></p>
 				<p>We hope you enjoy your stay at myservant.com, if you have any problems, questions, opinions, praise, comments, suggestions, please free to contact us at any time.</p>
