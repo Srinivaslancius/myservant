@@ -14,6 +14,7 @@
     $gplus_link = $_POST['gplus_link'];
     $mobile = $_POST['mobile'];    
     $footer_text = $_POST['footer_text'];
+    $service_tax = $_POST['service_tax'];
     $open_timings = $_POST['open_timings'];
     $address = $_POST['address'];
     $inst_link = $_POST['inst_link'];    
@@ -33,7 +34,7 @@
         $getImgUnlink = getImageUnlink('logo','services_site_settings','id',$id,$target_dir);
         //Send parameters for img val,tablename,clause,id,imgpath for image ubnlink from folder
         if (move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file)) {
-            $sql = "UPDATE `services_site_settings` SET admin_title = '$admin_title', email='$email', fb_link='$fb_link', twitter_link='$twitter_link', gplus_link='$gplus_link',inst_link='$inst_link', mobile='$mobile', logo = '$logo',footer_text='$footer_text', address='$address' WHERE id = '$id' ";
+            $sql = "UPDATE `services_site_settings` SET admin_title = '$admin_title', email='$email', fb_link='$fb_link', twitter_link='$twitter_link', gplus_link='$gplus_link',inst_link='$inst_link', mobile='$mobile', logo = '$logo', service_tax = '$service_tax', footer_text='$footer_text', address='$address' WHERE id = '$id' ";
             if($conn->query($sql) === TRUE){
                echo "<script type='text/javascript'>window.location='site_settings.php?msg=success'</script>";
             } else {
@@ -44,7 +45,7 @@
             echo "Sorry, there was an error uploading your file.";
         }
     }  else {
-        $sql = "UPDATE `services_site_settings` SET admin_title = '$admin_title', email='$email', fb_link='$fb_link', twitter_link='$twitter_link', gplus_link='$gplus_link',inst_link='$inst_link', mobile='$mobile',footer_text='$footer_text', address='$address' WHERE id = '$id' ";
+        $sql = "UPDATE `services_site_settings` SET admin_title = '$admin_title', email='$email', fb_link='$fb_link', twitter_link='$twitter_link', gplus_link='$gplus_link',inst_link='$inst_link', mobile='$mobile', service_tax = '$service_tax',footer_text='$footer_text', address='$address' WHERE id = '$id' ";
         if($conn->query($sql) === TRUE){
            echo "<script type='text/javascript'>window.location='site_settings.php?msg=success'</script>";
         } else {
@@ -90,7 +91,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">LinkedIn Link</label>
+                    <label for="form-control-2" class="control-label">Instagram Link</label>
                     <input type="url" name="inst_link" class="form-control" id="form-control-2" placeholder="Instagram Link" data-error="Please enter a valid Instagram Link." value="<?php echo $getSiteSettingsData['inst_link'];?>" required>
                     <div class="help-block with-errors"></div>
                   </div>
