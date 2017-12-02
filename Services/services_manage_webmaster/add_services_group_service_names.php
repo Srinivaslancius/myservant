@@ -108,7 +108,7 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group" id="service_price">
                     <label for="form-control-2" class="control-label">Service Price</label>
-                    <input type="text" name="service_price" class="form-control service_price" id="service_price_txt" onkeypress="return isNumberKey(event)" placeholder="Service Price" >
+                    <input type="text" name="service_price" class="form-control service_price valid_mobile_num" id="service_price_txt" placeholder="Service Price" >
                     <div class="help-block with-errors"></div>
                   </div>                      
 
@@ -126,13 +126,13 @@ if (!isset($_POST['submit']))  {
 
                     <div class="form-group" id="service_min_price" >
                       <label for="form-control-2" class="control-label">Service Min Price</label>
-                      <input type="text" name="service_min_price" class="form-control" id="min_price" placeholder="Service Min Price" onkeypress="return isNumberKey(event)">
+                      <input type="text" name="service_min_price" class="form-control valid_mobile_num" id="min_price" placeholder="Service Min Price">
                       <div class="help-block with-errors"></div>
                     </div>
 
                     <div class="form-group" id="service_max_price" >
                       <label for="form-control-2" class="control-label">Service Max Price</label>
-                      <input type="text" name="service_max_price" class="form-control" id="max_price" placeholder="Service Max Price" onkeypress="return isNumberKey(event)">
+                      <input type="text" name="service_max_price" class="form-control valid_mobile_num" id="max_price" placeholder="Service Max Price">
                       <div class="help-block with-errors"></div>
                     </div>
 

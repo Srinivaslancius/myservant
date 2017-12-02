@@ -10,14 +10,6 @@
         $( "#deal_start_date,#deal_end_date,#last_login_visit" ).datepicker();
       } );
     </script>
-    <script>
-    	function isNumberKey(evt){
-  	    var charCode = (evt.which) ? evt.which : event.keyCode
-  	    if (charCode > 31 && (charCode < 48 || charCode > 57))
-  	        return false;
-  	    return true;
-    	}
-	  </script>
     <script type="text/javascript">
       //$(document).ready(function(){
           $(".click_view").click(function(){
@@ -26,6 +18,8 @@
           });
       //});
     </script>
+    <!-- This Script For validations -->
+    <script type="text/javascript" src="../js/check_number_validations.js"></script>
 	  <script>
       var loadFile = function(event) {
         var output = document.getElementById('output');

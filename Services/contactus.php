@@ -140,7 +140,7 @@ if(mail($to, $subject, $message, $headers)) {
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>Phone</label>
-										<input type="text" id="phone_contact" name="phone_contact" class="form-control" placeholder="Enter Phone number" maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" required>
+										<input type="text" id="phone_contact" name="phone_contact" class="form-control valid_mobile_num" placeholder="Enter Phone number" maxlength="10" pattern="[0-9]{10}" required>
 									</div>
 								</div>
 							</div>
@@ -229,26 +229,18 @@ if(mail($to, $subject, $message, $headers)) {
 	<!-- Common scripts -->
 	<div id="toTop"></div><!-- Back to top button -->
 
-		<!-- Common scripts -->
-	<script src="../cdn-cgi/scripts/78d64697/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
+		<!-- Common scripts -->	
+	<?php include_once 'common_validations_scripts.php'; ?>	
 	<script src="js/common_scripts_min.js"></script>
 	<script src="js/functions.js"></script>
 	
 	<!-- Validation purpose add scripts -->
-	<?php include_once 'common_validations_scripts.php'; ?>	
+	
 	
 	
 </body>
 
 </html>
-<script type="text/javascript">
-function isNumberKey(evt){
-	    var charCode = (evt.which) ? evt.which : event.keyCode
-	    if (charCode > 31 && (charCode < 48 || charCode > 57))
-	        return false;
-	    return true;
-	}
-</script>
 <style type="text/css">
   .error {
     color: $errorMsgColor;

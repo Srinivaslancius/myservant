@@ -66,7 +66,7 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Category Position</label>
-                    <input type="text" name="category_position" class="form-control" id="form-control-2" placeholder="Category Position" data-error="Please enter Category Position" required onkeypress="return isNumberKey(event)">
+                    <input type="text" name="category_position" class="form-control valid_mobile_num" id="form-control-2" placeholder="Category Position" data-error="Please enter Category Position" required>
                     <div class="help-block with-errors"></div>
                   </div>
 

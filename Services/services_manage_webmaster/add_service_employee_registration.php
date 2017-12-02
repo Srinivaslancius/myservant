@@ -63,7 +63,7 @@
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Mobile</label>
-                    <input type="text" name="mobile_number" class="form-control" id="mobile_number" placeholder="Mobile" data-error="Please enter mobile number." required onkeypress="return isNumberKey(event)" maxlength="10" pattern="[0-9]{10}" >
+                    <input type="text" name="mobile_number" class="form-control valid_mobile_num" id="mobile_number" placeholder="Mobile" data-error="Please enter mobile number." required maxlength="10" pattern="[0-9]{10}" >
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
