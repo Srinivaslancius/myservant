@@ -31,7 +31,7 @@ $message .= '<body>
 	 <center><img src='.$base_url . "uploads/logo/".$getSiteSettingsData["logo"].' class="logo-responsive"></center>
 	</header>
 	<article style=" border-left: 1px solid gray;overflow: hidden;text-align:justify; word-spacing:0.1px;line-height:25px;padding:15px">
-	  	<h1 style="color:#fe6003">Welcome To Myservant</h1>
+	  	<h1 style="color:#fe6003">User Feedback Information.</h1>
 	  	<h4>First Name: </h4><p>'.$name_contact.'</p>
         <h4>Last Name: </h4><p>'.$lastname_contact.'</p>
         <h4>Email: </h4><p>'.$email_contact.'</p>
