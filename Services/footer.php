@@ -79,3 +79,6 @@
 		//Custom alert 
 		modernAlert();
 		</script>
+
+<!-- This Script For validations -->
+<script type="text/javascript" src="js/check_number_validations.js"></script>

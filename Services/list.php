@@ -98,7 +98,7 @@
                                         <form name="services_cart" method="post">  
                                         <tbody>
 
-                                        	<input type="hidden" name="services_cat_id" value="<?php echo $_GET['key']; ?>">
+                                        	<input type="hidden" name="services_cat_id" value="<?php echo decryptpassword($_GET['key1']); ?>">
                                     		<input type="hidden" name="services_sub_cat_id" value="<?php echo $subcatid; ?>">
                                     		<input type="hidden" name="services_group_id" value="<?php echo $getGroupsData['id']; ?>">
 
