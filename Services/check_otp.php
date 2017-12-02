@@ -1,6 +1,8 @@
 <?php
 include "../admin_includes/config.php";
 include "../admin_includes/common_functions.php";
+$getSiteSettings1 = getAllDataWhere('services_site_settings','id','1'); 
+$getSiteSettingsData1 = $getSiteSettings1->fetch_assoc();
 //echo "<pre>"; print_r($_POST); die;
 if(!empty($_POST['user_mobile']) && !empty($_POST['mobile_otp']))  {
 	//echo "<pre>"; print_r($_POST); die;
@@ -34,13 +36,13 @@ if(!empty($_POST['user_mobile']) && !empty($_POST['mobile_otp']))  {
         $user_password = decryptPassword($getLoggedInDetails["user_password"]);
 		//$to = "srinivas@lanciussolutions.com";
 		$to = $dataem;
-		//$from = $getSiteSettingsData["email"];
+		//$from = $getSiteSettingsData1["email"];
 		$subject = "Myservent - Services ";
 		$message = '';		
 		$message .= '<body>
 			<div class="container" style=" width:50%;border: 5px solid #fe6003;margin:0 auto">
 			<header style="padding:0.8em;color: white;background-color: #fe6003;clear: left;text-align: center;">
-			 <center><img src='.$base_url . "uploads/logo/".$getSiteSettingsData["logo"].' class="logo-responsive"></center>
+			 <center><img src='.$base_url . "uploads/logo/".$getSiteSettingsData1["logo"].' class="logo-responsive"></center>
 			</header>
 			<article style=" border-left: 1px solid gray;overflow: hidden;text-align:justify; word-spacing:0.1px;line-height:25px;padding:15px">
 			  <h1 style="color:#fe6003">Welcome To Myservant</h1>
@@ -50,7 +52,7 @@ if(!empty($_POST['user_mobile']) && !empty($_POST['mobile_otp']))  {
 				<p>We hope you enjoy your stay at myservant.com, if you have any problems, questions, opinions, praise, comments, suggestions, please free to contact us at any time.</p>
 				<p>Warm Regards,<br>The Myservant Team </p>
 			</article>
-			<footer style="padding: 1em;color: white;background-color: #fe6003;clear: left;text-align: center;">'.$getSiteSettingsData['footer_text'].'</footer>
+			<footer style="padding: 1em;color: white;background-color: #fe6003;clear: left;text-align: center;">'.$getSiteSettingsData1['footer_text'].'</footer>
 			</div>
 
 			</body>';

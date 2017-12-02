@@ -215,6 +215,19 @@ if (!isset($_POST['submit'])) {
       $('#max_price').val('');
       return false;
     }
+    if(parseInt($('#min_price').val()) == 0 && parseInt($('#max_price').val()) == 0) {
+      alert("The Maximum Price and the Minimum Price should be greater than zero");
+      $('#min_price').val('');
+      $('#max_price').val('');
+      return false;
+    }
  });
+   $("#service_price_txt").blur(function() {
+    if(parseInt($('#service_price_txt').val()) == 0) {
+      alert("The Service Price should be greater than zero");
+      $('#service_price_txt').val('');
+      return false;
+    }
+  });
 });
 </script>
