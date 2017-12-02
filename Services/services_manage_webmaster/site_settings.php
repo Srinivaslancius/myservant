@@ -120,6 +120,12 @@
                   </div>
 
                   <div class="form-group">
+                    <label for="form-control-2" class="control-label">Service Tax</label>
+                    <input type="text" name="service_tax" class="form-control" id="form-control-2" placeholder="Service Tax" data-error="Please enter valid Service Tax." value="<?php echo $getSiteSettingsData['service_tax'];?>" onkeypress="return isNumberKey(event)" required>
+                    <div class="help-block with-errors"></div>
+                  </div>
+
+                  <div class="form-group">
                     <label for="form-control-2" class="control-label">Footer Text</label>
                     <input type="text" name="footer_text" class="form-control" id="form-control-2" placeholder="Footer Text" data-error="Please enter valid Footer text." value="<?php echo $getSiteSettingsData['footer_text'];?>" required>
                     <div class="help-block with-errors"></div>
