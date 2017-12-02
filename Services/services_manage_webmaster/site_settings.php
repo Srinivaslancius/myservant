@@ -104,7 +104,7 @@
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Mobile</label>
-                    <input type="text" name="mobile" class="form-control" id="form-control-2"  placeholder="Mobile" data-error="Please enter valid Mobile." value="<?php echo $getSiteSettingsData['mobile'];?>" onkeypress="return isNumberKey(event)" maxlength="10" pattern="[0-9]{10}" required>
+                    <input type="text" name="mobile" class="form-control valid_mobile_num" id="form-control-2"  placeholder="Mobile" data-error="Please enter valid Mobile." value="<?php echo $getSiteSettingsData['mobile'];?>" maxlength="10" pattern="[0-9]{10}" required>
                     <div class="help-block with-errors"></div>
                   </div>
                   
@@ -122,7 +122,7 @@
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Service Tax</label>
-                    <input type="text" name="service_tax" class="form-control" id="form-control-2" placeholder="Service Tax" data-error="Please enter valid Service Tax." value="<?php echo $getSiteSettingsData['service_tax'];?>" onkeypress="return isNumberKey(event)" required>
+                    <input type="text" name="service_tax" class="form-control valid_mobile_num" id="form-control-2" placeholder="Service Tax" data-error="Please enter valid Service Tax." value="<?php echo $getSiteSettingsData['service_tax'];?>" required>
                     <div class="help-block with-errors"></div>
                   </div>
 

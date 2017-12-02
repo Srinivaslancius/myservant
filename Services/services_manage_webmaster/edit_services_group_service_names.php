@@ -108,7 +108,7 @@ if (!isset($_POST['submit'])) {
                   </div>
                   <div class="form-group" id="service_price">
                     <label for="form-control-2" class="control-label">Service Price</label>
-                    <input type="text" name="service_price" class="form-control service_price" id="service_price_txt" value="<?php echo $getGroupNamesData['service_price'];?>" onkeypress="return isNumberKey(event)">
+                    <input type="text" name="service_price" class="form-control service_price valid_mobile_num" id="service_price_txt" value="<?php echo $getGroupNamesData['service_price'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <?php $getPriceAfterVisitTypes = getAllDataWithStatus('price_after_visit_types','0');?>
@@ -125,12 +125,12 @@ if (!isset($_POST['submit'])) {
                   </div>
                   <div class="form-group" id="service_min_price1">
                     <label for="form-control-2" class="control-label">Service Min Price</label>
-                    <input type="text" name="service_min_price" class="form-control" id="min_price"  value="<?php echo $getGroupNamesData['service_min_price'];?>" onkeypress="return isNumberKey(event)">
+                    <input type="text" name="service_min_price" class="form-control valid_mobile_num" id="min_price"  value="<?php echo $getGroupNamesData['service_min_price'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group" id="service_max_price1">
                     <label for="form-control-2" class="control-label">Service Max Price</label>
-                    <input type="text" name="service_max_price" class="form-control" id="max_price" value="<?php echo $getGroupNamesData['service_max_price'];?>" onkeypress="return isNumberKey(event)">
+                    <input type="text" name="service_max_price" class="form-control valid_mobile_num" id="max_price" value="<?php echo $getGroupNamesData['service_max_price'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <?php $getStatus = getAllData('lkp_status');?>
