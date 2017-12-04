@@ -23,8 +23,9 @@ if(isset($_POST["submit"]) && $_POST["submit"]!="") {
 	$random1 = substr($string1,0,3);
 	$string2 = str_shuffle('1234567890');
 	$random2 = substr($string2,0,3);
-	$contstr = "MYSER";
+	$contstr = "MYSER-SERVICES";
 	$order_id = $contstr.$random1.$random2;
+	$service_tax = $_POST["service_tax"];
 
 	$servicesCount = count($_POST["service_id"]);
 
@@ -33,9 +34,11 @@ if(isset($_POST["submit"]) && $_POST["submit"]!="") {
 	//$appliedCupons="INSERT INTO services_applied_coupons(`user_id`,`coupon_code`,`created_at`) VALUES ('$user_id', '$coupon_code', '$order_date')";
 	//$appliedCupons1 = $conn->query($appliedCupons);
 
-	if($_POST['payment_group'] == "COD") {
+	if($_POST['payment_group'] == "1") {
 		for($i=0;$i<$servicesCount;$i++) {
-			$orders = "INSERT INTO services_orders (`first_name`, `last_name`, `company_name`, `email`, `mobile`, `address`, `country`, `postal_code`, `city`, `order_note`, `group_id`, `service_id`, `service_price`,`service_quantity`, `service_selected_date`, `service_selected_time`, `sub_total`, `order_total`, `coupon_code`, `payment_method`, `order_id`, `created_at`) VALUES ('$first_name','$last_name', '$company_name','$email','$mobile','$address','$country','$postal_code','$city','$order_note','" . $_POST["group_id"][$i] . "','" . $_POST["service_id"][$i] . "','" . $_POST["service_price"][$i] . "','" . $_POST["service_quantity"][$i] . "','" . $_POST["service_selected_date"][$i] . "','" . $_POST["service_selected_time"][$i] . "','$sub_total','$order_total','$coupon_code','$payment_group','$order_id','$order_date')";
+			//Generate sub randon id
+			$sub_order_id = $contstr[$i].$random1[$i].$random2[$i];
+			$orders = "INSERT INTO services_orders (`first_name`, `last_name`, `company_name`, `email`, `mobile`, `address`, `country`, `postal_code`, `city`, `order_note`, `group_id`, `service_id`, `service_price`,`service_quantity`, `service_selected_date`, `service_selected_time`, `sub_total`, `order_total`, `coupon_code`, `payment_method`,`service_tax`, `order_id`,`order_sub_id`, `created_at`) VALUES ('$first_name','$last_name', '$company_name','$email','$mobile','$address','$country','$postal_code','$city','$order_note','" . $_POST["group_id"][$i] . "','" . $_POST["service_id"][$i] . "','" . $_POST["service_price"][$i] . "','" . $_POST["service_quantity"][$i] . "','" . $_POST["service_selected_date"][$i] . "','" . $_POST["service_selected_time"][$i] . "','$sub_total','$order_total','$coupon_code','$payment_group','$service_tax', '$order_id','$sub_order_id','$order_date')";
 			$servicesOrders = $conn->query($orders);
 		}
 		$dataem = $_POST["email"];

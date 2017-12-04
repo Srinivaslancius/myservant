@@ -248,7 +248,16 @@
 										SubTotal
 									</div>
 									<div class="col second" id="cart_total">
-										<?php echo $cartTotal; ?>
+										Rs. <?php echo $cartTotal; ?>
+									</div>
+								</li>
+								<li class="clearfix">
+									<div class="col" style="text-transform:none;">
+										Service Tax
+									</div>
+									<div class="col second" >
+										Rs. <?php echo $getSiteSettingsData['service_tax']; ?>
+										<input type="hidden" name="service_tax" value="<?php echo $getSiteSettingsData['service_tax']; ?>">
 									</div>
 								</li>
 								<li class="clearfix" id="discount_price">
@@ -264,7 +273,7 @@
 										<strong>Order Total</strong>
 									</div>
 									<div class="col second" id="cart_total2">
-										<strong>Rs. <?php echo $cartTotal; ?></strong>
+										<strong>Rs. <?php echo $cartTotal+$getSiteSettingsData['service_tax']; ?></strong>
 									</div>
 								</li>
 							</ul>
@@ -283,23 +292,27 @@
 							</div>
 						</div>
 						<!--End Your Order-->
-
+						<?php
+							$getPriceType = "SELECT * FROM services_cart WHERE (services_price_type_id=2) AND (user_id = '$user_session_id' OR session_cart_id='$session_cart_id') ";
+        					$getCount = $conn->query($getPriceType);  
+						?>
 						<div class="place-order">
 							<div class="default-title">
 								<h2>Payment Method</h2>
 							</div>
 							<div class="payment-options">
 								<ul>
-									
+									<?php if($getCount->num_rows == 0) { ?>
 									<li>
 										<div class="radio-option">
-											<input type="radio" name="payment_group" id="payment-2" value="Online Payment" required>
+											<input type="radio" name="payment_group" id="payment-2" value="2" required>
 											<label for="payment-2">Online Payment</label>
 										</div>
 									</li>
+									<?php } ?>
 									<li>
 										<div class="radio-option">
-											<input type="radio" name="payment_group" id="payment-3" value="COD" required>
+											<input type="radio" name="payment_group" id="payment-3" value="1" required>
 											<label for="payment-3">COD
 											</label>
 										</div>
