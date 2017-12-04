@@ -12,16 +12,23 @@ if(!empty($_POST['coupon_code']) && !empty($_POST['cart_total']))  {
 	
 	if($getCouponPrice->num_rows > 0) {
 		if($getCouponPriceData['price_type_id'] == 1) {
-			$discount_price = $getCouponPriceData['discount_price'];
+			$discount_price = $getCouponPriceData['discount_price'] * 1;
+			if($discount_price >= $cart_total) {
+				echo 1;
+			} else{
+				$cartTotal = $cart_total - $discount_price;
+				echo $cartTotal.",".$discount_price;
+			}
 		} else {
 			$discount_price = ($cart_total/100) * $getCouponPriceData['discount_price'];
+			if($discount_price >= $cart_total) {
+				echo 1;
+			} else{
+				$cartTotal = $cart_total - $discount_price;
+				echo $cartTotal.",".$discount_price;
+			}
 		}
-		if($discount_price >= $cart_total) {
-			echo 1;
-		} else{
-			$cartTotal = $cart_total - $discount_price;
-			echo $cartTotal.",".$discount_price;
-		}
+		
 	} else {
 		echo 0;
 	}

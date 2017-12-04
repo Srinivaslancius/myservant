@@ -11,17 +11,26 @@ if (!isset($_POST['submit']))  {
   $lkp_state_id = $_POST['lkp_state_id'];
   $lkp_district_id = $_POST['lkp_district_id'];
   $lkp_city_id = $_POST['lkp_city_id'];
-  $location_name = $_POST['location_name'];
-  $location_pincode = $_POST['location_pincode'];
+  $location_name = $_REQUEST['location_name'];
   $lkp_status_id = $_POST['lkp_status_id'];
-  
-    $sql = "UPDATE lkp_locations SET lkp_state_id = '$lkp_state_id',lkp_district_id ='$lkp_district_id',lkp_city_id ='$lkp_city_id',location_name = '$location_name',location_pincode ='$location_pincode',lkp_status_id ='$lkp_status_id' WHERE lkp_city_id = $cityid"; 
-    if($conn->query($sql) === TRUE){
+  $location = "SELECT * FROM lkp_locations WHERE lkp_city_id = $cityid";
+  $locationData = $conn->query($location);
+  $location_id = $locationData->fetch_assoc();
+  $i = $location_id['id'];
+    
+    foreach($location_name as $key=>$value){
+      $location_name1 = $_REQUEST['location_name'][$key];
+      $location_pincode1 = $_REQUEST['location_pincode'][$key];
+      $sql = "UPDATE lkp_locations SET lkp_state_id = '$lkp_state_id',lkp_district_id ='$lkp_district_id',lkp_city_id ='$lkp_city_id',location_name = '$location_name1',location_pincode ='$location_pincode1',lkp_status_id ='$lkp_status_id' WHERE id = $i AND lkp_city_id = $cityid";
+      $res = $conn->query($sql);
+      $i++;
+    }
+
+    if($res === TRUE){
        echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=success'</script>";
     } else {
        echo "<script type='text/javascript'>window.location='lkp_locations.php?msg=fail'</script>";
     }
-  
 }
 ?>
       <div class="site-content">
