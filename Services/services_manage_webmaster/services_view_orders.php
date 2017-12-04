@@ -1,7 +1,8 @@
 <?php include_once 'admin_includes/main_header.php';?>
 <?php //$getServiceOrderData = getAllData('services_orders'); $i=1; ?>
 <?php 
-    $serviceOrders = "SELECT * FROM services_orders GROUP BY order_id"; 
+    $order_id = $_GET['order_id'];
+    $serviceOrders = "SELECT * FROM services_orders WHERE order_id ='$order_id' "; 
     $getServiceOrderData = $conn->query($serviceOrders);
     $i=1;
 ?>
@@ -35,7 +36,7 @@
                     <td><?php echo $row['service_price'];?></td>
                     <td><?php echo $row['address'];?></td>
                     <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='services_orders'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='services_orders'>In Active</span>" ;} ?></td>
-                    <td> <!-- <a href="edit_services_orders.php?order_id=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a>--> &nbsp;<a href="services_view_orders.php?order_id=<?php echo $row['order_id']; ?>"><i class="zmdi zmdi-eye zmdi-hc-fw"  class=""></i></a></td>
+                    <td> <a href="edit_services_orders.php?order_id=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a> &nbsp;<a href="view_order.php"><i class="zmdi zmdi-eye zmdi-hc-fw"  class=""></i></a></td>
                     <!-- Open Modal Box  here -->
                     <?php $getGroupsData = getAllDataWhereWithActive('services_groups','id',$row['group_id']); 
                     $getGroups = $getGroupsData->fetch_assoc();
