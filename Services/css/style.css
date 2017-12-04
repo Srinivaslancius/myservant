@@ -1071,11 +1071,11 @@ video {
     font-size: 12px;
     height: 45px;
     line-height: 35px;
-    margin: 5px 40px 0 1px;
+    margin: 5px 65px 0 15px;
     text-indent: 1px;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 100%;
+    width: 70px;
     overflow: visible;
 }
 
@@ -4976,6 +4976,7 @@ ul.slides-container li img{
 #nav-search-in #nav-search-in-content{
     font-size:10px !important;
     margin: 5px 5px 0 1px !important;
+    width:120% !important;
 
 }
 #nav-search-in.nav-facade-active .nav-down-arrow{

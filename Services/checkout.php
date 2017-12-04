@@ -405,6 +405,7 @@
             $("#remove_icon").click(function(){
 	            $("#coupon_code").val('');
 	            $('#cart_total2').html(cart_total);
+	            $('#cart_total1').val(cart_total);
 	            $(".close").html('');
 	            $('#discount_price').hide();
 	        });

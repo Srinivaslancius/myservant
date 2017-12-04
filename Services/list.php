@@ -194,7 +194,7 @@
 	        },
 		    success:function(result){
 		    	if(result == 0){
-		    		alert('Your service add successfully');
+		    		alert('Your service added successfully');
 		    		setTimeout(function() {
 					    location.reload();
 					}, 600);
