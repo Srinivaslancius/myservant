@@ -17,9 +17,7 @@
                   <tr>
                     <th>S.No</th>
                     <th>Order ID</th>                    
-                    <th>Service Name</th>
-                    <th>Service Price</th>
-                    <th>Address</th>
+                    <th>Service Name</th>                                        
                     <td>Status</td>
                     <th>Actions</th>
                   </tr>
@@ -31,10 +29,8 @@
                   <tr>
                     <td><?php echo $i;?></td>
                     <td><?php echo $row['order_id'];?></td>                    
-                    <td><?php echo $getServicenames['group_service_name'];?></td>
-                    <td><?php echo $row['service_price'];?></td>
-                    <td><?php echo $row['address'];?></td>
-                    <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='services_orders'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='services_orders'>In Active</span>" ;} ?></td>
+                    <td><?php echo $getServicenames['group_service_name'];?></td>     
+                    <td>Completed</td>
                     <td> <!-- <a href="edit_services_orders.php?order_id=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a>--> &nbsp;<a href="services_view_orders.php?order_id=<?php echo $row['order_id']; ?>"><i class="zmdi zmdi-eye zmdi-hc-fw"  class=""></i></a></td>
                     <!-- Open Modal Box  here -->
                     <?php $getGroupsData = getAllDataWhereWithActive('services_groups','id',$row['group_id']); 
