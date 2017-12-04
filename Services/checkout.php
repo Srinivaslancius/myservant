@@ -208,6 +208,8 @@
                                 <input type="hidden" name="group_id[]" value="<?php echo $getCartItems['group_id']; ?>">
                                 <input type="hidden" name="service_id[]" value="<?php echo $getCartItems['service_id']; ?>">
                                 <input type="hidden" name="service_quantity[]" value="<?php echo $getCartItems['service_quantity']; ?>">
+                                <input type="hidden" name="service_price_type_id[]" value="<?php echo $getSerName['service_price_type_id']; ?>">
+
                                 	<?php if($getSerName['service_price_type_id'] == 1) {
 			                            $cartTotal1 += $getSerName['service_price']*$getCartItems['service_quantity'];
 			                        ?>
@@ -393,7 +395,7 @@
     $('#discount_price').hide();
         $(".apply_coupon").click(function(){
             var coupon_code = $("#coupon_code").val();
-            var cart_total = $('#cart_total').text();
+            var cart_total = $('#cart_total1').val();
             $.ajax({
                type: "POST",
                url: "apply_coupon.php",
