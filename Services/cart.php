@@ -204,6 +204,7 @@
 				</form>
 				<?php }  else { ?>
         			<p style="text-align:center; color:#e04f67">No Services In Your Cart</p>
+        			<center><a href="services.php" style="color:#e04f67">Click here for SERVICES</a></center>
         		<?php } ?>
 			</div>			
 		</div>
