@@ -387,10 +387,10 @@
                data: "coupon_code="+coupon_code+"&cart_total="+cart_total,
                success: function(value){
                		if(value == 0) {
-               			alert('Please Login');
+               			alert('Please Enter Valid Coupon');
                			$("#coupon_code").val('');
                		} else if(value == 1) {
-               			alert('Enter Valid Coupon');
+               			alert('Enter Coupon is not valid for this Service');
                			$("#coupon_code").val('');
                		} else{
                			var data = value.split(",");
