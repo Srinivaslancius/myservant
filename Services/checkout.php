@@ -252,6 +252,14 @@
 									<div class="col second" id="cart_total">
 										Rs. <?php echo $cartTotal; ?>
 									</div>
+								</li>								
+								<li class="clearfix" id="discount_price">
+									<div class="col" style="text-transform:none;">
+										Discount Price
+									</div>
+									<div class="col second" id="discount_price1">
+										<?php echo $cartTotal; ?>
+									</div>
 								</li>
 								<li class="clearfix">
 									<div class="col" style="text-transform:none;">
@@ -260,14 +268,6 @@
 									<div class="col second" >
 										Rs. <?php echo $getSiteSettingsData['service_tax']; ?>
 										<input type="hidden" name="service_tax" value="<?php echo $getSiteSettingsData['service_tax']; ?>">
-									</div>
-								</li>
-								<li class="clearfix" id="discount_price">
-									<div class="col" style="text-transform:none;">
-										Discount Price
-									</div>
-									<div class="col second" id="discount_price1">
-										<?php echo $cartTotal; ?>
 									</div>
 								</li>
 								<li class="clearfix total">
