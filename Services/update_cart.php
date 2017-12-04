@@ -2,22 +2,23 @@
 include "../admin_includes/config.php";
 include "../admin_includes/common_functions.php";
 
-if(isset($_POST["submit"]) && $_POST["submit"]!="") {	
-
-	$cartCount = count($_POST["service_visit_date"]);	
-
-	for($i=0;$i<$cartCount;$i++) {
-
-		$serviceDate=date_create($_POST["service_visit_date"][$i]);
-		$getServiceDate=date_format($serviceDate,"Y-m-d");
-		$service_quantity = $_POST["service_quantity"][$i];
-		$service_visit_time1 = date('H:i:s', strtotime($_POST["service_visit_time"][$i]));
-
-		$updateq = "UPDATE services_cart SET service_selected_date = '" . $getServiceDate . "',service_selected_time ='" . $service_visit_time1 . "', service_quantity = '" . $service_quantity . "' WHERE id = '" . $_POST["cart_id"][$i] . "'";
-		$result = $conn->query($updateq);
-	}
+if(isset($_POST["cartId"]) && $_POST["cartId"]!="") {
 	
-	header('Location: cart.php?suc=1');
+		$serviceDate=date_create($_POST["filed_value"]);
+		$getServiceDate=date_format($serviceDate,"Y-m-d");
+		$service_quantity = $_POST["service_quantity"];
+		$service_selected_time = date('H:i:s', strtotime($_POST["service_visit_time"]));
+
+		if($_POST['field_clause'] == 'date') {
+			$fieldname = "service_selected_date = '" . $getServiceDate . "'";
+		} elseif($_POST['field_clause'] == 'time') {
+			$fieldname = "service_selected_time = '" . $service_selected_time . "'";
+		} elseif($_POST['field_clause'] == 'quantity') {
+			$fieldname = "service_quantity = '" . $service_quantity . "'";
+		}
+
+		$updateq = "UPDATE services_cart SET  ".$fieldname." WHERE id = '" . $_POST["cartId"] . "'";
+		$result = $conn->query($updateq);	
 }
 
 ?>
