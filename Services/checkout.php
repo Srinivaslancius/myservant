@@ -208,8 +208,6 @@
                                 <input type="hidden" name="group_id[]" value="<?php echo $getCartItems['group_id']; ?>">
                                 <input type="hidden" name="service_id[]" value="<?php echo $getCartItems['service_id']; ?>">
                                 <input type="hidden" name="service_quantity[]" value="<?php echo $getCartItems['service_quantity']; ?>">
-                                <input type="hidden" name="service_price_type_id[]" value="<?php echo $getSerName['service_price_type_id']; ?>">
-
                                 	<?php if($getSerName['service_price_type_id'] == 1) {
 			                            $cartTotal1 += $getSerName['service_price']*$getCartItems['service_quantity'];
 			                        ?>
@@ -243,22 +241,21 @@
 									<?php } ?>
 								</li>
 								<?php } ?>
-								<input type="hidden" name="sub_total" value="<?php echo $cartTotal1; ?>">
-                                <input type="hidden" name="order_total" id="cart_total1" value="<?php echo $cartTotal1; ?>">
+								<input type="hidden" name="sub_total" id="sub_total" value="<?php echo $cartTotal1; ?>">
+                                <input type="hidden" name="order_total" id="order_total" value="<?php echo $cartTotal1+$getSiteSettingsData['service_tax']; ?>">
 								<li class="clearfix">
 									<div class="col" style="text-transform:none;">
 										SubTotal
 									</div>
-									<div class="col second" id="cart_total">
+									<div class="col second">
 										Rs. <?php echo $cartTotal; ?>
 									</div>
-								</li>								
+								</li>
 								<li class="clearfix" id="discount_price">
 									<div class="col" style="text-transform:none;">
-										Discount Price
+										Discount Price<span style="color:green">(Coupon Applied Successfully.)</span>
 									</div>
 									<div class="col second" id="discount_price1">
-										<?php echo $cartTotal; ?>
 									</div>
 								</li>
 								<li class="clearfix">
@@ -267,7 +264,7 @@
 									</div>
 									<div class="col second" >
 										Rs. <?php echo $getSiteSettingsData['service_tax']; ?>
-										<input type="hidden" name="service_tax" value="<?php echo $getSiteSettingsData['service_tax']; ?>">
+										<input type="hidden" name="service_tax" id="service_tax" value="<?php echo $getSiteSettingsData['service_tax']; ?>">
 									</div>
 								</li>
 								<li class="clearfix total">
@@ -395,11 +392,13 @@
     $('#discount_price').hide();
         $(".apply_coupon").click(function(){
             var coupon_code = $("#coupon_code").val();
-            var cart_total = $('#cart_total1').val();
+            var cart_total = $('#sub_total').val();
+            var order_total = $('#order_total').val();
+            var service_tax = $('#service_tax').val();
             $.ajax({
                type: "POST",
                url: "apply_coupon.php",
-               data: "coupon_code="+coupon_code+"&cart_total="+cart_total,
+               data: "coupon_code="+coupon_code+"&cart_total="+cart_total+"&service_tax="+service_tax,
                success: function(value){
                		if(value == 0) {
                			alert('Please Enter Valid Coupon');
@@ -410,7 +409,7 @@
                		} else{
                			var data = value.split(",");
 		          		$('#cart_total2').html(data[0]);
-			            $('#cart_total1').val(data[0]);
+			            $('#order_total').val(data[0]);
 	               		$('#discount_price').show();
 	               		$('#discount_price1').html(data[1]);
 	               		$("#remove_icon").html("<span class='close'>&times;</span>");
@@ -419,8 +418,8 @@
             });
             $("#remove_icon").click(function(){
 	            $("#coupon_code").val('');
-	            $('#cart_total2').html(cart_total);
-	            $('#cart_total1').val(cart_total);
+	            $('#cart_total2').html(order_total);
+	            $('#order_total').val(order_total);
 	            $(".close").html('');
 	            $('#discount_price').hide();
 	        });
