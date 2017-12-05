@@ -243,6 +243,8 @@
 								</li>
 								<?php } ?>
 								<input type="hidden" name="sub_total" id="sub_total" value="<?php echo $cartTotal1; ?>">
+								<input type="hidden" name="coupon_code_type" id="coupon_code_type" value="">
+								<input type="hidden" name="discount_money" id="discount_money" value="">
                                 <input type="hidden" name="order_total" id="order_total" value="<?php echo $cartTotal1+$getSiteSettingsData['service_tax']; ?>">
 								<li class="clearfix">
 									<div class="col" style="text-transform:none;">
@@ -279,12 +281,10 @@
 							</ul>
 							<div class="coupon-code">
 								<div class="form-group">
-									<div class="field-group">
-										<input type="text" name="coupon_code" id="coupon_code" value="" placeholder="Coupon Code" class="form-control">
-									</div>
-									<div class="form-group">
-										<div id="remove_icon"></div>
-									</div>
+									<div class="field-group has-feedback has-clear">
+								      <input type="text" name="coupon_code" id="coupon_code" value="" placeholder="Coupon Code" class="form-control">
+								      <span class="form-control-clear icon-cancel-1 form-control-feedback hidden"></span>
+								    </div>
 									<div class="field-group btn-field">
 										<button type="button" class="btn_cart_outine apply_coupon">Apply</button>
 									</div>
@@ -404,35 +404,56 @@
                		if(value == 0) {
                			alert('Please Enter Valid Coupon');
                			$("#coupon_code").val('');
+               			$(".form-control-clear").html('');
                		} else if(value == 1) {
                			alert('Enter Coupon is not valid for this Service');
                			$("#coupon_code").val('');
+               			$(".form-control-clear").html('');
                		} else{
                			var data = value.split(",");
 		          		$('#cart_total2').html(data[0]);
 			            $('#order_total').val(data[0]);
 	               		$('#discount_price').show();
 	               		$('#discount_price1').html(data[1]);
-	               		$("#remove_icon").html("<span class='close'>&times;</span>");
+	               		$('#discount_money').val(data[2]);
+	               		$('#coupon_code_type').val(data[3]);
 	               	}
             	}
             });
-            $("#remove_icon").click(function(){
-	            $("#coupon_code").val('');
-	            $('#cart_total2').html(order_total);
-	            $('#order_total').val(order_total);
-	            $(".close").html('');
-	            $('#discount_price').hide();
-	        });
-        });
-    </script>
+            $('.has-clear input[type="text"]').on('input propertychange', function() {
+			  var $this = $(this);
+			  var visible = Boolean($this.val());
+			  $this.siblings('.form-control-clear').toggleClass('hidden', !visible);
+			}).trigger('propertychange');
+
+			$('.form-control-clear').click(function() {
+			  $(this).siblings('input[type="text"]').val('')
+			    .trigger('propertychange').focus();
+			    $('#cart_total2').html(order_total);
+				$('#order_total').val(order_total);
+				$('#discount_price').hide();
+				$('#discount_money').val('');
+	            $('#coupon_code_type').val('');
+			});
+		});
+	</script>
 	<style type="text/css">
 	  .error {
 	    color: $errorMsgColor;
 	  }
 
 	</style>
+	<style>
+	::-ms-clear {
+	  display: none;
+	}
 
+	.form-control-clear {
+	  z-index: 10;
+	  pointer-events: auto;
+	  cursor: pointer;
+	}
+	</style>
 </body>
 
 </html>

@@ -13,6 +13,16 @@
 	    //Login here
 	    $token = $_GET['token'];
 	}
+	if(isset($_POST["token"]) && $_POST["token"]!="") {	
+		$token = decryptPassword($_POST['token']);
+		$encNewPass = encryptPassword($_POST["user_password"]);
+		$updateq = "UPDATE users SET user_password='$encNewPass' WHERE id = '" . $token . "'";
+		if($conn->query($updateq) === TRUE){             
+            echo "<script type='text/javascript'>alert('Your Password Updated Successfully');window.location='login.php?succ=log-success'</script>";
+        } else {
+        	echo "<script type='text/javascript'>alert('Your Password not Updated');window.location='login.php?succ=log-fail'</script>";
+        }
+	}
 ?>	
 
 	<!-- Favicons-->
@@ -75,10 +85,10 @@
                 	<div id="login">
                     		<div class="text-center"><h2><span>Reset Password</span></h2></div>
                             <hr>
-                            <form method="post" action="update_password.php">                      
+                            <form method="post" action="">                      
                                 <div class="form-group">
                                     <label>New Password</label>
-                                    <input type="password" class=" form-control " name="user_password" placeholder="New Password" required>
+                                    <input type="password" class="form-control" minlength="8" name="user_password" placeholder="New Password" required>
                                 </div>
                                 <input type="hidden" name="token" value="<?php echo $token; ?>">
                                 <div class="form-group">
