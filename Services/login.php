@@ -157,7 +157,7 @@
                                 </div>
                                 <div class="form-group">
                                 	<label>Confirm password</label>
-                                    <input type="password" name="confirm_password" class=" form-control" id="confirm_password" placeholder="Confirm password" onChange="checkPasswordMatch();" required>
+                                    <input type="password" name="confirm_password" class=" form-control" minlength="8" id="confirm_password" placeholder="Confirm password" onChange="checkPasswordMatch();" required>
                                 </div>
                                 <div id="divCheckPasswordMatch" style="color:red"></div>
                                 <div id="pass-info" class="clearfix"></div>

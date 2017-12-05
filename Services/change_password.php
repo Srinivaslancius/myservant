@@ -127,7 +127,7 @@
                                             <label for="new-password">New password</label>
                                         </div>
                                         <div class="form-group has-float-label">
-                                            <input type="password" name="confirmPassword" required class="form-control" id="confirm_password" placeholder="********" autocomplete="off"/ onChange="checkPasswordMatch();">
+                                            <input type="password" name="confirmPassword" minlength="8" required class="form-control" id="confirm_password" placeholder="********" autocomplete="off"/ onChange="checkPasswordMatch();">
                                             <label for="new-repassword">Repeat password</label>
                                         </div>
                                         <div id="divCheckPasswordMatch" style="color:red"></div>

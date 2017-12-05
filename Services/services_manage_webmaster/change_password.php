@@ -43,7 +43,7 @@ if (!isset($_POST['submit']))  {
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Confirm Password</label>
-                    <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="*********" data-error="Please enter Confirm Password." onChange="checkPasswordMatch();" required>
+                    <input type="password" name="confirm_password" minlength="8"class="form-control" id="confirm_password" placeholder="*********" data-error="Please enter Confirm Password." onChange="checkPasswordMatch();" required>
                     <div class="help-block with-errors"></div>
                     <div id="divCheckPasswordMatch" style="color:red"></div>
                   </div>
