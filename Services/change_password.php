@@ -62,7 +62,7 @@
         if($_POST['currentPassword'] == decryptPassword($getUserPwd['user_password'])){
             $encNewPass = encryptPassword($_POST["confirmPassword"]);
             $sql1 = "UPDATE users SET user_password = '$encNewPass' WHERE  id = '$uid'";
-            if($conn->query($sql1) === TRUE){                
+            if($conn->query($sql1) === TRUE){             
                 echo "<script type='text/javascript'>window.location='change_password.php?succ=log-success'</script>";
             }               
         } else {               

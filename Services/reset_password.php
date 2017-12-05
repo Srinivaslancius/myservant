@@ -7,50 +7,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once 'meta.php';?>
 
-<?php 
+<?php
 	error_reporting(0);
-	if(isset($_POST['submit']))  { 
+	if(isset($_GET['token']) && $_GET['token']!='')  {
 	    //Login here
-	    $user_email = $_POST['login_email'];
-	    $getUserForgotData = forgotPassword($user_email);
-	    //Set variable for session
-	    if($getUserForgotPassword = $getUserForgotData->fetch_assoc()) {
-
-	    	//$pwd = decryptPassword($getUserForgotPassword['user_password']);
-	    	$userId = encryptPassword1($getUserForgotPassword['id']);
-            $to = $user_email;
-            $subject =  "User Forgot Password";
-            $message = '';
-            $message .= '<body>
-			<div class="container" style=" width:50%;border: 5px solid #fe6003;margin:0 auto">
-			<header style="padding:0.8em;color: white;background-color: #fe6003;clear: left;text-align: center;">
-			 <center><img src='.$base_url . "uploads/logo/".$getSiteSettingsData["logo"].' class="logo-responsive"></center>
-			</header>
-			<article style=" border-left: 1px solid gray;overflow: hidden;text-align:justify; word-spacing:0.1px;line-height:25px;padding:15px">
-			  <h1 style="color:#fe6003">Your Password</h1>
-			  <p>Dear <span style="color:#fe6003;">'.$getUserForgotPassword["user_full_name"].'</span>.</p>
-			  <p>Want to change your password? Please click on the link given below to reset the password of your Myservant Account </p>
-			  <p><a href="reset_password.php?token='.$userId.'" target="_blank"> Click here</a></p>
-				<p>We hope you enjoy your stay at myservant.com, if you have any problems, questions, opinions, praise, comments, suggestions, please free to contact us at any time.</p>
-				<p>Warm Regards,<br>The Myservant Team </p>
-			</article>
-			<footer style="padding: 1em;color: white;background-color: #fe6003;clear: left;text-align: center;">'.$getSiteSettingsData['footer_text'].'</footer>
-			</div>
-
-			</body>';
-
-			echo $message; die;
-            $name = "My Servant";
-			$from = "info@myservant.com";
-			$headers = "MIME-Version: 1.0" . "\r\n";
-			$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";  
-			$headers .= 'From: '.$name.'<'.$from.'>'. "\r\n";
-            mail($to, $subject, $message, $headers);
-
-		        echo  "<script>alert('Password Sent To Your Email,Please Check.');window.location='login.php';</script>";
-		    } else {
-	    	echo "<script>alert('Your Entered Email Not Found');</script>";
-	    }
+	    $token = $_GET['token'];
 	}
 ?>	
 
@@ -112,12 +73,17 @@
 
 
                 	<div id="login">
-                    		<div class="text-center"><h2><span>Forgot Password</span></h2></div>
+                    		<div class="text-center"><h2><span>Reset Password</span></h2></div>
                             <hr>
-                            <form method="POST">                      
+                            <form method="post" action="update_password.php">                      
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" class=" form-control " name="login_email" placeholder="Email" required>
+                                    <label>New Password</label>
+                                    <input type="password" class=" form-control " name="user_password" placeholder="New Password" required>
+                                </div>
+                                <input type="hidden" name="token" value="<?php echo $token; ?>">
+                                <div class="form-group">
+                                    <label>Retype Password</label>
+                                    <input type="password" class=" form-control " name="retypr_user_password" placeholder="Retype Password" required>
                                 </div>
                                 <button type="submit" name="submit" class="btn_full">Submit</button>
                                 
