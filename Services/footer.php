@@ -66,7 +66,9 @@
 							</li>
 							<li><a href="<?php echo $getSiteSettingsData['gplus_link'] ?>" target="_blank"><i class="icon-google"></i></a>
 							</li>
-							<li><a href="<?php echo $getSiteSettingsData['inst_link'] ?>" target="_blank"><i class="icon-linkedin"></i></a>
+							<li><a href="<?php echo $getSiteSettingsData['inst_link'] ?>" target="_blank"><i class="icon-instagram"></i></a>
+							</li>
+							<li><a href="<?php echo $getSiteSettingsData['linked_link'] ?>" target="_blank"><i class="icon-linkedin"></i></a>
 							</li>
 						</ul>
 						<p style="text-align:center"><?php echo $getSiteSettingsData['footer_text'];?> : Designed by <a href="https://lanciussolutions.com/" target="_blank"> Lancius IT Solutions</a></p>
