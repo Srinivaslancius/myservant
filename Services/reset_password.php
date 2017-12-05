@@ -88,13 +88,14 @@
                             <form method="post" action="">                      
                                 <div class="form-group">
                                     <label>New Password</label>
-                                    <input type="password" class="form-control" minlength="8" name="user_password" placeholder="New Password" required>
+                                    <input type="password" class="form-control" minlength="8" id="user_password" name="user_password" placeholder="New Password" required>
                                 </div>
                                 <input type="hidden" name="token" value="<?php echo $token; ?>">
                                 <div class="form-group">
                                     <label>Retype Password</label>
-                                    <input type="password" class=" form-control " name="retypr_user_password" placeholder="Retype Password" required>
+                                    <input type="password" class="form-control" id="retypr_user_password" name="retypr_user_password" placeholder="Retype Password" onChange="checkPasswordMatch();" required>
                                 </div>
+                                <div id="divCheckPasswordMatch" style="color:red"></div>
                                 <button type="submit" name="submit" class="btn_full">Submit</button>
                                 
                             </form>
@@ -144,6 +145,16 @@
 					// except the last line!
 			});
 		});
+		function checkPasswordMatch() {
+		    var password = $("#user_password").val();
+		    var confirmPassword = $("#retypr_user_password").val();
+		    if (confirmPassword != password) {
+		        $("#divCheckPasswordMatch").html("Passwords do not match!");
+		        $("#retypr_user_password").val("");
+		    } else {
+		        $("#divCheckPasswordMatch").html("");
+		    }
+		}
 	</script>
 
 </body>
