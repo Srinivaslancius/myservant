@@ -90,7 +90,7 @@ if (!isset($_POST['submit'])) {
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">Gropu Description</label>
+                    <label for="form-control-2" class="control-label">Group Description</label>
                     <textarea name="group_service_description" class="form-control" id="category_description" data-error="This field is required." required><?php echo $getGroupNamesData['group_service_description'];?></textarea>
                     <div class="help-block with-errors"></div>
                   </div>

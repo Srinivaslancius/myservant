@@ -29,7 +29,14 @@
                             <li class="active"><a href="partners.php" <?php if($page_name == 'partners.php') {  ?> class="check_page" <?php } ?>>Partners</a></li>
                             <li class="active"><a href="all_brands.php" <?php if($page_name == 'all_brands.php') {  ?> class="check_page" <?php } ?>>Brands</a></li>
                             <li class="active"><a href="contactus.php" <?php if($page_name == 'contactus.php') {  ?> class="check_page" <?php } ?>>Contact Us</a></li>
-                        </ul>
+                            <?php if($_SESSION['user_login_session_id'] =='') { ?>
+                            <li class="hidden-sm hidden-lg hidden-md vissible-xs"><a href="login.php" >Login</a></li>
+                            <li class="hidden-sm hidden-lg hidden-md vissible-xs"><a href="login.php" >Register</a></li>
+                            <?php } else { ?>
+                            <li class="hidden-sm hidden-lg hidden-md vissible-xs"><a href="my_dashboard.php"><?php echo $_SESSION['user_login_session_name']; ?></a></li>
+                            <li class="hidden-sm hidden-lg hidden-md vissible-xs"><a href="logout.php"> Logout</a></li>
+                            <?php } ?>
+                        </ul> 
                          
                     </div><!-- End main-menu -->
                     
