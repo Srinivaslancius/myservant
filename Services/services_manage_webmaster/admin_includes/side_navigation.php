@@ -133,6 +133,14 @@
                 <span class="menu-text">News Letters</span>
               </a>
             </li>
+            <li  class="<?php if($page_name == 'service_seo.php' || $page_name == 'add_service_seo.php' || $page_name == 'edit_service_seo.php' ) { echo "active"; } ?>">
+              <a href="service_seo.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">SEO</span>
+              </a>
+            </li>
             <li  class="<?php if($page_name == 'services_our_branches.php' || $page_name == 'add_services_our_branches.php' || $page_name == 'edit_services_our_branches.php' ) { echo "active"; } ?>">
               <a href="services_our_branches.php" aria-haspopup="true">
                 <span class="menu-icon">
@@ -141,6 +149,7 @@
                 <span class="menu-text">Our Branches</span>
               </a>
             </li>
+            
             <li  class="<?php if($page_name == 'lkp_states.php' || $page_name == 'add_lkp_states.php' || $page_name == 'edit_lkp_states.php' ) { echo "active"; } ?>">
               <a href="lkp_states.php" aria-haspopup="true">
                 <span class="menu-icon">
