@@ -203,11 +203,12 @@
                               		while ($getCartItems = $cartItems->fetch_assoc()) { 
                                		$getSerName= getIndividualDetails('services_group_service_names','id',$getCartItems['service_id']); ?>
 
-                               	<input type="hidden" name="category_id[]" value="<?php echo $getCartItems['category_id']; ?>">
-                                <input type="hidden" name="sub_cat_id[]" value="<?php echo $getCartItems['sub_cat_id']; ?>">
+                               	<input type="hidden" name="category_id[]" value="<?php echo $getCartItems['service_category_id']; ?>">
+                                <input type="hidden" name="sub_cat_id[]" value="<?php echo $getCartItems['service_sub_category_id']; ?>">
                                 <input type="hidden" name="group_id[]" value="<?php echo $getCartItems['group_id']; ?>">
                                 <input type="hidden" name="service_id[]" value="<?php echo $getCartItems['service_id']; ?>">
                                 <input type="hidden" name="service_quantity[]" value="<?php echo $getCartItems['service_quantity']; ?>">
+                                <input type="hidden" name="service_price_type_id[]" value="<?php echo $getSerName['service_price_type_id']; ?>">
                                 	<?php if($getSerName['service_price_type_id'] == 1) {
 			                            $cartTotal1 += $getSerName['service_price']*$getCartItems['service_quantity'];
 			                        ?>
