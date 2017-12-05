@@ -6,18 +6,32 @@
     $getServiceOrderData = $conn->query($serviceOrders);
     $i=1;
 ?>
+              <?php 
+              $sql ="SELECT * FROM services_orders WHERE order_id ='$order_id'";
+              $sql1 = $conn->query($sql);
+              $sql2 = $sql1->fetch_assoc();
+              ?>
      <div class="site-content">
         <div class="panel panel-default panel-table">
           <div class="panel-heading">
-            <h3 class="m-t-0 m-b-5">View Orders</h3>
+            <div class="row">
+              <div class="col-sm-9">
+              <h3 class="m-t-0 m-b-5">View Orders</h3>
+              </div>
+          <div class="col-sm-3">
+            <p style="font-size:13px;">Order Id:<span style="color:#f26226;font-size:15px;">  <?php echo $sql2['order_id'];?></span><br>Address:<span style="color:#f26226;;font-size:15px;">  <?php echo $sql2['address'];?></span><br>Email: <span style="color:#f26226;;font-size:15px;">  <?php echo $sql2['email'];?></span></p>
           </div>
+          </div>
+          </div>
+          
+          
           <div class="panel-body">
             <div class="table-responsive">
               <table class="table table-striped table-bordered dataTable" id="table-1">
                 <thead>
                   <tr>
                     <th>S.No</th>
-                    <th>Order ID</th>                    
+                    <th>Sub Order ID</th>                    
                     <th>Service Name</th>
                     <th>Service Price</th>                    
                     <td>Status</td>
@@ -30,7 +44,7 @@
                   $getServicenames = $getServicenamesData->fetch_assoc();?>                  
                   <tr>
                     <td><?php echo $i;?></td>
-                    <td><?php echo $row['order_id'];?></td>                    
+                    <td><?php echo $row['order_sub_id'];?></td>                    
                     <td><?php echo $getServicenames['group_service_name'];?></td>
                     <td><?php echo $row['service_price'];?></td>                   
                     <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='services_orders'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='services_orders'>In Active</span>" ;} ?></td>
