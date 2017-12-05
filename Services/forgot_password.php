@@ -17,7 +17,7 @@
 	    if($getUserForgotPassword = $getUserForgotData->fetch_assoc()) {
 
 	    	//$pwd = decryptPassword($getUserForgotPassword['user_password']);
-	    	$userId = encryptPassword1($getUserForgotPassword['id']);
+	    	$userId = encryptPassword($getUserForgotPassword['id']);
             $to = $user_email;
             $subject =  "User Forgot Password";
             $message = '';

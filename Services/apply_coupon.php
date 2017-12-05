@@ -18,7 +18,7 @@ if(!empty($_POST['coupon_code']) && !empty($_POST['cart_total']))  {
 				echo 1;
 			} else{
 				$cartTotal = ($cart_total - $discount_price)+$service_tax;
-				echo $cartTotal.",".-$discount_price;
+				echo $cartTotal.",".-$discount_price.",".$discount_price.",".$getCouponPriceData['price_type_id'];
 			}
 		} else {
 			$discount_price = ($cart_total/100) * $getCouponPriceData['discount_price'];
@@ -26,7 +26,7 @@ if(!empty($_POST['coupon_code']) && !empty($_POST['cart_total']))  {
 				echo 1;
 			} else{
 				$cartTotal = ($cart_total - $discount_price)+$service_tax;
-				echo $cartTotal.",".-$discount_price;
+				echo $cartTotal.",".-$discount_price.",".$discount_price.",".$getCouponPriceData['price_type_id'];
 			}
 		}
 		

@@ -203,8 +203,8 @@
 				</div>
 				</form>
 				<?php }  else { ?>
-        			<p style="text-align:center; color:#e04f67">No Services In Your Cart</p>
-        			<center><a href="services.php" style="color:#e04f67">Click here for SERVICES</a></center>
+        			<p style="text-align:center; color:#f26226">No Services In Your Cart</p>
+        			<center><a href="services.php" style="color:#f26226">Click here for SERVICES</a></center>
         		<?php } ?>
 			</div>			
 		</div>
