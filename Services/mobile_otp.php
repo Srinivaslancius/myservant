@@ -95,7 +95,7 @@
 
                                 <div class="form-group">
                                     <label>OTP</label>
-                                    <input type="text" id="mobile_otp" name="mobile_otp" class="form-control valid_mobile_num" placeholder="Enter OTP" maxlength="4" pattern="[0-9]{10}"  required >
+                                    <input type="tel" id="mobile_otp" name="mobile_otp" class="form-control valid_mobile_num" placeholder="Enter OTP" maxlength="4" pattern="[0-9]{10}"  required >
                                 </div>
                                 <span id="return_msg" style="display:none"></span><br />
                                 <div class="clear_fix"></div>
