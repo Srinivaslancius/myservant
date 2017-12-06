@@ -140,7 +140,7 @@ if(mail($to, $subject, $message, $headers)) {
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>Phone</label>
-										<input type="text" id="phone_contact" name="phone_contact" class="form-control valid_mobile_num" placeholder="Enter Phone number" maxlength="10" pattern="[0-9]{10}" required>
+										<input type="tel" id="phone_contact" name="phone_contact" class="form-control valid_mobile_num" placeholder="Enter Phone number" maxlength="10" pattern="[0-9]{10}" required>
 									</div>
 								</div>
 							</div>
