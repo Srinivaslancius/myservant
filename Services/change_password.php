@@ -91,12 +91,12 @@
                 <div class="col-sm-3"></div>
         <?php }?>
     <br>
-    <div class="container">
+    <div class="container margin_60">
         <div class="row">
             <div class="col-xs-4">
                 <div class="bhoechie-tab-menu">
                     <div class="list-group">
-                        <a href="my_dashboard.php" class="list-group-item active">
+                        <a href="my_dashboard.php" class="list-group-item">
                             <h5><b><i class="fa fa-first-order" aria-hidden="true"></i>MY ORDERS</b><i class="fa fa-chevron-right pull-right"></i></h5>
                         </a>
                         <a href="my_dashboard.php" class="list-group-item">
@@ -105,12 +105,13 @@
                         <a href="my_dashboard.php" class="list-group-item sub">
                             <p>Personal Information</p>
                         </a>
-                        <a href="change_password.php" class="list-group-item sub"><p>Change Password</p></a>
+                        <a href="change_password.php" class="list-group-item sub active"><p>Change Password</p></a>
                     </div>    
                 </div>
             </div>
+            <div class="col-xs-8 bhoechie-tab">
                 <!-- Change password section -->
-                <div class="bhoechie-tab-content">
+                <div class="bhoechie-tab-content active">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="row">
@@ -140,7 +141,8 @@
                 </div>
             </div>
         </div>
-        </main>
+    </div>
+    </main>
     <!-- End main -->
 
     <footer>

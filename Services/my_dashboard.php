@@ -69,7 +69,7 @@
             <?php }?>   
         </div>
     <br>
-    <div class="container">
+    <div class="container margin_60">
         <div class="row">
             <!-- <div class="col-xs-12 bhoechie-tab-container"> -->
             <div class="col-xs-4">
@@ -78,7 +78,7 @@
                         <a href="#" class="list-group-item active">
                             <h5><b><i class="fa fa-first-order" aria-hidden="true"></i>MY ORDERS</b><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i></h5>
                         </a>
-                        <a href="javascript:void(0);" class="list-group-item">
+                        <a href="#" class="list-group-item">
                             <h5><b><i class="fa fa-user-circle-o" aria-hidden="true"></i>ACCOUNT SETTINGS</b></h5>
                         </a>
                         <a href="#" class="list-group-item sub">
@@ -97,36 +97,38 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <p>ORDER PLACED<br>17 Apr 2017</p>
+                                            <h5 style="color:#f26226">ORDER PLACED</h5>
                                         </div>
                                         <div class="col-sm-2">
-                                            <p>TOTAL<br>$399.00</p>
+                                            <h5 style="color:#f26226">TOTAL</h5>
                                         </div>
                                         <div class="col-sm-3">
-                                            <p>SHIP TO<br><a href="javascript:void(0);">Gunavardhan</a></p>
+                                            <h5 style="color:#f26226">SHIP TO</h5>
                                         </div>
-                                        <div class="col-sm-4">
-                                            <p>ORDER #406-299-789546-108<br><a href="javascript:void(0);">Order details</a> &nbsp; <a href="javascript:void(0);">Invoice</a></p>
+                                        <div class="col-sm-3">
+                                            <h5 style="color:#f26226">ORDER ID</h5>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="panel-body">
+                                    <?php $uid=$_SESSION['user_login_session_id'];
+                                      $orderDetails ="SELECT * FROM services_orders GROUP BY order_id ORDER BY id DESC";
+                                      $orderDetails1 = $conn->query($orderDetails);
+                                      while($orderData = $orderDetails1->fetch_assoc()) {
+                                    ?>
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <img src="pixel.png" class="img-responsive">
+                                            <p><?php echo $orderData['created_at'];?></p>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <p>Rs. <?php echo $orderData['order_total'];?></p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <p><?php echo $orderData['first_name'];?><br><?php echo $orderData['address'];?></p>
                                         </div>
                                         <div class="col-sm-4">
-                                            <h5 style="margin-bottom:0;">Google Pixel XL (Quite Black, 128 GB)</h5>
-                                            <p style="font-size: 11px;">by Google</p>
-                                            <p><b style="color:brown; font-size: 14px;">$399.00</b> <span style="font-size: 11px; text-decoration: line-through;">$500.00</span></p>
-                                            <p style="margin-bottom: 0;">More Buying Choices</p>
-                                            <p><b style="color:brown; font-size: 12px;">$380.00</b> (6 offers)</p>
-                                        </div>
-                                        <div class="col-sm-1"></div>
-                                        <div class="col-sm-4">
-                                            <p style="font-size: 27px; font-weight: bold;"><span style="color: gold;">&#9733;&#9733;&#9733;&#9733;</span>&#9734;</p>
+                                            <p><?php echo $orderData['order_id'];?><br><a href="view_orders.php?order_id=<?php echo $orderData['order_id']?>" style="color:#f26226">Order details</a> &nbsp; <!-- <a href="javascript:void(0);">Invoice</a> --></p>
                                         </div>
                                     </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +142,7 @@
                 <div class="bhoechie-tab-content">
                     <form>
                         <div class="row">
-                            <?php $uid=$_SESSION['user_login_session_id'];
+                            <?php
                                   $getUser = "SELECT * FROM users where id='$uid' AND lkp_status_id = 0 ";
                                   $getUserInfo = $conn->query($getUser);
                                   $getUserData = $getUserInfo->fetch_assoc();
