@@ -126,7 +126,7 @@
 									<div class="form-group col-md-6 col-sm-6 col-xs-12">
 										<label>Email Address <sup>*</sup>
 										</label>
-										<input type="email" name="email" id="email_contact" value="<?php echo $getUser['user_email']; ?>" placeholder="" class="form-control" required>
+										<input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email_contact" value="<?php echo $getUser['user_email']; ?>" placeholder="" class="form-control" required>
 									</div>
 									<div class="form-group col-md-6 col-sm-6 col-xs-12">
 										<label>Phone <sup>*</sup>

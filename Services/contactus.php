@@ -134,7 +134,7 @@ if(mail($to, $subject, $message, $headers)) {
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>Email</label>
-										<input type="email" id="email_contact" name="email_contact" class="form-control" placeholder="Enter Email" required>
+										<input type="email" id="email_contact" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email_contact" class="form-control" placeholder="Enter Email" required>
 									</div>
 								</div>
 								<div class="col-md-6 col-sm-6">

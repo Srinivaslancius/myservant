@@ -148,7 +148,7 @@
                                 </div>
                                 <div class="form-group">
                                 	<label>Email</label>
-                                    <input type="email" name="user_email" id="user_email" class=" form-control" placeholder="Email" onkeyup="checkEmail();" required>
+                                    <input type="email" name="user_email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="user_email" class=" form-control" placeholder="Email" onkeyup="checkEmail();" required>
                                     <span id="input_status" style="color: red;"></span>
                                 </div>
                                 <div class="form-group">

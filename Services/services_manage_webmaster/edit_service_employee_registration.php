@@ -73,7 +73,7 @@ if (!isset($_POST['submit'])) {
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email</label>
-                    <input type="email" name="email" class="form-control" id="user_input" placeholder="Email" data-error="Please enter a valid email address." required onkeyup="checkUserAvailTest()" value="<?php echo $getServiceEmployeesData['email'];?>">
+                    <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" id="user_input" placeholder="Email" data-error="Please enter a valid email address." required onkeyup="checkUserAvailTest()" value="<?php echo $getServiceEmployeesData['email'];?>">
                     <span id="input_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
                     <input type="hidden" id="table_name" value="services_employee_registration">

@@ -96,7 +96,7 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email</label>
-                    <input type="email" name="email" class="form-control" id="user_input" placeholder="email" data-error="Please enter Valid Email Address" onkeyup="checkUserAvailTest()" required>
+                    <input type="email" name="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="user_input" placeholder="email" data-error="Please enter Valid Email Address" onkeyup="checkUserAvailTest()" required>
                     <span id="input_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
                     <input type="hidden" id="table_name" value="service_provider_registration">
@@ -181,7 +181,7 @@ if (!isset($_POST['submit']))  {
 
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email id</label>
-                    <input type="email" name="email_id" class="form-control service_provider_business" id="email" placeholder="email" data-error="Please enter Valid Email Address">
+                    <input type="email" name="email_id" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control service_provider_business" id="email" placeholder="email" data-error="Please enter Valid Email Address">
                     <span id="email_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
                   </div>
