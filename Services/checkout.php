@@ -131,7 +131,7 @@
 									<div class="form-group col-md-6 col-sm-6 col-xs-12">
 										<label>Phone <sup>*</sup>
 										</label>
-										<input type="text" name="mobile" id="phone_contact" value="<?php echo $getUser['user_mobile']; ?>" placeholder="" maxlength="10" pattern="[0-9]{10}" class="form-control valid_mobile_num" required>
+										<input type="number" name="mobile" id="phone_contact" value="<?php echo $getUser['user_mobile']; ?>" placeholder="" maxlength="10" pattern="[0-9]{10}" class="form-control valid_mobile_num" required>
 									</div>
 									<div class="form-group col-md-12 col-sm-12 col-xs-12">
 										<label>Address <sup>*</sup>
@@ -148,7 +148,7 @@
 									</div>
 									<div class="form-group col-md-6 col-sm-6 col-xs-12">
 										<label>Zip / Postal Code  <sup>*</sup></label>
-										<input type="text" name="postal_code" value="" placeholder="Zip / Postal Code" class="form-control valid_mobile_num" maxlength="6" required>
+										<input type="number" name="postal_code" value="" placeholder="Zip / Postal Code" class="form-control valid_mobile_num" maxlength="6" required>
 									</div>
 									<?php $getCitiesData = getAllDataWhere('lkp_cities','lkp_status_id',0); ?>
 									<div class="form-group col-md-6 col-sm-6 col-xs-12">
