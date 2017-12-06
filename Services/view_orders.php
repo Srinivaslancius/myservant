@@ -70,6 +70,9 @@
         </div>
     <br>
     <div class="container margin_60">
+        <div class="main_title">
+            <h2><span>Order Information</span></h2>
+        </div>
         <div class="row">
             <div class="col-xs-12 bhoechie-tab">
                 <!-- My orders section -->
@@ -107,15 +110,15 @@
                                         
                                         while ($orderData1 = $orderDetails2->fetch_assoc()) {
                                         ?>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-4 col-xs-12">
                                             <p><?php echo $orderData1['order_sub_id'];?></p>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-4 col-xs-12">
                                             <?php $serviceData = getAllDataWhereWithActive('services_group_service_names','id' ,$orderData1['service_id']);
                                         $serviceDetails = $serviceData->fetch_assoc(); ?>
                                             <p><?php echo $serviceDetails['group_service_name'];?></p>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-4 col-xs-12">
                                            <p><?php echo $orderData1['service_price'];?></p>
                                         </div>
                                         <?php } ?>
