@@ -25,7 +25,16 @@
 	<link href="layerslider/css/layerslider.css" rel="stylesheet">
 	<!-- For brands slider -->
 	<script src="../cdn-cgi/scripts/78d64697/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
-
+<style>
+	marquee span { 
+   margin-right: 0%; 
+	-moz-margin-right: 0%; 
+    }
+    marquee p { 
+    white-space:nowrap;
+    margin-right: 1000px; 
+    } 
+</style>
 </head>
 
 <body>
@@ -48,17 +57,7 @@
                     <?php include_once './menu.php';?>
 		</div>
 		<!-- container -->
-                
-        </header>
-	<!-- End Header -->
-
-	<main>
-		<!-- Slider -->
-		<div id="full-slider-wrapper">
-                    <?php include_once './slider.php';?>
-		</div>
-		<!-- End layerslider -->
-                <section id="hero">
+            <section id="hero">
 			        <div id="search_bar_container">
 			            <div class="container">
 			            <form method="post" action="sub_categories.php">
@@ -77,7 +76,8 @@
 			                    <input type="text" autocomplete="off" name="category_name" placeholder="Search your related service" id="twotabsearchtextbox">
 			                    </div>
 			                   <div class="nav-submit-button">
-		                            <button type="submit" class="btn btn-default" name="search" style="height:45px"><span class="icon icon-search pull-right"></span></button>
+		                            <button type="submit" class="btn btn-default" name="search" style="height:30px;border-radius: 1px;
+    border-color: #f26226;"><span class="icon icon-search pull-right"></span></button>
 		                       </div>
 
 			                </div>
@@ -86,6 +86,27 @@
 			            </div>
 			        </div>
 			    </section>
+        </header>
+	<!-- End Header -->
+
+	<main>
+		<!-- Slider -->
+		<div id="full-slider-wrapper">
+                    <?php include_once './slider.php';?>
+		</div>
+		<!-- End layerslider -->
+            <div class="container-fluid marg10 search_back">
+                    <div class="row">
+					<marquee scrollamount="10" style="color:white;font-size:15px"><span>Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in.</span>
+					<span>Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in.</span>
+					
+					</marquee> 
+                    
+					<!--   <marquee behavior="scroll" direction="left" style="color:white;font-size:15px"><span style="margin-right:20px">Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in.</span> <span>Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in.</span>
+					   
+					   </marquee>-->
+                </div>
+                </div>
 		<div class="container margin_60">
 
 			<div class="main_title">

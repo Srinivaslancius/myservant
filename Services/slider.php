@@ -1,4 +1,4 @@
-<div id="layerslider" style="width:100%;height:600px;">
+<div id="layerslider" style="width:100%;height:350px;">
 <?php  
 	$getBanners = getBanners();      
 ?>
