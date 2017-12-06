@@ -110,7 +110,7 @@
                                         </div>
                                     </div>
                                     <?php $uid=$_SESSION['user_login_session_id'];
-                                      $orderDetails ="SELECT * FROM services_orders GROUP BY order_id ORDER BY id DESC";
+                                      $orderDetails ="SELECT * FROM services_orders WHERE user_id = '$uid' GROUP BY order_id ORDER BY id DESC";
                                       $orderDetails1 = $conn->query($orderDetails);
                                       while($orderData = $orderDetails1->fetch_assoc()) {
                                     ?>
