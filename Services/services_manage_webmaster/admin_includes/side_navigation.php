@@ -65,7 +65,14 @@
                 </li>
               </ul>
             </li>
-
+            <li class="<?php if($page_name == 'social_networks_links.php') { echo "active"; } ?>">
+              <a href="social_networks_links.php" aria-haspopup="true">
+                <span class="menu-icon">
+                  <i class="zmdi zmdi-settings zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Social Network Links</span>
+              </a>
+            </li>
 
             <li  class="<?php if($page_name == 'service_employee_registration.php' || $page_name == 'add_service_employee_registration.php' || $page_name == 'edit_service_employee_registration.php' ) { echo "active"; } ?>">
               <a href="service_employee_registration.php" aria-haspopup="true">
