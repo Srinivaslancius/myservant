@@ -20,7 +20,7 @@ if(!empty($_POST['name_contact']) && !empty($_POST['lastname_contact']) && !empt
     $phone_contact = $_POST['phone_contact'];
     $message_contact = $_POST['message_contact'];
 
-$dataem = $getSiteSettingsData["email"];
+$dataem = $getSiteSettingsData["contact_email"];
 //$to = "srinivas@lanciussolutions.com";
 $to = $dataem;
 $subject = "Myservent - Contact Us ";
