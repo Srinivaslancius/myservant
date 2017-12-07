@@ -14,14 +14,9 @@
     $contact_email = $_POST['contact_email'];
     $google_analytics_code = $_POST['google_analytics_code'];
     $sms_gateway_no = $_POST['sms_gateway_no'];
-    $fb_link = $_POST['fb_link'];
-    $twitter_link = $_POST['twitter_link'];
-    $gplus_link = $_POST['gplus_link'];
     $mobile = $_POST['mobile'];    
     $footer_text = $_POST['footer_text'];
-    $address = $_POST['address'];
-    $inst_link = $_POST['inst_link'];
-    $linked_link = $_POST['linked_link'];    
+    $address = $_POST['address']; 
 
     if($_FILES["logo"]["name"]!='') {
                                           
@@ -38,7 +33,7 @@
         $getImgUnlink = getImageUnlink('logo','services_site_settings','id',$id,$target_dir);
         //Send parameters for img val,tablename,clause,id,imgpath for image ubnlink from folder
         if (move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file)) {
-            $sql = "UPDATE `services_site_settings` SET admin_title = '$admin_title', email='$email',from_email='$from_email',orders_email='$orders_email',contact_email='$contact_email',google_analytics_code='$google_analytics_code',sms_gateway_no='$sms_gateway_no', fb_link='$fb_link', twitter_link='$twitter_link', gplus_link='$gplus_link',inst_link='$inst_link',linked_link='$linked_link', mobile='$mobile', logo = '$logo',footer_text='$footer_text', address='$address' WHERE id = '$id' ";
+            $sql = "UPDATE `services_site_settings` SET admin_title = '$admin_title', email='$email',from_email='$from_email',orders_email='$orders_email',contact_email='$contact_email',google_analytics_code='$google_analytics_code',sms_gateway_no='$sms_gateway_no', mobile='$mobile', logo = '$logo',footer_text='$footer_text', address='$address' WHERE id = '$id' ";
             if($conn->query($sql) === TRUE){
                echo "<script type='text/javascript'>window.location='site_settings.php?msg=success'</script>";
             } else {
@@ -49,7 +44,7 @@
             echo "Sorry, there was an error uploading your file.";
         }
     }  else {
-        $sql = "UPDATE `services_site_settings` SET admin_title = '$admin_title', email='$email',from_email='$from_email',orders_email='$orders_email',contact_email='$contact_email',google_analytics_code='$google_analytics_code',sms_gateway_no='$sms_gateway_no', fb_link='$fb_link', twitter_link='$twitter_link', gplus_link='$gplus_link',inst_link='$inst_link',linked_link='$linked_link', mobile='$mobile',footer_text='$footer_text', address='$address' WHERE id = '$id' ";
+        $sql = "UPDATE `services_site_settings` SET admin_title = '$admin_title', email='$email',from_email='$from_email',orders_email='$orders_email',contact_email='$contact_email',google_analytics_code='$google_analytics_code',sms_gateway_no='$sms_gateway_no',  mobile='$mobile',footer_text='$footer_text', address='$address' WHERE id = '$id' ";
         if($conn->query($sql) === TRUE){
            echo "<script type='text/javascript'>window.location='site_settings.php?msg=success'</script>";
         } else {
@@ -106,36 +101,6 @@
                     <input type="text" name="sms_gateway_no" class="form-control" id="form-control-2"  placeholder="Sms Gateway Number" data-error="Please enter sms gateway number." value="<?php echo $getSiteSettingsData['sms_gateway_no'];?>" onkeypress="return isNumberKey(event)" required>
                     <div class="help-block with-errors"></div>
                   </div>
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">Facebook Link</label>
-                    <input type="url" name="fb_link" class="form-control" id="form-control-2" placeholder="Facebook Link" data-error="Please enter a valid Facebook Link." value="<?php echo $getSiteSettingsData['fb_link'];?>" required>
-                    <div class="help-block with-errors"></div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">Twitter Link</label>
-                    <input type="url" name="twitter_link" class="form-control" id="form-control-2" placeholder="Instagram Link" data-error="Please enter a valid Twitter Link." value="<?php echo $getSiteSettingsData['twitter_link'];?>" required>
-                    <div class="help-block with-errors"></div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">Instagram Link</label>
-                    <input type="url" name="inst_link" class="form-control" id="form-control-2" placeholder="Instagram Link" data-error="Please enter a valid Instagram Link." value="<?php echo $getSiteSettingsData['inst_link'];?>" required>
-                    <div class="help-block with-errors"></div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">G+ Link</label>
-                    <input type="url" name="gplus_link" class="form-control" id="form-control-2" placeholder="G+ Link" data-error="Please enter a valid G+ Link." value="<?php echo $getSiteSettingsData['gplus_link'];?>" required>
-                    <div class="help-block with-errors"></div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">Linked In Link</label>
-                    <input type="url" name="linked_link" class="form-control" id="form-control-2" placeholder="Linked in Link" data-error="Please enter a valid Linked in Link." value="<?php echo $getSiteSettingsData['linked_link'];?>" required>
-                    <div class="help-block with-errors"></div>
-                  </div>
-
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Mobile</label>
                     <input type="text" name="mobile" class="form-control" id="form-control-2"  placeholder="Mobile" data-error="Please enter valid Mobile." value="<?php echo $getSiteSettingsData['mobile'];?>" onkeypress="return isNumberKey(event)" maxlength="10" pattern="[0-9]{10}" required>
