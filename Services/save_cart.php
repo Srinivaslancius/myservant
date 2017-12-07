@@ -21,7 +21,7 @@ $group_id = $_POST['services_group_id'];
 $service_price = $_POST['service_price'];
 $services_service_id = $_POST['services_service_id'];
 $service_price_type_id = $_POST['service_price_type_id'];
-$created_at = date("Y-m-d h:i:s");
+$created_at = date('Y-m-d H:i:s', time() + 24 * 60 * 60);
 $service_selected_time = date('H:i:s', strtotime($created_at));
 $service_selected_date = date("Y-m-d h:i:s");
 
