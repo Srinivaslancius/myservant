@@ -241,7 +241,7 @@
         <script>
 		$('input.date-pick').datepicker();
 		$('input.time-pick').timepicker({
-			minuteStep: 15,
+			'step': 15,
 			showInpunts: false
 		})
 	</script>
