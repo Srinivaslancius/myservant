@@ -45,6 +45,28 @@
                 <span class="menu-text">Service Provider Registrations</span>
               </a>
             </li>
+
+            <li class="with-sub">
+              <a href="#" aria-haspopup="true">
+                <span class="menu-icon">
+                  <i class="zmdi zmdi-collection-item  zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">CMS</span>
+              </a>
+              <ul class="sidebar-submenu collapse">
+                <li class="menu-subtitle">CMS</li>
+                <li  class="<?php if($page_name == 'services_content_pages.php' || $page_name == 'add_services_content_pages.php' || $page_name == 'edit_services_content_pages.php' ) { echo "active"; } ?>"><a href="services_content_pages.php">Content Pages</a>
+                </li>
+                <li  class="<?php if($page_name == 'services_banners.php' || $page_name == 'add_services_banners.php' || $page_name == 'edit_services_banners.php' ) { echo "active"; } ?>"><a href="services_banners.php">Banners</a>
+                </li>
+                <li  class="<?php if($page_name == 'services_testimonials.php' || $page_name == 'add_services_testimonials.php' || $page_name == 'edit_services_testimonials.php') { echo "active"; } ?>"><a href="services_testimonials.php">Testimonials</a>
+                </li>
+                <li  class="<?php if($page_name == 'services_newsletter.php' ) { echo "active"; } ?>"><a href="services_newsletter.php">News Letters</a>
+                </li>
+              </ul>
+            </li>
+
+
             <li  class="<?php if($page_name == 'service_employee_registration.php' || $page_name == 'add_service_employee_registration.php' || $page_name == 'edit_service_employee_registration.php' ) { echo "active"; } ?>">
               <a href="service_employee_registration.php" aria-haspopup="true">
                 <span class="menu-icon">
@@ -53,53 +75,26 @@
                 <span class="menu-text">Service Employees</span>
               </a>
             </li>
-            <li  class="<?php if($page_name == 'services_content_pages.php' || $page_name == 'add_services_content_pages.php' || $page_name == 'edit_services_content_pages.php' ) { echo "active"; } ?>">
-              <a href="services_content_pages.php" aria-haspopup="true">
+            <li class="with-sub">
+              <a href="#" aria-haspopup="true">
                 <span class="menu-icon">
-                   <i class="zmdi zmdi-collection-item  zmdi-hc-fw"></i>
+                  <i class="zmdi zmdi-collection-item  zmdi-hc-fw"></i>
                 </span>
-                <span class="menu-text">Content Pages</span>
+                <span class="menu-text">Service Master Data</span>
               </a>
-            </li>
-            <li  class="<?php if($page_name == 'services_banners.php' || $page_name == 'add_services_banners.php' || $page_name == 'edit_services_banners.php' ) { echo "active"; } ?>">
-              <a href="services_banners.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Banners</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'services_category.php' || $page_name == 'add_services_category.php' || $page_name == 'edit_services_category.php' ) { echo "active"; } ?>">
-              <a href="services_category.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Categories</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'services_sub_category.php' || $page_name == 'add_services_sub_category.php' || $page_name == 'edit_services_sub_category.php' ) { echo "active"; } ?>">
-              <a href="services_sub_category.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Sub Categories</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'services_groups.php' || $page_name == 'add_services_groups.php' || $page_name == 'edit_services_groups.php' ) { echo "active"; } ?>">
-              <a href="services_groups.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Groups</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'services_group_service_names.php' || $page_name == 'add_services_group_service_names.php' || $page_name == 'edit_services_group_service_names.php' ) { echo "active"; } ?>">
-              <a href="services_group_service_names.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Service Names</span>
-              </a>
+              <ul class="sidebar-submenu collapse">
+                <li class="menu-subtitle">Service Master Data</li>
+
+                <li  class="<?php if($page_name == 'services_category.php' || $page_name == 'add_services_category.php' || $page_name == 'edit_services_category.php' ) { echo "active"; } ?>">
+                  <a href="services_category.php">Categories</a>
+                </li>
+                <li  class="<?php if($page_name == 'services_sub_category.php' || $page_name == 'add_services_sub_category.php' || $page_name == 'edit_services_sub_category.php' ) { echo "active"; } ?>"><a href="services_sub_category.php">Sub Categories</a>
+                </li>
+                <li  class="<?php if($page_name == 'services_groups.php' || $page_name == 'add_services_groups.php' || $page_name == 'edit_services_groups.php' ) { echo "active"; } ?>"><a href="services_groups.php">Groups</a>
+                </li>
+                <li  class="<?php if($page_name == 'services_group_service_names.php' || $page_name == 'add_services_group_service_names.php' || $page_name == 'edit_services_group_service_names.php' ) { echo "active"; } ?>"><a href="services_group_service_names.php">Service Names</a>
+                </li>
+              </ul>
             </li>
             <li  class="<?php if($page_name == 'services_coupons.php' || $page_name == 'add_services_coupons.php' || $page_name == 'edit_services_coupons.php' ) { echo "active"; } ?>">
               <a href="services_coupons.php" aria-haspopup="true">
@@ -115,22 +110,6 @@
                    <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
                 </span>
                 <span class="menu-text">Brand Logos</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'services_testimonials.php' || $page_name == 'add_services_testimonials.php' || $page_name == 'edit_services_testimonials.php') { echo "active"; } ?>">
-              <a href="services_testimonials.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-comments  zmdi-hc-fw"></i>
-                </span> 
-                <span class="menu-text">Testimonials</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'services_newsletter.php' ) { echo "active"; } ?>">
-              <a href="services_newsletter.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">News Letters</span>
               </a>
             </li>
             <li  class="<?php if($page_name == 'service_seo.php' || $page_name == 'add_service_seo.php' || $page_name == 'edit_service_seo.php' ) { echo "active"; } ?>">
@@ -149,38 +128,26 @@
                 <span class="menu-text">Our Branches</span>
               </a>
             </li>
-            
-            <li  class="<?php if($page_name == 'lkp_states.php' || $page_name == 'add_lkp_states.php' || $page_name == 'edit_lkp_states.php' ) { echo "active"; } ?>">
-              <a href="lkp_states.php" aria-haspopup="true">
+            <li class="with-sub">
+              <a href="#" aria-haspopup="true">
                 <span class="menu-icon">
-                   <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
+                  <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
                 </span>
-                <span class="menu-text">States</span>
+                <span class="menu-text">Mangae Master Data</span>
               </a>
-            </li>
-            <li  class="<?php if($page_name == 'lkp_districts.php' || $page_name == 'add_lkp_districts.php' || $page_name == 'edit_lkp_districts.php' ) { echo "active"; } ?>">
-              <a href="lkp_districts.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Districts</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'lkp_cities.php' || $page_name == 'add_lkp_cities.php' || $page_name == 'edit_lkp_cities.php' ) { echo "active"; } ?>">
-              <a href="lkp_cities.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Cities</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'lkp_locations.php' || $page_name == 'add_lkp_locations.php' || $page_name == 'edit_lkp_locations.php' ) { echo "active"; } ?>">
-              <a href="lkp_locations.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Locations</span>
-              </a>
+              <ul class="sidebar-submenu collapse">
+                <li class="menu-subtitle">Mangae Master Data</li>
+                <li  class="<?php if($page_name == 'lkp_states.php' || $page_name == 'add_lkp_states.php' || $page_name == 'edit_lkp_states.php' ) { echo "active"; } ?>">
+                 <a href="lkp_states.php">States</a>
+                </li>
+                <li  class="<?php if($page_name == 'lkp_districts.php' || $page_name == 'add_lkp_districts.php' || $page_name == 'edit_lkp_districts.php' ) { echo "active"; } ?>"><a href="lkp_districts.php">Districts</a>
+                </li>
+                <li  class="<?php if($page_name == 'lkp_cities.php' || $page_name == 'add_lkp_cities.php' || $page_name == 'edit_lkp_cities.php' ) { echo "active"; } ?>"><a href="lkp_cities.php">Cities</a>
+                </li>
+                <li  class="<?php if($page_name == 'lkp_locations.php' || $page_name == 'add_lkp_locations.php' || $page_name == 'edit_lkp_locations.php' ) { echo "active"; } ?>"><a href="lkp_locations.php">Locations</a>
+                </li>
+                
+              </ul>
             </li>
             <li  class="<?php if($page_name == 'services_orders.php' || $page_name == 'edit_services_orders.php' ) { echo "active"; } ?>">
               <a href="services_orders.php" aria-haspopup="true">
