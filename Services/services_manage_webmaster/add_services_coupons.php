@@ -42,7 +42,7 @@
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Discount Price / Percentage</label>
-                    <input type="text" name="discount_price" class="form-control" id="form-control-2" placeholder="Discount Price / Percentage" data-error="Please enter Correct Discount Price / Percentage." required>
+                    <input type="text" name="discount_price" class="form-control valid_price_dec" id="form-control-2" placeholder="Discount Price / Percentage" data-error="Please enter Correct Discount Price / Percentage." required>
                     <div class="help-block with-errors"></div>
                   </div>
                   <?php $getStatus = getAllData('lkp_status');?>

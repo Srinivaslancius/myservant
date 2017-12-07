@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
@@ -21,12 +20,15 @@
 	<!-- Google web fonts -->
     <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Lato:300,400|Montserrat:400,400i,700,700i" rel="stylesheet">
 
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href="https://bootswatch.com/slate/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<!-- CSS -->
 	<link href="css/base.css" rel="stylesheet">
 
 	<!-- SPECIFIC CSS -->
 	<link href="css/shop.css" rel="stylesheet">
 
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link href="css/date_time_picker.css" rel="stylesheet">
 	<!-- Range slider -->
 	<link href="css/ion.rangeSlider.css" rel="stylesheet">
@@ -233,12 +235,13 @@
 	<script src="/cdn-cgi/scripts/84a23a00/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
 	<script src="js/common_scripts_min.js"></script>
 	<script src="js/functions.js"></script>
-        <script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/bootstrap-timepicker.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.timepicker.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
         <script>
 		$('input.date-pick').datepicker();
 		$('input.time-pick').timepicker({
-			minuteStep: 15,
+			'step': 15,
 			showInpunts: false
 		})
 	</script>
