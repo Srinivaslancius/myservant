@@ -236,8 +236,7 @@
 	<script src="js/common_scripts_min.js"></script>
 	<script src="js/functions.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="js/jquery.timepicker.js"></script>
+    <script type="text/javascript" src="js/jquery.timepicker.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
         <script>
 		$('input.date-pick').datepicker();
