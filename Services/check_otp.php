@@ -60,7 +60,7 @@ if(!empty($_POST['user_mobile']) && !empty($_POST['mobile_otp']))  {
 		//echo $message; die;
 		//$sendMail = sendEmail($to,$subject,$message,$from);
 		$name = "My Servant";
-		$from = "info@myservant.com";
+		$from = $getSiteSettingsData["from_email"];
 		$headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";  
         $headers .= 'From: '.$name.'<'.$from.'>'. "\r\n";

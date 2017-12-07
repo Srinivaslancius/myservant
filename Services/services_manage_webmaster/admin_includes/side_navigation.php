@@ -37,14 +37,7 @@
                 <li class="<?php if($page_name == 'users.php' || $page_name == 'add_users.php' || $page_name == 'edit_users.php') { echo "active"; } ?>"><a href="users.php">Users</a></li>
               </ul>
             </li>
-            <li  class="<?php if($page_name == 'service_provider_registration.php' || $page_name == 'add_service_provider_registration.php' || $page_name == 'edit_service_provider_registration.php' ) { echo "active"; } ?>">
-              <a href="service_provider_registration.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-accounts zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Service Provider Registrations</span>
-              </a>
-            </li>
+            
 
             <li class="with-sub">
               <a href="#" aria-haspopup="true">
@@ -65,14 +58,28 @@
                 </li>
               </ul>
             </li>
-
-
-            <li  class="<?php if($page_name == 'service_employee_registration.php' || $page_name == 'add_service_employee_registration.php' || $page_name == 'edit_service_employee_registration.php' ) { echo "active"; } ?>">
-              <a href="service_employee_registration.php" aria-haspopup="true">
+            <li class="with-sub">
+              <a href="#" aria-haspopup="true">
                 <span class="menu-icon">
-                   <i class="zmdi zmdi-accounts zmdi-hc-fw"></i>
+                  <i class="zmdi zmdi-collection-item  zmdi-hc-fw"></i>
                 </span>
-                <span class="menu-text">Service Employees</span>
+                <span class="menu-text">Service Providers</span>
+              </a>
+              <ul class="sidebar-submenu collapse">
+                <li class="menu-subtitle">Service Providers</li>
+                <li  class="<?php if($page_name == 'service_employee_registration.php' || $page_name == 'add_service_employee_registration.php' || $page_name == 'edit_service_employee_registration.php' ) { echo "active"; } ?>"><a href="service_employee_registration.php">Service Employees</a>
+                </li>
+                <li  class="<?php if($page_name == 'service_provider_registration.php' || $page_name == 'add_service_provider_registration.php' || $page_name == 'edit_service_provider_registration.php' ) { echo "active"; } ?>"><a href="service_provider_registration.php">Service Provider Registrations
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="<?php if($page_name == 'social_networks_links.php') { echo "active"; } ?>">
+              <a href="social_networks_links.php" aria-haspopup="true">
+                <span class="menu-icon">
+                  <i class="zmdi zmdi-settings zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Social Network Links</span>
               </a>
             </li>
             <li class="with-sub">
