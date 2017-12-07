@@ -46,9 +46,16 @@ if(isset($_POST["submit"]) && $_POST["submit"]!="") {
 		$servicesOrders = $conn->query($orders);
 	}
 
+
 	if($_POST['payment_group'] == "1") {
-		//payemnt group 1 means COD
-		$payment_status = 2; //In progress 
+		//payemnt group 1 means COD		
+		//after placing order that item will delete in cart
+		if($_SESSION['CART_TEMP_RANDOM'] == "") {
+	        $_SESSION['CART_TEMP_RANDOM'] = rand(10, 10).sha1(crypt(time())).time();
+	    }
+	    $session_cart_id = $_SESSION['CART_TEMP_RANDOM'];
+		$delCart ="DELETE FROM services_cart WHERE user_id = '$user_id' OR session_cart_id='$session_cart_id' ";
+		$conn->query($delCart);
 		header("Location: thankyou.php?odi=".$order_id."");
 	} else {
 		//Online
