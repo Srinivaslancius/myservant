@@ -44,7 +44,7 @@ $id = $_GET['coupon_id'];
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Discount Price / Percentage</label>
-                    <input type="text" name="discount_price" class="form-control" id="form-control-2" placeholder="Discount Price / Percentage" data-error="Please enter Discount Price / Percentage." required value="<?php echo $getServicesCouponsData['discount_price'];?>">
+                    <input type="text" name="discount_price" class="form-control valid_price_dec" id="form-control-2" placeholder="Discount Price / Percentage" data-error="Please enter Discount Price / Percentage." required value="<?php echo $getServicesCouponsData['discount_price'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                  <?php $getStatus = getAllData('lkp_status');?>

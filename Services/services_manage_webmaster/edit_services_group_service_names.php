@@ -108,7 +108,7 @@ if (!isset($_POST['submit'])) {
                   </div>
                   <div class="form-group" id="service_price">
                     <label for="form-control-2" class="control-label">Service Price</label>
-                    <input type="text" name="service_price" class="form-control service_price valid_mobile_num" id="service_price_txt" value="<?php echo $getGroupNamesData['service_price'];?>">
+                    <input type="text" name="service_price" class="form-control service_price valid_price_dec" id="service_price_txt" value="<?php echo $getGroupNamesData['service_price'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <?php $getPriceAfterVisitTypes = getAllDataWithStatus('price_after_visit_types','0');?>
@@ -125,12 +125,12 @@ if (!isset($_POST['submit'])) {
                   </div>
                   <div class="form-group" id="service_min_price1">
                     <label for="form-control-2" class="control-label">Service Min Price</label>
-                    <input type="text" name="service_min_price" class="form-control valid_mobile_num" id="min_price"  value="<?php echo $getGroupNamesData['service_min_price'];?>">
+                    <input type="text" name="service_min_price" class="form-control valid_price_dec" id="min_price"  value="<?php echo $getGroupNamesData['service_min_price'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group" id="service_max_price1">
                     <label for="form-control-2" class="control-label">Service Max Price</label>
-                    <input type="text" name="service_max_price" class="form-control valid_mobile_num" id="max_price" value="<?php echo $getGroupNamesData['service_max_price'];?>">
+                    <input type="text" name="service_max_price" class="form-control valid_price_dec" id="max_price" value="<?php echo $getGroupNamesData['service_max_price'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <?php $getStatus = getAllData('lkp_status');?>
@@ -159,12 +159,13 @@ if (!isset($_POST['submit'])) {
   $(document).ready(function () { 
 
     if ($("#service_price_type_id").is(":checked")) {
-          $('#service_price').show();
-          $('#price_after_visit_type_id1, #service_min_price1, #service_max_price1').hide();
-          $('#min_price, #max_price').val("");
-          $(".service_price").attr("required", "true");
-          $(".price_after_visit_type_id").removeAttr('required');
-          $("#min_price, #max_price").removeAttr('required');
+        $('#service_price').show();
+        $('#price_after_visit_type_id1, #service_min_price1, #service_max_price1').hide();
+        $('#min_price, #max_price').val("");
+        $('.price_after_visit_type_id').prop('checked', false);
+        $(".service_price").attr("required", "true");
+        $(".price_after_visit_type_id").removeAttr('required');
+        $("#min_price, #max_price").removeAttr('required');
       } else {
           $('#service_price').hide();
           $('#service_price_txt').val("");
@@ -215,7 +216,7 @@ if (!isset($_POST['submit'])) {
 
   });
   //Minimum Price should be less than Maximum Price
-  $("#max_price").blur(function () {
+  $("#max_price,#min_price").blur(function () {
     if(parseInt($('#min_price').val()) > parseInt($('#max_price').val())) {
       alert("The Maximum Price must be larger than the Minimum Price");
       $('#min_price').val('');

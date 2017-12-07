@@ -13,7 +13,7 @@
                     <th>S.No</th>
                     <th>Service Name</th>
                     <th>Order Id</th>
-                    <th>Service Price</th>
+                    <th>Order Price</th>
                     <th>Status</th>
                     <th>Actions</th>
                   </tr>
@@ -26,7 +26,7 @@
                     $getServicenamesData = $getServicenames->fetch_assoc();?>
                     <td><?php echo $getServicenamesData['group_service_name'];?></td>
                     <td><?php echo $row['order_sub_id'];?></td>
-                    <td><?php echo $row['service_price'];?></td>
+                    <td><?php echo $row['order_price'];?></td>
                    <td><?php if($row['lkp_order_status_id'] == 1) { echo "Pending" ;} elseif($row['lkp_order_status_id'] == 2) { echo "Completed" ;} else { echo "Cancelled" ;} ?></td>
                    <td><a href="assign_to.php?assign_id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>">Assign To</a></td>
                   </tr>
