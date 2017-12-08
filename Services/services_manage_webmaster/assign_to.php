@@ -33,7 +33,7 @@ if (!isset($_POST['submit'])) {
                 <form data-toggle="validator" method="POST" autocomplete="off" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose Service Provider</label>
-                    <select name="assign_service_provider_id" class="custom-select" data-error="This field is required.">
+                    <select name="assign_service_provider_id" class="custom-select" data-error="This field is required." required>
                       <option value="">Select Service Provider</option>
                       <?php $getServiceProvider = "SELECT spr.id,spr.name,spr.lkp_status_id FROM service_provider_registration spr LEFT JOIN service_provider_business_registration spb ON spr.id = spb.service_provider_registration_id LEFT JOIN service_provider_personal_registration spp ON spr.id = spp.service_provider_registration_id WHERE spr.lkp_status_id=0 AND ( spb.sub_category_id = '$subcat_id' OR spp.sub_category_id = '$subcat_id'  )";
                       $getServiceProviderNames = $conn->query($getServiceProvider); 
@@ -74,6 +74,7 @@ if (!isset($_POST['submit'])) {
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your status</label>
                     <select id="form-control-3" name="lkp_order_status_id" class="custom-select" data-error="This field is required." required>
+                      <option value="">Select Payment status</option>
                       <?php while($row = $getStatus->fetch_assoc()) {  ?>
                           <option <?php if($row['id'] == $getServiceOrdersData['lkp_order_status_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['order_status']; ?></option>
                       <?php } ?>
