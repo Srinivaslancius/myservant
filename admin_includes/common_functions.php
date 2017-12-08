@@ -148,9 +148,9 @@
     function getServicesProviderDataLimit($minlimit,$maxlimit)  {
         global $conn;
         if($minlimit!='' && $maxlimit!='') {
-            $sql="SELECT * FROM `service_provider_registration` AS spr, `service_provider_business_registration` spbr WHERE spr.`lkp_status_id` = '0' AND  spbr.`service_provider_registration_id` = spr.`id` AND  spr.`service_provider_type_id` = 1 ORDER BY spr.`id` DESC LIMIT $minlimit,$maxlimit ";
+            $sql="SELECT * FROM `service_provider_registration` AS spr, `service_provider_business_registration` spbr WHERE spr.`lkp_status_id` = '0' AND  spbr.`service_provider_registration_id` = spr.`id` AND  spr.`service_provider_type_id` = 1 AND spbr.`associate_or_not`= 0 ORDER BY spr.`id` DESC LIMIT 0,6 ";
         } else {
-            $sql="SELECT * FROM `service_provider_registration` AS spr, `service_provider_business_registration` spbr WHERE spr.`lkp_status_id` = '0' AND  spbr.`service_provider_registration_id` = spr.`id` AND  spr.`service_provider_type_id` = 1 ORDER BY spr.`id` DESC ";
+            $sql="SELECT * FROM `service_provider_registration` AS spr, `service_provider_business_registration` spbr WHERE spr.`lkp_status_id` = '0' AND  spbr.`service_provider_registration_id` = spr.`id` AND  spr.`service_provider_type_id` = 1 spbr.`associate_or_not`= 0 ORDER BY spr.`id` DESC ";
         }        
          
         $result = $conn->query($sql); 

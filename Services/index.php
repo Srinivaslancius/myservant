@@ -67,6 +67,7 @@
 			                    <span class="nav-down-arrow nav-sprite"></span>
 			                    <select name="id" class="searchSelect" id="searchDropdownBox">
 			                    <?php $getCategoriesData = getAllDataWithActiveRecent('services_category'); ?>
+			                    <option value="0">Service Category</option>
 			                    <?php while($row = $getCategoriesData->fetch_assoc()) {  ?>
 		                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['category_name']; ?></option>
 		                       <?php } ?>                                    
