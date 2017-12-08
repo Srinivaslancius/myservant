@@ -11,7 +11,15 @@ if (!isset($_POST['submit'])) {
   $order_price = $_POST['order_price'];
   $lkp_order_status_id = $_POST['lkp_order_status_id'];
   $lkp_payment_status_id = $_POST['lkp_payment_status_id'];
-  $sql = "UPDATE `services_orders` SET assign_service_provider_id = '$assign_service_provider_id',order_price = '$order_price',lkp_order_status_id='$lkp_order_status_id', lkp_payment_status_id='$lkp_payment_status_id' WHERE id = '$assign_id' AND sub_category_id = '$subcat_id'";
+  $order_total = $_POST['order_total'];
+
+  if($_POST['service_price_type_id'] == 1) {
+    $order_total = $_POST['order_total'];
+  } else {
+    $order_total = $_POST['order_total']+$order_price;
+  }
+  
+  $sql = "UPDATE `services_orders` SET assign_service_provider_id = '$assign_service_provider_id',order_price = '$order_price',order_total = '$order_total',lkp_order_status_id='$lkp_order_status_id', lkp_payment_status_id='$lkp_payment_status_id' WHERE id = '$assign_id' AND sub_category_id = '$subcat_id'";
   if($conn->query($sql) === TRUE){
      echo "<script type='text/javascript'>window.location='services_orders.php?msg=success'</script>";
   } else {
@@ -31,6 +39,8 @@ if (!isset($_POST['submit'])) {
               ?>
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <form data-toggle="validator" method="POST" autocomplete="off" enctype="multipart/form-data">
+                  <input type="hidden" name="order_total" value="<?php echo $getServiceOrdersData['order_total'];?>">
+                  <input type="hidden" name="service_price_type_id" value="<?php echo $getServiceOrdersData['service_price_type_id'];?>">
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose Service Provider</label>
                     <select name="assign_service_provider_id" class="custom-select" data-error="This field is required." required>

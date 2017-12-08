@@ -56,7 +56,7 @@
     
     function checkUserAvail($table,$clause,$value){
         global $conn;
-        $sql = "SELECT * FROM `$table` WHERE `$clause`= '$value' ";
+        $sql = "SELECT * FROM `$table` WHERE `$clause` LIKE '$value' ";
         $result = $conn->query($sql);
         return $result->num_rows;
     }

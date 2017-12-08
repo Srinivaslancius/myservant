@@ -110,7 +110,7 @@
                                         		if($getServiceNamesData['service_price_type_id'] == 1) {
 													$servicePrice = $getServiceNamesData['service_price'];
                                         		} elseif($getServiceNamesData['price_after_visit_type_id'] == 1) {
-                                        			$servicePrice = "Price After our Visit";
+                                        			$servicePrice = $getServiceNamesData['price_after_visiting'];
                                         		} else {
                                         			$servicePrice = $getServiceNamesData['service_min_price'].'-'.$getServiceNamesData['service_max_price']; 
                                         		}

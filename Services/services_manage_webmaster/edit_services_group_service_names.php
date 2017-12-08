@@ -26,12 +26,14 @@ if (!isset($_POST['submit'])) {
     if($price_after_visit_type_id == 2) {
       $service_min_price = $_POST['service_min_price'];
       $service_max_price = $_POST['service_max_price'];
+      $price_after_visit = "0";
     } else {
       $service_min_price = "0";
       $service_max_price = "0";
+      $price_after_visit = $_POST['price_after_visit'];
     }
 
-      $sql = "UPDATE `services_group_service_names` SET services_category_id = '$services_category_id', services_sub_category_id = '$services_sub_category_id', services_group_id = '$services_group_id', group_service_name = '$group_service_name',group_service_description = '$group_service_description',service_price_type_id = '$service_price_type_id',service_price = '$service_price',price_after_visit_type_id = '$price_after_visit_type_id',service_min_price = '$service_min_price',service_max_price = '$service_max_price', lkp_status_id='$lkp_status_id' WHERE id = '$id' ";
+      $sql = "UPDATE `services_group_service_names` SET services_category_id = '$services_category_id', services_sub_category_id = '$services_sub_category_id', services_group_id = '$services_group_id', group_service_name = '$group_service_name',group_service_description = '$group_service_description',service_price_type_id = '$service_price_type_id',service_price = '$service_price',price_after_visit_type_id = '$price_after_visit_type_id',price_after_visiting = '$price_after_visit',service_min_price = '$service_min_price',service_max_price = '$service_max_price', lkp_status_id='$lkp_status_id' WHERE id = '$id' ";
       if($conn->query($sql) === TRUE){
          echo "<script type='text/javascript'>window.location='services_group_service_names.php?msg=success'</script>";
       } else {
@@ -123,6 +125,11 @@ if (!isset($_POST['submit'])) {
                       </div>
                     <div class="help-block with-errors"></div>
                   </div>
+                  <div class="form-group" id="price_after_visit1" >
+                      <label for="form-control-2" class="control-label">Price After Visiting</label>
+                      <input type="text" name="price_after_visit" class="form-control" id="price_after_visit" placeholder="Price After Visiting" value="<?php echo $getGroupNamesData['price_after_visiting'];?>">
+                      <div class="help-block with-errors"></div>
+                    </div>
                   <div class="form-group" id="service_min_price1">
                     <label for="form-control-2" class="control-label">Service Min Price</label>
                     <input type="text" name="service_min_price" class="form-control valid_price_dec" id="min_price"  value="<?php echo $getGroupNamesData['service_min_price'];?>">
@@ -161,7 +168,6 @@ if (!isset($_POST['submit'])) {
     if ($("#service_price_type_id").is(":checked")) {
         $('#service_price').show();
         $('#price_after_visit_type_id1, #service_min_price1, #service_max_price1').hide();
-        $('#min_price, #max_price').val("");
         $('.price_after_visit_type_id').prop('checked', false);
         $(".service_price").attr("required", "true");
         $(".price_after_visit_type_id").removeAttr('required');
@@ -175,23 +181,27 @@ if (!isset($_POST['submit'])) {
       }
       if ($("#price_after_visit_type_id").is(":checked")) {
           $('#service_min_price1, #service_max_price1').hide();
-          $('#service_min_price1, #service_max_price1').val('');
           $("#min_price, #max_price").removeAttr('required');
+          $('#price_after_visit1').show();
+          $("#price_after_visit").attr("required", "true");
       } else {
           $('#service_min_price, #service_max_price').show();
           $("#min_price, #max_price").attr("required", "true");
+          $('#price_after_visit1').hide();
+          $("#price_after_visit").removeAttr('required');
       }
 
     $('.service_price_type_id').on('click', function() {
 
       if($(this).val() == 1) {
         $('#service_price').show();
-        $('#price_after_visit_type_id1, #service_min_price1, #service_max_price1').hide();
+        $('#price_after_visit_type_id1, #service_min_price1, #service_max_price1,#price_after_visit1').hide();
         $('#min_price, #max_price').val("");
         $('.price_after_visit_type_id').prop('checked', false);
         $(".service_price").attr("required", "true");
         $(".price_after_visit_type_id").removeAttr('required');
         $("#min_price, #max_price").removeAttr('required');
+        $("#price_after_visit").removeAttr('required');
       } else if($(this).val() == 2) {
         $('#service_price').hide();
         $('#service_price_txt').val("");
@@ -205,13 +215,20 @@ if (!isset($_POST['submit'])) {
   $('.price_after_visit_type_id').on('click', function() {
 
     $('#service_min_price1, #service_max_price1').show();
+    $('#min_price, #max_price').val('');
     if($(this).val() == 2) {
       $('#service_min_price1, #service_max_price1').show();
       $("#min_price, #max_price").attr("required", "true");
+      $('#price_after_visit1').hide();
+      $('#price_after_visit').val('');
+      $("#price_after_visit").removeAttr('required');
     } else if($(this).val() == 1) {
       $('#service_min_price1, #service_max_price1').hide();
-      $('#service_min_price1, #service_max_price1').val('');
+      $('#min_price, #max_price').val('');
       $("#min_price, #max_price").removeAttr('required');
+      $('#price_after_visit1').show();
+      $('#price_after_visit').val('');
+      $("#price_after_visit").attr("required", "true");
     }
 
   });
