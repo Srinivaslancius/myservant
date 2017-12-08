@@ -9,7 +9,7 @@
       $price_type_id = $_POST['price_type_id'];
       $discount_price = $_POST['discount_price'];
       $status = $_POST['lkp_status_id'];
-      $sql = "INSERT INTO services_coupons (`coupon_code`, `price_type_id`, `discount_price`, `lkp_status_id`) VALUES ('$coupon_code', '$price_type_id', '$discount_price','$status')";
+      $sql = "INSERT INTO services_coupons (`coupon_code`, `price_type_id`, `discount_price`, `lkp_status_id`) VALUES (UPPER('$coupon_code'), '$price_type_id', '$discount_price','$status')";
       if($conn->query($sql) === TRUE){
          echo "<script type='text/javascript'>window.location='services_coupons.php?msg=success'</script>";
       } else {
@@ -28,8 +28,11 @@
                 <form data-toggle="validator" method="POST" autocomplete="off">
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Coupon Code</label>
-                    <input type="text" name="coupon_code" class="form-control" id="form-control-2" placeholder="Coupon Code" data-error="Please enter Coupon Code" required>
+                    <input type="text" name="coupon_code" style="text-transform:uppercase" class="form-control" id="user_input" placeholder="Coupon Code" data-error="Please enter Coupon Code" onkeyup="checkUserAvailTest()" required>
+                    <span id="input_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
+                    <input type="hidden" id="table_name" value="services_coupons">
+                    <input type="hidden" id="column_name" value="coupon_code">
                   </div>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose Price Types</label>

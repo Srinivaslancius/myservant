@@ -29,12 +29,14 @@ if (!isset($_POST['submit']))  {
   if($price_after_visit_type_id == 2) {
     $service_min_price = $_POST['service_min_price'];
     $service_max_price = $_POST['service_max_price'];
+    $price_after_visit = "0";
   } else {
     $service_min_price = "0";
     $service_max_price = "0";
+    $price_after_visit = $_POST['price_after_visit'];
   }
 
- $sql = "INSERT INTO services_group_service_names (`services_category_id`, `services_sub_category_id`, `services_group_id`, `group_service_name`,`group_service_description`, `service_price_type_id`,  `service_price`,`price_after_visit_type_id`, `service_min_price`, `service_max_price`, `lkp_status_id`) VALUES ('$services_category_id', '$services_sub_category_id', '$services_group_id', '$group_service_name','$group_service_description', '$service_price_type_id','$service_price', '$price_after_visit_type_id', '$service_min_price', '$service_max_price', '$lkp_status_id')";
+ $sql = "INSERT INTO services_group_service_names (`services_category_id`, `services_sub_category_id`, `services_group_id`, `group_service_name`,`group_service_description`, `service_price_type_id`,  `service_price`,`price_after_visit_type_id`,`price_after_visiting`, `service_min_price`, `service_max_price`, `lkp_status_id`) VALUES ('$services_category_id', '$services_sub_category_id', '$services_group_id', '$group_service_name','$group_service_description', '$service_price_type_id','$service_price', '$price_after_visit_type_id', '$price_after_visit', '$service_min_price', '$service_max_price', '$lkp_status_id')";
   
     
     if($conn->query($sql) === TRUE){
@@ -124,6 +126,12 @@ if (!isset($_POST['submit']))  {
                       </div>
                     </div>
 
+                    <div class="form-group" id="price_after_visit1" >
+                      <label for="form-control-2" class="control-label">Price After Visiting</label>
+                      <input type="text" name="price_after_visit" class="form-control" id="price_after_visit" placeholder="Price After Visiting">
+                      <div class="help-block with-errors"></div>
+                    </div>
+
                     <div class="form-group" id="service_min_price" >
                       <label for="form-control-2" class="control-label">Service Min Price</label>
                       <input type="text" name="service_min_price" class="form-control valid_price_dec" id="min_price" placeholder="Service Min Price">
@@ -161,17 +169,18 @@ if (!isset($_POST['submit']))  {
 <!-- Script for display Price Type -->
 <script type="text/javascript">
 $(document).ready(function () { 
-    $('#service_price, #price_after_visit_type_id1, #service_min_price, #service_max_price').hide();
+    $('#service_price, #price_after_visit_type_id1, #service_min_price, #service_max_price,#price_after_visit1').hide();
     $('.service_price_type_id').on('click', function() {
 
       if($(this).val() == 1) {
         $('#service_price').show();
-        $('#price_after_visit_type_id1, #service_min_price, #service_max_price').hide();
+        $('#price_after_visit_type_id1, #service_min_price, #service_max_price,#price_after_visit1').hide();
         $('#min_price, #max_price').val("");
         $('.price_after_visit_type_id').prop('checked', false);
         $(".service_price").attr("required", "true");
         $(".price_after_visit_type_id").removeAttr('required');
         $("#min_price, #max_price").removeAttr('required');
+        $("#price_after_visit1").removeAttr('required');
       } else if($(this).val() == 2) {
         $('#service_price').hide();
         $('#service_price_txt').val("");
@@ -188,9 +197,14 @@ $(document).ready(function () {
     if($(this).val() == 2) {
       $('#service_min_price, #service_max_price').show();
       $("#min_price, #max_price").attr("required", "true");
+      $('#price_after_visit1').hide();
+      $('#price_after_visit').val('');
+      $("#price_after_visit1").removeAttr('required');
     } else if($(this).val() == 1) {
+      $('#price_after_visit1').show();
+      $("#price_after_visit").attr("required", "true");
       $('#service_min_price, #service_max_price').hide();
-      $('#service_min_price, #service_max_price').val('');
+      $('#min_price, #max_price').val('');
       $("#min_price, #max_price").removeAttr('required');
     }
 

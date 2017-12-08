@@ -214,7 +214,7 @@
 			                        ?>
 									<input type="hidden" name="service_price[]" value="<?php echo $getSerName['service_price']; ?>">
 									<?php } elseif($getSerName['price_after_visit_type_id'] == 1) { ?>
-									<input type="hidden" name="service_price[]" value="<?php echo "Price After our Visit"; ?>">
+									<input type="hidden" name="service_price[]" value="<?php echo $getSerName['price_after_visiting']; ?>">
 									<?php } else { ?>
 									<input type="hidden" name="service_price[]" value="<?php echo $getSerName['service_min_price']; ?> - <?php echo $getSerName['service_max_price']; ?>">
 									<?php } ?>
@@ -233,7 +233,7 @@
 									</div>
 									<?php } elseif($getSerName['price_after_visit_type_id'] == 1) { ?>
 									<div class="col second">
-										<?php echo "Price After our Visit"; ?>
+										<?php echo $getSerName['price_after_visiting']; ?>
 									</div>
 									<?php } else { ?>
 									<div class="col second">
@@ -282,7 +282,7 @@
 							<div class="coupon-code">
 								<div class="form-group">
 									<div class="field-group has-feedback has-clear">
-								      <input type="text" name="coupon_code" id="coupon_code" value="" placeholder="Coupon Code" class="form-control">
+								      <input type="text" name="coupon_code" style="text-transform:uppercase" id="coupon_code" value="" placeholder="Coupon Code" class="form-control">
 								      <span class="form-control-clear icon-cancel-1 form-control-feedback hidden"></span>
 								    </div>
 									<div class="field-group btn-field">

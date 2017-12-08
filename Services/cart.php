@@ -133,7 +133,7 @@
                          ?>
                             <td><?php echo $getSerName['service_price']; ?></td>
                         <?php } elseif($getSerName['price_after_visit_type_id'] == 1) { ?>
-                            <td><?php echo "Price After our Visit"; ?></td>
+                            <td><?php echo $getSerName['price_after_visiting']; ?></td>
                         <?php } else { ?>
                             <td><?php echo $getSerName['service_min_price']; ?> - <?php echo $getSerName['service_max_price']; ?></td>
                         <?php } ?>
