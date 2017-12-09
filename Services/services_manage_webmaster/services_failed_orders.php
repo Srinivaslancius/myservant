@@ -18,7 +18,6 @@ $getServiceFailedOrders1 = $conn->query($getServiceFailedOrders);
                     <th>Order Price</th>
                     <th>Order Status</th>
                     <th>Payment Status</th>
-                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -32,8 +31,7 @@ $getServiceFailedOrders1 = $conn->query($getServiceFailedOrders);
                     <td><?php echo $row['order_price'];?></td>
                    <td><?php if($row['lkp_order_status_id'] == 1) { echo "Pending" ;} elseif($row['lkp_order_status_id'] == 2) { echo "Completed" ;} else { echo "Cancelled" ;} ?></td>
                    <td><?php if($row['lkp_payment_status_id'] == 1) { echo "Success" ;} elseif($row['lkp_payment_status_id'] == 2) { echo "InProgress" ;} else { echo "Failed" ;} ?></td>
-                   <td><a href="assign_to.php?assign_id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>">Assign To</a></td>
-                  </tr>
+                   </tr>
                   <?php  $i++; } ?>
                 </tbody>
               </table>

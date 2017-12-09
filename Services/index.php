@@ -101,7 +101,7 @@
 		<!-- End layerslider -->
             <div class="container-fluid marg10 search_back">
                     <div class="row">
-					<marquee scrollamount="10" style="color:white;font-size:15px"><span><?php echo $getSliderTextData['description'];?></span>
+					<marquee scrollamount="10" style="color:white;font-size:15px"><span><?php echo strip_tags($getSliderTextData['description']);?></span>
 					</marquee> 
                 </div>
                 </div>
