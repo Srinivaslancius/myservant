@@ -54,9 +54,21 @@
 
 	<main>
 		<!-- Slider -->
-		<?php $cat_id = decryptPassword($_GET['key']); ?>
+		<?php if (isset($_POST['search'])) {
+			$cat_id = $_POST['id']; 
+			$getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id);
+			$getBanners1 = "SELECT * FROM `services_banners` WHERE lkp_status_id = 0 ANd service_category_id = $cat_id ORDER BY id DESC";
+			$getBanners = $conn->query($getBanners1);
+		} else {
+			$cat_id = decryptPassword($_GET['key']);
+			$getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id);
+			$getBanners1 = "SELECT * FROM `services_banners` WHERE lkp_status_id = 0 ANd service_category_id = $cat_id ORDER BY id DESC";
+			$getBanners = $conn->query($getBanners1);
+			$getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id);
+		} ?>
+
 		<div class="container-fluid page-title">
-			 <?php	$getBanners = getAllDataWhereWithActive('services_banners','service_category_id',$cat_id); 
+			 <?php 
 			 if($getBannersData = $getBanners->fetch_assoc()) { ?>
 				<div class="row">
 					<img src="<?php echo $base_url . 'uploads/services_banner_images/'.$getBannersData['banner'] ?>" class="img-responsive">
@@ -74,12 +86,6 @@
 				<h2>Our <span>Services</span> Sub Categories</h2>
 				
 			</div>
-			<?php if (isset($_POST['search'])) {
-				$cat_id = $_POST['id']; 
-				$getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id); 
-			} else {
-				$getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id);
-			} ?>
 
 			<div class="row">
                  <?php if($getSubCategoriesData->num_rows > 0) { 

@@ -30,7 +30,7 @@
                     <td><?php echo $row['mobile_number'];?></td>
                     <td><?php echo $row['created_at'];?></td>
                     <td><?php $getServiceProviderTypes = getAllDataWithStatus('service_provider_types','0'); while($getServiceProviderTypes1 = $getServiceProviderTypes->fetch_assoc()) { if($row['service_provider_type_id'] == $getServiceProviderTypes1['id']) { echo $getServiceProviderTypes1['service_provider_type']; } } ?></td>
-                    <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='service_provider_registration'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='service_provider_registration'>In Active</span>" ;} ?></td>
+                    <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active1 open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='service_provider_registration'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active1 open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='service_provider_registration'>In Active</span>" ;} ?></td>
                     <td> <a href="edit_service_provider_registration.php?registrationid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a> &nbsp; <a href="delete_service_provider_registration.php?registrationid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-delete zmdi-hc-fw" onclick="return confirm('Are you sure you want to delete?')"></i></a> &nbsp;<a href="#"><i class="zmdi zmdi-eye zmdi-hc-fw" data-toggle="modal" data-target="#<?php echo $row['id']; ?>" class=""></i></a></td>
                      <!-- Open Modal Box  here -->
                     <div id="<?php echo $row['id']; ?>" class="modal fade" tabindex="-1" role="dialog">
@@ -102,3 +102,26 @@
       </div>
    <?php include_once 'admin_includes/footer.php'; ?>
    <script src="js/tables-datatables.min.js"></script>
+   <script type="text/javascript">
+    $(".check_active1").click(function(){
+          var check_active_id = $(this).attr("data-incId");
+          var current_status = $(this).attr("data-status");
+          if(current_status == 0) {
+            send_status = 1;
+          } else {
+            send_status = 0;
+          }
+          $.ajax({
+            type:"post",
+            url:"mail_status.php",
+            data:"check_active_id="+check_active_id+"&send_status="+send_status+"&current_status="+current_status,
+            success:function(result){  
+              if(result ==1) {
+                //alert("Your Status Updated!");
+                //location.reload();
+                window.location = "?msg=success";
+              }
+            }
+          });
+        });
+   </script>

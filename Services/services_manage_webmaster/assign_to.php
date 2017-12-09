@@ -12,6 +12,7 @@ if (!isset($_POST['submit'])) {
   $lkp_order_status_id = $_POST['lkp_order_status_id'];
   $lkp_payment_status_id = $_POST['lkp_payment_status_id'];
   $order_total = $_POST['order_total'];
+  $delivery_date = date("Y-m-d h:i:s");;
 
   if($_POST['service_price_type_id'] == 1) {
     $order_total = $_POST['order_total'];
@@ -19,7 +20,7 @@ if (!isset($_POST['submit'])) {
     $order_total = $_POST['order_total']+$order_price;
   }
   
-  $sql = "UPDATE `services_orders` SET assign_service_provider_id = '$assign_service_provider_id',order_price = '$order_price',order_total = '$order_total',lkp_order_status_id='$lkp_order_status_id', lkp_payment_status_id='$lkp_payment_status_id' WHERE id = '$assign_id' AND sub_category_id = '$subcat_id'";
+  $sql = "UPDATE `services_orders` SET assign_service_provider_id = '$assign_service_provider_id',order_price = '$order_price',order_total = '$order_total',lkp_order_status_id='$lkp_order_status_id', lkp_payment_status_id='$lkp_payment_status_id', delivery_date ='$delivery_date' WHERE id = '$assign_id' AND sub_category_id = '$subcat_id'";
   if($conn->query($sql) === TRUE){
      echo "<script type='text/javascript'>window.location='services_orders.php?msg=success'</script>";
   } else {

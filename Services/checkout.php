@@ -213,9 +213,13 @@
 			                            $cartTotal1 += $getSerName['service_price']*$getCartItems['service_quantity'];
 			                        ?>
 									<input type="hidden" name="service_price[]" value="<?php echo $getSerName['service_price']; ?>">
-									<?php } elseif($getSerName['price_after_visit_type_id'] == 1) { ?>
+									<?php } elseif($getSerName['price_after_visit_type_id'] == 1) { 
+										$cartTotal1 = 0;
+									?>
 									<input type="hidden" name="service_price[]" value="<?php echo $getSerName['price_after_visiting']; ?>">
-									<?php } else { ?>
+									<?php } else { 
+										$cartTotal1 = 0;
+									?>
 									<input type="hidden" name="service_price[]" value="<?php echo $getSerName['service_min_price']; ?> - <?php echo $getSerName['service_max_price']; ?>">
 									<?php } ?>
                                 <input type="hidden" name="service_selected_date[]" value="<?php echo $getCartItems['service_selected_date']; ?>">
