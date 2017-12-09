@@ -110,7 +110,7 @@
                                         </div>
                                     </div>
                                     <?php $uid=$_SESSION['user_login_session_id'];
-                                      $orderDetails ="SELECT * FROM services_orders WHERE user_id = '$uid' GROUP BY order_id ORDER BY id DESC";
+                                      $orderDetails ="SELECT * FROM services_orders WHERE user_id = '$uid' ORDER BY id DESC";
                                       $orderDetails1 = $conn->query($orderDetails);
                                       while($orderData = $orderDetails1->fetch_assoc()) {
                                     ?>
@@ -125,7 +125,7 @@
                                             <p><?php echo $orderData['first_name'];?><br><?php echo $orderData['address'];?></p>
                                         </div>
                                         <div class="col-sm-4">
-                                            <p><?php echo $orderData['order_id'];?><br><a href="view_orders.php?order_id=<?php echo $orderData['order_id']?>" style="color:#f26226">Order details</a> &nbsp; <!-- <a href="javascript:void(0);">Invoice</a> --></p>
+                                            <p><?php echo $orderData['order_id'];?><br><a href="track_order_details.php?token=<?php echo $orderData['order_sub_id']?>" style="color:#f26226">Order details</a> &nbsp; <!-- <a href="javascript:void(0);">Invoice</a> --></p>
                                         </div>
                                     </div>
                                     <?php } ?>
