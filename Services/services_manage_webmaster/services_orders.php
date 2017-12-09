@@ -34,7 +34,13 @@ $getServiceOrders = $conn->query($getServiceOrders1); $i=1; ?>
                     <td><?php $orderStatus = getIndividualDetails('lkp_order_status','id',$row['lkp_order_status_id']); echo $orderStatus['order_status']; ?></td>                   
                    <td><?php $orderPaymentStatus = getIndividualDetails('lkp_payment_status','id',$row['lkp_payment_status_id']); echo $orderPaymentStatus['payment_status']; ?></td>
                    <td><?php echo $row['created_at'];?></td> 
+                   <?php if($row['assign_service_provider_id'] == '0') { ?>
                    <td><a href="assign_to.php?assign_id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>">Assign To</a></td>
+                   <?php } else { 
+                    $getServiceProviderNames = getAllDataWhere('service_provider_registration','id',$row['assign_service_provider_id']); $getServiceProviderData = $getServiceProviderNames->fetch_assoc();
+                    ?>
+                   <td><a href="assign_to.php?assign_id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>"><?php if($getServiceProviderData['id'] == $row['assign_service_provider_id']) { echo $getServiceProviderData['name']; } ?>(Assigned)</a></td>
+                   <?php } ?>
                    <td><a href="edit_services_orders.php?order_id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>"><i class="zmdi zmdi-edit"></i></a></td>
                   </tr>
                   <?php  $i++; } ?>
