@@ -234,7 +234,7 @@ html * {
 					</div>
 					
 					</div>
-				</div>
+				</div> 
 				<?php $serviceData = getAllDataWhereWithActive('services_group_service_names','id' ,$orderData['service_id']); error_reporting(1);
                                         $serviceDetails = $serviceData->fetch_assoc(); ?>
 				<div class="col-md-12 wow fadeIn" data-wow-delay="0.3s">
