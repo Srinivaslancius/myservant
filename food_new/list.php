@@ -1,33 +1,24 @@
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
-<html lang="en">
-
+<html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <?php include_once './meta_fav.php';?>
+    
+    <!-- GOOGLE WEB FONT -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,300,300italic' rel='stylesheet' type='text/css'>
 
-	<?php include_once 'meta.php';?>
+    <!-- BASE CSS -->
+    <link href="css/base.css" rel="stylesheet">
+    
+    <!-- Radio and check inputs -->
+    <link href="css/skins/square/grey.css" rel="stylesheet">
+    <link href="css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="css/ion.rangeSlider.skinFlat.css" rel="stylesheet" >
 
-	<!-- Favicons-->
-	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-	<link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
-	
-	<!-- Google web fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Lato:300,400|Montserrat:400,400i,700,700i" rel="stylesheet">
-
-	<!-- CSS -->
-	<link href="css/base.css" rel="stylesheet">
-
-	<!-- Radio and check inputs -->
-	<link href="css/skins/square/grey.css" rel="stylesheet">
-
-	<!--[if lt IE 9]>
+    <!--[if lt IE 9]>
       <script src="js/html5shiv.min.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
@@ -36,135 +27,215 @@
 
 <body>
 
-	<!--[if lte IE 8]>
+<!--[if lte IE 8]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
 <![endif]-->
 
-	
-	<!-- End Preload -->
+	<div id="preloader">
+        <div class="sk-spinner sk-spinner-wave" id="status">
+            <div class="sk-rect1"></div>
+            <div class="sk-rect2"></div>
+            <div class="sk-rect3"></div>
+            <div class="sk-rect4"></div>
+            <div class="sk-rect5"></div>
+        </div>
+    </div><!-- End Preload -->
 
-	<div class="layer"></div>
-	<!-- Mobile menu overlay mask -->
+    <!-- Header ================================================== -->
+    <header>
+        <?php include_once './header.php';?>
+    </header>
+    <!-- End Header =============================================== -->
 
-	<!-- Header================================================== -->
-	<header>
-		<?php include_once './top_header.php';?>
-		<!-- End top line-->
+<!-- SubHeader =============================================== -->
+<section class="parallax-window" id="short" data-parallax="scroll" data-image-src="img/sub_header_short.jpg" data-natural-width="1400" data-natural-height="350">
+    <div id="subheader">
+	<div id="sub_content">
+    	<h1>24 results in your zone</h1>
+        <div><i class="icon_pin"></i> 135 Newtownards Road, Belfast, BT4 1AB</div>
+    </div><!-- End sub_content -->
+</div><!-- End subheader -->
+</section><!-- End section -->
+<!-- End SubHeader ============================================ -->
 
-		<div class="container">
-                    <?php include_once './menu.php';?>
-		</div>
-		<!-- container -->
-                
-        </header>
-	<!-- End Header -->
+    <div id="position">
+        <div class="container">
+            <ul>
+                <li><a href="#0">Home</a></li>
+                <li><a href="#0">Category</a></li>
+                <li>Page active</li>
+            </ul>
+             
+        </div>
+    </div><!-- Position -->
+    
+    <div class="collapse" id="collapseMap">
+		<div id="map" class="map"></div>
+	</div><!-- End Map -->
 
-
-	<section class="parallax-window" data-parallax="scroll" data-image-src="img/home_bg_1.jpg" data-natural-width="1400" data-natural-height="470">
-		<div class="parallax-content-1">
-			<div class="animated fadeInDown">
-				<h1>Sample Heading</h1>
-				<p>Sample text will be replaced with original text</p>
-			</div>
-		</div>
-	</section>
-	<!-- End section -->
-
-	<main>
-		<div id="position">
-			<div class="container">
-				<ul>
-					<li><a href="#">Home</a>
-					</li>
-					<li><a href="#">Category</a>
-					</li>
-					<li>Page active</li>
-				</ul>
-			</div>
-		</div>
-		<!-- Position -->
-
-		<div class="container margin_60">
-			<div class="row">
-				
-				<!--End aside -->
-				<div class="col-lg-7 col-md-7" id="faq">
-					<h3 class="nomargin_top">Group Level</h3>
-
-					<div class="panel-group" id="payment">
-						<?php $catid = decryptPassword($_GET['key']); $subcatid = $_GET['subcatid']; 
-						$getGroups = getAllDataWhereWithTWoConditions('services_groups','services_category_id',$catid,'services_sub_category_id',$subcatid); while ($getGroupsData = $getGroups->fetch_assoc()) { ?>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#payment" href="#collapse_payment<?php echo $getGroupsData['id'];?>"><?php echo $getGroupsData['group_name'];?><i class="indicator pull-right <?php if($getGroupsData['id']==1) { echo "icon-minus"; } else { echo "icon-plus";  } ?>"></i></a>
-                      </h4>
-							</div>
-							<?php $services_group_id = $getGroupsData['id'];
-							$getServiceNames = getAllDataWhereWithThreeConditions('services_group_service_names','services_category_id',$catid,'services_sub_category_id',$subcatid,'services_group_id',$services_group_id); ?>
-							<div id="collapse_payment<?php echo $getGroupsData['id'];?>" class="panel-collapse collapse  <?php if($getGroupsData['id']==1) { echo "in"; } ?>">
-								<div class="panel-body">
-                                    <table class="table table-striped cart-list shopping-cart">
-                                        <thead>
-                                            <tr>
-                                                <th>Service</th>
-                                                <th>Price</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        	<?php while ($getServiceNamesData = $getServiceNames->fetch_assoc()) { ?>
-                                            <tr>
-                                                <td><?php echo $getServiceNamesData['group_service_name'];?></td>
-                                                <td><?php if($getServiceNamesData['service_price_type_id'] == 1) { echo $getServiceNamesData['service_price']; } elseif($getServiceNamesData['price_after_visit_type_id'] == 1) { echo "Price After our Visit"; } else { echo $getServiceNamesData['service_min_price'].'-'.$getServiceNamesData['service_max_price']; } ?></td>
-                                                <td><a href="" class="btn_full_outline wdth50">Add to Cart</a></td>
-                                            </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
-								</div>
-							</div>                         
+<!-- Content ================================================== -->
+<div class="container margin_60_35">
+	<div class="row">
+            <div class="col-md-3">
+                <?php include_once './filters.php';?>
+            </div>
+		
+        
+		<div class="col-md-9">
+        
+                    <div id="tools">
+				<div class="row">
+					<div class="col-md-3 col-sm-3 col-xs-6 pull-right">
+						<div class="styled-select">
+							<select name="sort_rating" id="sort_rating">
+								<option value="" selected>Sort by</option>
+								<option value="lower">Relevance</option>
+								<option value="higher">Delivery Time</option>
+                                                                <option value="higher">Delivery Time</option>
+                                                                <option value="higher">Restaurant Rating</option>
+                                                                <option value="higher">Budget</option>
+                                                        </select>
 						</div>
-						<?php } ?> 
 					</div>
-					<!-- End panel-group -->
-
-
+                                        
+                                    
 				</div>
-				<!-- End col lg-9 -->
-                                
-                                <div class="col-lg-5 col-md-5">
-                                    <?php include_once './left_sidebar_booking.php';?>
-                                </div>
-			</div>
-			<!-- End row -->
-		</div>
-		<!-- End container -->
-	</main>
-	<!-- End main -->
+			</div><!--End tools -->
+                        <?php for($i=0; $i<8; $i++) {?>
+                        <div class="col-md-6">
+                            <div class="strip_list wow fadeIn" data-wow-delay="0.1s">
+                                    <div class="ribbon_1">
+                                            Popular
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-md-8 col-sm-9">
+                                                    <div class="desc">
+                                                            <div class="thumb_strip">
+                                                                    <a href="#"><img src="img/thumb_restaurant.jpg" alt=""></a>
+                                                            </div>
+                                                            
+                                                            <h4>Taco Mexican</h4>
+                                                            <div class="type">
+                                                                    Mexican / American
+                                                            </div>
+                                                            
+                                                            
+                                                            <div class="rating">
+                                                                    <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i> (<small><a href="#0">98 reviews</a></small>)
+                                                            </div>
+                                                    </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-3">
+                                                    <div class="go_to">
+                                                            <div>
+                                                                <a href="menu.php" class="btn_1">View Menu</a>
+                                                            </div>
+                                                    </div>
+                                            </div>
+                                    </div><!-- End row-->
+                            </div><!-- End strip_list-->
+                        </div>
+                        <?php } ?>
+                        <div class="col-md-12">
+                            <a href="#0" class="load_more_bt wow fadeIn" data-wow-delay="0.2s">Load more...</a>  
+                        </div>
+		</div><!-- End col-md-9-->
+        
+	</div><!-- End row -->
+</div><!-- End container -->
+<!-- End Content =============================================== -->
 
-	<footer class="revealed">
+<!-- Footer ================================================== -->
+	<footer>
             <?php include_once 'footer.php';?>
-    </footer><!-- End footer -->
-	<!-- End footer -->
+        </footer>
+<!-- End Footer =============================================== -->
 
-	<div id="toTop"></div><!-- Back to top button -->
-	
-	<!-- Search Menu -->
+<div class="layer"></div><!-- Mobile menu overlay mask -->
+    
+<!-- Login modal -->   
+<div class="modal fade" id="login_2" tabindex="-1" role="dialog" aria-labelledby="myLogin" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<form action="#" class="popup-form" id="myLogin">
+                	<div class="login_icon"><i class="icon_lock_alt"></i></div>
+					<input type="text" class="form-control form-white" placeholder="Username">
+					<input type="text" class="form-control form-white" placeholder="Password">
+					<div class="text-left">
+						<a href="#">Forgot Password?</a>
+					</div>
+					<button type="submit" class="btn btn-submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div><!-- End modal -->   
+    
+<!-- Register modal -->   
+<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myRegister" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<form action="#" class="popup-form" id="myRegister">
+                	<div class="login_icon"><i class="icon_lock_alt"></i></div>
+					<input type="text" class="form-control form-white" placeholder="Name">
+					<input type="text" class="form-control form-white" placeholder="Last Name">
+                    <input type="email" class="form-control form-white" placeholder="Email">
+                    <input type="text" class="form-control form-white" placeholder="Password"  id="password1">
+                    <input type="text" class="form-control form-white" placeholder="Confirm password"  id="password2">
+                    <div id="pass-info" class="clearfix"></div>
+					<div class="checkbox-holder text-left">
+						<div class="checkbox">
+							<input type="checkbox" value="accept_2" id="check_2" name="check_2" />
+							<label for="check_2"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-submit">Register</button>
+				</form>
+			</div>
+		</div>
+	</div><!-- End Register modal -->
+    
+     <!-- Search Menu -->
 	<div class="search-overlay-menu">
-		<span class="search-overlay-close"><i class="icon_set_1_icon-77"></i></span>
+		<span class="search-overlay-close"><i class="icon_close"></i></span>
 		<form role="search" id="searchform" method="get">
 			<input value="" name="q" type="search" placeholder="Search..." />
-			<button type="submit"><i class="icon_set_1_icon-78"></i>
+			<button type="submit"><i class="icon-search-6"></i>
 			</button>
 		</form>
-	</div><!-- End Search Menu -->
+	</div>
+	<!-- End Search Menu -->
+    
+<!-- COMMON SCRIPTS -->
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/common_scripts_min.js"></script>
+<script src="js/functions.js"></script>
+<script src="assets/validate.js"></script>
 
-	<!-- Common scripts -->
-	<script src="/cdn-cgi/scripts/84a23a00/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
-	<script src="js/common_scripts_min.js"></script>
-	<script src="js/functions.js"></script>	
-
+<!-- SPECIFIC SCRIPTS -->
+<script  src="js/cat_nav_mobile.js"></script>
+<script>$('#cat_nav').mobileMenu();</script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAs_JyKE9YfYLSQujbyFToZwZy-wc09w7s"></script>
+<script src="js/map.js"></script>
+<script src="js/infobox.js"></script>
+<script src="js/ion.rangeSlider.js"></script>
+<script>
+    $(function () {
+		 'use strict';
+        $("#range").ionRangeSlider({
+            hide_min_max: true,
+            keyboard: true,
+            min: 0,
+            max: 15,
+            from: 0,
+            to:5,
+            type: 'double',
+            step: 1,
+            prefix: "Km ",
+            grid: true
+        });
+    });
+</script>
 </body>
-
 </html>

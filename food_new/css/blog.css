@@ -1,22 +1,14 @@
 .tags a {
 	display:inline-block;
 	margin:5px 14px 10px 0;
-	height:33px;
-	line-height:33px;
-	background: #ededed url(../img/tag_bg.png) no-repeat 91% center;
-	padding:0 28px 0 11px;
-	color:#555;	
-	-webkit-border-top-right-radius: 20px;
-	-webkit-border-bottom-right-radius: 20px;
-	-moz-border-radius-topright: 20px;
-	-moz-border-radius-bottomright: 20px;
-	border-top-right-radius: 20px;
-	border-bottom-right-radius: 20px;
-	transition: background .5s ease; 
+	padding:5px 10px;
+	color:#555;
+	border:2px solid #fff;
 }
 .tags a:hover {
-	background-color:#099ad1;
-	color:#fff;
+	background-color:#fff;
+	border:2px solid #fff;
+	color:#555;
 	text-decoration:none;
 }
 #cat_blog ul{
@@ -57,6 +49,12 @@ ul.recent_post li {
 	color:#888;
 	font-style:italic;
 }
+ul.recent_post li a{
+	color:#555;
+}
+ul.recent_post li a:hover{
+	color:#111;
+}
 ul.recent_post li div{
 	padding-left:25px;
 	font-style:normal
@@ -67,27 +65,36 @@ ul.recent_post li:last-child{
 	padding-bottom:0;
 }
 .post {
-	margin-bottom:45px;
+	margin-bottom:20px;
+	-webkit-box-shadow: 0px 3px 0px 0px #f0f2f4; 
+	-moz-box-shadow: 0px 3px 0px 0px #f0f2f4; 
+	box-shadow: 0px 3px 0px 0px #f0f2f4;
+	background-color:#fff;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding:20px;
 }
 .post h2{
 	font-size:22px;
 }
 .post img {
-	margin-bottom:18px;
+}
+.post p {
+	margin-bottom:20px;
 }
 
 .post_info {
-	padding:10px 0;
-	border-bottom:1px #ccc dashed;
-	border-top:1px #ccc dashed;
+	padding:10px;
+	background-color:#78cfcf;
 	margin-bottom:12px;
-	color:#999;
+	color:#fff;
 }
 .post_info a{
-	color:#999;
+	color: #fff;
 }
 .post_info a:hover{
-	color:#333;
+	text-decoration:underline;
 }
 .post_info span {
 	color:#ff6666;
@@ -99,8 +106,11 @@ ul.recent_post li:last-child{
 }
 .post-left ul li {
 	float:left;
-	margin-right:10px;
+	margin-right:15px;
 	list-style:none;
+}
+.post-left ul li i{
+	margin-right:4px;
 }
 .post-right {float:right;
 }
@@ -134,19 +144,106 @@ ul.recent_post li:last-child{
 }
 .comment_right {display:table;	}
 .comment_info {padding-bottom:7px;}
-.comment_info span {padding:0 12px;}
+.comment_info span {padding:0 10px;}
 #comments ol li ul li {
 	padding:23px 0 0 30px;
 	margin:0;
 }
+ul#cat_nav_blog{
+	list-style:none;
+	margin:0 0 0 0;
+	padding:0;
+	font-weight:500;
+}
+ul#cat_nav_blog li a{
+	background-color:#fff;
+	padding:10px 15px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	display:block;
+	margin-bottom:7px;
+	position:relative;
+	color:#555;
+}
+ul#cat_nav_blog li a:hover{
+	color:#ec008c;
+}
+ul#cat_nav_blog li:last-child a{
+	margin-bottom:0;
+}
+ul#cat_nav_blog li a:before{
+	position:relative;
+	font-style: normal;
+ 	font-weight: normal;
+ 	font-family: 'ElegantIcons';
+    position:absolute;
+	 font-size:20px;
+  	right:10px;
+  	top:5px;
+	content: "\35";
+}
+#custom-search-input-blog{
+    padding: 3px;
+    background-color: #fff;
+}
 
+#custom-search-input-blog input{
+    border: 0;
+	font-size:14px;
+    box-shadow: none;
+}
+
+#custom-search-input-blog button{
+    margin: 2px 0 0 0;
+    box-shadow: none;
+	background:none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ddd;
+	outline:none;
+}
+
+#custom-search-input-blog button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+	color:#ec008c;
+}
+
+#custom-search-input-blog .glyphicon-search{
+    font-size: 23px;
+}
+#sidebar hr{
+	margin:30px 0 20px 0;
+	 border-top: 1px solid #e2e2e2;
+	 border-bottom: 1px solid #fff;
+}
+
+.pager li > a,
+.pager li > span {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #fff;
+  border: none;
+  border-radius: 3px;
+}
+.pager li > a:hover,
+.pager li > a:focus {
+  text-decoration: none;
+  background-color: #eee;
+}
 /* From tablet portrait to mobile */
 @media (max-width: 767px)  {
-.post-right {float:none;}
+.post-left ul {
+	margin-bottom:0;
+	line-height:1.8;
+}
 .post-left ul li {
 	float:none;
 	margin-right:0;
-	margin-bottom:3px;
 }
+.pager { margin-bottom:30px;}
 
 }	

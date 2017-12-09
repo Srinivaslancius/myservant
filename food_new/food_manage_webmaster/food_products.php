@@ -118,7 +118,22 @@
                                     </div> 
                                     <?php } ?>                                                                      
                               </div>                               
-                          <div class="clearfix"></div>
+                          <div class="clearfix"></div></br>
+                          <?php $getAllIngredientTypes = getAllDataWhere('food_product_ingredient_prices','product_id',$row['id']);
+                           ?>
+                          <div class="div-table">
+                                    <div class="div-table-row">                                        
+                                        <div  class="div-table-col">Ingredient Type</div>
+                                        <div  class="div-table-col">Price</div>
+                                    </div>
+                                    <?php while ($getWeight1 = $getAllIngredientTypes->fetch_assoc()) { ?>
+                                    <div class="div-table-row">
+                                        <div class="div-table-col"><?php $getIngredientType = getAllDataWhere('food_ingredients','id',$getWeight1['ingredient_name_id']);
+                                          $getWeightTypes = $getIngredientType->fetch_assoc(); echo $getWeightTypes['ingredient_name']; ?></div>
+                                        <div class="div-table-col"><?php echo $getWeight1['ingredient_price']; ?></div>
+                                    </div> 
+                                    <?php } ?>                                                                      
+                            </div>
                         </div>
                         <div class="modal-footer">
                           <!--<button type="button" data-dismiss="modal" class="btn btn-success">Continue</button>-->

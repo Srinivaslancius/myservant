@@ -1,243 +1,285 @@
+
 <!DOCTYPE html>
-<!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
-<html lang="en">
+<html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<?php include_once 'meta.php';?>	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <?php include_once './meta_fav.php';?>
+    <!-- GOOGLE WEB FONT -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,300,300italic' rel='stylesheet' type='text/css'>
 
-	<!-- Favicons-->
-	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-	<link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
-	
-	<!-- Google web fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Lato:300,400|Montserrat:400,400i,700,700i" rel="stylesheet">
+    <!-- BASE CSS -->
+    <link href="css/base.css" rel="stylesheet">
 
-	<!-- BASE CSS -->
-	<link href="css/base.css" rel="stylesheet">
-        <link href="site_launch/css/style.css" rel="stylesheet">
+		
+    
+    <!-- SPECIFIC CSS -->
+    <link href="layerslider/css/layerslider.css" rel="stylesheet">
 
-	<!-- REVOLUTION SLIDER CSS -->
-	<link href="layerslider/css/layerslider.css" rel="stylesheet">
-	<!-- For brands slider -->
-	<script src="../cdn-cgi/scripts/78d64697/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-2.2.4.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
 
 </head>
+  
 
-<body>
 
-	<!--[if lte IE 8]>
-    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
-<![endif]-->
-
-	
-
-	<div class="layer"></div>
-	<!-- Mobile menu overlay mask -->
-
-	<!-- Header================================================== -->
-	<header>
-		<?php include_once './top_header.php';?>
-		<!-- End top line-->
-
-		<div class="container">
-                    <?php include_once './menu.php';?>
-		</div>
-		<!-- container -->
-                
-        </header>
-	<!-- End Header -->
-
-	<main>
-		<!-- Slider -->
-		<div id="full-slider-wrapper">
-                    <?php include_once './slider.php';?>
-		</div>
-		<!-- End layerslider -->
-                <div class="container-fluid marg10 search_back">
-                    <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
-			<div id="newsletter_wp" >
-                            <form method="post" action="sub_categories.php" id="newsletter" name="newsletter"  autocomplete="off">
-							<div class="row">
-                                                            
-                            	<div class="col-md-12 first-nogutter">
-                                    <div class="col-md-3 padd0">
-                                        
-								<div class="form-group">
-									<?php $getCategoriesData = getAllDataWithActiveRecent('services_category'); ?>
-									<select name="id" class="form-control">
-										<?php while($row = $getCategoriesData->fetch_assoc()) {  ?>
-				                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['category_name']; ?></option>
-				                       <?php } ?>
-									</select>
-								</div>
-							
-                                    </div>
-                                    <div class="col-md-7 padd0">
-                                	<input name="category_name" id="category_name" type="text" placeholder="Search your related service" class="form-control">
-                                    </div>
-                                    <div class="col-md-2 padd0">
-                                	<button type="submit" name="search" class="btn-check" id="submit-newsletter">Search</button>
-                                </div>
-                                </div>
-                             </div>                            	
-                            </form>
-                     <div id="message-newsletter"></div>
-                         
-                        </div><!-- End newsletter_wp -->	
-                    </div><!-- End row -->
-                    <div class="col-md-2"></div>
-                </div>
-                </div>
-		<div class="container margin_60">
-
-			<div class="main_title">
-				<h2>Our <span>Services</span> Categories</h2>
-				
-			</div>
-			<?php $getCategoriesData = getAllDataWithStatusLimit('services_category',0,0,12); ?>
-			<div class="row">
-                 <?php  while($getAllCategoriesData = $getCategoriesData->fetch_assoc()) { ?> 
-				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-					<div class="tour_container">
-						<div class="ribbon_3 popular"><!-- <span>Popular</span> --></div>
-						<div class="img_container padd15">
-                           <a href="sub_categories.php?key=<?php echo encryptPassword($getAllCategoriesData['id']); ?>">
-                           <img src="<?php echo $base_url . 'uploads/services_category_images/'.$getAllCategoriesData['category_image'] ?>" class="img-responsive" alt="<?php echo $getAllCategoriesData['category_name']; ?>" style="width:64px; height:64px;">
-						</div>
-						<div class="tour_title">
-							<h3><?php echo $getAllCategoriesData['category_name']; ?></h3>
-						</div>
-						</a>
-					</div>
-					<!-- End box tour -->
-				</div>
-                  <?php } ?>  
-			</div>
-			<!-- End row -->
-			<p class="text-center add_bottom_30">
-				<a href="services.php" class="btn_1 medium"><i class="icon-eye-7"></i>View all our Services</a>
-			</p>
-
-			<hr>
-
-			
-
-      <div class="main_title">
-        <h2>Our <span>Associate</span> Partners</h2>
-        
-      </div>
-
-      <div class="row">
-        <?php $getServiceProvider =  getServicesProviderDataLimit(0,6); ?>
-                <?php  while($getAllgetServiceProvider = $getServiceProvider->fetch_assoc()) { ?>
-        <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
-          <div class="feature">
-          <div class="row">
-          <div class="col-sm-2">
-            <center><img src="<?php echo $base_url . 'uploads/service_provider_business_logo/'.$getAllgetServiceProvider['logo'] ?>" class="img-responsive" alt="<?php echo $getAllgetServiceProvider['company_name']; ?>" style="width:65px; height:65px;"></center>
-            </div>
-            <div class="col-sm-10">
-            <h3><?php echo $getAllgetServiceProvider['company_name']; ?></h3>
-            <p>
-              <?php echo substr(strip_tags($getAllgetServiceProvider['description']), 0,200);?>
-            </p>
-          </div>
-          </div>
-          
-          </div>
+    <!--[if lte IE 8]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
+    <![endif]-->
+    
+    <div id="preloader">
+        <div class="sk-spinner sk-spinner-wave" id="status">
+            <div class="sk-rect1"></div>
+            <div class="sk-rect2"></div>
+            <div class="sk-rect3"></div>
+            <div class="sk-rect4"></div>
+            <div class="sk-rect5"></div>
         </div>
-                <?php } ?>
-      </div>
-			<!-- End row -->
-			<!-- End row -->
-			<p class="text-center nopadding">
-				<a href="partners.php" class="btn_1 medium"><i class="icon-eye-7"></i>View all</a>
-			</p>
-		</div>
-		<!-- End container -->
+    </div><!-- End Preload -->
+    
+    <!-- Header ================================================== -->
+    
+    <header>
+        <?php include_once './header.php';?>
+    </header>
+	<!-- End Header =============================================== -->
+    
+    <!-- SubHeader =============================================== -->
+    <div id="full-slider-wrapper">
+    <div id="layerslider" style="width:100%;height:600px;">
+        <!-- first slide -->
+        <div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
+            <img src="img/slides/slide_1.jpg" class="ls-bg" alt="Slide background">
+        	<h3 class="ls-l slide_typo" style="top: 44%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;" ><strong>Enjoy</strong> a quick friends dinner</h3>
+            <p class="ls-l slide_typo_2" style="top:52%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;" >Order Quality Takeaway or Delivery Food online</p>
+            <p class="ls-l" style="top:64%; left:50%;" data-ls="durationin:2000;delayin:1300;easingin:easeOutElastic;" ><a href="list_page.php" class="button_intro">Search</a> <a href="#0" class="button_intro outline">Read more</a></p>
+       </div>
+       
+        <!-- second slide -->
+    <div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
+            <img  src="img/slides/slide_4.jpg" class="ls-bg" alt="Slide background">
+        	<h3 class="ls-l slide_typo" style="top: 44%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;" >Quick &amp; <strong>affordable</strong> quick food</h3>
+            <p class="ls-l slide_typo_2" style="top:52%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;" >Order Quality Takeaway or Delivery Food online</p>
+            <p class="ls-l" style="top:64%; left:50%;" data-ls="durationin:2000;delayin:1300;easingin:easeOutElastic;" ><a href="list_page.php" class="button_intro">Search</a> <a href="#0" class="button_intro outline">Read more</a></p>
+    </div>
+    
+     <!-- third slide -->
+     <div class="ls-slide" data-ls="slidedelay:5000; transition2d:5;" >
+             <img src="img/slides/slide_2.jpg" class="ls-bg" alt="Slide background">
+        	<h3 class="ls-l slide_typo" style="top: 44%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;" ><strong>Great</strong> Food Quality &amp; Variety</h3>
+            <p class="ls-l slide_typo_2" style="top:52%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;" >Order Quality Takeaway or Delivery Food online</p>
+            <p class="ls-l" style="top:64%; left:50%;" data-ls="durationin:2000;delayin:1300;easingin:easeOutElastic;" ><a href="list_page.php" class="button_intro">Search</a> <a href="#0" class="button_intro outline">Read more</a></p>
+    </div>
+      
+    <!-- fourth slide -->
+    <div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
+        <img src="img/slides/slide_3.jpg" class="ls-bg" alt="Slide background">
+        	<h3 class="ls-l slide_typo" style="top: 44%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;" >Stop your <strong>hunger</strong> quickly</h3>
+            <p class="ls-l slide_typo_2" style="top:52%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;" >Order Quality Takeaway or Delivery Food online</p>
+            <p class="ls-l" style="top:64%; left:50%;" data-ls="durationin:2000;delayin:1300;easingin:easeOutElastic;"><a href="list_page.php" class="button_intro">Search</a> <a href="#0" class="button_intro outline">Read more</a></p>
+    </div>
+ <div id="count" class="hidden-xs">
+        <ul>
+            <li><span class="number">2650</span> Restaurant</li>
+            <li><span class="number">5350</span> People Served</li>
+            <li><span class="number">12350</span> Registered Users</li>
+        </ul>
+    </div>
+    </div>
+    
+    </div><!-- End layerslider -->
+    
+    
+    <!-- Content ================================================== -->
+         <div class="container margin_10">
+        
+         <div class="main_title">
+            <h2 class="nomargin_top" style="padding-top:0">How it works</h2>
+            <p>
+                Cum doctus civibus efficiantur in imperdiet deterruisset.
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="box_home" id="one">
+                    <span>1</span>
+                    <h3>Search by address</h3>
+                    <p>
+                        Find all restaurants available in your zone.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box_home" id="two">
+                    <span>2</span>
+                    <h3>Choose a restaurant</h3>
+                    <p>
+                        We have more than 1000s of menus online.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box_home" id="three">
+                    <span>3</span>
+                    <h3>Pay by card or cash</h3>
+                    <p>
+                        It's quick, easy and totally secure.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box_home" id="four">
+                    <span>4</span>
+                    <h3>Delivery or takeaway</h3>
+                    <p>
+                        You are lazy? Are you backing home?
+                    </p>
+                </div>
+            </div>
+        </div><!-- End row -->
+        
+        
+        </div><!-- End container -->
+            
+    <div class="white_bg">
+    <div class="container margin_60">
+        
+        <div class="main_title">
+            <h2 class="nomargin_top">Choose from Most Popular</h2>
+            <p>
+                Cum doctus civibus efficiantur in imperdiet deterruisset.
+            </p>
+        </div>
+        
+        <div class="row">
+            <?php for($i=0; $i<6; $i++) {?>
+            <div class="col-md-6">
+               
+                <a href="menu.php" class="strip_list">
+                    <div class="ribbon_1">Popular</div>
+                    <div class="desc">
+                        <div class="thumb_strip">
+                            <img src="img/thumb_restaurant.jpg" alt="">
+                        </div>
+                        <div class="rating">
+                            <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
+                        </div>
+                        <h3>Taco Mexican</h3>
+                        <div class="type">
+                            Mexican / American
+                        </div>
+                        <div class="location">
+                            135 Newtownards Road, Belfast, BT4. <span class="opening">Opens at 17:00</span>
+                        </div>
+                        <ul>
+                            <li>Take away<i class="icon_check_alt2 ok"></i></li>
+                            <li>Delivery<i class="icon_check_alt2 ok"></i></li>
+                        </ul>
+                    </div><!-- End desc-->
+                </a><!-- End strip_list-->
+              
+            </div><!-- End col-md-6-->
+             <?php } ?>
+        </div><!-- End row -->   
+        
+        </div><!-- End container -->
+        </div><!-- End white_bg -->
+        
+       <div class="high_light">
+      	<div class="container">
+      		<h3>Choose from over 2,000 Restaurants</h3>
+            <p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p>
+            <a href="list_page.html">View all Restaurants</a>
+        </div><!-- End container -->
+      </div><!-- End hight_light -->
+            
+    
+    <!-- End Content =============================================== -->
+	
+	
+    
+    <!-- Footer ================================================== -->
+    <footer>
+        <?php include_once 'footer.php';?>
+    </footer>
+    <!-- End Footer =============================================== -->
 
-		<?php include_once 'our_associate_partners.php';?>
+<div class="layer"></div><!-- Mobile menu overlay mask -->
 
-		<!-- Brnds Start here -->
-		<div class="container margin_0">
-			<div class="main_title">
-				<h2>Our <span>Brands</span></h2>				
+<!-- Login modal -->   
+<div class="modal fade" id="login_2" tabindex="-1" role="dialog" aria-labelledby="myLogin" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<form action="#" class="popup-form" id="myLogin">
+                	<div class="login_icon"><i class="icon_lock_alt"></i></div>
+					<input type="text" class="form-control form-white" placeholder="Username">
+					<input type="text" class="form-control form-white" placeholder="Password">
+					<div class="text-left">
+						<a href="#">Forgot Password?</a>
+					</div>
+					<button type="submit" class="btn btn-submit">Submit</button>
+				</form>
 			</div>
-			  <?php include_once 'brands.php';?>
-		</div><br><br>
-		<!-- End Brnds here -->
+		</div>
+	</div><!-- End modal -->   
+    
+<!-- Register modal -->   
+<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myRegister" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<form action="#" class="popup-form" id="myRegister">
+                	<div class="login_icon"><i class="icon_lock_alt"></i></div>
+					<input type="text" class="form-control form-white" placeholder="Name">
+					<input type="text" class="form-control form-white" placeholder="Last Name">
+                    <input type="email" class="form-control form-white" placeholder="Email">
+                    <input type="text" class="form-control form-white" placeholder="Password"  id="password1">
+                    <input type="text" class="form-control form-white" placeholder="Confirm password"  id="password2">
+                    <div id="pass-info" class="clearfix"></div>
+					<div class="checkbox-holder text-left">
+						<div class="checkbox">
+							<input type="checkbox" value="accept_2" id="check_2" name="check_2" />
+							<label for="check_2"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-submit">Register</button>
+				</form>
+			</div>
+		</div>
+	</div><!-- End Register modal -->
+    
+<!-- COMMON SCRIPTS -->
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/common_scripts_min.js"></script>
+<script src="js/functions.js"></script>
+<script src="assets/validate.js"></script>
 
-	</main>
-	<!-- End main -->
 
-	<footer class="revealed">
-            <?php include_once 'footer.php';?>
-    </footer><!-- End footer -->
-
-	<div id="toTop"></div><!-- Back to top button -->
-	
-	<!-- Search Menu -->
-	
-	<!-- Common scripts -->
-	
-	<script src="js/common_scripts_min.js"></script>
-	<script src="js/functions.js"></script>
-
-	<!-- Specific scripts -->
-	<script src="layerslider/js/greensock.js"></script>
-	<script src="layerslider/js/layerslider.transitions.js"></script>
-	<script src="layerslider/js/layerslider.kreaturamedia.jquery.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			'use strict';
-			$('#layerslider').layerSlider({
-				autoStart: true,
-				responsive: true,
-				responsiveUnder: 1280,
-				layersContainer: 1170,
-				skinsPath: 'layerslider/skins/'
-					// Please make sure that you didn't forget to add a comma to the line endings
-					// except the last line!
-			});
-		});
-	</script>
-	<script>
-(function(){
-  // setup your carousels as you normally would using JS
-  // or via data attributes according to the documentation
-  // https://getbootstrap.com/javascript/#carousel
-  $('#carousel123').carousel({ interval: 2000 });
-  $('#carouselABC').carousel({ interval: 3600 });
-}());
-
-(function(){
-  $('.carousel-showmanymoveone .item').each(function(){
-    var itemToClone = $(this);
-
-    for (var i=1;i<6;i++) {
-      itemToClone = itemToClone.next();
-
-      // wrap around if at end of item collection
-      if (!itemToClone.length) {
-        itemToClone = $(this).siblings(':first');
-      }
-
-      // grab item, clone, add marker class, add to collection
-      itemToClone.children(':first-child').clone()
-        .addClass("cloneditem-"+(i))
-        .appendTo($(this));
-    }
-  });
-}());
+<!-- SPECIFIC SCRIPTS -->
+<script src="layerslider/js/greensock.js"></script>
+<script src="layerslider/js/layerslider.transitions.js"></script>
+<script src="layerslider/js/layerslider.kreaturamedia.jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+		'use strict';
+        $('#layerslider').layerSlider({
+            autoStart: true,
+			responsive: true,
+			responsiveUnder: 1280,
+			layersContainer: 1170,
+			navButtons:false,
+			showCircleTimer:false,
+			navStartStop:false,
+            skinsPath: 'layerslider/skins/'
+            // Please make sure that you didn't forget to add a comma to the line endings
+            // except the last line!
+        });
+    });
 </script>
 
-</body>
 
 </html>
