@@ -156,13 +156,28 @@
                 
               </ul>
             </li>
-            <li  class="<?php if($page_name == 'services_orders.php' || $page_name == 'edit_services_orders.php' ) { echo "active"; } ?>">
+            <!-- <li  class="<?php if($page_name == 'services_orders.php' || $page_name == 'edit_services_orders.php' ) { echo "active"; } ?>">
               <a href="services_orders.php" aria-haspopup="true">
                 <span class="menu-icon">
                    <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
                 </span>
                 <span class="menu-text">Orders</span>
               </a>
+            </li> -->
+            <li class="with-sub">
+              <a href="#" aria-haspopup="true">
+                <span class="menu-icon">
+                  <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Orders</span>
+              </a>
+              <ul class="sidebar-submenu collapse">
+                <li class="menu-subtitle">Orders</li>
+                <li  class="<?php if($page_name == 'services_orders.php' || $page_name == 'edit_services_orders.php' ) { echo "active"; } ?>"><a href="services_orders.php">Orders</a>
+                </li> 
+                <li  class="<?php if($page_name == 'services_failed_orders.php' || $page_name == 'edit_services_failed_orders.php' ) { echo "active"; } ?>"><a href="services_failed_orders.php">Failed Orders</a>
+                </li> 
+              </ul>
             </li>
             <li  class="<?php if($page_name == 'services_faqs.php' || $page_name == 'add_services_faqs.php' || $page_name == 'edit_services_faqs.php' ) { echo "active"; } ?>">
               <a href="services_faqs.php" aria-haspopup="true">
