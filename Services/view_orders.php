@@ -81,13 +81,14 @@
                         <div class="col-sm-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <?php $order_id = $_GET['order_id'];
-                                      $orderDetails ="SELECT * FROM services_orders WHERE order_id ='$order_id' ORDER BY id DESC";
+                                    <?php $order_sub_id = $_GET['token'];
+                                      $user_id = $_SESSION['user_login_session_id'];
+                                      $orderDetails ="SELECT * FROM services_orders WHERE order_sub_id ='$order_sub_id' AND user_id= '$user_id' ORDER BY id DESC";
                                       $orderDetails1 = $conn->query($orderDetails);
                                       $orderData = $orderDetails1->fetch_assoc();
                                     ?>
                                     <div>
-                                        <p style="font-size:13px;">Order Id:<span style="font-size:15px;">  <?php echo $orderData['order_id'];?></span><br>Address:<span style="font-size:15px;">  <?php echo $orderData['address'];?></span><br>Email: <span style="font-size:15px;">  <?php echo $orderData['email'];?></span></p>
+                                        <p style="font-size:13px;">Order Id:<span style="font-size:15px;">  <?php echo $orderData['order_sub_id'];?></span><br>Address:<span style="font-size:15px;">  <?php echo $orderData['address'];?></span><br>Email: <span style="font-size:15px;">  <?php echo $orderData['email'];?></span></p>
                                     </div>
                                 </div>
                                 <div class="panel-body">
@@ -104,8 +105,8 @@
                                     </div>
                                     <div class="row">
                                         <?php
-                                        $order_id = $_GET['order_id'];
-                                        $orderDetails1 ="SELECT * FROM services_orders WHERE order_id ='$order_id'";
+                                        $order_sub_id = $_GET['token'];
+                                        $orderDetails1 ="SELECT * FROM services_orders WHERE order_sub_id ='$order_sub_id' AND user_id= '$user_id' ";
                                         $orderDetails2 = $conn->query($orderDetails1);
                                         
                                         while ($orderData1 = $orderDetails2->fetch_assoc()) {
