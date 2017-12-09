@@ -5,13 +5,14 @@
               echo "fail";
           } else  { 
       $restaurant_name = $_POST['restaurant_name'];
+      $opens_at = $_POST['opens_at'];
       $lkp_state_id = $_POST['lkp_state_id'];
       $lkp_city_id = $_POST['lkp_city_id'];
       $lkp_district_id = $_POST['lkp_district_id'];
       $lkp_location_id = $_POST['lkp_location_id'];
       $lkp_pincode_id = $_POST['lkp_pincode_id'];
       $description = $_POST['description'];
-      $delivery_type = $_POST['delivery_type'];
+      $delivery_type_id = implode(',',$_POST["delivery_type_id"]);
       $meta_title = $_POST['meta_title'];
       $meta_keywords = $_POST['meta_keywords'];
       $meta_desc = $_POST['meta_desc'];
@@ -24,7 +25,7 @@
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            $sql = "INSERT INTO food_restaurants (`restaurant_name`,`lkp_state_id`, `lkp_city_id`, `lkp_district_id`,`lkp_location_id`,`lkp_pincode_id`,`image`, `description`, `delivery_type`,`meta_title`,`meta_keywords`,`meta_desc`, `lkp_status_id`) VALUES ('$restaurant_name','$lkp_state_id','$lkp_city_id','$lkp_district_id','$lkp_location_id','$lkp_pincode_id','$fileToUpload','$description','$delivery_type','$meta_title','$meta_keywords','$meta_desc','$lkp_status_id')";
+            $sql = "INSERT INTO food_restaurants (`restaurant_name`,`opens_at`,`lkp_state_id`, `lkp_city_id`, `lkp_district_id`,`lkp_location_id`,`lkp_pincode_id`,`image`, `description`, `delivery_type_id`,`meta_title`,`meta_keywords`,`meta_desc`, `lkp_status_id`) VALUES ('$restaurant_name','$opens_at','$lkp_state_id','$lkp_city_id','$lkp_district_id','$lkp_location_id','$lkp_pincode_id','$fileToUpload','$description','$delivery_type_id','$meta_title','$meta_keywords','$meta_desc','$lkp_status_id')";
             if($conn->query($sql) === TRUE){
                echo "<script type='text/javascript'>window.location='food_restaurants.php?msg=success'</script>";
             } else {
@@ -94,6 +95,11 @@
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
+                    <label for="form-control-2" class="control-label">Opens At</label>
+                    <input type="text" name="opens_at" class="form-control" id="form-control-2" placeholder="Restaurant Opens At" data-error="Please enter opening time" required>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
                     <label for="form-control-4" class="control-label">Image</label>
                     <img id="output" height="100" width="100"/>
                     <label class="btn btn-default file-upload-btn">
@@ -108,7 +114,7 @@
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Meta Title</label>
-                    <input type="text" name="meta_title" class="form-control" id="form-control-2" placeholder="Restaurant Name" data-error="Please enter restaurant name" required>
+                    <input type="text" name="meta_title" class="form-control" id="form-control-2" placeholder="Meta Title" data-error="Please enter meta title" required>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
@@ -121,15 +127,17 @@
                     <textarea name="meta_desc" class="form-control" id="meta_desc" placeholder="Description" data-error="This field is required." required></textarea>
                     <div class="help-block with-errors"></div>
                   </div>
-                  <div class="form-group">
-                      <!--- //if associate value = 0 (Yes) & if associate value = 1 (No) -->
-                        <h4>Delivery Type</h4>
-                        <label>
-                          <input type="checkbox"  value="1" name="delivery_type" />&nbsp;Take away</label>&nbsp;&nbsp;
-                        <label>
-                          <input type="checkbox"  value="2" name="delivery_type"/>&nbsp;Delivery</label>
-                        <label>
-                   </div>
+                  <?php $getDeliveryTypes = getAllDataWithStatus('food_product_delivery_type','0');?>
+                   <div class="form-group">
+                    <label for="form-control-3" class="control-label">Choose your Delivery Type</label>
+                    <select name="delivery_type_id[]" class="custom-select" multiple="multiple" data-error="This field is required." required>
+                      <option value="">Select Delivery Type</option>
+                      <?php while($row = $getDeliveryTypes->fetch_assoc()) {  ?>
+                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['delivery_type']; ?></option>
+                      <?php } ?>
+                   </select>
+                    <div class="help-block with-errors"></div>
+                  </div>
                   <?php $getStatus = getAllData('lkp_status');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your status</label>
@@ -150,20 +158,3 @@
         </div>
       </div>
 <?php include_once 'admin_includes/footer.php'; ?>
-<script type="text/javascript">
-    $("input:checkbox").on('click', function() {
-  // in the handler, 'this' refers to the box clicked on
-  var $box = $(this);
-  if ($box.is(":checked")) {
-    // the name of the box is retrieved using the .attr() method
-    // as it is assumed and expected to be immutable
-    var group = "input:checkbox[name='" + $box.attr("name") + "']";
-    // the checked state of the group/box on the other hand will change
-    // and the current value is retrieved using .prop() method
-    $(group).prop("checked", false);
-    $box.prop("checked", true);
-  } else {
-    $box.prop("checked", false);
-  }
-});
-</script>

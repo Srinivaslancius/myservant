@@ -136,6 +136,7 @@ p {
     margin: 0 0 20px;
     text-align: justify;
     font-family: Roboto,Helvetica,Arial,sans-serif;
+    line-height: 25px;
 }
 
 .nopadding {
@@ -410,7 +411,7 @@ header.sticky #logo .logo_sticky {
     width: 160px;
     height: 34px;
     display: block;
-    /*background-image: url(../img/logo.png);*/
+    background-image: url(../img/logo.png);
     background-repeat: no-repeat;
     background-position: left top;
     background-size: 160px 34px;
@@ -2937,7 +2938,7 @@ ul.list_order li span {
 
 .tour_container .tour_title h3 {
     margin: 0;
-    font-size: 14px;
+    font-size: 13px;
     /* text-transform: uppercase; */
     color: #666666;
 }
@@ -4929,7 +4930,8 @@ ul.slides-container li img{
         color:black;
          text-align: justify;
          width: 250px;
-         word-spacing:0.1px !important;
+         padding: 9px 7px !important;
+         /*! word-spacing:0.1px !important; */
     }
     .popover-footer{
         padding: 6px 14px;

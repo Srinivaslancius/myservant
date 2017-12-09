@@ -7,13 +7,14 @@ if (!isset($_POST['submit'])) {
     } else {
     //If success            
       $restaurant_name = $_POST['restaurant_name'];
+      $opens_at = $_POST['opens_at'];
       $lkp_state_id = $_POST['lkp_state_id'];
       $lkp_city_id = $_POST['lkp_city_id'];
       $lkp_district_id = $_POST['lkp_district_id'];
       $lkp_location_id = $_POST['lkp_location_id'];
       $lkp_pincode_id = $_POST['lkp_pincode_id'];
       $description = $_POST['description'];
-      $delivery_type = $_POST['delivery_type'];
+      $delivery_type_id = implode(',',$_POST["delivery_type_id"]);
       $meta_title = $_POST['meta_title'];
       $meta_keywords = $_POST['meta_keywords'];
       $meta_desc = $_POST['meta_desc'];
@@ -29,7 +30,7 @@ if (!isset($_POST['submit'])) {
               $getImgUnlink = getImageUnlink('image','food_restaurants','id',$id,$target_dir);
                 //Send parameters for img val,tablename,clause,id,imgpath for image ubnlink from folder
               if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    $sql = "UPDATE `food_restaurants` SET restaurant_name = '$restaurant_name',lkp_state_id = '$lkp_state_id',lkp_city_id = '$lkp_city_id',lkp_district_id = '$lkp_district_id',lkp_location_id = '$lkp_location_id',lkp_pincode_id = '$lkp_pincode_id',description = '$description',delivery_type = '$delivery_type', image = '$fileToUpload', meta_title = '$meta_title', meta_keywords = '$meta_keywords', meta_desc = '$meta_desc', lkp_status_id = '$lkp_status_id' WHERE id = '$id' ";
+                    $sql = "UPDATE `food_restaurants` SET restaurant_name = '$restaurant_name',opens_at = '$opens_at',lkp_state_id = '$lkp_state_id',lkp_city_id = '$lkp_city_id',lkp_district_id = '$lkp_district_id',lkp_location_id = '$lkp_location_id',lkp_pincode_id = '$lkp_pincode_id',description = '$description',delivery_type_id = '$delivery_type_id', image = '$fileToUpload', meta_title = '$meta_title', meta_keywords = '$meta_keywords', meta_desc = '$meta_desc', lkp_status_id = '$lkp_status_id' WHERE id = '$id' ";
                     if($conn->query($sql) === TRUE){
                        echo "<script type='text/javascript'>window.location='food_restaurants.php?msg=success'</script>";
                     } else {
@@ -41,7 +42,7 @@ if (!isset($_POST['submit'])) {
                 }
       } else {
 
-          $sql = "UPDATE `food_restaurants` SET restaurant_name = '$restaurant_name',lkp_state_id = '$lkp_state_id',lkp_city_id = '$lkp_city_id',lkp_district_id = '$lkp_district_id',lkp_location_id = '$lkp_location_id',lkp_pincode_id = '$lkp_pincode_id', description = '$description',delivery_type = '$delivery_type', meta_title = '$meta_title', meta_keywords = '$meta_keywords', meta_desc = '$meta_desc', lkp_status_id = '$lkp_status_id' WHERE id = '$id' ";
+          $sql = "UPDATE `food_restaurants` SET restaurant_name = '$restaurant_name',opens_at = '$opens_at',lkp_state_id = '$lkp_state_id',lkp_city_id = '$lkp_city_id',lkp_district_id = '$lkp_district_id',lkp_location_id = '$lkp_location_id',lkp_pincode_id = '$lkp_pincode_id', description = '$description',delivery_type_id = '$delivery_type_id', meta_title = '$meta_title', meta_keywords = '$meta_keywords', meta_desc = '$meta_desc', lkp_status_id = '$lkp_status_id' WHERE id = '$id' ";
           if($conn->query($sql) === TRUE){
              echo "<script type='text/javascript'>window.location='food_restaurants.php?msg=success'</script>";
           } else {
@@ -60,6 +61,10 @@ if (!isset($_POST['submit'])) {
             <div class="row">
               <?php $getResturants = getAllDataWhere('food_restaurants','id',$id);
                     $getResturantsData = $getResturants->fetch_assoc(); ?>
+                    <?php
+                        $getDeliveryTypeId = explode(',',$getResturantsData['delivery_type_id']);
+                        $getDeliveryTypes = getAllDataWithStatus('food_product_delivery_type','0');
+                    ?>
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <form data-toggle="validator" method="POST" autocomplete="off" enctype="multipart/form-data">
                   <?php $getStates = getAllDataWithStatus('lkp_states','0');?>
@@ -95,7 +100,7 @@ if (!isset($_POST['submit'])) {
                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
-                  <?php $getCities = getAllDataWithStatus('lkp_locations','0');?>
+                  <?php $getCities = getAllDataWithStatus('food_lkp_locations','0');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your Location</label>
                     <select name="lkp_location_id" id="lkp_location_id" class="custom-select" data-error="This field is required." required onChange="getPincode(this.value);">
@@ -106,7 +111,7 @@ if (!isset($_POST['submit'])) {
                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
-                  <?php $getCities1 = getAllDataWithStatus('lkp_locations','0');?>
+                  <?php $getCities1 = getAllDataWithStatus('food_lkp_locations','0');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your Pincode</label>
                     <select name="lkp_pincode_id" id="lkp_pincode_id" class="custom-select" data-error="This field is required." required>
@@ -120,6 +125,11 @@ if (!isset($_POST['submit'])) {
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Restaurant Name</label>
                     <input type="text" name="restaurant_name" class="form-control" id="form-control-2" placeholder="Restaurant Name" data-error="Please enter restaurant name" required value="<?php echo $getResturantsData['restaurant_name'];?>">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Opens At</label>
+                    <input type="text" name="opens_at" class="form-control" id="form-control-2" placeholder="Restaurant Opens At" data-error="Please enter opening time" required value="<?php echo $getResturantsData['opens_at'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
@@ -137,7 +147,7 @@ if (!isset($_POST['submit'])) {
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Meta Title</label>
-                    <input type="text" name="meta_title" class="form-control" id="form-control-2" placeholder="Meta Title" data-error="Please enter restaurant name" required value="<?php echo $getResturantsData['meta_title'];?>">
+                    <input type="text" name="meta_title" class="form-control" id="form-control-2" placeholder="Meta Title" data-error="Please enter meta title" required value="<?php echo $getResturantsData['meta_title'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
@@ -151,17 +161,16 @@ if (!isset($_POST['submit'])) {
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
-                        <?php 
-                            $checked = "checked";
-                            $getDelType = $getResturantsData['delivery_type'];
-                        ?>
-                        <h4>Delivery Type</h4>
-                        <label>
-                          <input type="checkbox"  value="1" <?php if($getDelType == 1) echo $checked; ?> name="delivery_type" />&nbsp;Take away</label>&nbsp;&nbsp;
-                        <label>
-                          <input type="checkbox"  value="2" <?php if($getDelType == 2) echo $checked; ?> name="delivery_type"/>&nbsp;Delivery</label>
-                        <label>
-                   </div>
+                    <label for="form-control-3" class="control-label">Choose your Delivery Type</label>
+                    <select name="delivery_type_id[]" class="custom-select" multiple="multiple" data-error="This field is required." required>
+                      <option value="">Select Delivery Type</option>
+                      <?php while($row = $getDeliveryTypes->fetch_assoc()) {  ?>
+                          <option value="<?php echo $row['id']; ?>" <?php if($row['id'] == in_array($row['id'], $getDeliveryTypeId)) { echo "selected=selected"; }?> ><?php echo $row['delivery_type']; ?></option>
+                      <?php } ?>
+                   </select>
+                    <div class="help-block with-errors"></div>
+                  </div>
+
                   <?php $getStatus = getAllData('lkp_status');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your status</label>
@@ -182,20 +191,3 @@ if (!isset($_POST['submit'])) {
         </div>
       </div>
 <?php include_once 'admin_includes/footer.php'; ?>
-<script type="text/javascript">
-    $("input:checkbox").on('click', function() {
-  // in the handler, 'this' refers to the box clicked on
-  var $box = $(this);
-  if ($box.is(":checked")) {
-    // the name of the box is retrieved using the .attr() method
-    // as it is assumed and expected to be immutable
-    var group = "input:checkbox[name='" + $box.attr("name") + "']";
-    // the checked state of the group/box on the other hand will change
-    // and the current value is retrieved using .prop() method
-    $(group).prop("checked", false);
-    $box.prop("checked", true);
-  } else {
-    $box.prop("checked", false);
-  }
-});
-</script>

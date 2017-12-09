@@ -62,14 +62,14 @@
                 <span class="menu-text">Categories</span>
               </a>
             </li>
-            <li  class="<?php if($page_name == 'food_sub_category.php' || $page_name == 'add_food_sub_category.php' || $page_name == 'edit_food_sub_category.php' ) { echo "active"; } ?>">
+            <!-- <li  class="<?php if($page_name == 'food_sub_category.php' || $page_name == 'add_food_sub_category.php' || $page_name == 'edit_food_sub_category.php' ) { echo "active"; } ?>">
               <a href="food_sub_category.php" aria-haspopup="true">
                 <span class="menu-icon">
                    <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
                 </span>
                 <span class="menu-text">Sub Categories</span>
               </a>
-            </li> 
+            </li> --> 
             <li  class="<?php if($page_name == 'food_restaurants.php' || $page_name == 'add_food_restaurants.php' || $page_name == 'edit_food_restaurants.php' ) { echo "active"; } ?>">
               <a href="food_restaurants.php" aria-haspopup="true">
                 <span class="menu-icon">
@@ -92,6 +92,14 @@
                    <i class="zmdi zmdi-store zmdi-hc-fw"></i>
                 </span>
                 <span class="menu-text">Ingredients</span>
+              </a>
+            </li>
+            <li  class="<?php if($page_name == 'food_product_type.php' || $page_name == 'add_food_product_type.php' || $page_name == 'edit_food_product_type.php') { echo "active"; } ?>">
+              <a href="food_product_type.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-store zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Product Type</span>
               </a>
             </li>
             <li  class="<?php if($page_name == 'food_products.php' || $page_name == 'add_food_products.php' || $page_name == 'edit_food_products.php') { echo "active"; } ?>">

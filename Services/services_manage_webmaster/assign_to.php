@@ -28,60 +28,67 @@ if (!isset($_POST['submit'])) {
               $getServiceOrdersData = $getServiceOrders->fetch_assoc(); 
               ?>
               <div class="row">
-                <div class="col-sm-1"></div>
                 <div class="col-sm-3">
                   Name: <?php echo $getServiceOrdersData['first_name']; ?>
                 </div>
-                <div class="col-sm-4">
-                  <?php $getServiceNames = getAllDataWhere('services_group_service_names','id',$getServiceOrdersData['service_id']); $getServiceNamesData = $getServiceNames->fetch_assoc();?>
-                  Service Name: <?php echo $getServiceNamesData['group_service_name']; ?>
+                <div class="col-sm-3">
+                  <?php $getCategories = getAllDataWhere('services_category','id',$getServiceOrdersData['category_id']); $getCategoriesData = $getCategories->fetch_assoc();?>
+                  Category Name: <?php echo $getCategoriesData['category_name']; ?>
+                </div>
+                <div class="col-sm-3">
+                  Service price: <?php echo $getServiceOrdersData['service_price']; ?>
                 </div>
                 <div class="col-sm-3">
                   Order Id: <?php echo $getServiceOrdersData['order_id']; ?>
                 </div>
-                <div class="col-sm-1"></div>
               </div>
               <div class="row">
-                <div class="col-sm-1"></div>
                 <div class="col-sm-3">
                 Email: <?php echo $getServiceOrdersData['email']; ?>
                 </div>
-                <div class="col-sm-4">
-                  Service price: <?php echo $getServiceOrdersData['service_price']; ?>
+                <div class="col-sm-3">
+                  <?php $getSubCategories = getAllDataWhere('services_sub_category','id',$getServiceOrdersData['sub_category_id']); $getSubCategoriesData = $getSubCategories->fetch_assoc();?>
+                  Sub Category Name: <?php echo $getSubCategoriesData['sub_category_name']; ?>
+                </div>
+                <div class="col-sm-3">
+                  Service Quantity: <?php echo $getServiceOrdersData['service_quantity']; ?>
                 </div>
                 <div class="col-sm-3">
                   Order Sub Id: <?php echo $getServiceOrdersData['order_sub_id']; ?>
                 </div>
-                <div class="col-sm-1"></div>
               </div>
               <div class="row">
-                <div class="col-sm-1"></div>
                 <div class="col-sm-3">
                   Mobile: <?php echo $getServiceOrdersData['mobile']; ?>
                 </div>
-                <div class="col-sm-4">
-                  Service Quantity: <?php echo $getServiceOrdersData['service_quantity']; ?>
-                  
+                <div class="col-sm-3">
+                  <?php $getGroups = getAllDataWhere('services_groups','id',$getServiceOrdersData['group_id']); $getGroupsData = $getGroups->fetch_assoc();?>
+                  Group Name: <?php echo $getGroupsData['group_name']; ?>
+                </div>
+                <div class="col-sm-3">
+                  Service Selected Date: <?php echo $getServiceOrdersData['service_selected_date']; ?>
                 </div>
                 <div class="col-sm-3">
                   <?php $getorderStatus = getAllDataWhere('lkp_order_status','id',$getServiceOrdersData['lkp_order_status_id']); $getorderStatusData = $getorderStatus->fetch_assoc();?>
                   Order Status: <?php echo $getorderStatusData['order_status']; ?>
                 </div>
-                <div class="col-sm-1"></div>
               </div>
               <div class="row">
-                <div class="col-sm-1"></div>
                 <div class="col-sm-3">
                   Adderss: <?php echo $getServiceOrdersData['address']; ?>
                 </div>
-                <div class="col-sm-4">
-                  Service Selected Date: <?php echo $getServiceOrdersData['service_selected_date']; ?>
+                <div class="col-sm-3">
+                  <?php $getServiceNames = getAllDataWhere('services_group_service_names','id',$getServiceOrdersData['service_id']); $getServiceNamesData = $getServiceNames->fetch_assoc();?>
+                  Service Name: <?php echo $getServiceNamesData['group_service_name']; ?>
+                </div>
+                <div class="col-sm-3">
+                  <?php $getPaymentMethod = getAllDataWhere('lkp_payment_types','id',$getServiceOrdersData['payment_method']); $getPaymentMethodData = $getPaymentMethod->fetch_assoc();?>
+                  Payment Method: <?php echo $getPaymentMethodData['status']; ?>
                 </div>
                 <div class="col-sm-3">
                   <?php $getPaymentStatus = getAllDataWhere('lkp_payment_status','id',$getServiceOrdersData['lkp_payment_status_id']); $getPaymentStatusData = $getPaymentStatus->fetch_assoc();?>
                   Payment Status: <?php echo $getPaymentStatusData['payment_status']; ?>
                 </div>
-                <div class="col-sm-1"></div>
               </div>
 
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">

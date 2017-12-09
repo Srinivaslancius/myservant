@@ -1,5 +1,5 @@
 <?php include_once 'admin_includes/main_header.php'; ?>
-<?php $sql = "SELECT * FROM lkp_locations GROUP BY lkp_city_id ORDER BY lkp_status_id,id DESC";
+<?php $sql = "SELECT * FROM food_lkp_locations GROUP BY lkp_city_id ORDER BY lkp_status_id,id DESC";
 $getLocations = $conn->query($sql); $i=1; ?>
      <div class="site-content">
         <div class="panel panel-default panel-table">

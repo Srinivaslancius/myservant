@@ -16,7 +16,7 @@
                     <th>Email</th>
                     <th>Mobile</th>
                     <th>Created Date</th>
-                    <th>Status</th>
+                    <!-- <th>Status</th> -->
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -28,8 +28,8 @@
                     <td><?php echo $row['user_email'];?></td>
                     <td><?php echo $row['user_mobile'];?></td>
                     <td><?php echo $row['created_at'];?></td>
-                   <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='users'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='users'>In Active</span>" ;} ?></td>
-                   <td> <a href="edit_users.php?uid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a> &nbsp;<a href="#"><i class="zmdi zmdi-eye zmdi-hc-fw" data-toggle="modal" data-target="#<?php echo $row['id']; ?>" class=""></i></a></td>
+                   <!-- <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='users'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='users'>In Active</span>" ;} ?></td> -->
+                   <td><a href="#"><i class="zmdi zmdi-eye zmdi-hc-fw" data-toggle="modal" data-target="#<?php echo $row['id']; ?>" class=""></i></a></td>
                      <!-- Open Modal Box  here -->
                     <div id="<?php echo $row['id']; ?>" class="modal fade" tabindex="-1" role="dialog">
                       <div class="modal-dialog">
@@ -58,11 +58,11 @@
                               <div class="col-sm-4">Mobile:</div>
                               <div class="col-sm-6"><?php echo $row['user_mobile'];?></div>
                             </div>
-                            <div class="row">
+                            <!-- <div class="row">
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Status:</div>
                               <div class="col-sm-6"><?php if($row['lkp_status_id'] == 0 ){ echo "Active";} else{ echo "InActive";}?></div>
-                            </div>
+                            </div> -->
                             <div class="row">
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Register Device Type:</div>

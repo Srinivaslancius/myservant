@@ -8,45 +8,7 @@
 	* Licenses: 			http://codecanyon.net/licenses/
 */
 
-/** Layes slider typography ab buttons **/   
-h3.slide_typo {lwhite-space:nowrap;color:#fff !important;font-weight:normal;text-transform:uppercase;font-size:40px;line-height:1.2;font-weight:900;font-family: Roboto,Helvetica,Arial,sans-serif;}
-.slide_typo_2{color:#fff; font-size:16px; white-space:nowrap; text-transform:uppercase}
-a.button_intro_2, .button_intro_2  {
-	border: none;
-	font-weight:normal;
-	font-style:normal;
-	color:#fff !important;
-	background: #e04f67;
-	cursor: pointer;
-	padding: 10px 20px;
-	display: inline-block;
-	outline: none;
-	font-size:13px;
-	text-align:center;
-	-webkit-transition: background 0.3s;
-	-moz-transition: background 0.3s;
-	transition: background 0.3s;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	text-transform:uppercase;
-	min-width:110px;
-	font-weight:900;
-}
-a.button_intro_2:hover, .button_intro_2:hover {
-	background: #fff;
-	color:#e04f67 !important;
-}
-a.button_intro_2.outilne, .button_intro_2.outline  {
-	border: 2px solid #fff;
-	color:#fff;
-	background: none;
-	padding: 8px 18px;
-}
-a.button_intro_2:hover, .button_intro_2:hover {
-	background: #fff;
-	color:#e04f67;
-}
+
 
 /* Global settings */
 

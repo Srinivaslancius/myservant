@@ -93,44 +93,45 @@
                 <div class="bhoechie-tab-content active">
                     <div class="row">
                         <div class="col-sm-12">
+                            <?php $uid=$_SESSION['user_login_session_id'];
+                              $orderDetails ="SELECT * FROM services_orders WHERE user_id = '$uid' ORDER BY id DESC";
+                              $orderDetails1 = $conn->query($orderDetails);
+                              while($orderData = $orderDetails1->fetch_assoc()) {
+                            ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading">
+                                <div class="panel-heading" style="border-bottom:0px">
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <h5 style="color:#f26226">ORDER PLACED</h5>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <h5 style="color:#f26226">TOTAL</h5>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <h5 style="color:#f26226">SHIP TO</h5>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <h5 style="color:#f26226">ORDER ID</h5>
-                                        </div>
-                                    </div>
-                                    <?php $uid=$_SESSION['user_login_session_id'];
-                                      $orderDetails ="SELECT * FROM services_orders WHERE user_id = '$uid' ORDER BY id DESC";
-                                      $orderDetails1 = $conn->query($orderDetails);
-                                      while($orderData = $orderDetails1->fetch_assoc()) {
-                                    ?>
-                                    <div class="row">
-                                        <div class="col-sm-3">
+                                            <p style="color:#f26226"><b>ORDER PLACED</b></p>
                                             <p><?php echo $orderData['created_at'];?></p>
                                         </div>
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-3">
+                                            <p style="color:#f26226"><b>TOTAL</b></p>
                                             <p>Rs. <?php echo $orderData['order_total'];?></p>
                                         </div>
                                         <div class="col-sm-3">
+                                            <p style="color:#f26226"><b>SHIP TO</b></p>
                                             <p><?php echo $orderData['first_name'];?><br><?php echo $orderData['address'];?></p>
                                         </div>
-                                        <div class="col-sm-4">
-                                            <p><?php echo $orderData['order_id'];?><br><a href="track_order_details.php?token=<?php echo $orderData['order_sub_id']?>" style="color:#f26226">Order details</a> &nbsp; <!-- <a href="javascript:void(0);">Invoice</a> --></p>
+                                        <div class="col-sm-3">
+                                            <p style="color:#f26226"><b>ORDER ID:</b></p>
+                                            <p><?php echo $orderData['order_sub_id'];?></p><br>
+                                            <div class="row">
+                                            
+                                            <div class="col-sm-5">
+                                            <a href="view_orders.php?token=<?php echo $orderData['order_sub_id']?>" class="btn_1 outline" style="border-color:#f26226;padding:2px 10px;text-transform:capitalize">Details</a>
+                                            </div>
+                                            <div class="col-sm-5">
+                                            <a href="track_order_details.php?token=<?php echo $orderData['order_sub_id']?>" class="btn_1 outline" style="border-color:#f26226;padding:2px 10px;text-transform:capitalize">Track</a>
+                                            </div>
+                                            <div class="col-sm-2">
+                                            </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <?php } ?>
-                                </div>
+                                </div>                            
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

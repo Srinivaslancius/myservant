@@ -9,19 +9,37 @@ if (!isset($_POST['submit']))  {
     $restaurant_id = $_POST['restaurant_id'];
     $product_name = $_POST['product_name'];
     $category_id = $_POST['category_id'];
+
     $specifications = $_POST['specifications'];
     $availability_id = $_POST['availability_id'];
     $lkp_status_id = $_POST['lkp_status_id'];
-    $created_at = date("Y-m-d h:i:s");
-    $created_by = $_SESSION['food_admin_user_id'];
+    $fileToUpload = uniqid().$_FILES["fileToUpload"]["name"];
     //save product images into product_images table    
-    $sql1 = "UPDATE food_products SET restaurant_id = '$restaurant_id',product_name = '$product_name',category_id ='$category_id', specifications = '$specifications', availability_id ='$availability_id', lkp_status_id = '$lkp_status_id' WHERE id = '$id'"; 
+    if($_FILES["fileToUpload"]["name"]!='') {
+        $fileToUpload = uniqid().$_FILES["fileToUpload"]["name"];
+              $target_dir = "../../uploads/food_content_pages_images/";
+              $target_file = $target_dir . basename($fileToUpload);
+              $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+              $getImgUnlink = getImageUnlink('image','food_content_pages','id',$id,$target_dir);
+                //Send parameters for img val,tablename,clause,id,imgpath for image ubnlink from folder
+              if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                $sql1 = "UPDATE food_products SET restaurant_id = '$restaurant_id',product_name = '$product_name',category_id ='$category_id', specifications = '$specifications', availability_id ='$availability_id', lkp_status_id = '$lkp_status_id' WHERE id = '$id'"; 
     
-    if ($conn->query($sql1) === TRUE) {
-    echo "Record updated successfully";
-    } else {
-    echo "Error updating record: " . $conn->error;
-    }
+        if ($conn->query($sql1) === TRUE) {
+        echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . $conn->error;
+        }
+      }  
+    }  
+        else{
+            $sql1 = "UPDATE food_products SET restaurant_id = '$restaurant_id',product_name = '$product_name',category_id ='$category_id', specifications = '$specifications', availability_id ='$availability_id', lkp_status_id = '$lkp_status_id' WHERE id = '$id'";
+            if ($conn->query($sql1) === TRUE) {
+              echo "Record updated successfully";
+            } else {
+                echo "Error updating record: " . $conn->error;
+            }     
+        }
     $result1=$conn->query($sql1);
 
     //Delete weight and prices
@@ -33,8 +51,10 @@ if (!isset($_POST['submit']))  {
 
         $product_weights1 = $_REQUEST['weight_type_id'][$key];
         $product_price = $_REQUEST['product_price'][$key];
+        if($product_weights1 && $product_price!=''){
         $sql = "INSERT INTO food_product_weight_prices ( `product_id`,`weight_type_id`,`product_price`) VALUES ('$id','$product_weights1','$product_price')";
         $result = $conn->query($sql);
+        }
     }
 
     //Delete Ingredient and prices
@@ -46,21 +66,10 @@ if (!isset($_POST['submit']))  {
 
         $product_ingredients1 = $_REQUEST['ingredient_name_id'][$key];
         $ingredient_price = $_REQUEST['ingredient_price'][$key];
+        if($product_ingredients1 && $ingredient_price!=''){
         $sql = "INSERT INTO food_product_ingredient_prices ( `product_id`,`ingredient_name_id`,`ingredient_price`) VALUES ('$id','$product_ingredients1','$ingredient_price')";
         $result = $conn->query($sql);
-    }
-
-    $product_images = $_FILES['product_images']['name'];
-    foreach($product_images as $key=>$value){
-
-        $product_images1 = $_FILES['product_images']['name'][$key];
-        $file_tmp = $_FILES["product_images"]["tmp_name"][$key];
-        $file_destination = '../../uploads/food_product_images/' . $product_images1;
-        if($product_images1!=''){
-            move_uploaded_file($file_tmp, $file_destination);        
-            $sql = "INSERT INTO food_product_images ( `product_id`,`product_image`) VALUES ('$id','$product_images1')";
-            $result = $conn->query($sql);
-        }        
+        }
     }
      
      if($result1==1){
@@ -113,6 +122,14 @@ if (!isset($_POST['submit']))  {
                     <div class="help-block with-errors"></div>
                   </div>                  
                  
+                 <div class="form-group">
+                    <label for="form-control-4" class="control-label">Image</label>
+                    <img src="<?php echo $base_url . 'uploads/food_product_images/'.$getProducts['product_image'] ?>"  id="output" height="100" width="100"/>
+                    <label class="btn btn-default file-upload-btn">
+                        Choose file...
+                        <input id="form-control-22" class="file-upload-input" type="file" accept="image/*" name="fileToUpload" id="fileToUpload"  onchange="loadFile(event)"  multiple="multiple" >
+                      </label>
+                 </div>
                   <?php $id = $_GET['pid'];
                     $getQry = "SELECT * FROM food_product_weight_prices where product_id = '$id'";
                     $result2 = $conn->query($getQry);
@@ -192,26 +209,6 @@ if (!isset($_POST['submit']))  {
                     <div class="help-block with-errors"></div>
                   </div>
 
-                  <div class="form-group">
-                      <?php  $pid = $_GET['pid'];                                                           
-                      $sql = "SELECT id,product_image FROM food_product_images where product_id = '$pid' ";
-                      $getImages= $conn->query($sql);                                                             
-                      while($row=$getImages->fetch_assoc()) {
-                          echo "<img id='output_".$row['id']."' src= '../../uploads/food_product_images/".$row['product_image']."' width=80px; height=80px;/> <a style='cursor:pointer' class='ajax_img_del' id=".$row['id']." >Delete</a> <br />";
-                      }                               
-                     ?>
-                  </div>
-                  <div id="formdiv">                   
-                      <div id="filediv">
-                        <?php if($getImages->num_rows > 0){ ?>
-                          <input name="product_images[]" accept="image/*" type="file" id="file" />
-                         <?php } else { ?>
-                          <input name="product_images[]" accept="image/*" type="file" id="file" required/>
-                         <?php } ?>
-
-                      </div><br/>               
-                      <input type="button" id="add_more" class="upload" value="Add More Files"/>                                                    
-                  </div>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Avalability</label>
                     <select id="form-control-3" name="availability_id" class="custom-select" data-error="This field is required." required>

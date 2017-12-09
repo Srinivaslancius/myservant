@@ -11,13 +11,22 @@ if (!isset($_POST['submit']))  {
     $specifications = $_POST['specifications'];
     $availability_id = $_POST['availability_id'];
     $lkp_status_id = $_POST['lkp_status_id'];
+    $fileToUpload = uniqid().$_FILES["fileToUpload"]["name"];
     $created_at = date("Y-m-d h:i:s");
     $created_by = $_SESSION['food_admin_user_id'];
-    //save product images into product_images table    
-    $sql1 = "INSERT INTO food_products (`restaurant_id`,`product_name`,`category_id`,`specifications`,`availability_id`,`lkp_status_id`,`created_by`,`created_at`) VALUES ('$restaurant_id','$product_name','$category_id','$specifications', '$availability_id','$lkp_status_id','$created_by','$created_at')";
+    //save product images into product_images table
+    if($fileToUpload!='') {
+        $target_dir = "../../uploads/food_product_images/";
+        $target_file = $target_dir . basename($fileToUpload);
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {        
+    $sql1 = "INSERT INTO food_products (`product_name`,`product_image`,`restaurant_id`,`category_id`,`specifications`,`availability_id`,`lkp_status_id`,`created_by`,`created_at`) VALUES ('$product_name','$fileToUpload','$restaurant_id','$category_id','$specifications', '$availability_id','$lkp_status_id','$created_by','$created_at')";
      $result1 = $conn->query($sql1);
      $last_id = $conn->insert_id;
-
+   }else {
+            echo "Sorry, there was an error uploading your file.";
+    }
+  }
     $product_weights = $_REQUEST['weight_type_id'];
     foreach($product_weights as $key=>$value){
 
@@ -32,17 +41,6 @@ if (!isset($_POST['submit']))  {
         $product_ingredients1 = $_REQUEST['ingredient_name_id'][$key];
         $ingredient_price = $_REQUEST['ingredient_price'][$key];
         $sql = "INSERT INTO food_product_ingredient_prices ( `product_id`,`ingredient_name_id`,`ingredient_price`) VALUES ('$last_id','$product_ingredients1','$ingredient_price')";
-        $result = $conn->query($sql);
-    }
-
-    $product_images = $_FILES['product_images']['name'];
-    foreach($product_images as $key=>$value){
-
-        $product_images1 = $_FILES['product_images']['name'][$key];
-        $file_tmp = $_FILES["product_images"]["tmp_name"][$key];
-        $file_destination = '../../uploads/food_product_images/' . $product_images1;
-        move_uploaded_file($file_tmp, $file_destination);        
-        $sql = "INSERT INTO food_product_images ( `product_id`,`product_image`) VALUES ('$last_id','$product_images1')";
         $result = $conn->query($sql);
     }
      
@@ -92,6 +90,14 @@ if (!isset($_POST['submit']))  {
                     <label for="form-control-2" class="control-label">Product Name</label>
                     <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Product Name" data-error="Please enter product name." required>
                     <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-4" class="control-label">Image</label>
+                    <img id="output" height="100" width="100"/>
+                    <label class="btn btn-default file-upload-btn">
+                      Choose file...
+                        <input id="form-control-22" class="file-upload-input" type="file" accept="image/*" name="fileToUpload" id="fileToUpload"  onchange="loadFile(event)"  multiple="multiple">
+                      </label>
                   </div>
                   <div class="row">
                     <div class="form-group col-md-5">
@@ -143,9 +149,7 @@ if (!isset($_POST['submit']))  {
                     <textarea name="specifications" class="form-control" id="description" placeholder="Description" data-error="This field is required." required></textarea>
                     <div class="help-block with-errors"></div>
                   </div>
-                  <div id="formdiv">                   
-                          <div id="filediv"><input required name="product_images[]" accept="image/*" type="file" id="file" /></div><br/><input type="button" id="add_more" class="upload" value="Add More Files"/>                                                    
-                  </div>
+                  
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Avalability</label>
                     <select id="form-control-3" name="availability_id" class="custom-select" data-error="This field is required." required>
@@ -177,8 +181,7 @@ if (!isset($_POST['submit']))  {
       </div>
       <?php include_once 'admin_includes/footer.php'; ?>
    <script src="js/tables-datatables.min.js"></script>
-   <script src="js/multi_image_upload.js"></script>
-   <link rel="stylesheet" type="text/css" href="css/multi_image_upload.css">
+   
     <!-- Below script for ck editor -->
 <script src="//cdn.ckeditor.com/4.7.0/full/ckeditor.js"></script>
 <script>
