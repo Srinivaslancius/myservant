@@ -92,20 +92,17 @@
 
 	<main>
 		<!-- Slider -->
+		<?php $getAllContentPageData = getAllDataWhere('services_content_pages','id',13);
+		  $getSliderTextData = $getAllContentPageData->fetch_assoc();
+		?>
 		<div id="full-slider-wrapper">
                     <?php include_once './slider.php';?>
 		</div>
 		<!-- End layerslider -->
             <div class="container-fluid marg10 search_back">
                     <div class="row">
-					<marquee scrollamount="10" style="color:white;font-size:15px"><span>Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in.</span>
-					<span>Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in.</span>
-					
+					<marquee scrollamount="10" style="color:white;font-size:15px"><span><?php echo $getSliderTextData['description'];?></span>
 					</marquee> 
-                    
-					<!--   <marquee behavior="scroll" direction="left" style="color:white;font-size:15px"><span style="margin-right:20px">Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in.</span> <span>Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in.</span>
-					   
-					   </marquee>-->
                 </div>
                 </div>
 		<div class="container margin_60">

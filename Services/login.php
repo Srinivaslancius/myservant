@@ -28,7 +28,7 @@
 		        $_SESSION['timestamp'] = time();
 		        if($cart_id == 1) {
 		        	header('Location: checkout.php');
-		        } else { echo "<script>history.go(-2);</script>"; }
+		        } elseif($_GET['err']!='') { header('Location: cart.php'); } else { echo "<script>history.go(-2);</script>"; }
 		    } else {
 		    	header('Location: login.php?err=log-fail');
 		    }
