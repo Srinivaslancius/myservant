@@ -87,9 +87,50 @@
                                       $orderDetails1 = $conn->query($orderDetails);
                                       $orderData = $orderDetails1->fetch_assoc();
                                     ?>
-                                    <div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                        </div>
+                                        <div class="col-sm-4">
                                         <p style="font-size:13px;">Order Id:<span style="font-size:15px;">  <?php echo $orderData['order_sub_id'];?></span><br>Address:<span style="font-size:15px;">  <?php echo $orderData['address'];?></span><br>Email: <span style="font-size:15px;">  <?php echo $orderData['email'];?></span></p>
                                     </div>
+                                      <div class="col-sm-4">
+                                        </div>
+                                </div>
+                                </div>
+                                <div class="panel-body" style="border-bottom:1px solid #ddd">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <h5 style="color:#f26226">Order Id</h5>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <h5 style="color:#f26226">Service Name</h5>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <h5 style="color:#f26226">Service Price</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <?php
+                                        $order_sub_id = $_GET['token'];
+                                        $orderDetails1 ="SELECT * FROM services_orders WHERE order_sub_id ='$order_sub_id' AND user_id= '$user_id' ";
+                                        $orderDetails2 = $conn->query($orderDetails1);
+                                        
+                                        while ($orderData1 = $orderDetails2->fetch_assoc()) {
+                                        ?>
+                                        <div class="col-sm-4 col-xs-12">
+                                            <p><?php echo $orderData1['order_sub_id'];?></p>
+                                        </div>
+                                        <div class="col-sm-4 col-xs-12">
+                                            <?php $serviceData = getAllDataWhereWithActive('services_group_service_names','id' ,$orderData1['service_id']);
+                                        $serviceDetails = $serviceData->fetch_assoc(); ?>
+                                            <p><?php echo $serviceDetails['group_service_name'];?></p>
+                                        </div>
+                                        <div class="col-sm-4 col-xs-12">
+                                           <p><?php echo $orderData1['service_price'];?></p>
+                                        </div>
+                                        <?php } ?>
+                                    </div>
+
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
@@ -124,6 +165,7 @@
                                         </div>
                                         <?php } ?>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
