@@ -13,7 +13,8 @@ $getServiceOrders = $conn->query($getServiceOrders1); $i=1; ?>
                   <tr>
                     <th>S.No</th>
                     <th>Service Name</th>
-                    <th>Order Id</th>                    
+                    <th>Order Id</th>
+                    <th>Order Price</th>                    
                     <th>Order Status</th>
                     <th>Payment Status</th>
                     <th>Order Date</th>
@@ -28,12 +29,13 @@ $getServiceOrders = $conn->query($getServiceOrders1); $i=1; ?>
                     <?php $getServicenames = getAllDataWhere('services_group_service_names','id',$row['service_id']); 
                     $getServicenamesData = $getServicenames->fetch_assoc();?>
                     <td><?php echo $getServicenamesData['group_service_name'];?></td>
-                    <td><?php echo $row['order_sub_id'];?></td> 
+                    <td><?php echo $row['order_sub_id'];?></td>
+                    <td><?php echo $row['order_price'];?></td> 
                     <td><?php $orderStatus = getIndividualDetails('lkp_order_status','id',$row['lkp_order_status_id']); echo $orderStatus['order_status']; ?></td>                   
                    <td><?php $orderPaymentStatus = getIndividualDetails('lkp_payment_status','id',$row['lkp_payment_status_id']); echo $orderPaymentStatus['payment_status']; ?></td>
                    <td><?php echo $row['created_at'];?></td> 
                    <td><a href="assign_to.php?assign_id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>">Assign To</a></td>
-                   <td>Edit</td>
+                   <td><a href="edit_services_orders.php?order_id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>"><i class="zmdi zmdi-edit"></i></a></td>
                   </tr>
                   <?php  $i++; } ?>
                 </tbody>
