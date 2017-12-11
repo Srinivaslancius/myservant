@@ -51,43 +51,24 @@
     <div id="full-slider-wrapper">
     <div id="layerslider" style="width:100%;height:600px;">
         <!-- first slide -->
+        <?php $getFoodBanners = getFoodHomeBanners(); ?>
+        <?php while($getFoodhomeBanners = $getFoodBanners->fetch_assoc()) { ?>
         <div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
-            <img src="img/slides/slide_1.jpg" class="ls-bg" alt="Slide background">
-        	<h3 class="ls-l slide_typo" style="top: 44%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;" ><strong>Enjoy</strong> a quick friends dinner</h3>
-            <p class="ls-l slide_typo_2" style="top:52%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;" >Order Quality Takeaway or Delivery Food online</p>
-            <p class="ls-l" style="top:64%; left:50%;" data-ls="durationin:2000;delayin:1300;easingin:easeOutElastic;" ><a href="list_page.php" class="button_intro">Search</a> <a href="#0" class="button_intro outline">Read more</a></p>
-       </div>
-       
-        <!-- second slide -->
-    <div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
-            <img  src="img/slides/slide_4.jpg" class="ls-bg" alt="Slide background">
-        	<h3 class="ls-l slide_typo" style="top: 44%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;" >Quick &amp; <strong>affordable</strong> quick food</h3>
-            <p class="ls-l slide_typo_2" style="top:52%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;" >Order Quality Takeaway or Delivery Food online</p>
-            <p class="ls-l" style="top:64%; left:50%;" data-ls="durationin:2000;delayin:1300;easingin:easeOutElastic;" ><a href="list_page.php" class="button_intro">Search</a> <a href="#0" class="button_intro outline">Read more</a></p>
-    </div>
+            <img src="<?php echo $base_url . 'uploads/food_banner_images/'.$getFoodhomeBanners['banner'] ?>" class="ls-bg" alt="Slide background" alt="<?php echo $getFoodhomeBanners['title'];?>">
+        	<h3 class="ls-l slide_typo" style="top: 44%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;" ><strong>Enjoy</strong> a quick friends dinner</h3>           
+            <?php if($getFoodhomeBanners['lkp_banner_type_id']==1) { ?>
+            <p class="ls-l" style="top:64%; left:50%;" data-ls="durationin:2000;delayin:1300;easingin:easeOutElastic;" ><a href="list_page.php" class="button_intro">Read more</a> </p>
+            <?php } ?>
+        </div>
+       <?php } ?>
     
-     <!-- third slide -->
-     <div class="ls-slide" data-ls="slidedelay:5000; transition2d:5;" >
-             <img src="img/slides/slide_2.jpg" class="ls-bg" alt="Slide background">
-        	<h3 class="ls-l slide_typo" style="top: 44%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;" ><strong>Great</strong> Food Quality &amp; Variety</h3>
-            <p class="ls-l slide_typo_2" style="top:52%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;" >Order Quality Takeaway or Delivery Food online</p>
-            <p class="ls-l" style="top:64%; left:50%;" data-ls="durationin:2000;delayin:1300;easingin:easeOutElastic;" ><a href="list_page.php" class="button_intro">Search</a> <a href="#0" class="button_intro outline">Read more</a></p>
-    </div>
-      
-    <!-- fourth slide -->
-    <div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
-        <img src="img/slides/slide_3.jpg" class="ls-bg" alt="Slide background">
-        	<h3 class="ls-l slide_typo" style="top: 44%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;" >Stop your <strong>hunger</strong> quickly</h3>
-            <p class="ls-l slide_typo_2" style="top:52%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;" >Order Quality Takeaway or Delivery Food online</p>
-            <p class="ls-l" style="top:64%; left:50%;" data-ls="durationin:2000;delayin:1300;easingin:easeOutElastic;"><a href="list_page.php" class="button_intro">Search</a> <a href="#0" class="button_intro outline">Read more</a></p>
-    </div>
- <div id="count" class="hidden-xs">
-        <ul>
-            <li><span class="number">2650</span> Restaurant</li>
-            <li><span class="number">5350</span> People Served</li>
-            <li><span class="number">12350</span> Registered Users</li>
-        </ul>
-    </div>
+        <div id="count" class="hidden-xs">
+            <ul>
+                <li><span class="number">2650</span> Restaurant</li>
+                <li><span class="number">5350</span> People Served</li>
+                <li><span class="number"><?php echo getUsersRowsCount('users','lkp_admin_service_type_id','2'); ?></span> Registered Users</li>
+            </ul>
+        </div>
     </div>
     
     </div><!-- End layerslider -->

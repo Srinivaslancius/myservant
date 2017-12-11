@@ -1,6 +1,7 @@
 <?php
 include "../admin_includes/config.php";
 include "../admin_includes/common_functions.php";
+include "../admin_includes/food_common_functions.php";
 $getFoodSiteSettings = getAllDataWhere('food_site_settings','id','1'); 
 $getFoodSiteSettingsData = $getFoodSiteSettings->fetch_assoc();
 
