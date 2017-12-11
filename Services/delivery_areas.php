@@ -58,7 +58,7 @@
 		<!-- Slider -->
 		 <div class="container-fluid page-title">
 		 	<?php 
-				if(isset($getDeliveryAreasData['image'])) { ?> 	
+				if(!empty($getDeliveryAreasData['image'])) { ?> 	
 				<div class="row">
 					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getDeliveryAreasData['image'] ?>" alt="<?php echo $getDeliveryAreasData['title'];?>" class="img-responsive">
 				</div>
