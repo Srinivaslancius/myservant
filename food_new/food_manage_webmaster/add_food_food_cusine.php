@@ -14,7 +14,7 @@
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
         
-            $sql = "INSERT INTO food_cusine (`title`, `lkp_status_id`) VALUES ('$title', '$lkp_status_id')";
+            $sql = "INSERT INTO food_cusine_types (`title`, `lkp_status_id`) VALUES ('$title', '$lkp_status_id')";
             if($conn->query($sql) === TRUE){
                echo "<script type='text/javascript'>window.location='food_cusine.php?msg=success'</script>";
             } else {
