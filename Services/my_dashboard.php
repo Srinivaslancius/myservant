@@ -96,7 +96,7 @@
                         <div class="col-sm-12" id="faq-result">                            
                             <?php include('getresult.php'); ?>                           
                         </div>
-                        <div id="loader-icon"><img src="LoaderIcon.gif" /><div>
+                        <div id="loader-icon"><img src="LoaderIcon.gif" /></div>
                     </div>
                 </div>
                 <!-- Account settings section -->
