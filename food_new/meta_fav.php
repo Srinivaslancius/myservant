@@ -1,8 +1,15 @@
+<?php
+include "../admin_includes/config.php";
+include "../admin_includes/common_functions.php";
+$getFoodSiteSettings = getAllDataWhere('food_site_settings','id','1'); 
+$getFoodSiteSettingsData = $getFoodSiteSettings->fetch_assoc();
+
+?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>My Servant</title>
+    <title><?php echo $getFoodSiteSettingsData['admin_title']; ?></title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">

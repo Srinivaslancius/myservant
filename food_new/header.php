@@ -3,10 +3,10 @@
             <div class="col-md-12">
                 
                 <div class="col-md-2">
-                    <p>Email: info@myservant.com</p>
+                    <p>Email: <a href="mailto::<?php echo $getFoodSiteSettingsData['email']; ?>"><?php echo $getFoodSiteSettingsData['email']; ?></a></p>
                 </div>
                 <div class="col-md-3">
-                    <p>Customer Care: 1800 2345 1234 Toll Free (24 * 7)</p>
+                    <p>Customer Care: <a href="Tel:<?php echo $getFoodSiteSettingsData['mobile']; ?>"><?php echo $getFoodSiteSettingsData['mobile']; ?></a> Toll Free (24 * 7)</p>
                 </div>
                 <div class="col-md-3 pull-right">
                     <p class="pull-right"><a href="#">Login</a></p>
