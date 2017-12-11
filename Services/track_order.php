@@ -7,7 +7,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once 'meta.php';?>
 	<?php $getContentPageData = getAllDataWhere('services_content_pages','id',1);
-		  $getAboutUsData = $getContentPageData->fetch_assoc();
+		  $getAboutUsData = $getContentPageData->fetch_assoc(); 
+		  
 	?>
 
 	<!-- Favicons-->
