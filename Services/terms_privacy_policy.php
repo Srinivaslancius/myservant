@@ -58,7 +58,7 @@
 		<!-- Slider -->
 		 <div class="container-fluid page-title">
 		 	<?php 
-				if(isset($getPrivacyPolicyData['image'])) { ?> 	
+				if(!empty($getPrivacyPolicyData['image'])) { ?> 	
 				<div class="row">
 					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getPrivacyPolicyData['image'] ?>" alt="<?php echo $getPrivacyPolicyData['title'];?>" class="img-responsive">
 				</div>

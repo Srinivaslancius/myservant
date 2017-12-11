@@ -58,7 +58,7 @@
 		<!-- Slider -->
 		 <div class="container-fluid page-title">
 		 	<?php 
-				if(isset($getReturnPolicyData['image'])) { ?> 	
+				if(!empty($getReturnPolicyData['image'])) { ?> 	
 				<div class="row">
 					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getReturnPolicyData['image'] ?>" alt="<?php echo $getReturnPolicyData['title'];?>" class="img-responsive">
 				</div>

@@ -1,7 +1,8 @@
 <?php include_once 'admin_includes/main_header.php'; ?>
 <?php  
-$order_id = $_GET['order_id'];
+$id = $_GET['id'];
 $subcat_id = $_GET['subcat_id'];
+$order_id = $_GET['order_id'];
 if (!isset($_POST['submit'])) {
   //If fail
     echo "fail";
@@ -18,8 +19,11 @@ if (!isset($_POST['submit'])) {
   } else {
     $order_total = $_POST['order_total']+$order_price;
   }
+
+  $updateTotal = "UPDATE `services_orders` SET order_total = '$order_total' WHERE order_id = '$order_id'";
+  $updateOrdertotal = $conn->query($updateTotal);
   
-  $sql = "UPDATE `services_orders` SET order_price = '$order_price',order_total = '$order_total',lkp_order_status_id='$lkp_order_status_id', lkp_payment_status_id='$lkp_payment_status_id', delivery_date ='$delivery_date' WHERE id = '$order_id' AND sub_category_id = '$subcat_id'";
+  $sql = "UPDATE `services_orders` SET order_price = '$order_price',order_total = '$order_total',lkp_order_status_id='$lkp_order_status_id', lkp_payment_status_id='$lkp_payment_status_id', delivery_date ='$delivery_date' WHERE id = '$id' AND sub_category_id = '$subcat_id'";
   if($conn->query($sql) === TRUE){
      echo "<script type='text/javascript'>window.location='services_orders.php?msg=success'</script>";
   } else {
@@ -34,7 +38,7 @@ if (!isset($_POST['submit'])) {
           </div>
           <div class="panel-body">
             <div class="row">
-              <?php $getServiceOrders1 = "SELECT * FROM services_orders WHERE id = '$order_id' AND sub_category_id = '$subcat_id'"; $getServiceOrders = $conn->query($getServiceOrders1);
+              <?php $getServiceOrders1 = "SELECT * FROM services_orders WHERE id = '$id' AND sub_category_id = '$subcat_id'"; $getServiceOrders = $conn->query($getServiceOrders1);
               $getServiceOrdersData = $getServiceOrders->fetch_assoc(); 
               ?>
               <div class="row">

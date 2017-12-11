@@ -59,7 +59,7 @@
 		 <div class="container-fluid page-title">
 		<?php 
 		//$checkImg =$getServicesBanner['image']; 
-		if(isset($getServicesBanner['image'])) { ?> 	
+		if(!empty($getServicesBanner['image'])) { ?> 	
 				<div class="row">
 					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getServicesBanner['image'] ?>" alt="<?php echo $getServicesBanner['title'];?>" class="img-responsive">
 				</div>

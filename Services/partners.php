@@ -58,7 +58,7 @@
 		<!-- Slider -->
 		 <div class="container-fluid page-title">
 			<?php  
-				  if(isset($getPartnersBanner['image'])) { ?> 	
+				  if(!empty($getPartnersBanner['image'])) { ?> 	
 					<div class="row">
 						<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getPartnersBanner['image'] ?>" alt="<?php echo $getPartnersBanner['title'];?>" class="img-responsive">
 					</div>

@@ -25,7 +25,6 @@ if (!isset($_POST['submit']))  {
   $sub_category_id1 = $_POST['sub_category_id1'];
   $associate_or_not = $_POST['associate_or_not'];
   $experience = $_POST['experience'];
-  $lkp_status_id = $_POST['lkp_status_id'];
   $created_at = date("Y-m-d h:i:s");
   $fileToUpload = $_FILES["fileToUpload"]["name"];
   $fileToUpload1 = $_FILES["fileToUpload1"]["name"];
@@ -40,7 +39,7 @@ if (!isset($_POST['submit']))  {
     $specialization_name1 = 0;
   }
   
-  $service_provider = "INSERT INTO service_provider_registration (`name`, `email`, `mobile_number`, `address`,`service_provider_type_id`, `lkp_status_id`,`created_at`) VALUES ('$name', '$email', '$mobile_number', '$address','$service_provider_type_id', '$lkp_status_id', '$created_at')";
+  $service_provider = "INSERT INTO service_provider_registration (`name`, `email`, `mobile_number`, `address`,`service_provider_type_id`,`created_at`) VALUES ('$name', '$email', '$mobile_number', '$address','$service_provider_type_id', '$created_at')";
   $result1 = $conn->query($service_provider);
   $last_id = $conn->insert_id;
 
@@ -256,18 +255,6 @@ if (!isset($_POST['submit']))  {
                         <input id="form-control-22" class="file-upload-input service_provider_personal" type="file" accept="image/*" name="fileToUpload1" id="fileToUpload1"  onchange="loadFile1(event)"  multiple="multiple" >
                       </label>
                   </div>
-                  </div>
-
-                  <?php $getStatus = getAllData('lkp_status');?>
-                  <div class="form-group">
-                    <label for="form-control-3" class="control-label">Choose your status</label>
-                    <select id="form-control-3" name="lkp_status_id" class="custom-select" data-error="This field is required." required>
-                      <option value="">Select Status</option>
-                      <?php while($row = $getStatus->fetch_assoc()) {  ?>
-                          <option value="<?php echo $row['id']; ?>"><?php echo $row['status']; ?></option>
-                      <?php } ?>
-                   </select>
-                    <div class="help-block with-errors"></div>
                   </div>
                 
                   <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>

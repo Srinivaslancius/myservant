@@ -214,11 +214,11 @@
 			                        ?>
 									<input type="hidden" name="service_price[]" value="<?php echo $getSerName['service_price']; ?>">
 									<?php } elseif($getSerName['price_after_visit_type_id'] == 1) { 
-										$cartTotal1 = 0;
+										$cartTotal1 = $cartTotal;
 									?>
 									<input type="hidden" name="service_price[]" value="<?php echo $getSerName['price_after_visiting']; ?>">
 									<?php } else { 
-										$cartTotal1 = 0;
+										$cartTotal1 = $cartTotal;
 									?>
 									<input type="hidden" name="service_price[]" value="<?php echo $getSerName['service_min_price']; ?> - <?php echo $getSerName['service_max_price']; ?>">
 									<?php } ?>
@@ -284,6 +284,7 @@
 								</li>
 							</ul>
 							<div class="coupon-code">
+								<?php if($cartTotal != 0) { ?>
 								<div class="form-group">
 									<div class="field-group has-feedback has-clear">
 								      <input type="text" name="coupon_code" style="text-transform:uppercase" id="coupon_code" value="" placeholder="Coupon Code" class="form-control">
@@ -293,6 +294,7 @@
 										<button type="button" class="btn_cart_outine apply_coupon">Apply</button>
 									</div>
 								</div>
+								<?php } ?>
 							</div>
 						</div>
 						<!--End Your Order-->
