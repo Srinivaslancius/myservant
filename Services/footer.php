@@ -36,7 +36,7 @@
 						<li><a href="my_dashboard.php">My Account</a>
 						</li>
 						<?php } ?>
-						<li><a href="#">Track Order</a>
+						<li><a href="track_order.php">Track Order</a>
 						</li>
 						<li><a href="help_center.php">Help Center</a>
 						</li>
@@ -50,8 +50,8 @@
 				</div>
 				<div class="col-md-3 col-sm-3">
 					<h3>DOWNLOAD OUR APP</h3>
-					<a href="https://play.google.com/store/apps/details?id=com.myservant&hl=en"  target="_blank"><img src="img/googleplay.png"></a><br>
-					<a href="https://itunes.apple.com/us/app/my-servant/id1227443324?mt=8&ign-mpt=uo%3D4"  target="_blank"><img src="img/applestore.png" style="margin-top:10px"></a>
+					<a href="<?php echo $getSiteSettingsData['android_app_link'] ?>"  target="_blank"><img src="img/googleplay.png"></a><br>
+					<a href="<?php echo $getSiteSettingsData['apple_app_link'] ?>"  target="_blank"><img src="img/applestore.png" style="margin-top:10px"></a>
 					
 				</div>
 			</div>
