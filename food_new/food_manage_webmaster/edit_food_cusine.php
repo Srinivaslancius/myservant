@@ -10,7 +10,7 @@ if (!isset($_POST['submit'])) {
       $description = $_POST['description'];
       $lkp_status_id = $_POST['lkp_status_id'];
 
-          $sql = "UPDATE food_cusine SET title = '$title',lkp_status_id = '$lkp_status_id' WHERE id = '$id' ";
+          $sql = "UPDATE food_cusine_types SET title = '$title',lkp_status_id = '$lkp_status_id' WHERE id = '$id' ";
                     if($conn->query($sql) === TRUE){
                        echo "<script type='text/javascript'>window.location='food_cusine.php?msg=success'</script>";
                     } else {
@@ -28,7 +28,7 @@ if (!isset($_POST['submit'])) {
           </div>
           <div class="panel-body">
             <div class="row">
-              <?php $getAllFoodCusineData = getAllDataWhere('food_cusine','id',$id);
+              <?php $getAllFoodCusineData = getAllDataWhere('food_cusine_types','id',$id);
                     $getFoodCusineData = $getAllFoodCusineData->fetch_assoc(); ?>
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <form data-toggle="validator" method="POST" autocomplete="off">

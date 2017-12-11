@@ -96,7 +96,7 @@ if(mail($to, $subject, $message, $headers)) {
 	<main>
 	 <div class="container-fluid page-title">
 		<?php  
-		if(isset($getContactUsBanner['image'])) { ?> 	
+		if(!empty($getContactUsBanner['image'])) { ?> 	
 				<div class="row">
 					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getContactUsBanner['image'] ?>" alt="<?php echo $getContactUsBanner['title'];?>" class="img-responsive">
 				</div>

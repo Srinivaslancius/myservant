@@ -1,5 +1,5 @@
 <?php include_once 'admin_includes/main_header.php'; ?>
-<?php $getFoodFoodCusineData = getAllDataWithActiveRecent('food_cusine'); $i=1; ?>
+<?php $getFoodFoodCusineData = getAllDataWithActiveRecent('food_cusine_types'); $i=1; ?>
      <div class="site-content">
         <div class="panel panel-default panel-table">
           <div class="panel-heading">

@@ -58,7 +58,7 @@
 		<!-- Slider -->
 		 <div class="container-fluid page-title">
 		 	<?php 
-				if(isset($getAboutUsData['image'])) { ?> 	
+				if(!empty($getAboutUsData['image'])) { ?> 	
 				<div class="row">
 					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getAboutUsData['image'] ?>" alt="<?php echo $getAboutUsData['title'];?>" class="img-responsive">
 				</div>

@@ -90,7 +90,7 @@ if (!isset($_POST['submit']))  {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="form-control-2" class="control-label"></label>
-                          <button type="button" class="btn btn-primary add_more_button" style="top:24px;">Add More Fields</button>
+                          <!-- <button type="button" class="btn btn-primary add_more_button" style="top:24px;">Add More Fields</button> -->
                         </div>
                         
                       </div>

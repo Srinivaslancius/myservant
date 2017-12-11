@@ -58,7 +58,7 @@
 		<!-- Slider -->
 		<div class="container-fluid page-title">
 		<?php 
-			  if(isset($getBrandsBanner['image'])) { ?>	
+			  if(!empty($getBrandsBanner['image'])) { ?>	
 				<div class="row">
 					<img src="<?php echo $base_url . 'uploads/services_content_pages_images/'.$getBrandsBanner['image'] ?>" alt="<?php echo $getBrandsBanner['title'];?>" class="img-responsive">
 				</div>
