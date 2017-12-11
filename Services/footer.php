@@ -37,15 +37,7 @@
 						</li>
 						<?php } ?>
 						<li><a href="track_order.php">Track Order</a>
-
-						<?php if(!isset($_SESSION['user_login_session_id'])) { ?>
-						<li><a href="login.php">Track Order</a>
-
 						</li>
-						<?php } else { ?>
-						<li><a href="my_dashboard.php">Track Order</a>
-						</li>
-						<?php } ?>
 						<li><a href="help_center.php">Help Center</a>
 						</li>
 						<li><a href="delivery_areas.php">Delivery Areas</a>
