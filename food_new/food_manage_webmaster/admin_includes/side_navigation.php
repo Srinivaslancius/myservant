@@ -37,15 +37,25 @@
                 <li class="<?php if($page_name == 'users.php' || $page_name == 'add_users.php' || $page_name == 'edit_users.php') { echo "active"; } ?>"><a href="users.php">Users</a></li>
               </ul>
             </li>
-            
-            <li  class="<?php if($page_name == 'food_content_pages.php' || $page_name == 'add_food_content_pages.php' || $page_name == 'edit_food_content_pages.php' ) { echo "active"; } ?>">
-              <a href="food_content_pages.php" aria-haspopup="true">
+            <li class="with-sub">
+              <a href="#" aria-haspopup="true">
                 <span class="menu-icon">
-                   <i class="zmdi zmdi-collection-item  zmdi-hc-fw"></i>
+                  <i class="zmdi zmdi-collection-item  zmdi-hc-fw"></i>
                 </span>
-                <span class="menu-text">Content Pages</span>
+                <span class="menu-text">CMS</span>
               </a>
+              <ul class="sidebar-submenu collapse">
+                <li class="menu-subtitle">CMS</li>
+                <li  class="<?php if($page_name == 'food_content_pages.php' || $page_name == 'add_food_content_pages.php' || $page_name == 'edit_food_content_pages.php' ) { echo "active"; } ?>"><a href="food_content_pages.php">Content Pages</a>
+                </li>
+                <li  class="<?php if($page_name == 'food_banners.php' || $page_name == 'add_food_banners.php' || $page_name == 'edit_food_banners.php' ) { echo "active"; } ?>"><a href="food_banners.php">Banners</a>
+                </li>
+                <li  class="<?php if($page_name == 'food_newletter.php' ) { echo "active"; } ?>">
+                  <a href="food_newletter.php">News Letters</a>
+                </li>
+              </ul>
             </li>
+            
             <li  class="<?php if($page_name == 'food_cusine.php' || $page_name == 'add_food_cusine.php' || $page_name == 'edit_food_cusine.php' ) { echo "active"; } ?>">
               <a href="food_cusine.php" aria-haspopup="true">
                 <span class="menu-icon">
@@ -54,14 +64,7 @@
                 <span class="menu-text">Cusine</span>
               </a>
             </li>
-            <li  class="<?php if($page_name == 'food_banners.php' || $page_name == 'add_food_banners.php' || $page_name == 'edit_food_banners.php' ) { echo "active"; } ?>">
-              <a href="food_banners.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Banners</span>
-              </a>
-            </li>
+            
             <li  class="<?php if($page_name == 'food_category.php' || $page_name == 'add_food_category.php' || $page_name == 'edit_food_category.php' ) { echo "active"; } ?>">
               <a href="food_category.php" aria-haspopup="true">
                 <span class="menu-icon">
@@ -118,6 +121,29 @@
                 <span class="menu-text">Products</span>
               </a>
             </li>           
+            <li class="with-sub">
+              <a href="#" aria-haspopup="true">
+                <span class="menu-icon">
+                  <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Mangae Master Data</span>
+              </a>
+              <ul class="sidebar-submenu collapse">
+                <li class="menu-subtitle">Mangae Master Data</li>
+                 <li  class="<?php if($page_name == 'lkp_states.php' || $page_name == 'add_lkp_states.php' || $page_name == 'edit_lkp_states.php' ) { echo "active"; } ?>">
+                  <a href="lkp_states.php" >States</a>
+                </li>
+                <li  class="<?php if($page_name == 'lkp_districts.php' || $page_name == 'add_lkp_districts.php' || $page_name == 'edit_lkp_districts.php' ) { echo "active"; } ?>">
+                  <a href="lkp_districts.php" >Districts</a>
+                </li>
+                <li  class="<?php if($page_name == 'lkp_cities.php' || $page_name == 'add_lkp_cities.php' || $page_name == 'edit_lkp_cities.php' ) { echo "active"; } ?>">
+                <a href="lkp_cities.php">Cities</a>
+                </li>
+                <li  class="<?php if($page_name == 'lkp_locations.php' || $page_name == 'add_lkp_locations.php' || $page_name == 'edit_lkp_locations.php' ) { echo "active"; } ?>">
+                <a href="lkp_locations.php" >Locations</a>
+                </li> 
+              </ul>
+            </li>
             
             <!-- <li  class="<?php if($page_name == 'services_brand_logos.php' || $page_name == 'add_services_brand_logos.php' || $page_name == 'edit_services_brand_logos.php' ) { echo "active"; } ?>">
               <a href="services_brand_logos.php" aria-haspopup="true">
@@ -135,46 +161,11 @@
                 <span class="menu-text">Testimonials</span>
               </a>
             </li> -->
-            <li  class="<?php if($page_name == 'lkp_states.php' || $page_name == 'add_lkp_states.php' || $page_name == 'edit_lkp_states.php' ) { echo "active"; } ?>">
-              <a href="lkp_states.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">States</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'lkp_districts.php' || $page_name == 'add_lkp_districts.php' || $page_name == 'edit_lkp_districts.php' ) { echo "active"; } ?>">
-              <a href="lkp_districts.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Districts</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'lkp_cities.php' || $page_name == 'add_lkp_cities.php' || $page_name == 'edit_lkp_cities.php' ) { echo "active"; } ?>">
-              <a href="lkp_cities.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Cities</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'lkp_locations.php' || $page_name == 'add_lkp_locations.php' || $page_name == 'edit_lkp_locations.php' ) { echo "active"; } ?>">
-              <a href="lkp_locations.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Locations</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'food_newletter.php' ) { echo "active"; } ?>">
-              <a href="food_newletter.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">News Letters</span>
-              </a>
-            </li>
+           
+            
+            
+            
+            
             
             <li  class="<?php if($page_name == 'customer_enquireis.php' ) { echo "active"; } ?>">
               <a href="customer_enquireis.php" aria-haspopup="true">
