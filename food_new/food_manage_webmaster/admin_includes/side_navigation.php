@@ -63,7 +63,29 @@
                 </li>
               </ul>
             </li>
-            
+            <li class="with-sub">
+              <a href="#" aria-haspopup="true">
+                <span class="menu-icon">
+                  <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Mangae Master Data</span>
+              </a>
+              <ul class="sidebar-submenu collapse">
+                <li class="menu-subtitle">Mangae Master Data</li>
+                 <li  class="<?php if($page_name == 'lkp_states.php' || $page_name == 'add_lkp_states.php' || $page_name == 'edit_lkp_states.php' ) { echo "active"; } ?>">
+                  <a href="lkp_states.php" >States</a>
+                </li>
+                <li  class="<?php if($page_name == 'lkp_districts.php' || $page_name == 'add_lkp_districts.php' || $page_name == 'edit_lkp_districts.php' ) { echo "active"; } ?>">
+                  <a href="lkp_districts.php" >Districts</a>
+                </li>
+                <li  class="<?php if($page_name == 'lkp_cities.php' || $page_name == 'add_lkp_cities.php' || $page_name == 'edit_lkp_cities.php' ) { echo "active"; } ?>">
+                <a href="lkp_cities.php">Cities</a>
+                </li>
+                <li  class="<?php if($page_name == 'lkp_locations.php' || $page_name == 'add_lkp_locations.php' || $page_name == 'edit_lkp_locations.php' ) { echo "active"; } ?>">
+                <a href="lkp_locations.php" >Locations</a>
+                </li> 
+              </ul>
+            </li>
             <li  class="<?php if($page_name == 'food_cusine.php' || $page_name == 'add_food_cusine.php' || $page_name == 'edit_food_cusine.php' ) { echo "active"; } ?>">
               <a href="food_cusine.php" aria-haspopup="true">
                 <span class="menu-icon">
@@ -129,29 +151,7 @@
                 <span class="menu-text">Products</span>
               </a>
             </li>           
-            <li class="with-sub">
-              <a href="#" aria-haspopup="true">
-                <span class="menu-icon">
-                  <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Mangae Master Data</span>
-              </a>
-              <ul class="sidebar-submenu collapse">
-                <li class="menu-subtitle">Mangae Master Data</li>
-                 <li  class="<?php if($page_name == 'lkp_states.php' || $page_name == 'add_lkp_states.php' || $page_name == 'edit_lkp_states.php' ) { echo "active"; } ?>">
-                  <a href="lkp_states.php" >States</a>
-                </li>
-                <li  class="<?php if($page_name == 'lkp_districts.php' || $page_name == 'add_lkp_districts.php' || $page_name == 'edit_lkp_districts.php' ) { echo "active"; } ?>">
-                  <a href="lkp_districts.php" >Districts</a>
-                </li>
-                <li  class="<?php if($page_name == 'lkp_cities.php' || $page_name == 'add_lkp_cities.php' || $page_name == 'edit_lkp_cities.php' ) { echo "active"; } ?>">
-                <a href="lkp_cities.php">Cities</a>
-                </li>
-                <li  class="<?php if($page_name == 'lkp_locations.php' || $page_name == 'add_lkp_locations.php' || $page_name == 'edit_lkp_locations.php' ) { echo "active"; } ?>">
-                <a href="lkp_locations.php" >Locations</a>
-                </li> 
-              </ul>
-            </li>
+            
 
             <!-- <li  class="<?php if($page_name == 'services_brand_logos.php' || $page_name == 'add_services_brand_logos.php' || $page_name == 'edit_services_brand_logos.php' ) { echo "active"; } ?>">
               <a href="services_brand_logos.php" aria-haspopup="true">
