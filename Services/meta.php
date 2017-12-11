@@ -12,4 +12,4 @@ $getSiteSettingsData = $getSiteSettings->fetch_assoc();
 
 	<meta name="description" content="">
 	<meta name="author" content="">
-        <title>My Service</title>
+        <title><?php echo $getSiteSettingsData['admin_title']; ?></title>

@@ -87,52 +87,16 @@
                     </div>
                     <a href="change_password.php" class="list-group-item sub"><p>Change Password</p></a>
                 </div>
-            </div>
+            </div>            
+            <?php $uid=$_SESSION['user_login_session_id']; ?>
             <div class="col-xs-8 bhoechie-tab">
                 <!-- My orders section -->
                 <div class="bhoechie-tab-content active">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <?php $uid=$_SESSION['user_login_session_id'];
-                              $orderDetails ="SELECT * FROM services_orders WHERE user_id = '$uid' ORDER BY id DESC";
-                              $orderDetails1 = $conn->query($orderDetails);
-                              while($orderData = $orderDetails1->fetch_assoc()) {
-                            ?>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" style="border-bottom:0px">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <p style="color:#f26226"><b>ORDER PLACED</b></p>
-                                            <p><?php echo $orderData['created_at'];?></p>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <p style="color:#f26226"><b>TOTAL</b></p>
-                                            <p>Rs. <?php echo $orderData['order_total'];?></p>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <p style="color:#f26226"><b>SHIP TO</b></p>
-                                            <p><?php echo $orderData['first_name'];?><br><?php echo $orderData['address'];?></p>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <p style="color:#f26226"><b>ORDER ID:</b></p>
-                                            <p><?php echo $orderData['order_sub_id'];?></p><br>
-                                            <div class="row">
-                                            
-                                            <div class="col-sm-5">
-                                            <a href="view_orders.php?token=<?php echo $orderData['order_sub_id']?>" class="btn_1 outline" style="border-color:#f26226;padding:2px 10px;text-transform:capitalize">Details</a>
-                                            </div>
-                                            <div class="col-sm-5">
-                                            <a href="track_order_details.php?token=<?php echo $orderData['order_sub_id']?>" class="btn_1 outline" style="border-color:#f26226;padding:2px 10px;text-transform:capitalize">Track</a>
-                                            </div>
-                                            <div class="col-sm-2">
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>                            
-                            </div>
-                            <?php } ?>
+                        <div class="col-sm-12" id="faq-result">                            
+                            <?php include('getresult.php'); ?>                           
                         </div>
+                        <div id="loader-icon"><img src="LoaderIcon.gif" /><div>
                     </div>
                 </div>
                 <!-- Account settings section -->
@@ -228,6 +192,35 @@
                 });
             });
         </script>
+        <script>
+$(document).ready(function(){
+    function getresult(url) {
+        $.ajax({
+            url: url,
+            type: "GET",
+            data:  {rowcount:$("#rowcount").val()},
+            beforeSend: function(){
+            $('#loader-icon').show();
+            },
+            complete: function(){
+            $('#loader-icon').hide();
+            },
+            success: function(data){
+            $("#faq-result").append(data);
+            },
+            error: function(){}             
+       });
+    }
+    $(window).scroll(function(){
+        if ($(window).scrollTop() == $(document).height() - $(window).height()){
+            if($(".pagenum:last").val() <= $(".total-page").val()) {
+                var pagenum = parseInt($(".pagenum:last").val()) + 1;
+                getresult('getresult.php?page='+pagenum);
+            }
+        }
+    }); 
+});
+</script>
 </body>
 
 </html>
