@@ -69,7 +69,7 @@
                 <span class="menu-icon">
                    <i class="zmdi zmdi-collection-item  zmdi-hc-fw"></i>
                 </span>
-                <span class="menu-text">Cusine</span>
+                <span class="menu-text">Cusine Types</span>
               </a>
             </li>
             
