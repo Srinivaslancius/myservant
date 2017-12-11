@@ -45,10 +45,10 @@ while($orderData = $faq->fetch_assoc()) {
                                 <div class="row">
                                 
                                 <div class="col-sm-5">
-                                <a href="view_orders.php?token='.$orderData['order_sub_id'].' class="btn_1 outline" style="border-color:#f26226;padding:2px 10px;text-transform:capitalize">Details</a>
+                                <a href="view_orders.php?token='.$orderData['order_sub_id'].'" class="btn_1 outline" style="border-color:#f26226;padding:2px 10px;text-transform:capitalize">Details</a>
                                 </div>
                                 <div class="col-sm-5">
-                                <a href="track_order_details.php?token='.$orderData['order_sub_id'].' class="btn_1 outline" style="border-color:#f26226;padding:2px 10px;text-transform:capitalize">Track</a>
+                                <a href="track_order_details.php?token='.$orderData['order_sub_id'].'" class="btn_1 outline" style="border-color:#f26226;padding:2px 10px;text-transform:capitalize">Track</a>
                                 </div>
                                 <div class="col-sm-2">
                                 </div>
