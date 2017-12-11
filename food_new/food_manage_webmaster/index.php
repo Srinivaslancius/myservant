@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="css/cosmos.min.css">
   <link rel="stylesheet" href="css/application.min.css">
 </head>
-<body class="authentication-body" style="background:url(img/about_3.jpg) no-repeat; background-size:cover; ">
+<body class="authentication-body" style="background:url(img/img2.jpg) no-repeat; background-size:cover; ">
   <div class="container-fluid">
     <div class="authentication-header m-b-30">
       <div class="clearfix">

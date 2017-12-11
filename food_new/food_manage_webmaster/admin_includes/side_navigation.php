@@ -46,6 +46,14 @@
                 <span class="menu-text">Content Pages</span>
               </a>
             </li>
+            <li  class="<?php if($page_name == 'food_cusine.php' || $page_name == 'add_food_cusine.php' || $page_name == 'edit_food_cusine.php' ) { echo "active"; } ?>">
+              <a href="food_cusine.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-collection-item  zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Cusine</span>
+              </a>
+            </li>
             <li  class="<?php if($page_name == 'food_banners.php' || $page_name == 'add_food_banners.php' || $page_name == 'edit_food_banners.php' ) { echo "active"; } ?>">
               <a href="food_banners.php" aria-haspopup="true">
                 <span class="menu-icon">
