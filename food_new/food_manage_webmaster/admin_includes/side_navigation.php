@@ -24,6 +24,14 @@
                 <span class="menu-text">Site Settings</span>
               </a>
             </li>
+            <li class="<?php if($page_name == 'social_networks_links.php') { echo "active"; } ?>">
+              <a href="social_networks_links.php" aria-haspopup="true">
+                <span class="menu-icon">
+                  <i class="zmdi zmdi-settings zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Social Network Links</span>
+              </a>
+            </li>
             <li class="with-sub">
               <a href="#" aria-haspopup="true">
                 <span class="menu-icon">
@@ -144,7 +152,7 @@
                 </li> 
               </ul>
             </li>
-            
+
             <!-- <li  class="<?php if($page_name == 'services_brand_logos.php' || $page_name == 'add_services_brand_logos.php' || $page_name == 'edit_services_brand_logos.php' ) { echo "active"; } ?>">
               <a href="services_brand_logos.php" aria-haspopup="true">
                 <span class="menu-icon">
