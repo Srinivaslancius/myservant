@@ -80,6 +80,7 @@
                     <input type="url" name="apple_app_link" class="form-control" id="form-control-2" placeholder="Apple App Link" data-error="Please enter a valid Apple App Link." value="<?php echo $getSiteSettingsData['apple_app_link'];?>" required>
                     <div class="help-block with-errors"></div>
                   </div>
+                  
                   <button type="submit" name="submit" value="Submit" class="btn btn-primary btn-block">Submit</button>
                 </form>
               </div>
