@@ -33,7 +33,7 @@ if (!isset($_POST['submit'])) {
               $getImgUnlink = getImageUnlink('logo','food_vendors','id',$id,$target_dir);
                 //Send parameters for img val,tablename,clause,id,imgpath for image ubnlink from folder
               if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    $sql = "UPDATE food_vendors SET name = '$name', email = '$email', mobile = '$mobile',description = '$description', username = '$username',password = '$password',confirm_pass = '$confirm_pass',working_timings = '$working_timings',min_delivery_time = '$min_delivery_time',state = '$lkp_state_id',district = '$lkp_district_id',city = '$lkp_city_id',location = '$location', logo = '$fileToUpload' WHERE id = '$id' ";
+                    $sql = "UPDATE food_vendors SET name = '$name', email = '$email', mobile = '$mobile',description = '$description', username = '$username',password = '$password',confirm_pass = '$confirm_pass',working_timings = '$working_timings',min_delivery_time = '$min_delivery_time',lkp_state_id = '$lkp_state_id',lkp_district_id = '$lkp_district_id',lkp_city_id = '$lkp_city_id',location = '$location', logo = '$fileToUpload' WHERE id = '$id' ";
                     if($conn->query($sql) === TRUE){
                        echo "<script type='text/javascript'>window.location='vendors.php?msg=success'</script>";
                     } else {
@@ -45,7 +45,7 @@ if (!isset($_POST['submit'])) {
                 }
       } else {
 
-          $sql = "UPDATE food_vendors SET name = '$name', email = '$email', mobile = '$mobile',description = '$description', username = '$username',password = '$password',confirm_pass = '$confirm_pass',working_timings = '$working_timings',min_delivery_time = '$min_delivery_time',state = '$lkp_state_id',district = '$lkp_district_id',city = '$lkp_city_id',location = '$location' WHERE id = '$id' ";
+          $sql = "UPDATE food_vendors SET name = '$name', email = '$email', mobile = '$mobile',description = '$description', username = '$username',password = '$password',confirm_pass = '$confirm_pass',working_timings = '$working_timings',min_delivery_time = '$min_delivery_time',lkp_state_id = '$lkp_state_id',lkp_district_id = '$lkp_district_id',lkp_city_id = '$lkp_city_id',location = '$location' WHERE id = '$id' ";
           if($conn->query($sql) === TRUE){
              echo "<script type='text/javascript'>window.location='vendors.php?msg=success'</script>";
           } else {
@@ -98,7 +98,7 @@ if (!isset($_POST['submit'])) {
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Confirm Password</label>
-                    <input type="password" name="confirm_password" id="confirm_password" class="form-control" id="form-control-2" placeholder="Confirm Password" data-error="Please enter Confirm Password." required value="<?php echo decryptPassword($getVendorsData['confirm_pass']);?>">
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control" id="form-control-2" placeholder="Confirm Password" data-error="Please enter Confirm Password." required value="<?php echo decryptPassword($getVendorsData['confirm_pass']); ?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div id="divCheckPasswordMatch" style="color:red"></div>
@@ -112,17 +112,15 @@ if (!isset($_POST['submit'])) {
                     <input type="text" name="min_delivery_time" class="form-control" id="form-control-2" placeholder="Minimum Delivery Time" data-error="Please enter Minimum Delivery Time" required  value="<?php echo $getVendorsData['min_delivery_time'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
-                  <?php $sql = "SELECT * FROM food_lkp_locations WHERE id = '$id'";
-               $getLocations = $conn->query($sql);
-              $getLocationsData = $getLocations->fetch_assoc(); ?>
-                  <?php $getStates = getAllDataWithStatus('lkp_states','0');?>
+                
+                   <?php $getStates = getAllDataWithStatus('lkp_states','0');?>
 
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your State</label>
                     <select name="lkp_state_id" class="custom-select" data-error="This field is required." required onChange="getDistricts(this.value);">
                       <option value="">Select State</option>
                       <?php while($row = $getStates->fetch_assoc()) {  ?>
-                          <option <?php if($row['id'] == $getLocationsData['lkp_state_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['state_name']; ?></option>
+                          <option <?php if($row['id'] == $getVendorsData['lkp_state_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['state_name']; ?></option>
                       <?php } ?>
                    </select>
                     <div class="help-block with-errors"></div>
@@ -133,7 +131,7 @@ if (!isset($_POST['submit'])) {
                     <select id="lkp_district_id" name="lkp_district_id" class="custom-select" data-error="This field is required." required onChange="getCities(this.value);">
                       <option value="">Select District</option>
                       <?php while($row = $getDistrcits->fetch_assoc()) {  ?>
-                          <option <?php if($row['id'] == $getLocationsData['lkp_district_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['district_name']; ?></option>
+                          <option <?php if($row['id'] == $getVendorsData['lkp_district_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['district_name']; ?></option>
                       <?php } ?>
                     </select>
                     <div class="help-block with-errors"></div>
@@ -144,7 +142,7 @@ if (!isset($_POST['submit'])) {
                     <select id="lkp_city_id" name="lkp_city_id" class="custom-select" data-error="This field is required." required>
                       <option value="">Select City</option>
                       <?php while($row = $getCities->fetch_assoc()) {  ?>
-                          <option <?php if($row['id'] == $getLocationsData['lkp_city_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['city_name']; ?></option>
+                          <option <?php if($row['id'] == $getVendorsData['lkp_city_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['city_name']; ?></option>
                       <?php } ?>
                     </select>
                     <div class="help-block with-errors"></div>
@@ -182,3 +180,13 @@ if (!isset($_POST['submit'])) {
         </div>
       </div>
 <?php include_once 'admin_includes/footer.php'; ?>
+
+<script src="//cdn.ckeditor.com/4.7.0/full/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'description' );
+</script>
+<style type="text/css">
+    .cke_top, .cke_contents, .cke_bottom {
+        border: 1px solid #333;
+    }
+</style>

@@ -28,7 +28,7 @@
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-           $sql = "INSERT INTO food_vendors (`name`, `vendor_id`,`email`, `mobile`, `description`, `username`, `password`,`confirm_pass`, `working_timings`,`min_delivery_time`, `state`,`district`, `city`,`location`, `logo`,`lkp_status_id`, `created_at`) VALUES ('$name','$vendor_id', '$email','$mobile', '$description','$username','$password','$confirm_pass','$working_timings','$min_delivery_time','$lkp_state_id','$lkp_district_id','$lkp_city_id','$location','$fileToUpload','$lkp_status_id','$created_at')";
+           $sql = "INSERT INTO food_vendors (`name`, `vendor_id`,`email`, `mobile`, `description`, `username`, `password`,`confirm_pass`, `working_timings`,`min_delivery_time`, `lkp_state_id`,`lkp_district_id`, `lkp_city_id`,`location`, `logo`,`lkp_status_id`, `created_at`) VALUES ('$name','$vendor_id', '$email','$mobile', '$description','$username','$password','$confirm_pass','$working_timings','$min_delivery_time','$lkp_state_id','$lkp_district_id','$lkp_city_id','$location','$fileToUpload','$lkp_status_id','$created_at')";
             if($conn->query($sql) === TRUE){
                echo "<script type='text/javascript'>window.location='vendors.php?msg=success'</script>";
             } else {
@@ -69,7 +69,7 @@
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Description</label>
-                    <textarea name="description" class="form-control" id="meta_desc" placeholder="Description" data-error="This field is required." required></textarea>
+                    <textarea name="description" id="description" class="form-control" id="meta_desc" placeholder="Description" data-error="This field is required." required></textarea>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
@@ -160,3 +160,12 @@
         </div>
       </div>
 <?php include_once 'admin_includes/footer.php'; ?>
+<script src="//cdn.ckeditor.com/4.7.0/full/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'description' );
+</script>
+<style type="text/css">
+    .cke_top, .cke_contents, .cke_bottom {
+        border: 1px solid #333;
+    }
+</style>

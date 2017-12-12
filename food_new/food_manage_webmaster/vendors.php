@@ -1,7 +1,5 @@
 <?php include_once 'admin_includes/main_header.php'; ?>
-<?php $getVendorsData1 = "SELECT * FROM food_vendors ";
-  $getVendorsData = $conn->query($getVendorsData1);
- $i=1; ?>
+<?php $getVendorsData = getAllDataWithActiveRecent('food_vendors');$i=1; ?>
      <div class="site-content">
         <div class="panel panel-default panel-table">
           <div class="panel-heading">
