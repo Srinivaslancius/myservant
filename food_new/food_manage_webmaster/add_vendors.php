@@ -86,7 +86,7 @@
                   </div>
                   <?php $getAllFoodCusineTypes = getAllDataWithStatus('food_cusine_types','0');?>
                    <div class="form-group">
-                    <label for="form-control-3" class="control-label">Choose your Delivery Type</label>
+                    <label for="form-control-3" class="control-label">Choose Food Cusine Type</label>
                     <select name="cusine_type_id[]" class="custom-select" multiple="multiple" data-error="This field is required." required>
                       <option value="">Select Food Cusine Type</option>
                       <?php while($row = $getAllFoodCusineTypes->fetch_assoc()) {  ?>
