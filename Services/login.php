@@ -1,4 +1,4 @@
-
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
@@ -28,7 +28,7 @@
 		        $_SESSION['timestamp'] = time();
 		        if($cart_id == 1) {
 		        	header('Location: checkout.php');
-		        } elseif($_GET['err']!='') { header('Location: cart.php'); } else { echo "<script>history.go(-2);</script>"; }
+		        } elseif($_GET['err']!='') { header('Location: cart.php'); exit; } else { header('Location: index.php'); exit; }
 		    } else {
 		    	header('Location: login.php?err=log-fail');
 		    }

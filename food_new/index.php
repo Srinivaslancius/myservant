@@ -262,5 +262,23 @@
     });
 </script>
 
+    <!-- Auto complete home page search -->        
+    <link rel="stylesheet" href="css/jquery.autocomplete.css">
+    <script src="js/jquery.autocomplete.js" type="text/javascript"></script>
+    <?php
+    $sql3 = "SELECT * FROM food_vendors where lkp_status_id = '0'";
+    $result3 = $conn->query($sql3);    
+    while($row3 = $result3->fetch_assoc()) {                     
+        $getRestList[] = $row3['restaurant_address'];       
+    }
+    ?>   
+    <script type="text/javascript">
+    var states = <?php echo json_encode($getRestList); ?>;
+    jQuery('#searchKey').autocomplete({
+        source:[states]
+    });
+    </script>
+
+    <!-- End home page search -->
 
 </html>

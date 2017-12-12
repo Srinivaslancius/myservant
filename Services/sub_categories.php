@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
@@ -50,47 +51,48 @@
     <!-- container -->
                 
         </header>
-	<!-- End Header -->
+  <!-- End Header -->
 
-	<main>
-		<!-- Slider -->
-		<?php if (isset($_POST['search'])) {
-			$cat_id = $_POST['id'];
-      if($cat_id == '0') {
-        header("Location: services.php");
+  <main>
+    <!-- Slider -->
+    <?php if (isset($_POST['search'])) {
+      $cat_id = $_POST['id'];
+      if($_POST['id'] == '0') {
+        header("Location: services.php");         
+        exit; 
       } else {
-			$getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id);
-			$getBanners1 = "SELECT * FROM `services_banners` WHERE lkp_status_id = 0 ANd service_category_id = $cat_id ORDER BY id DESC";
-			$getBanners = $conn->query($getBanners1);
+        $getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id);
+        $getBanners1 = "SELECT * FROM `services_banners` WHERE lkp_status_id = 0 ANd service_category_id = $cat_id ORDER BY id DESC";
+        $getBanners = $conn->query($getBanners1);
       }
-		} else {
-			$cat_id = decryptPassword($_GET['key']);
-			$getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id);
-			$getBanners1 = "SELECT * FROM `services_banners` WHERE lkp_status_id = 0 ANd service_category_id = $cat_id ORDER BY id DESC";
-			$getBanners = $conn->query($getBanners1);
-		} ?>
+    } else {
+      $cat_id = decryptPassword($_GET['key']);
+      $getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id);
+      $getBanners1 = "SELECT * FROM `services_banners` WHERE lkp_status_id = 0 ANd service_category_id = $cat_id ORDER BY id DESC";
+      $getBanners = $conn->query($getBanners1);
+    } ?>
 
-		<div class="container-fluid page-title">
-			 <?php 
-			 if($getBannersData = $getBanners->fetch_assoc()) { ?>
-				<div class="row">
-					<img src="<?php echo $base_url . 'uploads/services_banner_images/'.$getBannersData['banner'] ?>" class="img-responsive">
-				</div>
-			<?php } else { ?>
-				<div class="row">
-					<img src="img/slides/slide_3.jpg" class="img-responsive">
-				</div>
-			<?php } ?>
-	    </div>
+    <div class="container-fluid page-title">
+       <?php 
+       if($getBannersData = $getBanners->fetch_assoc()) { ?>
+        <div class="row">
+          <img src="<?php echo $base_url . 'uploads/services_banner_images/'.$getBannersData['banner'] ?>" class="img-responsive">
+        </div>
+      <?php } else { ?>
+        <div class="row">
+          <img src="img/slides/slide_3.jpg" class="img-responsive">
+        </div>
+      <?php } ?>
+      </div>
 
-		<div class="container margin_60">
+    <div class="container margin_60">
 
-			<div class="main_title">
-				<h2>Our <span>Services</span> Sub Categories</h2>
-				
-			</div>
+      <div class="main_title">
+        <h2>Our <span>Services</span> Sub Categories</h2>
+        
+      </div>
 
-	<div class="row">
+  <div class="row">
         <?php if($getSubCategoriesData->num_rows > 0) { 
         while($getAllSubCategoriesData = $getSubCategoriesData->fetch_assoc()) { ?>           
         <div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
