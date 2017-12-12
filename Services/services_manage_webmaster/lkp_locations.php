@@ -29,7 +29,7 @@
                    <td><?php $getCities = getAllData('lkp_cities'); while($getCitiesData = $getCities->fetch_assoc()) { if($row['lkp_city_id'] == $getCitiesData['id']) { echo $getCitiesData['city_name']; } } ?></td>
                    <td><?php echo $row['location_name']; ?></td>
                    <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='lkp_locations'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='lkp_locations'>In Active</span>" ;} ?></td>
-                   <td> <a href="edit_lkp_locations.php?location_id=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a>  &nbsp; <a href="delete_locations.php?id=<?php echo $row['lkp_city_id']; ?>"><i class="zmdi zmdi-delete zmdi-hc-fw" onclick="return confirm('Are you sure you want to delete?')"></i></a></td>
+                   <td> <a href="edit_lkp_locations.php?location_id=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a>  &nbsp; <a href="delete.php?id=<?php echo $row['id']; ?>&table=<?php echo "lkp_locations" ?>"><i class="zmdi zmdi-delete zmdi-hc-fw" onclick="return confirm('Are you sure you want to delete?')"></i></a></td>
                   </tr>
                   <?php  $i++; } ?>
                 </tbody>
