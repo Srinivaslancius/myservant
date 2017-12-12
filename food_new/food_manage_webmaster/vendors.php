@@ -106,6 +106,11 @@
                             
                             <div class="row">
                               <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Location:</div>
+                              <div class="col-sm-6"><?php echo $row['location'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
                               <div class="col-sm-4">Status:</div>
                               <div class="col-sm-6"><?php if($row['lkp_status_id'] == 0 ){ echo "Active";} else{ echo "InActive";}?></div>
                             </div>
