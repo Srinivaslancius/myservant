@@ -63,12 +63,12 @@ if (!isset($_POST['submit']))  {
               <?php $getIngredients = getAllDataWithStatus('food_ingredients','0');?>
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <form data-toggle="validator" method="post" enctype="multipart/form-data">
-                  <?php $getResturants = getAllDataWithStatus('food_restaurants','0');?>
+                  <?php $getFoodVendors = getAllDataWithStatus('food_vendors','0');?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose your Resturant</label>
                     <select name="restaurant_id" class="custom-select" data-error="This field is required." required>
                       <option value="">Select Resturant</option>
-                      <?php while($row = $getResturants->fetch_assoc()) {  ?>
+                      <?php while($row = $getFoodVendors->fetch_assoc()) {  ?>
                           <option value="<?php echo $row['id']; ?>" ><?php echo $row['restaurant_name']; ?></option>
                       <?php } ?>
                    </select>
