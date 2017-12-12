@@ -5,7 +5,7 @@
               echo "fail";
           } else  { 
     $name = $_POST['name'];
-    $vendor_id = $_POST['vendor_id'];
+    $vendor_id =rand(1000,9999);
     $email = $_POST['email'];
     $mobile = $_POST['mobile'];
     $description = $_POST['description'];
@@ -21,14 +21,14 @@
     $lkp_status_id = $_POST['lkp_status_id'];
     $created_at = date("Y-m-d h:i:s");
     $fileToUpload = uniqid().$_FILES['fileToUpload']['name'];
-
       if($fileToUpload!='') {
 
-          $file_tmp = $_FILES["fileToUpload"]["tmp_name"];
-        $file_destination = '../../uploads/food_vendor_logo/' . $fileToUpload;
-        if (move_uploaded_file($file_tmp, $file_destination){
+        $target_dir = "../../uploads/food_vendor_logo/";
+        $target_file = $target_dir . basename($fileToUpload);
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
-            echo $sql = "INSERT INTO vendors (`name`, `vendor_id`,`email`, `mobile`, `description`, `username`, `password`,`confirm_pass`, `working_timings`,`min_delivery_time`, `state`,`district`, `city`,`location`, `logo`,`lkp_status_id`, `created_at`) VALUES ('$name','$vendor_id', '$email','$mobile', '$description','$username','$password','$confirm_pass','$working_timings','$min_delivery_time','$lkp_state_id','$lkp_district_id','$lkp_city_id','$location','$fileToUpload','$lkp_status_id','$created_at')"; die;
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+           $sql = "INSERT INTO food_vendors (`name`, `vendor_id`,`email`, `mobile`, `description`, `username`, `password`,`confirm_pass`, `working_timings`,`min_delivery_time`, `state`,`district`, `city`,`location`, `logo`,`lkp_status_id`, `created_at`) VALUES ('$name','$vendor_id', '$email','$mobile', '$description','$username','$password','$confirm_pass','$working_timings','$min_delivery_time','$lkp_state_id','$lkp_district_id','$lkp_city_id','$location','$fileToUpload','$lkp_status_id','$created_at')";
             if($conn->query($sql) === TRUE){
                echo "<script type='text/javascript'>window.location='vendors.php?msg=success'</script>";
             } else {
@@ -56,12 +56,6 @@
                     <input type="text" name="name" class="form-control" id="form-control-2" placeholder="Vendor Name" data-error="Please enter Vendor Name" required>
                     <div class="help-block with-errors"></div>
                   </div>
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">Vendor Id</label>
-                    <input type="text" name="vendor_id" class="form-control" id="form-control-2" placeholder="Vendor Id" data-error="Please enter Vendor Id" required>
-                    <div class="help-block with-errors"></div>
-                  </div>
-
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email</label>
                     <input type="email" name="email" class="form-control" id="user_email" placeholder="Email" onkeyup="checkemail();" data-error="Please enter valid email address." required>
@@ -156,7 +150,7 @@
                       <?php } ?>
                    </select>
                     <div class="help-block with-errors"></div>
-                  </div> 
+                  </div>
                   <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
                 </form>
               </div>
