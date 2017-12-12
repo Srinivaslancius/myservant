@@ -28,9 +28,104 @@
                     <td><?php echo $row['vendor_email'];?></td>
                     <td><?php echo $row['vendor_mobile'];?></td>
                     <td><?php echo $row['created_at'];?></td>
-                    <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='vendors'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='vendors'>In Active</span>" ;} ?></td>
-                   <td><a href="edit_vendors.php?bid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a></td>
-                    
+                    <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='food_vendors'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='food_vendors'>In Active</span>" ;} ?></td>
+                   <td><a href="edit_vendors.php?bid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a>&nbsp;<a href="#"><i class="zmdi zmdi-eye zmdi-hc-fw" data-toggle="modal" data-target="#<?php echo $row['id']; ?>" class=""></i></a></td>
+                    <!-- Open Modal Box  here -->
+                    <div id="<?php echo $row['id']; ?>" class="modal fade" tabindex="-1" role="dialog">
+                      <div class="modal-dialog">
+                        <div class="modal-content animated flipInX">
+                          <div class="modal-header bg-success">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">
+                                <i class="zmdi zmdi-close"></i>
+                              </span>
+                            </button>
+                            <center><h4 class="modal-title">Vendor Information</h4></center>
+                          </div>
+                          <div class="modal-body" id="modal_body">
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Vendor Name:</div>
+                              <div class="col-sm-6"><?php echo $row['vendor_name'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Vendor Email:</div>
+                              <div class="col-sm-6"><?php echo $row['vendor_email'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Vendor Mobile:</div>
+                              <div class="col-sm-6"><?php echo $row['vendor_mobile'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Resturant Name:</div>
+                              <div class="col-sm-6"><?php echo $row['restaurant_name'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Resturant Address:</div>
+                              <div class="col-sm-6"><?php echo $row['restaurant_address'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Pincode:</div>
+                              <div class="col-sm-6"><?php echo $row['pincode'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Meta Title:</div>
+                              <div class="col-sm-6"><?php echo $row['meta_title'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Meta Keywords:</div>
+                              <div class="col-sm-6"><?php echo $row['meta_keywords'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Meta Description:</div>
+                              <div class="col-sm-6"><?php echo $row['meta_desc'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Description:</div>
+                              <div class="col-sm-6"><?php echo $row['description'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Working Timings:</div>
+                              <div class="col-sm-6"><?php echo $row['working_timings'];?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Minimum Delivery Time:</div>
+                              <div class="col-sm-6"><?php echo $row['min_delivery_time'];?></div>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Status:</div>
+                              <div class="col-sm-6"><?php if($row['lkp_status_id'] == 0 ){ echo "Active";} else{ echo "InActive";}?></div>
+                            </div>
+                                                        
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-success">Close</button>
+                            <style>
+                              #modal_body{
+                                font-size:14px;
+                                padding-top:30px;
+                                padding-left: 0px;
+                                font-family:Roboto,sans-serif;
+                              }
+                            </style>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Modal Box  here -->
                   </tr>
                   <?php  $i++; } ?>
                 </tbody>
