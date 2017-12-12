@@ -190,3 +190,16 @@ if (!isset($_POST['submit'])) {
         border: 1px solid #333;
     }
 </style>
+<script type="text/javascript">
+      
+      function checkPasswordMatch() {
+        var password = $("#password").val();
+        var confirmPassword = $("#confirm_pass").val();
+        if (confirmPassword != password) {
+            $("#divCheckPasswordMatch").html("Passwords do not match!");
+            $("#confirm_password").val("");
+        } else {
+            $("#divCheckPasswordMatch").html("");
+        }
+    }
+    </script>
