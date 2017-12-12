@@ -112,14 +112,14 @@
                 <span class="menu-text">Sub Categories</span>
               </a>
             </li> --> 
-            <li  class="<?php if($page_name == 'food_restaurants.php' || $page_name == 'add_food_restaurants.php' || $page_name == 'edit_food_restaurants.php' ) { echo "active"; } ?>">
+            <!-- <li  class="<?php if($page_name == 'food_restaurants.php' || $page_name == 'add_food_restaurants.php' || $page_name == 'edit_food_restaurants.php' ) { echo "active"; } ?>">
               <a href="food_restaurants.php" aria-haspopup="true">
                 <span class="menu-icon">
                    <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
                 </span>
                 <span class="menu-text">Restaurants</span>
               </a>
-            </li>
+            </li> -->
             <li  class="<?php if($page_name == 'food_product_weights.php' || $page_name == 'add_food_product_weights.php' || $page_name == 'edit_food_product_weights.php') { echo "active"; } ?>">
               <a href="food_product_weights.php" aria-haspopup="true">
                 <span class="menu-icon">
