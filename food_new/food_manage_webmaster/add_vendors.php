@@ -9,6 +9,7 @@
     $restaurant_address = $_POST['restaurant_address'];
     $pincode = $_POST['pincode'];
     $delivery_type_id = implode(',',$_POST["delivery_type_id"]);
+    $cusine_type_id = implode(',',$_POST["cusine_type_id"]);
     $meta_title = $_POST['meta_title'];
     $meta_keywords = $_POST['meta_keywords'];
     $meta_desc = $_POST['meta_desc'];
@@ -23,7 +24,6 @@
     $lkp_district_id = $_POST['lkp_district_id'];
     $lkp_city_id = $_POST['lkp_city_id'];
     $location = $_POST['location'];
-    $lkp_status_id = $_POST['lkp_status_id'];
     $created_at = date("Y-m-d h:i:s");
     $fileToUpload = uniqid().$_FILES['fileToUpload']['name'];
       if($fileToUpload!='') {
@@ -33,7 +33,7 @@
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-           $sql = "INSERT INTO food_vendors (`vendor_name`, `vendor_id`,`vendor_email`, `vendor_mobile`, `description`,  `password`, `working_timings`,`min_delivery_time`, `lkp_state_id`,`lkp_district_id`, `lkp_city_id`,`location`, `logo`,`lkp_status_id`, `restaurant_name`,`restaurant_address`,`delivery_type_id`,`created_at`,`pincode`,`meta_title`,`meta_keywords`,`meta_desc`) VALUES ('$vendor_name','$vendor_id','$vendor_email','$vendor_mobile', '$description','$password','$working_timings','$min_delivery_time','$lkp_state_id','$lkp_district_id','$lkp_city_id','$location','$fileToUpload','$lkp_status_id','$restaurant_name','$restaurant_address','$delivery_type_id','$created_at','$pincode','$meta_title','$meta_keywords','$meta_desc')";
+           $sql = "INSERT INTO food_vendors (`vendor_name`, `vendor_id`,`vendor_email`, `vendor_mobile`, `description`,  `password`, `working_timings`,`min_delivery_time`, `lkp_state_id`,`lkp_district_id`, `lkp_city_id`,`location`, `logo`, `restaurant_name`,`restaurant_address`,`delivery_type_id`,`created_at`,`pincode`,`meta_title`,`meta_keywords`,`meta_desc`,`cusine_type_id`) VALUES ('$vendor_name','$vendor_id','$vendor_email','$vendor_mobile', '$description','$password','$working_timings','$min_delivery_time','$lkp_state_id','$lkp_district_id','$lkp_city_id','$location','$fileToUpload','$restaurant_name','$restaurant_address','$delivery_type_id','$created_at','$pincode','$meta_title','$meta_keywords','$meta_desc','$cusine_type_id')";
 
 
             if($conn->query($sql) === TRUE){
@@ -84,21 +84,18 @@
                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">Meta Title</label>
-                    <input type="text" name="meta_title" class="form-control" id="form-control-2" placeholder="Meta Title" data-error="Please enter meta title" required>
+                  <?php $getAllFoodCusineTypes = getAllDataWithStatus('food_cusine_types','0');?>
+                   <div class="form-group">
+                    <label for="form-control-3" class="control-label">Choose Food Cusine Type</label>
+                    <select name="cusine_type_id[]" class="custom-select" multiple="multiple" data-error="This field is required." required>
+                      <option value="">Select Food Cusine Type</option>
+                      <?php while($row = $getAllFoodCusineTypes->fetch_assoc()) {  ?>
+                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['title']; ?></option>
+                      <?php } ?>
+                   </select>
                     <div class="help-block with-errors"></div>
                   </div>
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">Meta Keywords</label>
-                    <input type="text" name="meta_keywords" class="form-control" id="form-control-2" placeholder="Meta Keywords" data-error="Please enter Meta Keywords" required>
-                    <div class="help-block with-errors"></div>
-                  </div>
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label"> Meta Description</label>
-                    <textarea name="meta_desc" class="form-control" id="meta_desc" placeholder="Description" data-error="This field is required." required></textarea>
-                    <div class="help-block with-errors"></div>
-                  </div>
+                  
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Pincode</label>
                     <input type="text" name="pincode" class="form-control" id="form-control-2" placeholder="Pincode" data-error="Please enter Pincode." required maxlength="6"  >
@@ -127,7 +124,7 @@
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Confirm Password</label>
-                    <input type="password" name="confirm_password" id="confirm_password" class="form-control" id="form-control-2" placeholder="Confirm Password" data-error="Please enter Confirm Password." required>
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control" id="form-control-2" placeholder="Confirm Password"  onChange="checkPasswordMatch();"required>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div id="divCheckPasswordMatch" style="color:red"></div>
@@ -181,19 +178,22 @@
                     <input type="text" name="location" class="form-control" id="form-control-2" placeholder="Location Name" data-error="Please enter Location" required>
                     <div class="help-block with-errors"></div>
                   </div>
-                   
-                 
-                  <?php $getStatus = getAllData('lkp_status');?>
-                  <div class="form-group">
-                    <label for="form-control-3" class="control-label">Choose your status</label>
-                    <select id="form-control-3" name="lkp_status_id" class="custom-select" data-error="This field is required." required>
-                      <option value="">Select Status</option>
-                      <?php while($row = $getStatus->fetch_assoc()) {  ?>
-                          <option value="<?php echo $row['id']; ?>"><?php echo $row['status']; ?></option>
-                      <?php } ?>
-                   </select>
+                   <div class="form-group">
+                    <label for="form-control-2" class="control-label">Meta Title</label>
+                    <input type="text" name="meta_title" class="form-control" id="form-control-2" placeholder="Meta Title" data-error="Please enter meta title" required>
                     <div class="help-block with-errors"></div>
                   </div>
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Meta Keywords</label>
+                    <input type="text" name="meta_keywords" class="form-control" id="form-control-2" placeholder="Meta Keywords" data-error="Please enter Meta Keywords" required>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label"> Meta Description</label>
+                    <textarea name="meta_desc" class="form-control" id="meta_desc" placeholder="Description" data-error="This field is required." required></textarea>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  
                   <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
                 </form>
               </div>
@@ -217,7 +217,7 @@
       
       function checkPasswordMatch() {
         var password = $("#password").val();
-        var confirmPassword = $("#confirm_pass").val();
+        var confirmPassword = $("#confirm_password").val();
         if (confirmPassword != password) {
             $("#divCheckPasswordMatch").html("Passwords do not match!");
             $("#confirm_password").val("");

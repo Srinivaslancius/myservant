@@ -29,8 +29,8 @@ $getServiceFailedOrders1 = $conn->query($getServiceFailedOrders);
                     <td><?php echo $getServicenamesData['group_service_name'];?></td>
                     <td><?php echo $row['order_sub_id'];?></td>
                     <td><?php echo $row['order_price'];?></td>
-                   <td><?php if($row['lkp_order_status_id'] == 1) { echo "Pending" ;} elseif($row['lkp_order_status_id'] == 2) { echo "Completed" ;} else { echo "Cancelled" ;} ?></td>
-                   <td><?php if($row['lkp_payment_status_id'] == 1) { echo "Success" ;} elseif($row['lkp_payment_status_id'] == 2) { echo "InProgress" ;} else { echo "Failed" ;} ?></td>
+                    <td><?php $orderStatus = getIndividualDetails('lkp_order_status','id',$row['lkp_order_status_id']); echo $orderStatus['order_status']; ?></td>                   
+                    <td><?php $orderPaymentStatus = getIndividualDetails('lkp_payment_status','id',$row['lkp_payment_status_id']); echo $orderPaymentStatus['payment_status']; ?></td>
                    </tr>
                   <?php  $i++; } ?>
                 </tbody>
