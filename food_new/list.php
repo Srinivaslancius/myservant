@@ -27,6 +27,15 @@
 
 <body>
 
+<?php
+
+if(isset($_POST['searchFood'])) {
+    $searchParms = $_POST['searchKey'];
+    $getSearchResults = getSearchResults('food_vendors',$searchParms);
+    $getResultsCount = $getSearchResults->num_rows;
+}
+
+?>
 <!--[if lte IE 8]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
 <![endif]-->
@@ -73,6 +82,7 @@
 		<div id="map" class="map"></div>
 	</div><!-- End Map -->
 
+<?php if($getResultsCount > 0) { ?>
 <!-- Content ================================================== -->
 <div class="container margin_60_35">
 	<div class="row">
@@ -83,7 +93,7 @@
         
 		<div class="col-md-9">
         
-                    <div id="tools">
+            <div id="tools">
 				<div class="row">
 					<div class="col-md-3 col-sm-3 col-xs-6 pull-right">
 						<div class="styled-select">
@@ -91,14 +101,12 @@
 								<option value="" selected>Sort by</option>
 								<option value="lower">Relevance</option>
 								<option value="higher">Delivery Time</option>
-                                                                <option value="higher">Delivery Time</option>
-                                                                <option value="higher">Restaurant Rating</option>
-                                                                <option value="higher">Budget</option>
-                                                        </select>
+                                <option value="higher">Delivery Time</option>
+                                <option value="higher">Restaurant Rating</option>
+                                <option value="higher">Budget</option>
+                            </select>
 						</div>
-					</div>
-                                        
-                                    
+					</div>          
 				</div>
 			</div><!--End tools -->
                         <?php for($i=0; $i<8; $i++) {?>
@@ -144,6 +152,13 @@
 	</div><!-- End row -->
 </div><!-- End container -->
 <!-- End Content =============================================== -->
+<?php } else { ?>
+<div class="container margin_60_35">
+    <div class="row">
+        SORRY! No Restaurants Found.
+    </div>
+</div>
+<?php } ?>
 
 <!-- Footer ================================================== -->
 	<footer>
