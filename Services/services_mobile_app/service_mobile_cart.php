@@ -6,6 +6,11 @@ include "../../admin_includes/common_functions.php";
 $response = array();
 
 if (isset($_REQUEST['userId']) && !empty($_REQUEST['serviceCategoryId']) && isset($_REQUEST['serviceSubCategoryId']) && !empty($_REQUEST['groupId']) && isset($_REQUEST['serviceId']) && !empty($_REQUEST['servicesPriceTypeId']) && isset($_REQUEST['servicePrice']) && !empty($_REQUEST['serviceQuantity']) && isset($_REQUEST['serviceSelectedDate']) && !empty($_REQUEST['serviceSelectedTime']) ) {
+
+	if($_SESSION['CART_TEMP_RANDOM'] == "") {
+
+		$_SESSION['CART_TEMP_RANDOM'] = rand(10, 10).sha1(crypt(time())).time();
+	}
 	
 	$user_id = $_REQUEST['user_id'];	
 	$date = date("Y-m-d h:i:s");

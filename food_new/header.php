@@ -33,7 +33,8 @@
                 <form method="post" action="list.php" autocomplete="off">
                     <div id="custom-search-input">
                         <div class="input-group ">
-                            <input type="text" class="search-query" placeholder="Your Address or postal code" required name="searchKey" id="searchKey">
+                            <input type="text" class=" search-query" placeholder="Your Address or postal code" required name="searchKey" id="search-box">
+                            <div id="suggesstion-box"></div>
                             <span class="input-group-btn">
                             <input type="submit" class="btn_search" value="submit" name="searchFood">
                             </span>

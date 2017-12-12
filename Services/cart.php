@@ -84,7 +84,7 @@
         $user_session_id = $_SESSION['user_login_session_id'];
         $cartItems1 = "SELECT * FROM services_cart WHERE user_id = '$user_session_id' OR session_cart_id='$session_cart_id' ";
         $cartItems = $conn->query($cartItems1);
-    } else {                                       
+    } else {
         $cartItems = getAllDataWhere('services_cart','session_cart_id',$session_cart_id);
     } 
 ?>
