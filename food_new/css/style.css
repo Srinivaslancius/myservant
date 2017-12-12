@@ -123,6 +123,7 @@ h3 .slide_typo strong {
 
 .feature h3 span,a {
     color: #f26426;
+    /* margin-left: 100px; */
 }
 
 .feature h3 {
@@ -1166,10 +1167,10 @@ ul#cat_nav li a.active,ul#cat_nav li a:hover {
 }
 
 #sub_content h1 {
-    margin: 0 0 10px;
+    margin: 100 0 10px;
     font-size: 60px;
     font-weight: 300;
-    color: #fff
+    color: #fff;
 }
 
 .rating {
@@ -1463,11 +1464,11 @@ ul.opening_list li span {
 
 .features-content {
     position: relative;
-    padding: 11% 100px 10%;
+    padding: 1% 50px 1px 10%;
     height: 400px;
     background-color: #78cfcf;
     color: #fff;
-    font-size: 16px
+    font-size: 16px;
 }
 
 .features-content h3 {
@@ -1478,14 +1479,14 @@ ul.opening_list li span {
 }
 
 .feature {
-    padding: 30px 30px 20px 120px;
+    padding: 15px 10px 20px 10px;
     position: relative;
     background: #fff;
     margin-bottom: 30px;
     color: #666;
     -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
     -moz-box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
-    box-shadow: 0 0 5px 0 rgba(0,0,0,.1)
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
 }
 
 .feature i {
@@ -1502,7 +1503,7 @@ ul.opening_list li span {
     border-radius: 50%;
     border: 1px dashed #ccc;
     font-size: 34px;
-    color: #6dcff6
+    color: #f26226;
 }
 
 #contacts a {
@@ -1779,9 +1780,9 @@ select.form-control.form-white {
 }
 
 .login_icon {
-    color: #fff;
+    color: #f26226;
     font-size: 60px;
-    opacity: .5
+    /* opacity: .5; */
 }
 
 .modal {
@@ -1891,14 +1892,14 @@ select.form-control.form-white {
 .btn.btn-submit {
     width: 100%;
     margin-top: 30px;
-    color: #85c99d;
+    color: #ffff;
     padding: 10px;
-    background: #fff;
+    background: #f26226;
     font-weight: 600;
     outline: 0;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
-    font-size: 16px
+    font-size: 16px;
 }
 
 .btn.btn-submit:focus {

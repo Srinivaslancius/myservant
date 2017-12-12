@@ -30,12 +30,12 @@
                 </a>
             </div>
             <div class="col-md-6">
-                <form method="post" action="list.php">
+                <form method="post" action="list.php" autocomplete="off">
                     <div id="custom-search-input">
                         <div class="input-group ">
-                            <input type="text" class=" search-query" placeholder="Your Address or postal code" required>
+                            <input type="text" class="search-query" placeholder="Your Address or postal code" required name="searchKey" id="searchKey">
                             <span class="input-group-btn">
-                            <input type="submit" class="btn_search" value="submit">
+                            <input type="submit" class="btn_search" value="submit" name="searchFood">
                             </span>
                         </div>
                     </div>
