@@ -82,9 +82,9 @@
                 <li  class="<?php if($page_name == 'lkp_cities.php' || $page_name == 'add_lkp_cities.php' || $page_name == 'edit_lkp_cities.php' ) { echo "active"; } ?>">
                 <a href="lkp_cities.php">Cities</a>
                 </li>
-                <li  class="<?php if($page_name == 'lkp_locations.php' || $page_name == 'add_lkp_locations.php' || $page_name == 'edit_lkp_locations.php' ) { echo "active"; } ?>">
+                <!-- <li  class="<?php if($page_name == 'lkp_locations.php' || $page_name == 'add_lkp_locations.php' || $page_name == 'edit_lkp_locations.php' ) { echo "active"; } ?>">
                 <a href="lkp_locations.php" >Locations</a>
-                </li> 
+                </li>  -->
               </ul>
             </li>
             <li  class="<?php if($page_name == 'food_cusine.php' || $page_name == 'add_food_cusine.php' || $page_name == 'edit_food_cusine.php' ) { echo "active"; } ?>">

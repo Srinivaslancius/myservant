@@ -4,14 +4,19 @@
   if (!isset($_POST['submit']))  {
               echo "fail";
           } else  { 
-    $name = $_POST['name'];
+    $vendor_name = $_POST['vendor_name'];
+    $restaurant_name = $_POST['restaurant_name'];
+    $restaurant_address = $_POST['restaurant_address'];
+    $pincode = $_POST['pincode'];
+    $delivery_type_id = implode(',',$_POST["delivery_type_id"]);
+    $meta_title = $_POST['meta_title'];
+    $meta_keywords = $_POST['meta_keywords'];
+    $meta_desc = $_POST['meta_desc'];
     $vendor_id =rand(1000,9999);
-    $email = $_POST['email'];
-    $mobile = $_POST['mobile'];
+    $vendor_email = $_POST['vendor_email'];
+    $vendor_mobile = $_POST['vendor_mobile'];
     $description = $_POST['description'];
-    $username = $_POST['username'];
     $password = encryptPassword($_POST['password']);
-    $confirm_pass = encryptPassword($_POST['confirm_pass']);
     $working_timings = $_POST['working_timings'];
     $min_delivery_time = $_POST['min_delivery_time'];
     $lkp_state_id = $_POST['lkp_state_id'];
@@ -28,7 +33,9 @@
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-           $sql = "INSERT INTO food_vendors (`name`, `vendor_id`,`email`, `mobile`, `description`, `username`, `password`,`confirm_pass`, `working_timings`,`min_delivery_time`, `lkp_state_id`,`lkp_district_id`, `lkp_city_id`,`location`, `logo`,`lkp_status_id`, `created_at`) VALUES ('$name','$vendor_id', '$email','$mobile', '$description','$username','$password','$confirm_pass','$working_timings','$min_delivery_time','$lkp_state_id','$lkp_district_id','$lkp_city_id','$location','$fileToUpload','$lkp_status_id','$created_at')";
+           $sql = "INSERT INTO food_vendors (`vendor_name`, `vendor_id`,`vendor_email`, `vendor_mobile`, `description`,  `password`, `working_timings`,`min_delivery_time`, `lkp_state_id`,`lkp_district_id`, `lkp_city_id`,`location`, `logo`,`lkp_status_id`, `restaurant_name`,`restaurant_address`,`delivery_type_id`,`created_at`,`pincode`,`meta_title`,`meta_keywords`,`meta_desc`) VALUES ('$vendor_name','$vendor_id','$vendor_email','$vendor_mobile', '$description','$password','$working_timings','$min_delivery_time','$lkp_state_id','$lkp_district_id','$lkp_city_id','$location','$fileToUpload','$lkp_status_id','$restaurant_name','$restaurant_address','$delivery_type_id','$created_at','$pincode','$meta_title','$meta_keywords','$meta_desc')";
+
+
             if($conn->query($sql) === TRUE){
                echo "<script type='text/javascript'>window.location='vendors.php?msg=success'</script>";
             } else {
@@ -53,28 +60,64 @@
                 <form data-toggle="validator" method="POST" autocomplete="off" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Vendor Name</label>
-                    <input type="text" name="name" class="form-control" id="form-control-2" placeholder="Vendor Name" data-error="Please enter Vendor Name" required>
+                    <input type="text" name="vendor_name" class="form-control" id="form-control-2" placeholder="Vendor Name" data-error="Please enter Vendor Name" required>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Restaurant Name</label>
+                    <input type="text" name="restaurant_name" class="form-control" id="form-control-2" placeholder="Restaurant Name" data-error="Please enter restaurant name" required>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Restaurent Address</label>
+                    <textarea name="restaurant_address" id="restaurant_address" class="form-control"  placeholder="Restuarent Address" data-error="This field is required." required></textarea>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <?php $getDeliveryTypes = getAllDataWithStatus('food_product_delivery_type','0');?>
+                   <div class="form-group">
+                    <label for="form-control-3" class="control-label">Choose your Delivery Type</label>
+                    <select name="delivery_type_id[]" class="custom-select" multiple="multiple" data-error="This field is required." required>
+                      <option value="">Select Delivery Type</option>
+                      <?php while($row = $getDeliveryTypes->fetch_assoc()) {  ?>
+                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['delivery_type']; ?></option>
+                      <?php } ?>
+                   </select>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Meta Title</label>
+                    <input type="text" name="meta_title" class="form-control" id="form-control-2" placeholder="Meta Title" data-error="Please enter meta title" required>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Meta Keywords</label>
+                    <input type="text" name="meta_keywords" class="form-control" id="form-control-2" placeholder="Meta Keywords" data-error="Please enter Meta Keywords" required>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label"> Meta Description</label>
+                    <textarea name="meta_desc" class="form-control" id="meta_desc" placeholder="Description" data-error="This field is required." required></textarea>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Pincode</label>
+                    <input type="text" name="pincode" class="form-control" id="form-control-2" placeholder="Pincode" data-error="Please enter Pincode." required maxlength="6"  >
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email</label>
-                    <input type="email" name="email" class="form-control" id="user_email" placeholder="Email" onkeyup="checkemail();" data-error="Please enter valid email address." required>
+                    <input type="email" name="vendor_email" class="form-control" id="user_email" placeholder="Email" onkeyup="checkemail();" data-error="Please enter valid email address." required>
                     <span id="email_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Mobile</label>
-                    <input type="text" name="mobile" class="form-control" id="form-control-2" placeholder="Mobile" data-error="Please enter mobile number." required maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)">
+                    <input type="text" name="vendor_mobile" class="form-control" id="form-control-2" placeholder="Mobile" data-error="Please enter mobile number." required maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Description</label>
                     <textarea name="description" id="description" class="form-control" id="meta_desc" placeholder="Description" data-error="This field is required." required></textarea>
-                    <div class="help-block with-errors"></div>
-                  </div>
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">User Name</label>
-                    <input type="text" name="username" class="form-control" id="form-control-2" placeholder="User Name" data-error="Please enter Name" required>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
@@ -163,6 +206,7 @@
 <script src="//cdn.ckeditor.com/4.7.0/full/ckeditor.js"></script>
 <script>
     CKEDITOR.replace( 'description' );
+    CKEDITOR.replace( 'meta_desc' );
 </script>
 <style type="text/css">
     .cke_top, .cke_contents, .cke_bottom {
