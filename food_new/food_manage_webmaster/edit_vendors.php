@@ -112,7 +112,7 @@ if (!isset($_POST['submit'])) {
                     <input type="text" name="min_delivery_time" class="form-control" id="form-control-2" placeholder="Minimum Delivery Time" data-error="Please enter Minimum Delivery Time" required  value="<?php echo $getVendorsData['min_delivery_time'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
-                  <?php $sql = "SELECT * FROM food_lkp_locations WHERE lkp_city_id = '$id'";
+                  <?php $sql = "SELECT * FROM food_lkp_locations WHERE id = '$id'";
                $getLocations = $conn->query($sql);
               $getLocationsData = $getLocations->fetch_assoc(); ?>
                   <?php $getStates = getAllDataWithStatus('lkp_states','0');?>
