@@ -1,5 +1,6 @@
 <?php include_once 'admin_includes/main_header.php'; ?>
-<?php $getAdminUsersData = getAllDataWithActiveRecent('admin_users'); $i=1; ?>
+<?php $getAdminUsers = "SELECT * FROM admin_users WHERE lkp_admin_service_type_id = 1 ORDER BY lkp_status_id,id DESC";
+$getAdminUsersData = $conn->query($getAdminUsers); $i=1; ?>
      <div class="site-content">
         <div class="panel panel-default panel-table">
           <div class="panel-heading">
@@ -76,17 +77,17 @@
                             <div class="row">
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Admin Service Type:</div>
-                              <div class="col-sm-6"><?php if($row['lkp_admin_service_type_id'] == 1 ){ echo "Services";} elseif($row['lkp_admin_service_type_id'] == 2 ){ echo "Food";} else{ echo "Grocery";}?></div>
+                              <div class="col-sm-6"><?php $adminServiceTypes = getIndividualDetails('lkp_admin_service_types','id',$row['lkp_admin_service_type_id']); echo $adminServiceTypes['admin_service_type']; ?></div>
                             </div>
                             <div class="row">
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Admin User Type:</div>
-                              <div class="col-sm-6"><?php if($row['lkp_admin_user_type_id'] == 1 ){ echo "Super Admin";} elseif($row['lkp_admin_user_type_id'] == 2 ){ echo "Sub Admin";} else{ echo "Employee";}?></div>
+                              <div class="col-sm-6"><?php $adminUserTypes = getIndividualDetails('lkp_admin_user_types','id',$row['lkp_admin_user_type_id']); echo $adminUserTypes['admin_type']; ?></div>
                             </div>
                             <div class="row">
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Status:</div>
-                              <div class="col-sm-6"><?php if($row['lkp_status_id'] == 0 ){ echo "Active";} else{ echo "InActive";}?></div>
+                              <div class="col-sm-6"><?php $getStatus = getIndividualDetails('lkp_status','id',$row['lkp_status_id']); echo $getStatus['status']; ?></div>
                             </div>
                           </div>
                           <div class="modal-footer">

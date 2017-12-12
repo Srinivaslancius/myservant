@@ -156,14 +156,6 @@
                 
               </ul>
             </li>
-            <!-- <li  class="<?php if($page_name == 'services_orders.php' || $page_name == 'edit_services_orders.php' ) { echo "active"; } ?>">
-              <a href="services_orders.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Orders</span>
-              </a>
-            </li> -->
             <li class="with-sub">
               <a href="#" aria-haspopup="true">
                 <span class="menu-icon">
@@ -176,6 +168,10 @@
                 <li  class="<?php if($page_name == 'services_orders.php' || $page_name == 'edit_services_orders.php' ) { echo "active"; } ?>"><a href="services_orders.php">Orders</a>
                 </li> 
                 <li  class="<?php if($page_name == 'services_failed_orders.php' || $page_name == 'edit_services_failed_orders.php' ) { echo "active"; } ?>"><a href="services_failed_orders.php">Failed Orders</a>
+                </li>
+                <li  class="<?php if($page_name == 'services_cancelled_orders.php' ) { echo "active"; } ?>"><a href="services_cancelled_orders.php">Cancelled Orders</a>
+                </li>
+                <li  class="<?php if($page_name == 'services_today_orders.php' ) { echo "active"; } ?>"><a href="services_today_orders.php">Today Orders</a>
                 </li> 
               </ul>
             </li>

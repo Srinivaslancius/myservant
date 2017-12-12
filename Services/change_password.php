@@ -50,6 +50,7 @@
         </header>
     <!-- End Header -->
 <?php 
+    ob_start();
     if($_SESSION['user_login_session_id'] == '') {
         header ("Location: logout.php");
     }
