@@ -56,14 +56,20 @@
   <main>
     <!-- Slider -->
     <?php if (isset($_POST['search'])) {
-      $cat_id = $_POST['id'];
-      if($_POST['id'] == '0') {
+      $sub_cat_id = $_POST['id'];
+      if($_POST['id'] == '0' && $_POST['sub_category_name'] == '') {
         header("Location: services.php");         
         exit; 
-      } else {
-        $getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id);
-        $getBanners1 = "SELECT * FROM `services_banners` WHERE lkp_status_id = 0 ANd service_category_id = $cat_id ORDER BY id DESC";
-        $getBanners = $conn->query($getBanners1);
+      } elseif(!empty($_POST['id'])) {
+        $sub_cat_id = $_POST['id'];
+        $getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','id',$sub_cat_id);
+      } elseif(!empty($_POST['sub_category_name'])) {
+        $sub_category_name = $_POST['sub_category_name'];
+        $getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','sub_category_name',$sub_category_name);
+      } elseif(!empty($_POST['id']) && !empty($_POST['sub_category_name'])) {
+        $sub_cat_id = $_POST['id'];
+        $sub_category_name = $_POST['sub_category_name'];
+        $getSubCategoriesData = getAllDataWhereWithTWoConditions('services_sub_category','id',$sub_cat_id,'sub_category_name',$sub_category_name);
       }
     } else {
       $cat_id = decryptPassword($_GET['key']);
@@ -73,17 +79,10 @@
     } ?>
 
     <div class="container-fluid page-title">
-       <?php 
-       if($getBannersData = $getBanners->fetch_assoc()) { ?>
-        <div class="row">
-          <img src="<?php echo $base_url . 'uploads/services_banner_images/'.$getBannersData['banner'] ?>" class="img-responsive">
-        </div>
-      <?php } else { ?>
-        <div class="row">
-          <img src="img/slides/slide_3.jpg" class="img-responsive">
-        </div>
-      <?php } ?>
+      <div class="row">
+        <img src="img/slides/slide_1.jpg" class="img-responsive">
       </div>
+    </div>
 
     <div class="container margin_60">
 
