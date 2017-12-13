@@ -64,7 +64,7 @@
     
         <div id="count" class="hidden-xs">
             <ul>
-                <li><span class="number">2650</span> Restaurant</li>
+                <li><span class="number"><?php echo getRowsCount('food_vendors'); ?></span> Restaurant</li>
                 <li><span class="number">5350</span> People Served</li>
                 <li><span class="number"><?php echo getUsersRowsCount('users','lkp_admin_service_type_id','2'); ?></span> Registered Users</li>
             </ul>
