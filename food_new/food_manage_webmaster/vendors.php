@@ -103,7 +103,24 @@
                               <div class="col-sm-4">Minimum Delivery Time:</div>
                               <div class="col-sm-6"><?php echo $row['min_delivery_time'];?></div>
                             </div>
-                            
+                            <?php $getState = getIndividualDetails('lkp_states','id',$row['lkp_state_id']);  ?>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">State:</div>
+                              <div class="col-sm-6"><?php echo $getState['state_name']; ?></div>
+                            </div>
+                            <?php $getDistrict = getIndividualDetails('lkp_districts','id',$row['lkp_district_id']);  ?>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">District:</div>
+                              <div class="col-sm-6"><?php echo $getDistrict['district_name']; ?></div>
+                            </div>
+                            <?php $getCity = getIndividualDetails('lkp_cities','id',$row['lkp_city_id']);  ?>
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">City:</div>
+                              <div class="col-sm-6"><?php echo $getCity['city_name']; ?></div>
+                            </div>
                             <div class="row">
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Location:</div>
@@ -114,8 +131,14 @@
                               <div class="col-sm-4">Status:</div>
                               <div class="col-sm-6"><?php if($row['lkp_status_id'] == 0 ){ echo "Active";} else{ echo "InActive";}?></div>
                             </div>
-                                                        
+                            <div class="row">
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-4">Banner:</div>
+                              <div class="col-sm-6"><img src="<?php echo $base_url . 'uploads/food_vendor_logo/'.$row['logo'] ?>" height="100" width="100"/></div>
+                            </div>                           
                           </div>
+                            
+                             
                           <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-success">Close</button>
                             <style>
