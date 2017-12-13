@@ -43,10 +43,10 @@ $getServiceOrders = $conn->query($getServiceOrders1); $i=1; ?>
                     ?>
                    <td><a href="assign_to.php?assign_id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>"><?php if($getServiceProviderData['id'] == $row['assign_service_provider_id']) { echo $getServiceProviderData['name']; } ?>(Assigned)</a></td>
                    <?php } ?>
-                   <?php if($row['lkp_order_status_id'] != 2) { ?>
-                   <td><a href="edit_services_orders.php?id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>&order_id=<?php echo $row['order_id'] ?>"><i class="zmdi zmdi-edit"></i></a></td>
-                   <?php } elseif($row['lkp_order_status_id'] == 2) { ?>
-                    <td><a href="../../uploads/generate_invoice/<?php echo $row['order_sub_id']; ?>.pdf" target="_blank"><i class="zmdi zmdi-local-printshop"></i></a></td>
+                   <?php if($row['lkp_order_status_id'] == 2 && $row['lkp_payment_status_id'] == 1) { ?>
+                   <td><a href="../../uploads/generate_invoice/<?php echo $row['order_sub_id']; ?>.pdf" target="_blank"><i class="zmdi zmdi-local-printshop"></i></a></td>
+                   <?php } else { ?>
+                    <td><a href="edit_services_orders.php?id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>&order_id=<?php echo $row['order_id'] ?>"><i class="zmdi zmdi-edit"></i></a></td>
                     <?php } ?>
                   </tr>
                   <?php  $i++; } ?>

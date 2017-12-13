@@ -66,7 +66,7 @@
 			                    <span id="nav-search-in-content">Services Sub Category</span>
 			                    <span class="nav-down-arrow nav-sprite"></span>
 			                    <select name="id" class="searchSelect" id="searchDropdownBox">
-			                    <?php $getCategoriesData = getAllDataWithStatusLimit('services_sub_category','0',0,6); ?>
+			                    <?php $getCategoriesData = getAllDataWithStatusLimit('services_sub_category','0','0','6'); ?>
 			                    <option value="0">Service Category</option>
 			                    <?php while($row = $getCategoriesData->fetch_assoc()) {  ?>
 		                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['sub_category_name']; ?></option>
@@ -110,7 +110,7 @@
 				<h2>Our <span>Services</span> Categories</h2>
 				
 			</div>
-			<?php $getCategoriesData = getAllDataWithStatusLimit('services_category',0,0,12); ?>
+			<?php $getCategoriesData = getAllDataWithStatusLimit('services_category',0,'0','12'); ?>
 			<div class="row">
                  <?php  while($getAllCategoriesData = $getCategoriesData->fetch_assoc()) { ?> 
 				<div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
@@ -144,7 +144,7 @@
       </div>
 
       <div class="row">
-        <?php $getServiceProvider =  getServicesProviderDataLimit(1,6); ?>
+        <?php $getServiceProvider =  getServicesProviderDataLimit('1','6'); ?>
                 <?php  while($getAllgetServiceProvider = $getServiceProvider->fetch_assoc()) { ?>
         <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
           <div class="feature">
