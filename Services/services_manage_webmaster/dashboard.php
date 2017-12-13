@@ -31,7 +31,7 @@
             </div>
           </div>
           </a>
-          <?php $getTodayOrders = "SELECT * FROM services_orders WHERE DATE(`created_at`) = CURDATE() ORDER BY created_at DESC"; 
+          <?php $getTodayOrders = "SELECT * FROM services_orders WHERE DATE(`delivery_date`) = CURDATE() AND lkp_order_status_id = 2 AND lkp_payment_status_id = 1 ORDER BY lkp_order_status_id DESC"; 
           $getTodayOrders1 = $conn->query($getTodayOrders); $getRowsCount = $getTodayOrders1->num_rows; ?>
           <a href="services_today_orders.php">
           <div class="col-md-4 col-sm-5">
@@ -41,7 +41,7 @@
                 <div class="wt-number"><?php echo $getRowsCount; ?></div>
               </div>
               <div class="wt-icon">
-                <i class="zmdi zmdi-accounts"></i>
+                <i class="zmdi zmdi-shopping-cart-plus"></i>
               </div>
             </div>
           </div>

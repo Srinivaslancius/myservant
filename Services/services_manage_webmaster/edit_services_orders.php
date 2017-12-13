@@ -24,11 +24,13 @@ if (!isset($_POST['submit'])) {
   $updateOrdertotal = $conn->query($updateTotal);
   
   $sql = "UPDATE `services_orders` SET order_price = '$order_price',order_total = '$order_total',lkp_order_status_id='$lkp_order_status_id', lkp_payment_status_id='$lkp_payment_status_id', delivery_date ='$delivery_date' WHERE id = '$id' AND sub_category_id = '$subcat_id'";
-  if($conn->query($sql) === TRUE){
-     echo "<script type='text/javascript'>window.location='services_orders.php?msg=success'</script>";
-  } else {
-     echo "<script type='text/javascript'>window.location='services_orders.php?msg=fail'</script>";
-  }
+  $res = $conn->query($sql);
+  header("Location:order_invoice.php?id=".$id."");
+  // if($conn->query($sql) === TRUE){
+  //    echo "<script type='text/javascript'>window.location='services_orders.php?msg=success'</script>";
+  // } else {
+  //    echo "<script type='text/javascript'>window.location='services_orders.php?msg=fail'</script>";
+  // }
 }   
 ?>
  <div class="site-content">

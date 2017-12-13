@@ -1,5 +1,5 @@
 <?php include_once 'admin_includes/main_header.php';?>
-<?php $getServiceTodayOrders = "SELECT * FROM services_orders WHERE DATE(`delivery_date`) = CURDATE() AND lkp_order_status_id != 3 AND lkp_payment_status_id != 3 ORDER BY lkp_order_status_id DESC ";
+<?php $getServiceTodayOrders = "SELECT * FROM services_orders WHERE DATE(`delivery_date`) = CURDATE() AND lkp_order_status_id = 2 AND lkp_payment_status_id = 1 ORDER BY lkp_order_status_id DESC ";
 $getServiceTodayOrdersData = $conn->query($getServiceTodayOrders); $i=1;
   ?>
      <div class="site-content">

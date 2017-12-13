@@ -63,22 +63,21 @@
 			            <form method="post" action="sub_categories.php">
 			                <div class="search_bar">
 			                <span class="nav-facade-active" id="nav-search-in">
-			                    <span id="nav-search-in-content">Service Category</span>
+			                    <span id="nav-search-in-content">Services Sub Category</span>
 			                    <span class="nav-down-arrow nav-sprite"></span>
 			                    <select name="id" class="searchSelect" id="searchDropdownBox">
-			                    <?php $getCategoriesData = getAllDataWithActiveRecent('services_category'); ?>
+			                    <?php $getCategoriesData = getAllDataWithStatusLimit('services_sub_category','0',0,6); ?>
 			                    <option value="0">Service Category</option>
 			                    <?php while($row = $getCategoriesData->fetch_assoc()) {  ?>
-		                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['category_name']; ?></option>
+		                          <option value="<?php echo $row['id']; ?>" ><?php echo $row['sub_category_name']; ?></option>
 		                       <?php } ?>                                    
 			                    </select>
 			                    </span>
 			                    <div class="nav-searchfield-outer">
-			                    <input type="text" autocomplete="off" name="category_name" placeholder="Search your related service" id="twotabsearchtextbox">
+			                    <input type="text" autocomplete="off" name="sub_category_name" placeholder="Search your related service" id="twotabsearchtextbox">
 			                    </div>
 			                   <div class="nav-submit-button">
-		                            <button type="submit" class="btn btn-default" name="search" style="height:30px;border-radius: 1px;
-    border-color: #f26226;"><span class="icon icon-search pull-right"></span></button>
+		                            <button type="submit" class="btn btn-default" name="search" style="height:30px;border-radius: 1px;border-color:#f26226;"><span class="icon icon-search pull-right"></span></button>
 		                       </div>
 
 			                </div>
