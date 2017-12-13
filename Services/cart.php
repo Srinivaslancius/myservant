@@ -239,7 +239,7 @@
     <script type="text/javascript" src="js/jquery.timepicker.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
         <script>
-		$('input.date-pick').datepicker();
+		$('input.date-pick').datepicker({minDate: 0, maxDate: "+2M"});
 		$('input.time-pick').timepicker({
 			'step': 15,
 			showInpunts: false
