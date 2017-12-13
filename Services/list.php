@@ -73,12 +73,12 @@
 					<h3 class="nomargin_top">Group Level</h3>
 
 					<div class="panel-group" id="payment">
-						<?php $catid = decryptpassword($_GET['key1']); $subcatid = $_GET['key2']; 
-						$getGroups = getAllDataWhereWithTWoConditions('services_groups','services_category_id',$catid,'services_sub_category_id',$subcatid); $i=1;
+						<?php $subcatid = decryptpassword($_GET['key2']);
+						$getGroups = getAllDataWhereWithActive('services_groups','services_sub_category_id',$subcatid); $i=1;
 						if($getGroups->num_rows > 0) {
 							while ($getGroupsData = $getGroups->fetch_assoc()) {
 								$services_group_id = $getGroupsData['id'];
-								$getServiceNames = getAllDataWhereWithThreeConditions('services_group_service_names','services_category_id',$catid,'services_sub_category_id',$subcatid,'services_group_id',$services_group_id); 
+								$getServiceNames = getAllDataWhereWithTWoConditions('services_group_service_names','services_sub_category_id',$subcatid,'services_group_id',$services_group_id); 
 								if($getServiceNames->num_rows > 0) { 
 						?>
 						<div class="panel panel-default">
@@ -100,8 +100,8 @@
                                         <form name="services_cart" method="post">  
                                         <tbody>
 
-                                        	<input type="hidden" name="services_cat_id" value="<?php echo decryptpassword($_GET['key1']); ?>">
-                                    		<input type="hidden" name="services_sub_cat_id" value="<?php echo $subcatid; ?>">
+                                        	<input type="hidden" name="services_cat_id" value="<?php echo $getGroupsData['services_category_id']; ?>">
+                                    		<input type="hidden" name="services_sub_cat_id" value="<?php echo $getGroupsData['services_sub_category_id']; ?>; ?>">
                                     		<input type="hidden" name="services_group_id" value="<?php echo $getGroupsData['id']; ?>">
 
                                         	<?php while ($getServiceNamesData = $getServiceNames->fetch_assoc()) { ?>
@@ -124,7 +124,7 @@
 	                                            <tr>
 	                                                <td><?php echo wordwrap($getServiceNamesData['group_service_name'],22,"<br>\n",TRUE);?></td>
 	                                                <td><?php echo wordwrap($servicePrice,22,"<br>\n",TRUE); ?></td>
-	                                                <td><a class="btn_full_outline wdth50 check_cart" data-cat-id=<?php echo $_GET['key1']; ?> data-sub-cat-id=<?php echo $subcatid; ?> data-group-id=<?php echo $getGroupsData['id']; ?> data-service-id=<?php echo $getServiceNamesData['id']; ?> data-price-type-id=<?php echo $getServiceNamesData['service_price_type_id']; ?> data-services-price=<?php echo $servicePrice; ?>>Add to Cart</a> </td>
+	                                                <td><a class="btn_full_outline wdth50 check_cart" data-cat-id=<?php echo $getServiceNamesData['services_category_id']; ?> data-sub-cat-id=<?php echo $getServiceNamesData['services_sub_category_id']; ?> data-group-id=<?php echo $getServiceNamesData['services_group_id']; ?> data-service-id=<?php echo $getServiceNamesData['id']; ?> data-price-type-id=<?php echo $getServiceNamesData['service_price_type_id']; ?> data-services-price=<?php echo $servicePrice; ?>>Add to Cart</a> </td>
 	                                            </tr>                                            
                                             <?php $i++; } ?>
                                         </tbody>

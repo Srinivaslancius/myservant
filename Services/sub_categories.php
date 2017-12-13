@@ -66,15 +66,11 @@
       } elseif(!empty($_POST['sub_category_name'])) {
         $sub_category_name = $_POST['sub_category_name'];
         $getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','sub_category_name',$sub_category_name);
-      } elseif(!empty($_POST['id']) && !empty($_POST['sub_category_name'])) {
-        $sub_cat_id = $_POST['id'];
-        $sub_category_name = $_POST['sub_category_name'];
-        $getSubCategoriesData = getAllDataWhereWithTWoConditions('services_sub_category','id',$sub_cat_id,'sub_category_name',$sub_category_name);
       }
     } else {
-      $cat_id = decryptPassword($_GET['key']);
-      $getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$cat_id);
-      $getBanners1 = "SELECT * FROM `services_banners` WHERE lkp_status_id = 0 ANd service_category_id = $cat_id ORDER BY id DESC";
+      $sub_cat_id = decryptPassword($_GET['key']);
+      $getSubCategoriesData = getAllDataWhereWithActive('services_sub_category','services_category_id',$sub_cat_id);
+      $getBanners1 = "SELECT * FROM `services_banners` WHERE lkp_status_id = 0 ANd service_category_id = $sub_cat_id ORDER BY id DESC";
       $getBanners = $conn->query($getBanners1);
     } ?>
 
@@ -95,7 +91,7 @@
         <?php if($getSubCategoriesData->num_rows > 0) { 
         while($getAllSubCategoriesData = $getSubCategoriesData->fetch_assoc()) { ?>           
         <div class="col-md-2 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-          <a href="list.php?key1=<?php echo encryptPassword($cat_id); ?>&key2=<?php echo $getAllSubCategoriesData['id']; ?>">
+          <a href="list.php?key2=<?php echo encryptPassword($getAllSubCategoriesData['id']); ?>">
           <div class="tour_container" style="height:180px">
 
             <div class="ribbon_3 popular"><!-- <span>Popular</span> --> 
