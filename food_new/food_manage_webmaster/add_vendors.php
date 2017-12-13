@@ -103,11 +103,7 @@
                     <div class="help-block with-errors"></div>
                   </div>
                   
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">Pincode</label>
-                    <input type="text" name="pincode" class="form-control" id="form-control-2" placeholder="Pincode" data-error="Please enter Pincode." required maxlength="6"  >
-                    <div class="help-block with-errors"></div>
-                  </div>
+                  
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email</label>
                     <input type="email" name="vendor_email" class="form-control" id="user_email" placeholder="Email" onkeyup="checkemail();" data-error="Please enter valid email address." required>
@@ -183,6 +179,11 @@
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Location</label>
                     <input type="text" name="location" class="form-control" id="form-control-2" placeholder="Location Name" data-error="Please enter Location" required>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Pincode</label>
+                    <input type="text" name="pincode" class="form-control" id="form-control-2" placeholder="Pincode" data-error="Please enter Pincode." required maxlength="6"  >
                     <div class="help-block with-errors"></div>
                   </div>
                    <div class="form-group">

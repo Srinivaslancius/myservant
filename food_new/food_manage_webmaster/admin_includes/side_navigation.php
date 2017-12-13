@@ -44,6 +44,7 @@
                 <li class="<?php if($page_name == 'admin_users.php' || $page_name == 'add_admin_users.php' || $page_name == 'edit_admin_users.php') { echo "active"; } ?>"><a href="admin_users.php">Admin Users</a></li> 
                 <li class="<?php if($page_name == 'users.php' || $page_name == 'add_users.php' || $page_name == 'edit_users.php') { echo "active"; } ?>"><a href="users.php">Users</a></li>
                 <li class="<?php if($page_name == 'vendors.php' || $page_name == 'add_vendors.php' || $page_name == 'edit_vendors.php') { echo "active"; } ?>"><a href="vendors.php">Vendors</a></li>
+                <li class="<?php if($page_name == 'food_delivery_boys.php' || $page_name == 'add_food_delivery_boys.php' || $page_name == 'edit_food_delivery_boys.php') { echo "active"; } ?>"><a href="food_delivery_boys.php">Delivery Boys</a></li>
               </ul>
             </li>
             <li class="with-sub">
@@ -114,7 +115,14 @@
                 </li>  -->
               </ul>
             </li>
-            
+            <li  class="<?php if($page_name == 'food_brand_logos.php' || $page_name == 'add_food_brand_logos.php' || $page_name == 'edit_food_brand_logos.php' ) { echo "active"; } ?>">
+              <a href="food_brand_logos.php" aria-haspopup="true">
+                <span class="menu-icon">
+                  <i class="zmdi zmdi-collection-image  zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Brand Logos</span>
+              </a>
+            </li>
             
             
             <!-- <li  class="<?php if($page_name == 'food_sub_category.php' || $page_name == 'add_food_sub_category.php' || $page_name == 'edit_food_sub_category.php' ) { echo "active"; } ?>">
