@@ -86,12 +86,13 @@
                             <div class="row">
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Meta Description:</div>
-                              <div class="col-sm-6"><?php echo $row['meta_desc'];?></div>
+                              <div class="col-sm-6"><?php echo substr(strip_tags($row['meta_desc']), 0,150);?></div>
                             </div>
                             <div class="row">
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Description:</div>
-                              <div class="col-sm-6"><?php echo $row['description'];?></div>
+
+                              <div class="col-sm-6"><?php echo substr(strip_tags($row['description']), 0,150);?></div>
                             </div>
                             <div class="row">
                               <div class="col-sm-2"></div>
