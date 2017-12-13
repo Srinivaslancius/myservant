@@ -135,7 +135,7 @@
                                             <div class="col-md-4 col-sm-3">
                                                     <div class="go_to">
                                                             <div>
-                                                                <a href="view_rest_menu.php?key=<?php echo $getResults['id'];?>" class="btn_1">View Menu</a>
+                                                                <a href="view_rest_menu.php?key=<?php echo decryptPassword($getResults['id']);?>" class="btn_1">View Menu</a>
                                                             </div>
                                                     </div>
                                             </div>
