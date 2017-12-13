@@ -12,6 +12,7 @@ $getServiceOrders = $conn->query($getServiceOrders1); $i=1; ?>
                 <thead>
                   <tr>
                     <th>S.No</th>
+                    <th>User Name</th>
                     <th>Service Name</th>
                     <th>Order Id</th>
                     <th>Order Price</th>                    
@@ -28,6 +29,7 @@ $getServiceOrders = $conn->query($getServiceOrders1); $i=1; ?>
                     <td><?php echo $i;?></td>
                     <?php $getServicenames = getAllDataWhere('services_group_service_names','id',$row['service_id']); 
                     $getServicenamesData = $getServicenames->fetch_assoc();?>
+                    <td><?php echo $row['first_name'] . $row['last_name'];?></td>
                     <td><?php echo $getServicenamesData['group_service_name'];?></td>
                     <td><?php echo $row['order_sub_id'];?></td>
                     <td><?php echo $row['order_price'];?></td> 
