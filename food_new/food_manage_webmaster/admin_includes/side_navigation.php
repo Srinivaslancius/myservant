@@ -67,7 +67,7 @@
             <li class="with-sub">
               <a href="#" aria-haspopup="true">
                 <span class="menu-icon">
-                  <i class="zmdi zmdi-accounts zmdi-hc-fw"></i>
+                  <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i>
                 </span>
                 <span class="menu-text">Catelog</span>
               </a>
