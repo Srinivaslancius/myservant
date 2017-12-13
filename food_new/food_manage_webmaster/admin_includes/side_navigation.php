@@ -67,6 +67,33 @@
             <li class="with-sub">
               <a href="#" aria-haspopup="true">
                 <span class="menu-icon">
+                  <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Catelog</span>
+              </a>
+              <ul class="sidebar-submenu collapse">
+                <li class="menu-subtitle">Catelog</li>
+               <li  class="<?php if($page_name == 'food_cusine.php' || $page_name == 'add_food_cusine.php' || $page_name == 'edit_food_cusine.php' ) { echo "active"; } ?>"><a href="food_cusine.php">Cusine Types
+                </a>
+                </li>
+                <li  class="<?php if($page_name == 'food_category.php' || $page_name == 'add_food_category.php' || $page_name == 'edit_food_category.php' ) { echo "active"; } ?>"><a href="food_category.php">Categories</a>
+                </li>
+                 <li  class="<?php if($page_name == 'food_product_weights.php' || $page_name == 'add_food_product_weights.php' || $page_name == 'edit_food_product_weights.php') { echo "active"; } ?>"><a href="food_product_weights.php">Weights</a>
+                </li>
+                <li  class="<?php if($page_name == 'food_ingredients.php' || $page_name == 'add_food_ingredients.php' || $page_name == 'edit_food_ingredients.php') { echo "active"; } ?>">
+                  <a href="food_ingredients.php">Ingredients</a>
+                </li>
+                <li  class="<?php if($page_name == 'food_product_type.php' || $page_name == 'add_food_product_type.php' || $page_name == 'edit_food_product_type.php') { echo "active"; } ?>">
+                  <a href="food_product_type.php">Product Type</a>
+                </li>
+                <li  class="<?php if($page_name == 'food_products.php' || $page_name == 'add_food_products.php' || $page_name == 'edit_food_products.php') { echo "active"; } ?>">
+              <a href="food_products.php" >Products</a>
+            </li>
+              </ul>
+            </li>
+            <li class="with-sub">
+              <a href="#" aria-haspopup="true">
+                <span class="menu-icon">
                   <i class="zmdi zmdi-pin zmdi-hc-fw"></i>
                 </span>
                 <span class="menu-text">Mangae Master Data</span>
@@ -87,23 +114,9 @@
                 </li>  -->
               </ul>
             </li>
-            <li  class="<?php if($page_name == 'food_cusine.php' || $page_name == 'add_food_cusine.php' || $page_name == 'edit_food_cusine.php' ) { echo "active"; } ?>">
-              <a href="food_cusine.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-collection-item  zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Cusine Types</span>
-              </a>
-            </li>
             
-            <li  class="<?php if($page_name == 'food_category.php' || $page_name == 'add_food_category.php' || $page_name == 'edit_food_category.php' ) { echo "active"; } ?>">
-              <a href="food_category.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-local-offer zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Categories</span>
-              </a>
-            </li>
+            
+            
             <!-- <li  class="<?php if($page_name == 'food_sub_category.php' || $page_name == 'add_food_sub_category.php' || $page_name == 'edit_food_sub_category.php' ) { echo "active"; } ?>">
               <a href="food_sub_category.php" aria-haspopup="true">
                 <span class="menu-icon">
@@ -120,38 +133,8 @@
                 <span class="menu-text">Restaurants</span>
               </a>
             </li> -->
-            <li  class="<?php if($page_name == 'food_product_weights.php' || $page_name == 'add_food_product_weights.php' || $page_name == 'edit_food_product_weights.php') { echo "active"; } ?>">
-              <a href="food_product_weights.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-store zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Weights</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'food_ingredients.php' || $page_name == 'add_food_ingredients.php' || $page_name == 'edit_food_ingredients.php') { echo "active"; } ?>">
-              <a href="food_ingredients.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-store zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Ingredients</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'food_product_type.php' || $page_name == 'add_food_product_type.php' || $page_name == 'edit_food_product_type.php') { echo "active"; } ?>">
-              <a href="food_product_type.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-store zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Product Type</span>
-              </a>
-            </li>
-            <li  class="<?php if($page_name == 'food_products.php' || $page_name == 'add_food_products.php' || $page_name == 'edit_food_products.php') { echo "active"; } ?>">
-              <a href="food_products.php" aria-haspopup="true">
-                <span class="menu-icon">
-                   <i class="zmdi zmdi-shopping-basket zmdi-hc-fw"></i>
-                </span>
-                <span class="menu-text">Products</span>
-              </a>
-            </li>           
+           
+                       
             
 
             <!-- <li  class="<?php if($page_name == 'services_brand_logos.php' || $page_name == 'add_services_brand_logos.php' || $page_name == 'edit_services_brand_logos.php' ) { echo "active"; } ?>">
@@ -170,13 +153,7 @@
                 <span class="menu-text">Testimonials</span>
               </a>
             </li> -->
-           
-            
-            
-            
-            
-            
-            <li  class="<?php if($page_name == 'customer_enquireis.php' ) { echo "active"; } ?>">
+           <li  class="<?php if($page_name == 'customer_enquireis.php' ) { echo "active"; } ?>">
               <a href="customer_enquireis.php" aria-haspopup="true">
                 <span class="menu-icon">
                    <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>

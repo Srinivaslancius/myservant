@@ -22,7 +22,7 @@
                   <tr>
                     <td><?php echo $i;?></td>
                     <td><?php echo $row['title'];?></td>
-                   <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='food_cusine'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='food_cusine'>In Active</span>" ;} ?></td>
+                   <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='food_cusine_types'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='food_cusine_types'>In Active</span>" ;} ?></td>
                     <td> <a href="edit_food_cusine.php?tid=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a> &nbsp; </td>
                   </tr>
                   <?php  $i++; } ?>
