@@ -12,7 +12,7 @@
     <!-- BASE CSS -->
     <link href="css/base.css" rel="stylesheet">
 
-		
+        
     
     <!-- SPECIFIC CSS -->
     <link href="layerslider/css/layerslider.css" rel="stylesheet">
@@ -45,7 +45,7 @@
     <header>
         <?php include_once './header.php';?>
     </header>
-	<!-- End Header =============================================== -->
+    <!-- End Header =============================================== -->
     
     <!-- SubHeader =============================================== -->
     <div id="full-slider-wrapper">
@@ -55,7 +55,7 @@
         <?php while($getFoodhomeBanners = $getFoodBanners->fetch_assoc()) { ?>
         <div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
             <img src="<?php echo $base_url . 'uploads/food_banner_images/'.$getFoodhomeBanners['banner'] ?>" class="ls-bg" alt="Slide background" alt="<?php echo $getFoodhomeBanners['title'];?>">
-        	<h3 class="ls-l slide_typo" style="top: 44%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;" ><strong>Enjoy</strong> a quick friends dinner</h3>           
+            <h3 class="ls-l slide_typo" style="top: 44%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;" ><strong>Enjoy</strong> a quick friends dinner</h3>           
             <?php if($getFoodhomeBanners['lkp_banner_type_id']==1) { ?>
             <p class="ls-l" style="top:64%; left:50%;" data-ls="durationin:2000;delayin:1300;easingin:easeOutElastic;" ><a href="list_page.php" class="button_intro">Read more</a> </p>
             <?php } ?>
@@ -64,7 +64,7 @@
     
         <div id="count" class="hidden-xs">
             <ul>
-                <li><span class="number">2650</span> Restaurant</li>
+                <li><span class="number"><?php echo getRowsCount('food_vendors'); ?></span> Restaurant</li>
                 <li><span class="number">5350</span> People Served</li>
                 <li><span class="number"><?php echo getUsersRowsCount('users','lkp_admin_service_type_id','2'); ?></span> Registered Users</li>
             </ul>
@@ -170,8 +170,8 @@
         </div><!-- End white_bg -->
         
        <div class="high_light">
-      	<div class="container">
-      		<h3>Choose from over 2,000 Restaurants</h3>
+        <div class="container">
+            <h3>Choose from over 2,000 Restaurants</h3>
             <p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p>
             <a href="list_page.html">View all Restaurants</a>
         </div><!-- End container -->
@@ -179,8 +179,8 @@
             
     
     <!-- End Content =============================================== -->
-	
-	
+    
+    
     
     <!-- Footer ================================================== -->
     <footer>
@@ -192,46 +192,46 @@
 
 <!-- Login modal -->   
 <div class="modal fade" id="login_2" tabindex="-1" role="dialog" aria-labelledby="myLogin" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content modal-popup">
-				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-				<form action="#" class="popup-form" id="myLogin">
-                	<div class="login_icon"><i class="icon_lock_alt"></i></div>
-					<input type="text" class="form-control form-white" placeholder="Username">
-					<input type="text" class="form-control form-white" placeholder="Password">
-					<div class="text-left">
-						<a href="#">Forgot Password?</a>
-					</div>
-					<button type="submit" class="btn btn-submit">Submit</button>
-				</form>
-			</div>
-		</div>
-	</div><!-- End modal -->   
+        <div class="modal-dialog">
+            <div class="modal-content modal-popup">
+                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+                <form action="#" class="popup-form" id="myLogin">
+                    <div class="login_icon"><i class="icon_lock_alt"></i></div>
+                    <input type="text" class="form-control form-white" placeholder="Username">
+                    <input type="text" class="form-control form-white" placeholder="Password">
+                    <div class="text-left">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div><!-- End modal -->   
     
 <!-- Register modal -->   
 <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myRegister" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content modal-popup">
-				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-				<form action="#" class="popup-form" id="myRegister">
-                	<div class="login_icon"><i class="icon_lock_alt"></i></div>
-					<input type="text" class="form-control form-white" placeholder="Name">
-					<input type="text" class="form-control form-white" placeholder="Last Name">
+        <div class="modal-dialog">
+            <div class="modal-content modal-popup">
+                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+                <form action="#" class="popup-form" id="myRegister">
+                    <div class="login_icon"><i class="icon_lock_alt"></i></div>
+                    <input type="text" class="form-control form-white" placeholder="Name">
+                    <input type="text" class="form-control form-white" placeholder="Last Name">
                     <input type="email" class="form-control form-white" placeholder="Email">
                     <input type="text" class="form-control form-white" placeholder="Password"  id="password1">
                     <input type="text" class="form-control form-white" placeholder="Confirm password"  id="password2">
                     <div id="pass-info" class="clearfix"></div>
-					<div class="checkbox-holder text-left">
-						<div class="checkbox">
-							<input type="checkbox" value="accept_2" id="check_2" name="check_2" />
-							<label for="check_2"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
-						</div>
-					</div>
-					<button type="submit" class="btn btn-submit">Register</button>
-				</form>
-			</div>
-		</div>
-	</div><!-- End Register modal -->
+                    <div class="checkbox-holder text-left">
+                        <div class="checkbox">
+                            <input type="checkbox" value="accept_2" id="check_2" name="check_2" />
+                            <label for="check_2"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div><!-- End Register modal -->
     
 <!-- COMMON SCRIPTS -->
 <script src="js/jquery-2.2.4.min.js"></script>
@@ -246,15 +246,15 @@
 <script src="layerslider/js/layerslider.kreaturamedia.jquery.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-		'use strict';
+        'use strict';
         $('#layerslider').layerSlider({
             autoStart: true,
-			responsive: true,
-			responsiveUnder: 1280,
-			layersContainer: 1170,
-			navButtons:false,
-			showCircleTimer:false,
-			navStartStop:false,
+            responsive: true,
+            responsiveUnder: 1280,
+            layersContainer: 1170,
+            navButtons:false,
+            showCircleTimer:false,
+            navStartStop:false,
             skinsPath: 'layerslider/skins/'
             // Please make sure that you didn't forget to add a comma to the line endings
             // except the last line!
@@ -262,22 +262,38 @@
     });
 </script>
 
-    <!-- Auto complete home page search -->        
-    <link rel="stylesheet" href="css/jquery.autocomplete.css">
-    <script src="js/jquery.autocomplete.js" type="text/javascript"></script>
-    <?php
-    $sql3 = "SELECT * FROM food_vendors where lkp_status_id = '0'";
-    $result3 = $conn->query($sql3);    
-    while($row3 = $result3->fetch_assoc()) {                     
-        $getRestList[] = $row3['restaurant_address'];       
-    }
-    ?>   
-    <script type="text/javascript">
-    var states = <?php echo json_encode($getRestList); ?>;
-    jQuery('#searchKey').autocomplete({
-        source:[states]
+    <!-- Auto complete home page search -->           
+    <script type="text/javascript">   
+    // AJAX call for autocomplete 
+    $(document).ready(function(){
+        $("#search-box").keyup(function(){
+            $.ajax({
+            type: "POST",
+            url: "get_address_results.php",
+            data:'keyword='+$(this).val(),
+            beforeSend: function(){
+                $("#search-box").css("background","#FFF url(LoaderIcon.gif) no-repeat 165px");
+            },
+            success: function(data){
+                $("#suggesstion-box").show();
+                $("#suggesstion-box").html(data);
+                $("#search-box").css("background","#FFF");
+            }
+            });
+        });
     });
+    //To select country name
+    function selectCountry(val) {
+        $("#search-box").val(val);
+        $("#suggesstion-box").hide();
+    }
     </script>
+<style>
+#country-list{float:left;list-style:none;margin-top:-3px;padding:0;width:190px;position: absolute;}
+#country-list li{padding: 10px; background: #f0f0f0; border-bottom: #bbb9b9 1px solid;}
+#country-list li:hover{background:#ece3d2;cursor: pointer;}
+#search-box{padding: 10px;border: #a8d4b1 1px solid;border-radius:4px;}
+</style>
 
     <!-- End home page search -->
 

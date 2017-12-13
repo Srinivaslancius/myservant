@@ -24,7 +24,14 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 			    		while($row1 = $getServicenames->fetch_assoc()) {
 			    			$note_array["groupServiceId"] = encryptPassword($row1["id"]);
 			    			$note_array["groupServiceName"] = $row1["group_service_name"];
-			    			$note_array["groupServicePrice"] = encryptPassword($row1["service_price"]);
+			    			if($row1['service_price_type_id'] == 1) {
+								$servicePrice = $row1['service_price'];
+                    		} elseif($row1['price_after_visit_type_id'] == 1) {
+                    			$servicePrice = $row1['price_after_visiting'];
+                    		} else {
+                    			$servicePrice = $row1['service_min_price'].'-'.$row1['service_max_price']; 
+                    		}
+			    			$note_array["groupServicePrice"] = $servicePrice;
 			    			array_push($user_array['serviceDetails'],$note_array);
 			    		}
 			    		array_push($response['lists'],$user_array);
