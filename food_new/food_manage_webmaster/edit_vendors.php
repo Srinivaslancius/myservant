@@ -116,11 +116,7 @@ if (!isset($_POST['submit'])) {
                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">Pincode</label>
-                    <input type="text" name="pincode" class="form-control" id="form-control-2" placeholder="Pincode" data-error="Please enter Pincode." required maxlength="6"  required value="<?php echo $getVendorsData['pincode'];?>" >
-                    <div class="help-block with-errors"></div>
-                  </div>
+                  
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email</label>
                     <input type="email" name="vendor_email" class="form-control" id="form-control-2" placeholder="Email" data-error="Please enter a valid email address." required value="<?php echo $getVendorsData['vendor_email'];?>">
@@ -197,6 +193,11 @@ if (!isset($_POST['submit'])) {
                    <div class="form-group">
                     <label for="form-control-2" class="control-label">Location</label>
                     <input type="text" name="location" class="form-control" id="form-control-2" placeholder="Location Name" data-error="Please enter Location" required value="<?php echo $getVendorsData['location'];?>">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Pincode</label>
+                    <input type="text" name="pincode" class="form-control" id="form-control-2" placeholder="Pincode" data-error="Please enter Pincode." required maxlength="6"  required value="<?php echo $getVendorsData['pincode'];?>" >
                     <div class="help-block with-errors"></div>
                   </div>
                     <div class="form-group">
