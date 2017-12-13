@@ -3,7 +3,7 @@
      <div class="site-content">
         <div class="panel panel-default panel-table">
           <div class="panel-heading">
-            <h3 class="m-t-0 m-b-5">Service New Letter</h3>
+            <h3 class="m-t-0 m-b-5">Food News Letter</h3>
           </div>
           <div class="panel-body">
             <div class="table-responsive">
