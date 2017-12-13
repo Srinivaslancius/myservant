@@ -13,7 +13,6 @@
     $meta_title = $_POST['meta_title'];
     $meta_keywords = $_POST['meta_keywords'];
     $meta_desc = $_POST['meta_desc'];
-    $vendor_id =rand(1000,9999);
     $vendor_email = $_POST['vendor_email'];
     $vendor_mobile = $_POST['vendor_mobile'];
     $description = $_POST['description'];
@@ -26,6 +25,14 @@
     $location = $_POST['location'];
     $created_at = date("Y-m-d h:i:s");
     $fileToUpload = uniqid().$_FILES['fileToUpload']['name'];
+    
+    $string1 = str_shuffle('abcdefghijklmnopqrstuvwxyz');
+    $random1 = substr($string1,0,3);
+    $string2 = str_shuffle('1234567890');
+    $random2 = substr($string2,0,3);
+    $contstr = "MYSER-SERVICES";
+    $vendor_id = $contstr.$random1.$random2;
+
       if($fileToUpload!='') {
 
         $target_dir = "../../uploads/food_vendor_logo/";

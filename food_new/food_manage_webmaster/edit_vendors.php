@@ -26,7 +26,6 @@ if (!isset($_POST['submit'])) {
     $lkp_district_id = $_POST['lkp_district_id'];
     $lkp_city_id = $_POST['lkp_city_id'];
     $location = $_POST['location'];
-    $lkp_status_id = $_POST['lkp_status_id'];
     $created_at = date("Y-m-d h:i:s");
     $fileToUpload = uniqid().$_FILES['fileToUpload']['name'];
 
@@ -221,17 +220,6 @@ if (!isset($_POST['submit'])) {
                   <div class="form-group">
                     <label for="form-control-2" class="control-label"> Meta Description</label>
                     <textarea name="meta_desc" class="form-control" id="meta_desc" placeholder="Description" data-error="This field is required." required ><?php echo $getVendorsData['meta_desc'];?></textarea>
-                    <div class="help-block with-errors"></div>
-                  </div>
-                  <?php $getStatus = getAllData('lkp_status');?>
-                  <div class="form-group">
-                    <label for="form-control-3" class="control-label">Choose your status</label>
-                    <select id="form-control-3" name="lkp_status_id" class="custom-select" data-error="This field is required." required>
-                      <option value="">Select Status</option>
-                      <?php while($row = $getStatus->fetch_assoc()) {  ?>
-                          <option <?php if($row['id'] == $getVendorsData['lkp_status_id']) { echo "Selected"; } ?> value="<?php echo $row['id']; ?>"><?php echo $row['status']; ?></option>
-                      <?php } ?>
-                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
                   <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
