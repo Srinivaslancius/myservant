@@ -15,7 +15,7 @@ if($_SESSION['user_login_session_id'] == "") {
 }
 
 $session_cart_id = $_SESSION['CART_TEMP_RANDOM'];
-$category_id = decryptPassword($_POST['services_cat_id']);
+$category_id = $_POST['services_cat_id'];
 $sub_cat_id = $_POST['services_sub_cat_id'];
 $group_id = $_POST['services_group_id'];
 $service_price = $_POST['service_price'];

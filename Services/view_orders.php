@@ -86,86 +86,68 @@
                                       $orderDetails ="SELECT * FROM services_orders WHERE order_sub_id ='$order_sub_id' AND user_id= '$user_id' ORDER BY id DESC";
                                       $orderDetails1 = $conn->query($orderDetails);
                                       $orderData = $orderDetails1->fetch_assoc();
+                                      $getCategories = getIndividualDetails('services_category','id',$orderData['category_id']);
+                                      $getSubCategories = getIndividualDetails('services_sub_category','id',$orderData['sub_category_id']);
+                                      $getGroups = getIndividualDetails('services_groups','id',$orderData['group_id']);
+                                      $getServiceNames = getIndividualDetails('services_group_service_names','id',$orderData['service_id']);
+                                      $orderStatus = getIndividualDetails('lkp_order_status','id',$orderData['lkp_order_status_id']);
+                                      $paymentStatus = getIndividualDetails('lkp_payment_status','id',$orderData['lkp_payment_status_id']);
+                                      $paymentMethod = getIndividualDetails('lkp_payment_types','id',$orderData['payment_method']);
                                     ?>
                                     <div class="row">
                                         <div class="col-sm-4">
+                                            <p style="font-size:13px;">Name:<span style="font-size:15px;">  <?php echo $orderData['first_name'];?></span><br>Email:<span style="font-size:15px;">  <?php echo $orderData['email'];?></span><br>Mobile: <span style="font-size:15px;">  <?php echo $orderData['mobile'];?></span><br>Address: <span style="font-size:15px;"><?php echo $orderData['address'];?></span></p>
                                         </div>
                                         <div class="col-sm-4">
-                                        <p style="font-size:13px;">Order Id:<span style="font-size:15px;">  <?php echo $orderData['order_sub_id'];?></span><br>Address:<span style="font-size:15px;">  <?php echo $orderData['address'];?></span><br>Email: <span style="font-size:15px;">  <?php echo $orderData['email'];?></span></p>
-                                    </div>
-                                      <div class="col-sm-4">
+                                            <p style="font-size:13px;">Category Name:<span style="font-size:15px;">  <?php echo $getCategories['category_name'];?></span><br>Sub Category Name:<span style="font-size:15px;">  <?php echo $getSubCategories['sub_category_name'];?></span><br>Group Name: <span style="font-size:15px;">  <?php echo $getGroups['group_name'];?></span><br>Order Sub Id: <span style="font-size:15px;"><?php echo $orderData['order_id'];?></span></p>
                                         </div>
-                                </div>
+                                        <div class="col-sm-4">
+                                            <p style="font-size:13px;">Order Id:<span style="font-size:15px;">  <?php echo $orderData['order_id'];?></span><br>Payment Method:<span style="font-size:15px;">  <?php echo $paymentMethod['status'];?></span><br>Order Status: <span style="font-size:15px;">  <?php echo $orderStatus['order_status'];?></span><br>Payment Status: <span style="font-size:15px;"><?php echo $paymentStatus['payment_status'];?></span></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="panel-body" style="border-bottom:1px solid #ddd">
                                     <div class="row">
-                                        <div class="col-sm-4">
-                                            <h5 style="color:#f26226">Order Id</h5>
-                                        </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-2">
                                             <h5 style="color:#f26226">Service Name</h5>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-2">
                                             <h5 style="color:#f26226">Service Price</h5>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <h5 style="color:#f26226">Service Quantity</h5>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <h5 style="color:#f26226">Service Selected Date</h5>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <h5 style="color:#f26226">Service Selected Time</h5>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <h5 style="color:#f26226">Order Price</h5>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <?php
-                                        $order_sub_id = $_GET['token'];
-                                        $orderDetails1 ="SELECT * FROM services_orders WHERE order_sub_id ='$order_sub_id' AND user_id= '$user_id' ";
-                                        $orderDetails2 = $conn->query($orderDetails1);
-                                        
-                                        while ($orderData1 = $orderDetails2->fetch_assoc()) {
-                                        ?>
-                                        <div class="col-sm-4 col-xs-12">
-                                            <p><?php echo $orderData1['order_sub_id'];?></p>
+                                        <div class="col-sm-2 col-xs-12">
+                                            <p><?php echo $getServiceNames['group_service_name'];?></p>
                                         </div>
-                                        <div class="col-sm-4 col-xs-12">
-                                            <?php $serviceData = getAllDataWhereWithActive('services_group_service_names','id' ,$orderData1['service_id']);
-                                        $serviceDetails = $serviceData->fetch_assoc(); ?>
-                                            <p><?php echo $serviceDetails['group_service_name'];?></p>
+                                        <div class="col-sm-2 col-xs-12">
+                                            <p><?php echo $orderData['service_price'];?></p>
                                         </div>
-                                        <div class="col-sm-4 col-xs-12">
-                                           <p><?php echo $orderData1['service_price'];?></p>
+                                        <div class="col-sm-2 col-xs-12">
+                                           <p><?php echo $orderData['service_quantity'];?></p>
                                         </div>
-                                        <?php } ?>
+                                        <div class="col-sm-2 col-xs-12">
+                                           <p><?php echo $orderData['service_selected_date'];?></p>
+                                        </div>
+                                        <div class="col-sm-2 col-xs-12">
+                                           <p><?php echo $orderData['service_selected_time'];?></p>
+                                        </div>
+                                        <div class="col-sm-2 col-xs-12">
+                                           <p><?php echo $orderData['order_price'];?></p>
+                                        </div>
                                     </div>
 
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <h5 style="color:#f26226">Order Id</h5>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <h5 style="color:#f26226">Service Name</h5>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <h5 style="color:#f26226">Service Price</h5>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <?php
-                                        $order_sub_id = $_GET['token'];
-                                        $orderDetails1 ="SELECT * FROM services_orders WHERE order_sub_id ='$order_sub_id' AND user_id= '$user_id' ";
-                                        $orderDetails2 = $conn->query($orderDetails1);
-                                        
-                                        while ($orderData1 = $orderDetails2->fetch_assoc()) {
-                                        ?>
-                                        <div class="col-sm-4 col-xs-12">
-                                            <p><?php echo $orderData1['order_sub_id'];?></p>
-                                        </div>
-                                        <div class="col-sm-4 col-xs-12">
-                                            <?php $serviceData = getAllDataWhereWithActive('services_group_service_names','id' ,$orderData1['service_id']);
-                                        $serviceDetails = $serviceData->fetch_assoc(); ?>
-                                            <p><?php echo $serviceDetails['group_service_name'];?></p>
-                                        </div>
-                                        <div class="col-sm-4 col-xs-12">
-                                           <p><?php echo $orderData1['service_price'];?></p>
-                                        </div>
-                                        <?php } ?>
-                                    </div>
-                                    
                                 </div>
                             </div>
                         </div>
