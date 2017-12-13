@@ -15,6 +15,8 @@ $getServiceNamesData = $getServiceNames->fetch_assoc();
 $getPaymentMethod = getAllDataWhere('lkp_payment_types','id',$getOrdersData1['payment_method']); 
 $getPaymentMethodData = $getPaymentMethod->fetch_assoc();
 
+if($getOrdersData1['lkp_order_status_id'] == 2 && $getOrdersData1['lkp_payment_status_id'] == 1) {
+
 $content ='';
 
 if($getOrdersData1['coupon_code'] == '') {
@@ -121,7 +123,7 @@ $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
 
 $html2pdf = new HTML2PDF('P', 'A3', 'fr');
 $html2pdf->WriteHTML($content);
-$html2pdf->Output('../../uploads/generate_invoice/'.$id.'.pdf', 'F');
+$html2pdf->Output('../../uploads/generate_invoice/'.$getOrdersData1['order_sub_id'].'.pdf', 'F');
 
 // Email attachment
 
@@ -132,7 +134,7 @@ $subject = "MY SERVANT ORDER INVOICE";
 $message = "<p>Dear ". $getOrdersData1['first_name'] . ", <br /><br />Please see the MY SERVANT Service Details attachment.</p><br /><br />Thank You<br/>MY SERVANT. ";
 $separator = md5(time());
 $eol = PHP_EOL;
-$filename = "../../uploads/generate_invoice/".$id.".pdf";
+$filename = "../../uploads/generate_invoice/".$getOrdersData1['order_sub_id'].".pdf";
 $pdfdoc = $html2pdf->Output('', 'S');
 $attachment = chunk_split(base64_encode($pdfdoc));
 
@@ -166,4 +168,6 @@ if (mail($to, $subject, $body, $headers)) {
 }
 
 echo "Message has been sent";
+}
+header("Location: services_orders.php?msg=success");
 ?>

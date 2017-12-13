@@ -74,11 +74,13 @@
 
 					<div class="panel-group" id="payment">
 						<?php $catid = decryptpassword($_GET['key1']); $subcatid = $_GET['key2']; 
-						$getGroups = getAllDataWhereWithTWoConditions('services_groups','services_category_id',$catid,'services_sub_category_id',$subcatid); $i=1; while ($getGroupsData = $getGroups->fetch_assoc()) { ?>
-						<?php $services_group_id = $getGroupsData['id'];
-							$getServiceNames = getAllDataWhereWithThreeConditions('services_group_service_names','services_category_id',$catid,'services_sub_category_id',$subcatid,'services_group_id',$services_group_id); 
-							if($getServiceNames->num_rows > 0) { ?>
-
+						$getGroups = getAllDataWhereWithTWoConditions('services_groups','services_category_id',$catid,'services_sub_category_id',$subcatid); $i=1;
+						if($getGroups->num_rows > 0) {
+							while ($getGroupsData = $getGroups->fetch_assoc()) {
+								$services_group_id = $getGroupsData['id'];
+								$getServiceNames = getAllDataWhereWithThreeConditions('services_group_service_names','services_category_id',$catid,'services_sub_category_id',$subcatid,'services_group_id',$services_group_id); 
+								if($getServiceNames->num_rows > 0) { 
+						?>
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
@@ -133,9 +135,9 @@
                                                         
 						</div>
                             
-                        <?php } else { ?>
+                        <?php } else { echo "<h3 style='text-align:center;'>Sorry! Items Not found</h3>"; ?>
 						<script type="text/javascript">document.getElementById('divId<?php echo $services_group_id; ?>').style.display = 'none';</script> 
-						<?php } } ?>
+						<?php } } } else { echo "<h3 style='text-align:center;'>Sorry! Items Not found</h3>"; } ?>
 						
 					</div>
 					<!-- End panel-group -->

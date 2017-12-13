@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
@@ -50,7 +51,6 @@
         </header>
     <!-- End Header -->
 <?php 
-    ob_start();
     if($_SESSION['user_login_session_id'] == '') {
         header ("Location: logout.php");
     }
