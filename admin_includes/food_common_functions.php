@@ -17,7 +17,7 @@
 
     function getSearchResults ($table,$searchParms) {
         global $conn;
-        $sql= "SELECT * FROM `$table` WHERE restaurant_address LIKE '$searchParms%' OR  pincode LIKE '$searchParms%' ";
+        $sql= "SELECT * FROM `$table` WHERE lkp_status_id=0 AND (restaurant_address LIKE '$searchParms%' OR  pincode LIKE '$searchParms%') ";
         $result = $conn->query($sql);
         return $result;
     }

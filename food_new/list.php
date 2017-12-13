@@ -108,13 +108,10 @@ if(isset($_POST['searchFood'])) {
 						</div>
 					</div>          
 				</div>
-			</div><!--End tools -->
-                        <?php for($i=0; $i<8; $i++) {?>
+			</div><!--End tools -->                        
+                        <?php while($getfoodSearchResults = $getSearchResults->fetch_assoc()) { ?>
                         <div class="col-md-6">
-                            <div class="strip_list wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="ribbon_1">
-                                            Popular
-                                    </div>
+                            <div class="strip_list wow fadeIn" data-wow-delay="0.1s">                                    
                                     <div class="row">
                                             <div class="col-md-8 col-sm-9">
                                                     <div class="desc">
@@ -122,9 +119,9 @@ if(isset($_POST['searchFood'])) {
                                                                     <a href="#"><img src="img/thumb_restaurant.jpg" alt=""></a>
                                                             </div>
                                                             
-                                                            <h4>Taco Mexican</h4>
+                                                            <h4><?php echo $getfoodSearchResults['restaurant_name']; ?></h4>
                                                             <div class="type">
-                                                                    Mexican / American
+                                                                <?php echo $getfoodSearchResults['description']; ?>
                                                             </div>
                                                             
                                                             
