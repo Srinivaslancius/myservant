@@ -165,7 +165,7 @@
               </a>
               <ul class="sidebar-submenu collapse">
                 <li class="menu-subtitle">Orders</li>
-                <li  class="<?php if($page_name == 'view_orders.php' || $page_name == 'edit_services_orders.php' ) { echo "active"; } ?>"><a href="view_orders.php">Orders</a>
+                <li  class="<?php if($page_name == 'view_orders.php' || $page_name == 'view_category_orders.php' ) { echo "active"; } ?>"><a href="view_orders.php">Orders</a>
                 </li> 
                 <li  class="<?php if($page_name == 'services_failed_orders.php' || $page_name == 'edit_services_failed_orders.php' ) { echo "active"; } ?>"><a href="services_failed_orders.php">Failed Orders</a>
                 </li>

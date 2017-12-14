@@ -196,10 +196,10 @@
 	        },
 		    success:function(result){
 		    	if(result == 0){
-		    		alert('Your service added successfully');
-		    		setTimeout(function() {
+		    		//alert('Your service added successfully');
+		    		//setTimeout(function() {
 					    location.reload();
-					}, 600);
+					//}, 600);
 		    	} else {
 		    		alert('Same service item exists in cart! Please select another service');
 		    		return false;

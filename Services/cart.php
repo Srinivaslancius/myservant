@@ -274,10 +274,10 @@
                        data: info,
                        success: function(result){
                         if(result == 1) {
-                            alert('Cart Item Deleted Successfully');
-                            setTimeout(function() {
+                            //alert('Cart Item Deleted Successfully');
+                            //setTimeout(function() {
                                 location.reload();
-                            }, 600);
+                            //}, 600);
                            
                         } else {
                             alert('Cart Item Not Deleted');
