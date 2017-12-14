@@ -107,6 +107,7 @@
         </div>
       </div>
    <?php include_once 'admin_includes/footer.php'; ?>
+   <script src="js/tables-datatables.min.js"></script>
    <script type="text/javascript">
     $(".check_active1").click(function(){
           var check_active_id = $(this).attr("data-incId");
