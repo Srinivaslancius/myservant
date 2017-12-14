@@ -4,7 +4,7 @@
 			</div>
 				<div class="col-md-3 col-sm-3">
 					<h3>CONTACT US</h3>
-					<a href="" id="location"><span class=" icon-location" style="font-size:25px"></span> #40-15/2-19, Brundavan Colony, Vijayawda,Andhra Pradesh, India - 520010.</a>
+					<a href="" id="location"><span class=" icon-location" style="font-size:25px"></span><?php echo $getSiteSettingsData['address']; ?></a>
 					<a href="Tel:<?php echo $getSiteSettingsData['mobile']; ?>" id="phone"><?php echo $getSiteSettingsData['mobile']; ?></a>
 					<a href="mailto:<?php echo $getSiteSettingsData['email'] ?>" id="email_footer"><span class="__cf_email__" data-cfemail="6109040d112102081518150e1413124f020e0c"><?php echo $getSiteSettingsData['email'] ?></span></a>
 				</div>

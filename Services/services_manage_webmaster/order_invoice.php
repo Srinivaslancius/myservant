@@ -211,5 +211,5 @@ if (mail($to, $subject, $body, $headers)) {
 
 echo "Message has been sent";
 }
-header("Location: services_orders.php?order_id=".$getOrdersData1['order_id']."&category_id=".$getOrdersData1['category_id']."&msg=success");
+header("Location: view_category_orders.php?order_id=".$getOrdersData1['order_id']."&msg=success");
 ?>
