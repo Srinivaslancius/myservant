@@ -1,6 +1,9 @@
  <!DOCTYPE html>
 
+<html style="overflow-x:hidden">
+
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -182,6 +185,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6 nopadding features-intro-img">
+			<div class="features-bg" class="img-responsive">
 			<div class="features-bg">
 				<div class="features-img">
 				</div>

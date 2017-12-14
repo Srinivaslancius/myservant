@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
-<html>
+<html style="overflow-x:hidden">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,13 +49,13 @@
     
     <!-- SubHeader =============================================== -->
     <div id="full-slider-wrapper">
-    <div id="layerslider" style="width:100%;height:600px;">
+    <div id="layerslider" style="width:100%;height:300px;">
         <!-- first slide -->
         <?php $getFoodBanners = getFoodHomeBanners(); ?>
         <?php while($getFoodhomeBanners = $getFoodBanners->fetch_assoc()) { ?>
         <div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
             <img src="<?php echo $base_url . 'uploads/food_banner_images/'.$getFoodhomeBanners['banner'] ?>" class="ls-bg" alt="Slide background" alt="<?php echo $getFoodhomeBanners['title'];?>">
-            <h3 class="ls-l slide_typo" style="top: 44%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;" ><strong>Enjoy</strong> a quick friends dinner</h3>           
+            <h3 class="ls-l slide_typo" style="top: 50%; left: 50%;font-size:30px" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;" ><strong>Enjoy</strong> a quick friends dinner</h3>           
             <?php if($getFoodhomeBanners['lkp_banner_type_id']==1) { ?>
             <p class="ls-l" style="top:64%; left:50%;" data-ls="durationin:2000;delayin:1300;easingin:easeOutElastic;" ><a href="list_page.php" class="button_intro">Read more</a> </p>
             <?php } ?>
@@ -168,7 +168,49 @@
         
         </div><!-- End container -->
         </div><!-- End white_bg -->
+                       
+    <div class="white_bg" style="margin-top:-60px">
+    <div class="container margin_60">
         
+        <div class="main_title">
+            <h2 class="nomargin_top">Our Brands</h2>
+        </div>
+        
+        <div class="container" style="padding-left:5px;padding-right:35px">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="carousel carousel-showmanymoveone slide" id="carousel123">
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="col-xs-12 col-sm-2 col-md-2"><a href=""> <img src="img/img_3.jpg" alt="" width="200px" height="150px"></a></div>
+          </div>
+          <div class="item">
+             <div class="col-xs-12 col-sm-2 col-md-2"><a href=""> <img src="img/img_3.jpg" alt="" width="200px" height="150px"></a></div>
+          </div>
+          <div class="item">
+          <div class="col-xs-12 col-sm-2 col-md-2"><a href=""> <img src="img/img_3.jpg" alt="" width="200px" height="150px"></a></div>
+          </div>
+            <div class="item">
+          <div class="col-xs-12 col-sm-2 col-md-2"><a href=""> <img src="img/img_3.jpg" alt="" width="200px" height="150px"></a></div>
+          </div>          
+         <div class="item">
+          <div class="col-xs-12 col-sm-2 col-md-2"><a href=""> <img src="img/img_3.jpg" alt="" width="200px" height="150px"></a></div>
+          </div>
+            <div class="item">
+          <div class="col-xs-12 col-sm-2 col-md-2"><a href=""> <img src="img/img_3.jpg" alt="" width="200px" height="150px"></a></div>
+          </div>
+            
+        </div>
+        <a class="left carousel-control" href="#carousel123" data-slide="prev"><i class="glyphicon glyphicon-chevron-left" style="margin-left:-110px;color:#f26226"></i></a>
+        <a class="right carousel-control" href="#carousel123" data-slide="next"><i class="glyphicon glyphicon-chevron-right"style="margin-right:-120px;color:#f26226"></i></a>
+      </div>
+    </div>
+  </div> 
+</div>
+        
+    </div>
+    </div>
+    
        <div class="high_light">
         <div class="container">
             <h3>Choose from over 2,000 Restaurants</h3>
@@ -288,9 +330,38 @@
         $("#suggesstion-box").hide();
     }
     </script>
+    <script>
+(function(){
+  // setup your carousels as you normally would using JS
+  // or via data attributes according to the documentation
+  // https://getbootstrap.com/javascript/#carousel
+  $('#carousel123').carousel({ interval: 2000 });
+  $('#carouselABC').carousel({ interval: 3600 });
+}());
+
+(function(){
+  $('.carousel-showmanymoveone .item').each(function(){
+    var itemToClone = $(this);
+
+    for (var i=1;i<6;i++) {
+      itemToClone = itemToClone.next();
+
+      // wrap around if at end of item collection
+      if (!itemToClone.length) {
+        itemToClone = $(this).siblings(':first');
+      }
+
+      // grab item, clone, add marker class, add to collection
+      itemToClone.children(':first-child').clone()
+        .addClass("cloneditem-"+(i))
+        .appendTo($(this));
+    }
+  });
+}());
+</script>
 <style>
-#country-list{float:left;list-style:none;margin-top:-3px;padding:0;width:190px;position: absolute;}
-#country-list li{padding: 10px; background: #f0f0f0; border-bottom: #bbb9b9 1px solid;}
+#country-list{float:left;list-style:none;margin-top:-3px;padding:0;width:620px;position: absolute}
+#country-list li{padding: 10px; background: #ffffff;}
 #country-list li:hover{background:#ece3d2;cursor: pointer;}
 #search-box{padding: 10px;border: #a8d4b1 1px solid;border-radius:4px;}
 </style>
