@@ -12,7 +12,6 @@ if (!isset($_POST['submit']))  {
   $experience = $_POST['experience'];
   $type = $_POST['type'];
   $lkp_status_id = $_POST['lkp_status_id'];
-  $created_at
   $fileToUpload = $_FILES["fileToUpload"]["name"];
   
   if($fileToUpload!='') {
@@ -22,7 +21,7 @@ if (!isset($_POST['submit']))  {
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        $sql = "INSERT INTO food_delivery_boys (`name`, `email`,`mobile`,`identity_proof_image`,`address`,`experience`,`lkp_status_id`,`type`,`created_at`) VALUES ('$name', '$email', '$mobile','$fileToUpload', '$address','$experience','$lkp_status_id','$type','$created_at')"; 
+        $sql = "INSERT INTO food_delivery_boys (`name`, `email`,`mobile`,`identity_proof_image`,`address`,`experience`,`lkp_status_id`,`type`) VALUES ('$name', '$email', '$mobile','$fileToUpload', '$address','$experience','$lkp_status_id','$type')"; 
         if($conn->query($sql) === TRUE){
            echo "<script type='text/javascript'>window.location='food_delivery_boys.php?msg=success'</script>";
         } else {
