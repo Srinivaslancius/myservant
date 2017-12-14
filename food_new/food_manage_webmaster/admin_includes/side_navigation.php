@@ -44,7 +44,7 @@
                 <li class="<?php if($page_name == 'admin_users.php' || $page_name == 'add_admin_users.php' || $page_name == 'edit_admin_users.php') { echo "active"; } ?>"><a href="admin_users.php">Admin Users</a></li> 
                 <li class="<?php if($page_name == 'users.php' || $page_name == 'add_users.php' || $page_name == 'edit_users.php') { echo "active"; } ?>"><a href="users.php">Users</a></li>
                 <li class="<?php if($page_name == 'vendors.php' || $page_name == 'add_vendors.php' || $page_name == 'edit_vendors.php') { echo "active"; } ?>"><a href="vendors.php">Vendors</a></li>
-                <li class="<?php if($page_name == 'food_delivery_boys.php' || $page_name == 'add_food_delivery_boys.php' || $page_name == 'edit_food_delivery_boys.php') { echo "active"; } ?>"><a href="food_delivery_boys.php">Delivery Boys</a></li>
+                <li class="<?php if($page_name == 'food_delivery_boys.php' || $page_name == 'add_food_delivery_boys.php' || $page_name == 'edit_food_deliveryboys.php') { echo "active"; } ?>"><a href="food_delivery_boys.php">Delivery Boys</a></li>
               </ul>
             </li>
             <li class="with-sub">
