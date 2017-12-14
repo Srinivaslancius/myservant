@@ -203,7 +203,7 @@ $body .= "--" . $separator . "--";
 
 if (mail($to, $subject, $body, $headers)) {
 
-    echo $msgsuccess = 'Mail Send Successfully'; die;
+    $msgsuccess = 'Mail Send Successfully';
 } else {
 
     $msgerror = 'Main not send';
