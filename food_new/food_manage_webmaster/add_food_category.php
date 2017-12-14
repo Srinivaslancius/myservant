@@ -7,7 +7,6 @@ if (!isset($_POST['submit']))  {
   //If success
   $category_name = $_POST['category_name'];
   $category_description = $_POST['category_description'];
-  $category_position = $_POST['category_position'];
   $meta_title = $_POST['meta_title'];
   $meta_keywords = $_POST['meta_keywords'];
   $meta_desc = $_POST['meta_desc'];
@@ -21,7 +20,7 @@ if (!isset($_POST['submit']))  {
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        $sql = "INSERT INTO food_category (`category_name`, `category_description`,`category_image`, `category_position`, `meta_title`, `meta_keywords`, `meta_desc`, `lkp_status_id`) VALUES ('$category_name', '$category_description','$fileToUpload', '$category_position', '$meta_title', '$meta_keywords', '$meta_desc', '$lkp_status_id')"; 
+        $sql = "INSERT INTO food_category (`category_name`, `category_description`,`category_image`,  `meta_title`, `meta_keywords`, `meta_desc`, `lkp_status_id`) VALUES ('$category_name', '$category_description','$fileToUpload', '$meta_title', '$meta_keywords', '$meta_desc', '$lkp_status_id')"; 
         if($conn->query($sql) === TRUE){
            echo "<script type='text/javascript'>window.location='food_category.php?msg=success'</script>";
         } else {
@@ -62,12 +61,6 @@ if (!isset($_POST['submit']))  {
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Category Description</label>
                     <textarea name="category_description" class="form-control" id="category_description" placeholder="Category Description" data-error="Please enter Category Description." required></textarea>
-                    <div class="help-block with-errors"></div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">Category Position</label>
-                    <input type="text" name="category_position" class="form-control" id="form-control-2" placeholder="Category Position" data-error="Please enter Category Position" required>
                     <div class="help-block with-errors"></div>
                   </div>
 

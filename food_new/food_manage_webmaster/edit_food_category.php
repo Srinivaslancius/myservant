@@ -8,7 +8,7 @@ if (!isset($_POST['submit'])) {
     //If success            
     $category_name = $_POST['category_name'];
     $category_description = $_POST['category_description'];
-    $category_position = $_POST['category_position'];
+    
     $meta_title = $_POST['meta_title'];
     $meta_keywords = $_POST['meta_keywords'];
     $meta_desc = $_POST['meta_desc'];
@@ -24,7 +24,7 @@ if (!isset($_POST['submit'])) {
               $getImgUnlink = getImageUnlink('category_image','food_category','id',$id,$target_dir);
                 //Send parameters for img val,tablename,clause,id,imgpath for image ubnlink from folder
               if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    $sql = "UPDATE `food_category` SET category_name = '$category_name', category_description = '$category_description', category_position = '$category_position',category_image = '$fileToUpload',meta_title = '$meta_title',meta_keywords = '$meta_keywords',meta_desc = '$meta_desc', lkp_status_id='$lkp_status_id' WHERE id = '$id' ";
+                    $sql = "UPDATE `food_category` SET category_name = '$category_name', category_description = '$category_description', category_image = '$fileToUpload',meta_title = '$meta_title',meta_keywords = '$meta_keywords',meta_desc = '$meta_desc', lkp_status_id='$lkp_status_id' WHERE id = '$id' ";
                     if($conn->query($sql) === TRUE){
                        echo "<script type='text/javascript'>window.location='food_category.php?msg=success'</script>";
                     } else {
@@ -36,7 +36,7 @@ if (!isset($_POST['submit'])) {
                 }
       } else {
 
-          $sql = "UPDATE `food_category` SET category_name = '$category_name', category_description = '$category_description', category_position = '$category_position',meta_title = '$meta_title',meta_keywords = '$meta_keywords',meta_desc = '$meta_desc', lkp_status_id='$lkp_status_id' WHERE id = '$id' ";
+          $sql = "UPDATE `food_category` SET category_name = '$category_name', category_description = '$category_description',meta_title = '$meta_title',meta_keywords = '$meta_keywords',meta_desc = '$meta_desc', lkp_status_id='$lkp_status_id' WHERE id = '$id' ";
           if($conn->query($sql) === TRUE){
              echo "<script type='text/javascript'>window.location='food_category.php?msg=success'</script>";
           } else {
@@ -76,11 +76,7 @@ if (!isset($_POST['submit'])) {
                     <textarea name="category_description" class="form-control" id="category_description" data-error="This field is required." required><?php echo $getCategoriesData['category_description'];?></textarea>
                     <div class="help-block with-errors"></div>
                   </div>
-                  <div class="form-group">
-                    <label for="form-control-2" class="control-label">Category Position</label>
-                    <input type="text" name="category_position" class="form-control" id="form-control-2" data-error="Please enter a Category Position" required value="<?php echo $getCategoriesData['category_position'];?>">
-                    <div class="help-block with-errors"></div>
-                  </div>
+                  
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Meta Title</label>
                     <input type="text" name="meta_title" class="form-control" id="form-control-2" data-error="Please enter a Meta Title" required value="<?php echo $getCategoriesData['meta_title'];?>">

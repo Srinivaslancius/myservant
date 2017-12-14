@@ -13,7 +13,6 @@
                   <tr>
                     <th>S.No</th>
                     <th>Category Name</th>
-                    <th>Category Position</th>
                     <th>Meta Title</th>
                     <th>Meta KeyWwords</th>
                     <th>Status</th>
@@ -25,7 +24,6 @@
                   <tr>
                     <td><?php echo $i;?></td>
                     <td><?php echo $row['category_name'];?></td>
-                    <td><?php echo $row['category_position'];?></td>
                     <td><?php echo $row['meta_title'];?></td>
                     <td><?php echo $row['meta_keywords'];?></td>
                     <td><?php if ($row['lkp_status_id']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['lkp_status_id']." data-tbname='food_category'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['lkp_status_id']." data-incId=".$row['id']." data-tbname='food_category'>In Active</span>" ;} ?></td>
