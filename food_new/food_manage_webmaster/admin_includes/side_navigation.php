@@ -74,7 +74,7 @@
               </a>
               <ul class="sidebar-submenu collapse">
                 <li class="menu-subtitle">Catelog</li>
-               <li  class="<?php if($page_name == 'food_cusine.php' || $page_name == 'add_food_cusine.php' || $page_name == 'edit_food_cusine.php' ) { echo "active"; } ?>"><a href="food_cusine.php">Cusine Types
+               <li  class="<?php if($page_name == 'food_cusine.php' || $page_name == 'add_food_food_cusine.php' || $page_name == 'edit_food_cusine.php' ) { echo "active"; } ?>"><a href="food_cusine.php">Cusine Types
                 </a>
                 </li>
                 <li  class="<?php if($page_name == 'food_category.php' || $page_name == 'add_food_category.php' || $page_name == 'edit_food_category.php' ) { echo "active"; } ?>"><a href="food_category.php">Categories</a>
