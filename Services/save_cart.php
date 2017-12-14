@@ -25,7 +25,7 @@ $created_at = date('Y-m-d H:i:s', time() + 24 * 60 * 60);
 $service_selected_time = date('H:i:s', strtotime($created_at));
 $service_selected_date = date("Y-m-d h:i:s");
 
-$checkCartItems = "SELECT * FROM services_cart WHERE group_id = '$group_id' AND service_id='$services_service_id' AND session_cart_id ='$session_cart_id' ";
+$checkCartItems = "SELECT * FROM services_cart WHERE group_id = '$group_id' AND service_id='$services_service_id' AND user_id = '$user_id'";
 $getCartCount = $conn->query($checkCartItems);
 $getTotalCount = $getCartCount->num_rows;
 if($getTotalCount > 0) {

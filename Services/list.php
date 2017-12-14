@@ -135,7 +135,7 @@
                                                         
 						</div>
                             
-                        <?php } else { echo "<h3 style='text-align:center;'>Sorry! Items Not found</h3>"; ?>
+                        <?php } else {  ?>
 						<script type="text/javascript">document.getElementById('divId<?php echo $services_group_id; ?>').style.display = 'none';</script> 
 						<?php } } } else { echo "<h3 style='text-align:center;'>Sorry! Items Not found</h3>"; } ?>
 						

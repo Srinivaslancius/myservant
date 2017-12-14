@@ -1,5 +1,7 @@
-<?php include_once 'admin_includes/main_header.php';?>
-<?php $getServiceOrders1 = "SELECT * FROM services_orders WHERE lkp_payment_status_id != 3 AND lkp_order_status_id != 3";
+<?php include_once 'admin_includes/main_header.php';
+$category_id = $_GET['category_id'];
+$order_id = $_GET['order_id'];
+$getServiceOrders1 = "SELECT * FROM services_orders WHERE order_id = '$order_id' AND category_id = '$category_id' AND lkp_payment_status_id != 3 AND lkp_order_status_id != 3 ORDER BY id DESC";
 $getServiceOrders = $conn->query($getServiceOrders1); $i=1; ?>
      <div class="site-content">
         <div class="panel panel-default panel-table">
@@ -35,16 +37,16 @@ $getServiceOrders = $conn->query($getServiceOrders1); $i=1; ?>
                    <td><?php $orderPaymentStatus = getIndividualDetails('lkp_payment_status','id',$row['lkp_payment_status_id']); echo $orderPaymentStatus['payment_status']; ?></td>
                    <td><?php echo $row['created_at'];?></td> 
                    <?php if($row['assign_service_provider_id'] == '0') { ?>
-                   <td><a href="assign_to.php?assign_id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>">Assign To</a></td>
+                   <td><a href="assign_to.php?assign_id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>&order_id=<?php echo $row['order_id']; ?>&category_id=<?php echo $category_id ?>">Assign To</a></td>
                    <?php } else { 
                     $getServiceProviderNames = getAllDataWhere('service_provider_registration','id',$row['assign_service_provider_id']); $getServiceProviderData = $getServiceProviderNames->fetch_assoc();
                     ?>
-                   <td><a href="assign_to.php?assign_id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>"><?php if($getServiceProviderData['id'] == $row['assign_service_provider_id']) { echo $getServiceProviderData['name']; } ?>(Assigned)</a></td>
+                   <td><a href="assign_to.php?assign_id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>&order_id=<?php echo $row['order_id']; ?>&category_id=<?php echo $category_id ?>"><?php if($getServiceProviderData['id'] == $row['assign_service_provider_id']) { echo $getServiceProviderData['name']; } ?>(Assigned)</a></td>
                    <?php } ?>
                    <?php if($row['lkp_order_status_id'] == 2 && $row['lkp_payment_status_id'] == 1) { ?>
                    <td><a href="../../uploads/generate_invoice/<?php echo $row['order_sub_id']; ?>.pdf" target="_blank"><i class="zmdi zmdi-local-printshop"></i></a></td>
                    <?php } else { ?>
-                    <td><a href="edit_services_orders.php?id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>&order_id=<?php echo $row['order_id'] ?>"><i class="zmdi zmdi-edit"></i></a></td>
+                    <td><a href="edit_services_orders.php?id=<?php echo $row['id']; ?>&subcat_id=<?php echo $row['sub_category_id'] ?>&order_id=<?php echo $row['order_id']; ?>&category_id=<?php echo $category_id ?>"><i class="zmdi zmdi-edit"></i></a></td>
                     <?php } ?>
                   </tr>
                   <?php  $i++; } ?>

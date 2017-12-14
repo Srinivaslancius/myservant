@@ -30,6 +30,8 @@ if(!empty($_POST['user_mobile']) && !empty($_POST['mobile_otp']))  {
         $_SESSION['user_login_session_name'] = $getLoggedInDetails['user_full_name'];
         $_SESSION['user_login_session_email'] = $getLoggedInDetails['user_email'];
         $_SESSION['timestamp'] = time();
+        $updateCart = "UPDATE `services_cart` SET user_id='".$_SESSION['user_login_session_id']."' WHERE session_cart_id = '".$_SESSION['CART_TEMP_RANDOM']."'";
+		$updateCart1 = $conn->query($updateCart);
 
         $dataem = $getLoggedInDetails["user_email"];
 
