@@ -48,13 +48,26 @@
     <!-- End Header =============================================== -->
 
 <?php
-//if(isset($_POST['searchKey'])) {
-    //$searchParms = $_POST['searchKey'];
-    //$getSearchResults = getSearchResults('food_vendors',$searchParms);
-    $getRes = "SELECT * FROM food_vendors WHERE lkp_status_id = 0 ORDER BY id DESC LIMIT 2";
-    $getSearchResults = $conn->query($getRes);
-    $getResultsCount = $getSearchResults->num_rows;
-//}
+if(isset($_POST["id"]) && !empty($_POST["id"])){
+
+//include database configuration file
+
+
+//count all rows except already displayed
+$queryAll = "SELECT COUNT(*) as num_rows FROM food_vendors WHERE id = '" . $_POST["id"] . "' ORDER BY id DESC";
+
+$getSearchResults = $conn->query($queryAll);
+$row = $getSearchResults->fetch_assoc();
+
+$allRows = $row['num_rows'];
+
+$showLimit = 2;
+
+//get rows query
+$query = "SELECT * FROM food_vendors WHERE id = '" . $_POST["id"] . "' ORDER BY id DESC  ";
+$getSearchResults1 = $conn->query($query);
+
+//number of rows
 ?>
 
 <!-- SubHeader =============================================== -->
@@ -110,21 +123,28 @@
                                         
                                     
                 </div>
-            </div><!--End tools -->                        
-                        <?php while($getResults = $getSearchResults->fetch_assoc()) { 
-                             $show_more = $getResults['id'];?>
+            </div><!--End tools -->  
+
+
+                      <?php 
+
+
+
+                      if($getSearchResults1->num_rows > 0) {
+                        	while($row = $getSearchResults1->fetch_assoc()){ 
+                      ?>
                         <div class="col-md-6">
                             <div class="strip_list wow fadeIn" data-wow-delay="0.1s">
                                     <div class="row">
                                             <div class="col-md-8 col-sm-9">
                                                     <div class="desc">
                                                             <div class="thumb_strip">
-                                                                <a href="#"><img src="<?php echo $base_url . 'uploads/food_restaurants_images/'.$getResults['logo'] ?>" alt=""></a>
+                                                                <a href="#"><img src="<?php echo $base_url . 'uploads/food_restaurants_images/'.$row['logo'] ?>" alt=""></a>
                                                             </div>
                                                             
-                                                            <h4><?php echo $getResults['restaurant_name']; ?></h4>
+                                                            <h4><?php echo $row['restaurant_name']; ?></h4>
                                                             <div class="type">
-                                                                <?php echo $getResults['description']; ?>
+                                                                <?php echo $row['description']; ?>
                                                             </div>
                                                             
                                                             
@@ -143,11 +163,18 @@
                                     </div><!-- End row-->
                             </div><!-- End strip_list-->
                         </div>
+
                         <?php } ?>
+            			<?php } else { ?>
+				       <h3 style="text-align:center">No Restaurants Found</h3>
+				       <?php } ?>
+                        <?php if($allRows > $showLimit){ ?>
                         <div class="col-md-12" id="show_more_main<?php echo $show_more; ?>">
                             <span id="<?php echo $show_more; ?>" class="load_more_bt wow fadeIn show_more" data-wow-delay="0.2s">Load more...</span>
                             
                         </div>
+                        <?php } ?>
+
         </div><!-- End col-md-9-->
         
     </div><!-- End row -->
@@ -155,9 +182,7 @@
 <!-- End Content =============================================== -->
 
 <!-- Footer ================================================== -->
-    <footer>
-            <?php include_once 'footer.php';?>
-        </footer>
+    
 <!-- End Footer =============================================== -->
 
 <div class="layer"></div><!-- Mobile menu overlay mask -->
@@ -249,22 +274,3 @@
 </body>
 </html>
 
-<script>
-$(document).ready(function(){
-    
-    $(document).on('click','.show_more',function(){
-        
-        var ID = $(this).attr('id');
-        $('.show_more').hide();
-        $.ajax({
-            type:'POST',
-            url:'show_more_list.php',
-            data:'id='+ID,
-            success:function(html){
-                $('#show_more_main'+ID).remove();
-                $('.fadeIn').append(html);
-            }
-        }); 
-    });
-});
-</script>
