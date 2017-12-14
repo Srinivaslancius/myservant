@@ -1,5 +1,7 @@
 <?php include_once 'admin_includes/main_header.php'; ?>
 <?php  
+$order_id = $_GET['order_id'];
+$category_id = $_GET['category_id'];
 $assign_id = $_GET['assign_id'];
 $subcat_id = $_GET['subcat_id'];
 if (!isset($_POST['submit'])) {
@@ -11,9 +13,9 @@ if (!isset($_POST['submit'])) {
   
   $sql = "UPDATE `services_orders` SET assign_service_provider_id = '$assign_service_provider_id' WHERE id = '$assign_id' AND sub_category_id = '$subcat_id'";
   if($conn->query($sql) === TRUE){
-     echo "<script type='text/javascript'>window.location='services_orders.php?msg=success'</script>";
+     echo "<script type='text/javascript'>window.location='services_orders.php?order_id=$order_id&category_id=$category_id&msg=success'</script>";
   } else {
-     echo "<script type='text/javascript'>window.location='services_orders.php?msg=fail'</script>";
+     echo "<script type='text/javascript'>window.location='services_orders.php?order_id=$order_id&category_id=$category_id&msg=fail'</script>";
   }
 }   
 ?>

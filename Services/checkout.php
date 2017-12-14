@@ -87,13 +87,6 @@
 	    ?>
 		<div class="container margin_60">
 			<div class="checkout-page">
-				
-				<?php if(!isset($_SESSION['user_login_session_id'])) { ?>
-				<ul class="default-links">
-					<li>Exisitng Customer? <a href="login.php">Click here to login</a>
-					</li>
-				</ul>
-				<?php } ?>
 
 				<?php
 				$id = $_SESSION['user_login_session_id'];
