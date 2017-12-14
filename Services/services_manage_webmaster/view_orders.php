@@ -16,9 +16,9 @@
                     <th>S.No</th>
                     <th>Order ID</th>
                     <th>User Name</th>
-                    <th>Mobile</th>
-                    <th>Email</th>
-                    <th>Order Total</th>
+                    <th>Mobile Number</th>
+                    <th>Email Id</th>
+                    <th>Order Date</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -30,8 +30,8 @@
                     <td><?php echo $row['first_name'];?></td>
                     <td><?php echo $row['mobile'];?></td>
                     <td><?php echo $row['email'];?></td>
-                    <td><?php echo $row['order_total'];?></td>
-                    <td><a href="view_sub_orders.php?order_id=<?php echo $row['order_id']; ?>"><i class="zmdi zmdi-eye zmdi-hc-fw"  class=""></i></a></td>
+                    <td><?php echo $row['created_at'];?></td>
+                    <td><a href="view_category_orders.php?order_id=<?php echo $row['order_id']; ?>"><i class="zmdi zmdi-eye zmdi-hc-fw"  class=""></i></a></td>
                   </tr>
                   <?php  $i++; } ?>
                 </tbody>
