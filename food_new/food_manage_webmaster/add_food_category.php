@@ -59,7 +59,7 @@ if (!isset($_POST['submit']))  {
                   </div>
 
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">Category Description</label>
+                    <label for="form-control-2" class="control-label">Short Description</label>
                     <textarea name="category_description" class="form-control" id="category_description" placeholder="Category Description" data-error="Please enter Category Description." required></textarea>
                     <div class="help-block with-errors"></div>
                   </div>
