@@ -65,42 +65,15 @@
             <a href="#0" class="search-overlay-menu-btn"><i class="icon-search-6"></i> Search</a>
         </div>
     </div><!-- Position -->
-
+<?php $getAllAboutusData = getAllDataWhere('food_content_pages','id',6);
+          $getAboutusData = $getAllAboutusData->fetch_assoc();
+?>
 <!-- Content ================================================== -->
 <div class="container margin_60_35">
 	<div class="row">
 		<div class="col-md-12">
 		<center> <h2 class="nomargin_top">About US</h2></center>
-			<h3 class="nomargin_top">What is Myservant?</h3>			
-				<ul>
-				<li>Foodmingo is an online portal to facilitate</li>
-				<li>Food ordering and delivery from restaurant of choice;</li>
-				<li>Restaurant table booking;</li>
-				<li>Restaurant discounts and deals;</li>
-				<li>Banquet booking;</li>
-				</ul>
-		<h3 class="nomargin_top">History</h3>			
-				<ul>
-				<li>Foodmingo is an online portal to facilitate</li>
-				<li>Food ordering and delivery from restaurant of choice;</li>
-				<li>Restaurant table booking;</li>
-				<li>Restaurant discounts and deals;</li>
-				<li>Banquet booking;</li>
-				</ul>
-				<h3 class="nomargin_top">What’s in it for Customer ?</h3>			
-				<ul>
-				<li>A Single portal for ordering food online or calling toll free from a range of restaurants</li>
-				<li>We guarantee timely delivery from the restaurant of your choice.</li>
-				<li>Our Table booking service from foodmingo.com, real-time both online or toll free calling service.</li>
-				<li>Avail various discount offers and foodmingo redeemable points.</li>
-				<li>FMR (FoodMingo Rewards) Points for table booking and orders, which can be redeemed against free meals and gifts.</li>
-				</ul>
-				<h3 class="nomargin_top">What’s in it for Restaurants ?</h3>			
-				<ul>
-				<li>Direct access to new customer base and guaranteed business value.</li>
-				<li>Provide an online food ordering, table booking and banquet booking service allowing your loyal customers to be with you and recurring business.</li>
-				<li>A dedicated web presence for your restaurant that you may administer such as update menu, pricing, and offers or user our IT services.</li>
-				<li>No upfront costs and we only charge commission for business generated through us.</li>
+			<?php echo $getAboutusData['description']; ?>
 				
 				</ul>
 		</div>
