@@ -147,7 +147,7 @@
                     <div class="desc">
                         <div class="thumb_strip">
                             <?php if($getMostPopualrRestaurants['logo']!='') { ?>
-                                <img <img src="<?php echo $base_url . 'uploads/food_restaurants_images/'.$getMostPopualrRestaurants['logo']; ?>" alt="<?php echo $getMostPopualrRestaurants['restaurant_name']; ?>">
+                                <img <img src="<?php echo $base_url . 'uploads/food_vendor_logo/'.$getMostPopualrRestaurants['logo']; ?>" alt="<?php echo $getMostPopualrRestaurants['restaurant_name']; ?>">
                             <?php } else { ?>
                                 <img src="img/thumb_restaurant.jpg" alt="<?php echo $getMostPopualrRestaurants['restaurant_name']; ?>">
                             <?php } ?>
@@ -160,7 +160,7 @@
                            <?php echo $getMostPopualrRestaurants['description']; ?>
                         </div>
                         <div class="location">
-                            <?php echo $getMostPopualrRestaurants['restaurant_address']; ?> .<span class="opening">Opens at <?php echo $getMostPopualrRestaurants['working_timings']; ?></span>
+                           <?php echo $getMostPopualrRestaurants['restaurant_address']; ?> .<span class="opening">Opens at <?php echo $getMostPopualrRestaurants['working_timings']; ?></span>
                         </div>
                         <ul>
                             <li>Take away<i class="icon_check_alt2 ok"></i></li>
