@@ -73,7 +73,19 @@
     
     </div><!-- End layerslider -->
     
-    
+<?php $getAllSearchByAreaData = getAllDataWhere('food_content_pages','id',2);
+          $getSearchByAreaData = $getAllSearchByAreaData->fetch_assoc();
+?>
+<?php $getALlChooseRestaurantData = getAllDataWhere('food_content_pages','id',3);
+          $getChooseRestaurant = $getALlChooseRestaurantData->fetch_assoc();
+?>
+<?php $getAllPayByCardData = getAllDataWhere('food_content_pages','id',4);
+          $getPayByCardData = $getAllPayByCardData->fetch_assoc();
+?>
+<?php $getAllDeliveryData = getAllDataWhere('food_content_pages','id',5);
+          $getDeliveryData = $getAllDeliveryData->fetch_assoc();
+?>
+
     <!-- Content ================================================== -->
          <div class="container margin_10">
         
@@ -87,36 +99,36 @@
             <div class="col-md-3">
                 <div class="box_home" id="one">
                     <span>1</span>
-                    <h3>Search by address</h3>
+                    <h3><?php echo $getSearchByAreaData['title']; ?></h3>
                     <p>
-                        Find all restaurants available in your zone.
+                        <?php echo $getSearchByAreaData['description']; ?>
                     </p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="box_home" id="two">
                     <span>2</span>
-                    <h3>Choose a restaurant</h3>
+                    <h3><?php echo $getChooseRestaurant['title']; ?></h3>
                     <p>
-                        We have more than 1000s of menus online.
+                       <?php echo $getChooseRestaurant['description']; ?>
                     </p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="box_home" id="three">
                     <span>3</span>
-                    <h3>Pay by card or cash</h3>
+                    <h3><?php echo $getPayByCardData['title']; ?></h3>
                     <p>
-                        It's quick, easy and totally secure.
+                        <?php echo $getPayByCardData['description']; ?>
                     </p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="box_home" id="four">
                     <span>4</span>
-                    <h3>Delivery or takeaway</h3>
+                    <h3><?php echo $getDeliveryData['title']; ?></h3>
                     <p>
-                        You are lazy? Are you backing home?
+                        <?php echo $getDeliveryData['description']; ?>
                     </p>
                 </div>
             </div>
