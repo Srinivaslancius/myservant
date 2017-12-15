@@ -159,7 +159,7 @@
                     <div class="desc">
                         <div class="thumb_strip">
                             <?php if($getMostPopualrRestaurants['logo']!='') { ?>
-                                <img <img src="<?php echo $base_url . 'uploads/food_vendor_logo/'.$getMostPopualrRestaurants['logo']; ?>" alt="<?php echo $getMostPopualrRestaurants['restaurant_name']; ?>">
+                                <img src="<?php echo $base_url . 'uploads/food_vendor_logo/'.$getMostPopualrRestaurants['logo']; ?>" alt="<?php echo $getMostPopualrRestaurants['restaurant_name']; ?>">
                             <?php } else { ?>
                                 <img src="img/thumb_restaurant.jpg" alt="<?php echo $getMostPopualrRestaurants['restaurant_name']; ?>">
                             <?php } ?>

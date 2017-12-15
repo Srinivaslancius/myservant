@@ -43,16 +43,19 @@
         <?php include_once 'header.php';?>
     </header>
 <!-- End Header =============================================== -->
-<?php $getRestKey = decryptpassword($_GET['key']); ?>
+<?php //echo "srinu". $getRestKey = decryptpassword($_GET['key']); ?>
+<?php $getRestKey = 3; ?>
+<?php $getCategory = getFoodCategoryByRestId('food_products','restaurant_id',$getRestKey); ?>
+<?php $getFoodVendorsBann = getIndividualDetails('food_vendors','id',$getRestKey); ?>
 <!-- SubHeader =============================================== -->
-<section class="parallax-window" data-parallax="scroll" data-image-src="img/sub_header_home.jpg" data-natural-width="1400" data-natural-height="470">
+<section class="parallax-window" data-parallax="scroll" <?php if($getFoodVendorsBann['vendor_banner']!='') { ?>data-image-src="<?php echo $base_url . 'uploads/food_vendor_logo/'.$getFoodVendorsBann['vendor_banner']; ?>" <?php } else { ?> data-image-src="img/sub_header_home.jpg" <?php } ?>data-natural-width="1400" data-natural-height="470">
     <div id="subheader">
 	<div id="sub_content">
-    	<div id="thumb"><img src="img/thumb_restaurant.jpg" alt=""></div>
+    	<div id="thumb"><img src="<?php echo $base_url . 'uploads/food_vendor_logo/'.$getFoodVendorsBann['logo']; ?>" alt="<?php echo $getMostPopualrRestaurants['restaurant_name']; ?>"></div>
 	         <div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i> (<small><a href="#">Read 98 reviews</a></small>)</div>
-	        <h1>Mexican TacoMex</h1>
-	        <div><em>Mexican / American</em></div>
-	        <div><i class="icon_pin"></i> Address will be display here - <strong>Delivery charge:</strong> Rs. 10, free over Rs.500.</div>
+	        <h1><?php echo $getFoodVendorsBann['restaurant_name']; ?></h1>
+	        <div><em><?php echo $getFoodVendorsBann['description']; ?></em></div>
+	        <div><i class="icon_pin"></i> <?php echo $getFoodVendorsBann['restaurant_address']; ?> </div>
     </div><!-- End sub_content -->
 </div><!-- End subheader -->
 </section><!-- End section -->
@@ -70,21 +73,17 @@
     </div><!-- Position -->
 
 <!-- Content ================================================== -->
+<?php if($getCategory->num_rows > 0) { ?>
 <div class="container margin_60_35">
 		<div class="row">
         
 			<div class="col-md-3">
-                            <p><a href="list.php" class="btn_side">Back to search</a></p>
+                <p><a href="list.php" class="btn_side">Back to search</a></p>
 				<div class="box_style_1">
-					<ul id="cat_nav">
-						<?php 
-			            	$getSql2 = "SELECT * FROM food_products WHERE restaurant_id = 3 AND lkp_status_id = 0 GROUP BY category_id"; 
-			            	$getFPr2 = $conn->query($getSql2);
-			            ?>
-						<?php while($row2 = $getFPr2->fetch_assoc() ) { ?>
-							<li><a href="#starters" class="active"><?php $getCatName = getIndividualDetails('food_category','id',$row2['category_id']); echo $getCatName['category_name']; ?><span>(141)</span></a></li>
+					<ul id="cat_nav">						
+						<?php while($getCatList = $getCategory->fetch_assoc() ) { ?>
+							<li><a href="#<?php echo $getCatList['category_id']; ?>" class="active"><?php $getCatName = getIndividualDetails('food_category','id',$getCatList['category_id']); echo $getCatName['category_name']; ?><span>(<?php echo getProductsCountByCat('food_products','category_id',$getCatList['category_id'],'restaurant_id',$getRestKey); ?>)</span></a></li>
 						<?php } ?>
-						
 					</ul>
 				</div><!-- End box_style_1 -->
                 
@@ -95,76 +94,70 @@
 					<small>Monday to Friday 9.00am - 7.30pm</small>
 				</div>
 			</div><!-- End col-md-3 -->
-            <?php 
-            	$getSql = "SELECT * FROM food_products WHERE restaurant_id = 3 AND lkp_status_id = 0 GROUP BY category_id"; 
-            	$getFPr = $conn->query($getSql);
-            ?>
+            <?php $getCategory1 = getFoodCategoryByRestId('food_products','restaurant_id',$getRestKey); ?>
 			<div class="col-md-6">
 				<div class="box_style_2" id="main_menu">
-                        <h2 class="inner">Menu <span class="pull-right"><label style="color: #fff;"><input name="mobile" type="checkbox" value="" class="icheck">Veg </label></span></h2>
+                        <h2 class="inner">Menu <span class="pull-right">
+                        <!-- <label style="color: #fff;"><input name="mobile" type="checkbox" value="" class="icheck">Veg </label> --></span></h2>
 
-                    <?php while($row = $getFPr->fetch_assoc() ) { ?>
+                    <?php while($getCatList1 = $getCategory1->fetch_assoc() ) { ?>
                     <hr>
-					<h3 class="nomargin_top" id="starters"><?php $getCatName = getIndividualDetails('food_category','id',$row['category_id']); echo $getCatName['category_name']; ?></h3>
+					<h3 class="nomargin_top" id="<?php echo $getCatList1['category_id']; ?>"><?php $getCatName = getIndividualDetails('food_category','id',$getCatList1['category_id']); echo $getCatName['category_name']; ?></h3>
 					<p>
 					<?php echo $getCatName['category_description']; ?>
 					</p>
 					<table class="table table-striped cart-list">
-
-					<thead>
-					<tr>
-						<th>
-							 Item
-						</th>
-						<th>
-							 Price
-						</th>
-						<th>
-							 Order
-						</th>
-					</tr>
-					</thead>
-
-					<?php //$getMostPopualrRest = getAllDataWhere('food_products','restaurant_id',$getRestKey); ?>
+						<thead>
+						<tr>
+							<th>
+								 Item
+							</th>
+							<th>
+								 Price
+							</th>
+							<th>
+								 Order
+							</th>
+						</tr>
+						</thead>
 					<tbody>
-						<?php 
-			            	$getSql1 = "SELECT * FROM food_products WHERE restaurant_id = 3 AND lkp_status_id = 0"; 
-			            	$getFPr1 = $conn->query($getSql1);
-			            	$i=1;
-			            ?>
-                         <?php while($row = $getFPr1->fetch_assoc() ) { ?>
+					<?php 
+						$getItemsByCat = getFoodItemsByCategory('food_products','restaurant_id',$getRestKey,'category_id',$getCatName['id']);	
+						$i=1; while($getItemsByCategory = $getItemsByCat->fetch_assoc() ) {
+						$productId = $getItemsByCategory['id'];
+		            ?>                    
 					<tr>
 						<td>
-                        	<figure class="thumb_menu_list"><img src="<?php echo $base_url . 'uploads/food_product_images/'.$row['image']; ?>" alt="<?php echo $row['product_name']; ?>" ></figure>
-							<h5><?php echo $i; ?>. <?php echo $row['product_name']; ?></h5>
+                        	<figure class="thumb_menu_list"><img src="<?php echo $base_url . 'uploads/food_product_images/'.$getItemsByCategory['product_image']; ?>" alt="<?php echo $getItemsByCategory['product_name']; ?>" ></figure>
+							<h5><?php echo $i; ?>. <?php echo $getItemsByCategory['product_name']; ?></h5>
 							<p>
-								<?php echo $row['specifications']; ?>
+								<?php echo $getItemsByCategory['specifications']; ?>
 							</p>
 						</td>
 						<td>
-							<strong>Rs. <?php echo $row['specifications']; ?></strong>
+							<?php $getFirstPrice =  getIndividualDetails('food_product_weight_prices','product_id',$productId); ?>
+							<strong>Rs. <?php echo $getFirstPrice['product_price']; ?></strong>
 						</td>
 						<td class="options">
                         <div class="dropdown dropdown-options">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="icon_plus_alt2"></i></a>
                             <div class="dropdown-menu">
                                 <h5>Select an option</h5>
-                                <label>
-                                <input type="radio" value="option1" name="options_1" checked>Medium <span>+ $3.30</span>
-                                </label>
-                                <label>
-                                <input type="radio" value="option2" name="options_1" >Large <span>+ $5.30</span>
-                                </label>
-                                <label>
-                                <input type="radio" value="option3" name="options_1" >Extra Large <span>+ $8.30</span>
-                                </label>
+                                <?php $getSelectOptions =  getAllDataWhere('food_product_weight_prices','product_id',$productId); ?>
+                                <?php while($getItemPrices = $getSelectOptions->fetch_assoc() ) { ?>
+	                                <label>
+	                                <input type="radio" value="option1" name="options_1" checked><?php $getWeight = getIndividualDetails('food_product_weights','id',$getItemPrices['weight_type_id']); echo $getWeight['weight_type'];  ?><span>+ Rs. <?php echo $getItemPrices['product_price']; ?></span>
+	                                </label>
+	                            <?php } ?>
+                               
                                 <h5>Add ingredients</h5>
-                                <label>
-                                <input type="checkbox" value="">Extra Tomato <span>+ $4.30</span>
-                                </label>
-                                <label>
-                                <input type="checkbox" value="">Extra Peppers <span>+ $2.50</span>
-                                </label>
+
+                                <?php $getIngOptions =  getAllDataWhere('food_product_ingredient_prices','product_id',$productId); ?>
+                                <?php while($getItemIngoptions = $getIngOptions->fetch_assoc() ) { ?>
+	                                <label>
+	                                <input type="checkbox" value=""><?php $getWeight = getIndividualDetails('food_ingredients','id',$getItemIngoptions['ingredient_name_id']); echo $getWeight['ingredient_name'];  ?><span>+ Rs. <?php echo $getItemIngoptions['ingredient_price']; ?></span>
+	                                </label>
+	                            <?php } ?>	                           
                                 <a href="#0" class="add_to_basket">Add to cart</a>
                             </div>
                         </div>
@@ -265,6 +258,13 @@
             
 		</div><!-- End row -->
 </div><!-- End container -->
+<?php } else { ?>
+<div class="container margin_60_35">
+	<div class="row">
+		No Items found
+	</div>
+</div>
+<?php } ?>
 <!-- End Content =============================================== -->
 
 <!-- Footer ================================================== -->
