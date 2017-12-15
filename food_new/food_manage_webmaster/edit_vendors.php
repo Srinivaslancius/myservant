@@ -26,8 +26,7 @@ if (!isset($_POST['submit'])) {
     $lkp_district_id = $_POST['lkp_district_id'];
     $lkp_city_id = $_POST['lkp_city_id'];
     $location = $_POST['location'];
-    $created_at = date("Y-m-d h:i:s");
-    $fileToUpload = uniqid().$_FILES['fileToUpload']['name'];
+    $created_at = date("Y-m-d h:i:s");   
 
       if($_FILES["fileToUpload"]["name"]!='') {
 

@@ -3074,3 +3074,13 @@ ul.plan-features {
         
     color: #fff !important;
 }
+
+/* swapna provide new styles for food menu banners - 15122017*/
+
+#sub_content{
+padding-top:105px !important;
+
+}
+#sub_content h2{
+    color:white !important;    
+}
