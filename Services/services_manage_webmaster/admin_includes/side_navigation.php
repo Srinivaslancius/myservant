@@ -54,8 +54,8 @@
                 </li>
                 <li  class="<?php if($page_name == 'services_testimonials.php' || $page_name == 'add_services_testimonials.php' || $page_name == 'edit_services_testimonials.php') { echo "active"; } ?>"><a href="services_testimonials.php">Testimonials</a>
                 </li>
-                <li  class="<?php if($page_name == 'services_newsletter.php' ) { echo "active"; } ?>"><a href="services_newsletter.php">News Letters</a>
-                </li>
+                <!-- <li  class="<?php if($page_name == 'services_newsletter.php' ) { echo "active"; } ?>"><a href="services_newsletter.php">News Letters</a>
+                </li> -->
               </ul>
             </li>
             <li class="with-sub">
@@ -183,14 +183,14 @@
                 <span class="menu-text">Help Center Faqs</span>
               </a>
             </li>
-            <li  class="<?php if($page_name == 'customer_enquireis.php' ) { echo "active"; } ?>">
+            <!-- <li  class="<?php if($page_name == 'customer_enquireis.php' ) { echo "active"; } ?>">
               <a href="customer_enquireis.php" aria-haspopup="true">
                 <span class="menu-icon">
                    <i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
                 </span>
                 <span class="menu-text">Customer Enquireis</span>
               </a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
