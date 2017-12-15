@@ -72,7 +72,7 @@ if (!isset($_POST['submit'])) {
                       </label>
                   </div>
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">Category Description</label>
+                    <label for="form-control-2" class="control-label">Short Description</label>
                     <textarea name="category_description" class="form-control" id="category_description" data-error="This field is required." required><?php echo $getCategoriesData['category_description'];?></textarea>
                     <div class="help-block with-errors"></div>
                   </div>

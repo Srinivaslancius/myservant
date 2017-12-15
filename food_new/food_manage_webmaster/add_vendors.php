@@ -4,6 +4,7 @@
   if (!isset($_POST['submit']))  {
               echo "fail";
           } else  { 
+            
     $vendor_name = $_POST['vendor_name'];
     $restaurant_name = $_POST['restaurant_name'];
     $restaurant_address = $_POST['restaurant_address'];
@@ -25,7 +26,8 @@
     $location = $_POST['location'];
     $created_at = date("Y-m-d h:i:s");
     $fileToUpload = uniqid().$_FILES['fileToUpload']['name'];
-    
+    $fileToUpload1 = uniqid().$_FILES['fileToUpload1']['name'];
+
     $string1 = str_shuffle('abcdefghijklmnopqrstuvwxyz');
     $random1 = substr($string1,0,3);
     $string2 = str_shuffle('1234567890');
@@ -33,14 +35,20 @@
     $contstr = "MYSER-SERVICES";
     $vendor_id = $contstr.$random1.$random2;
 
-      if($fileToUpload!='') {
+      if($fileToUpload!='' && $fileToUpload1!='' ) {
 
         $target_dir = "../../uploads/food_vendor_logo/";
         $target_file = $target_dir . basename($fileToUpload);
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-           $sql = "INSERT INTO food_vendors (`vendor_name`, `vendor_id`,`vendor_email`, `vendor_mobile`, `description`,  `password`, `working_timings`,`min_delivery_time`, `lkp_state_id`,`lkp_district_id`, `lkp_city_id`,`location`, `logo`, `restaurant_name`,`restaurant_address`,`delivery_type_id`,`created_at`,`pincode`,`meta_title`,`meta_keywords`,`meta_desc`,`cusine_type_id`) VALUES ('$vendor_name','$vendor_id','$vendor_email','$vendor_mobile', '$description','$password','$working_timings','$min_delivery_time','$lkp_state_id','$lkp_district_id','$lkp_city_id','$location','$fileToUpload','$restaurant_name','$restaurant_address','$delivery_type_id','$created_at','$pincode','$meta_title','$meta_keywords','$meta_desc','$cusine_type_id')";
+        $target_dir1 = "../../uploads/food_vendor_Banner/";
+        $target_file1 = $target_dir1 . basename($fileToUpload1);
+        $imageFileType1 = pathinfo($target_file1,PATHINFO_EXTENSION);
+
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
+        {
+          move_uploaded_file($_FILES["fileToUpload1"]["tmp_name"], $target_file1);
+           $sql = "INSERT INTO food_vendors (`vendor_name`, `vendor_id`,`vendor_email`, `vendor_mobile`, `description`,  `password`, `working_timings`,`min_delivery_time`, `lkp_state_id`,`lkp_district_id`, `lkp_city_id`,`location`, `logo`, `restaurant_name`,`restaurant_address`,`delivery_type_id`,`created_at`,`pincode`,`meta_title`,`meta_keywords`,`meta_desc`,`cusine_type_id`,`vendor_banner`) VALUES ('$vendor_name','$vendor_id','$vendor_email','$vendor_mobile', '$description','$password','$working_timings','$min_delivery_time','$lkp_state_id','$lkp_district_id','$lkp_city_id','$location','$fileToUpload','$restaurant_name','$restaurant_address','$delivery_type_id','$created_at','$pincode','$meta_title','$meta_keywords','$meta_desc','$cusine_type_id','$fileToUpload1')";
 
 
             if($conn->query($sql) === TRUE){
@@ -142,11 +150,19 @@
                     <div class="help-block with-errors"></div>
                   </div>
                  <div class="form-group">
-                    <label for="form-control-4" class="control-label">Image</label>
+                    <label for="form-control-4" class="control-label">Logo&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     <img id="output" height="100" width="100"/>
                     <label class="btn btn-default file-upload-btn">
                       Choose file...
                         <input id="form-control-22" class="file-upload-input" type="file" accept="image/*" name="fileToUpload" id="fileToUpload"  onchange="loadFile(event)"  multiple="multiple">
+                      </label>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-4" class="control-label">Banner</label>
+                    <img id="output1" height="100" width="100"/>
+                    <label class="btn btn-default file-upload-btn">
+                      Choose file...
+                        <input id="form-control-22" class="file-upload-input" type="file" accept="image/*" name="fileToUpload1" id="fileToUpload1"  onchange="loadFile1(event)"  multiple="multiple" >
                       </label>
                   </div>
                    <?php $getStates = getAllDataWithStatus('lkp_states','0');?>

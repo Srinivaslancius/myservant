@@ -73,7 +73,8 @@
 	<div class="row">
 		<div class="col-md-12">
 		<center> <h2 class="nomargin_top">About US</h2></center>
-			<?php echo $getAboutusData['description']; ?>
+			<?php echo $getAboutusData
+			['description']; ?>
 				
 				</ul>
 		</div>
