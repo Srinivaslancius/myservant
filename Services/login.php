@@ -8,8 +8,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once 'meta.php';?>
 	<?php 
-		error_reporting(0);
-
 		$cart_id = decryptPassword($_GET['cart_id']);
 		if(isset($_POST['login']))  { 
 		    //Login here

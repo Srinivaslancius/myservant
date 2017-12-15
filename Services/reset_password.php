@@ -8,7 +8,6 @@
 	<?php include_once 'meta.php';?>
 
 <?php
-	error_reporting(0);
 	if(isset($_GET['token']) && $_GET['token']!='')  {
 	    //Login here
 	    $token = $_GET['token'];
