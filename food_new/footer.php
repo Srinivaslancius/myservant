@@ -1,55 +1,11 @@
-<?php
-
-if(!empty($_POST['name_contact']))  {
-    
-    $name_contact = $_POST['name_contact'];
-    $lastname_contact = $_POST['lastname_contact'];
-    $email_contact = $_POST['email_contact'];
-    $phone_contact = $_POST['phone_contact'];
-    $message_contact = $_POST['message_contact'];
-
-$dataem = $getFoodSiteSettingsData["contact_email"];
-//$to = "srinivas@lanciussolutions.com";
-$to = $dataem;
-$subject = "Myservent - News Letter ";
-$message = '';      
-$message .= '<body>
-    <div class="container" style=" width:50%;border: 5px solid #fe6003;margin:0 auto">
-    <header style="padding:0.8em;color: white;background-color: #fe6003;clear: left;text-align: center;">
-     <center><img src='.$base_url . "uploads/logo/".$getFoodSiteSettingsData["logo"].' class="logo-responsive"></center>
-    </header>
-    <article style=" border-left: 1px solid gray;overflow: hidden;text-align:justify; word-spacing:0.1px;line-height:25px;padding:15px">
-        <h1 style="color:#fe6003">User Feedback Information.</h1>
-        <h4>First Name: </h4><p>'.$name_contact.'</p>
-        <h4>Last Name: </h4><p>'.$lastname_contact.'</p>
-        <h4>Email: </h4><p>'.$email_contact.'</p>
-        <h4>Mobile: </h4><p>'.$phone_contact.'</p>
-        <h4>Message: </h4><p>'.$message_contact.'</p>
-    </article>
-    <footer style="padding: 1em;color: white;background-color: #fe6003;clear: left;text-align: center;">'.$getFoodSiteSettingsData['footer_text'].'</footer>
-    </div>
-
-    </body>';
-
-//echo $message; die;
-
-//$sendMail = sendEmail($to,$subject,$message,$email_contact);
-$name = "My Servant";
-$from = $email_contact;
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";  
-$headers .= 'From: '.$name.'<'.$from.'>'. "\r\n";
-if(mail($to, $subject, $message, $headers)) {
-    echo  "<script>alert('Thank You For Your feedback');window.location.href('contactus.php');</script>";
-}
-
-}
+<?php $getContentPageData = getAllDataWhere('food_content_pages','id',1);
+          $getAboutUsData = $getContentPageData->fetch_assoc();
 ?>
-    <div class="container">
+        <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-3">
-                <h3>About Us</h3>
-               <p style="text-align:justify">What is Myservant.com Myservant.com (A Unit of CMR Enterprises Pvt Ltd) is one of the largest online food and grocery store in Vijayawada. With over 3500 products and we deal with over 250 brands What is Myservant.com Myservant.com (A Unit of CMR Enterprises Pvt Ltd)</p>
+                <h3><?php echo $getAboutUsData['title']; ?></h3>
+               <p style="text-align:justify"><?php echo substr(strip_tags($getAboutUsData['description']), 0,200);?></p>
             </div>
              <div class="col-md-1 col-sm-1">
              </div>
