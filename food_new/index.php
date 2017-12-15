@@ -125,6 +125,7 @@
         
         </div><!-- End container -->
             
+           
     <div class="white_bg">
     <div class="container margin_60">
         
@@ -134,26 +135,32 @@
                 Cum doctus civibus efficiantur in imperdiet deterruisset.
             </p>
         </div>
+
+        <?php $getMostPopualrRest = getAllDataWithStatusLimit('food_vendors','0','0','6'); ?>
         
         <div class="row">
-            <?php for($i=0; $i<6; $i++) {?>
+            <?php while($getMostPopualrRestaurants = $getMostPopualrRest->fetch_assoc()) { ?>
             <div class="col-md-6">
                
                 <a href="menu.php" class="strip_list">
                     <div class="ribbon_1">Popular</div>
                     <div class="desc">
                         <div class="thumb_strip">
-                            <img src="img/thumb_restaurant.jpg" alt="">
+                            <?php if($getMostPopualrRestaurants['logo']!='') { ?>
+                                <img <img src="<?php echo $base_url . 'uploads/food_restaurants_images/'.$getMostPopualrRestaurants['logo']; ?>" alt="<?php echo $getMostPopualrRestaurants['restaurant_name']; ?>">
+                            <?php } else { ?>
+                                <img src="img/thumb_restaurant.jpg" alt="<?php echo $getMostPopualrRestaurants['restaurant_name']; ?>">
+                            <?php } ?>
                         </div>
                         <div class="rating">
                             <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
                         </div>
-                        <h3>Taco Mexican</h3>
+                        <h3><?php echo $getMostPopualrRestaurants['restaurant_name']; ?></h3>
                         <div class="type">
-                            Mexican / American
+                           <?php echo $getMostPopualrRestaurants['description']; ?>
                         </div>
                         <div class="location">
-                            135 Newtownards Road, Belfast, BT4. <span class="opening">Opens at 17:00</span>
+                            <?php echo $getMostPopualrRestaurants['restaurant_address']; ?> .<span class="opening">Opens at <?php echo $getMostPopualrRestaurants['working_timings']; ?></span>
                         </div>
                         <ul>
                             <li>Take away<i class="icon_check_alt2 ok"></i></li>
