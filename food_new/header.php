@@ -24,8 +24,8 @@
         <div class="row myseranr_header">
             <div class="col--md-3 col-sm-3 col-xs-12">
                 <a href="index.php" id="logo">
-                <img src="img/logo.png" alt="" data-retina="true" class="hidden-xs myservanrlogo">
-                <center><img src="img/logo-mobile.png"  alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm"></center>
+                <img src="<?php echo $base_url . 'uploads/logo/'.$getFoodSiteSettingsData['logo'] ?>" alt="<?php echo $getFoodSiteSettingsData['admin_title']; ?>" data-retina="true" class="hidden-xs myservanrlogo">
+                
                 </a>
             </div>
             <div class="col-md-6 col-xs-9">
