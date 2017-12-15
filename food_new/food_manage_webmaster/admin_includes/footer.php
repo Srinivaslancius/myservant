@@ -30,8 +30,7 @@
       var loadFile = function(event) {
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);
-        var output1 = document.getElementById('output1');
-        output1.src = URL.createObjectURL(event.target.files[0]);
+        
       };
       var loadFile1 = function(event) {
         var output1 = document.getElementById('output1');
