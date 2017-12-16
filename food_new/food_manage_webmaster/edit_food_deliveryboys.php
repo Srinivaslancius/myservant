@@ -65,7 +65,7 @@ if (!isset($_POST['submit'])) {
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email</label>
-                    <input type="email" name="email" class="form-control" id="form-control-2" placeholder="Email" data-error="Please enter a valid email address." required value="<?php echo $getFoodDeliveryBoys['email'];?>">
+                    <input type="email" name="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" id="form-control-2" placeholder="Email" data-error="Please enter a valid email address." required value="<?php echo $getFoodDeliveryBoys['email'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">

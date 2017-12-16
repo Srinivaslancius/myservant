@@ -83,7 +83,7 @@
                             <div class="row">
                               <div class="col-sm-2"></div>
                               <div class="col-sm-4">Admin User Type:</div>
-                              <div class="col-sm-6"><?php if($row['lkp_admin_user_type_id'] == 1 ){ echo "Super Admin";} elseif($row['lkp_admin_service_type_id'] == 2 ){ echo "Sub Admin";} else{ echo "Employee";}?></div>
+                              <div class="col-sm-6"><?php if($row['lkp_admin_user_type_id'] == 1 ){ echo "Super Admin";} elseif($row['lkp_admin_user_type_id'] == 2 ){ echo "Sub Admin";} else{ echo "Employee";}?></div>
                             </div>
                             <div class="row">
                               <div class="col-sm-2"></div>
