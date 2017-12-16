@@ -48,7 +48,7 @@
 <?php $getCategory = getFoodCategoryByRestId('food_products','restaurant_id',$getRestKey); ?>
 <?php $getFoodVendorsBann = getIndividualDetails('food_vendors','id',$getRestKey); ?>
 <!-- SubHeader =============================================== -->
-<section class="parallax-window" data-parallax="scroll" <?php if($getFoodVendorsBann['vendor_banner']!='') { ?>data-image-src="<?php echo $base_url . 'uploads/food_vendor_logo/'.$getFoodVendorsBann['vendor_banner']; ?>" <?php } else { ?> data-image-src="img/sub_header_home.jpg" <?php } ?>data-natural-width="1400" data-natural-height="470">
+<section class="parallax-window" data-parallax="scroll" <?php if($getFoodVendorsBann['vendor_banner']!='') { ?>data-image-src="<?php echo $base_url . 'uploads/food_vendor_Banner/'.$getFoodVendorsBann['vendor_banner']; ?>" <?php } else { ?> data-image-src="img/sub_header_home.jpg" <?php } ?>data-natural-width="1400" data-natural-height="470">
     <div id="subheader">
 	<div id="sub_content">
     	<div id="thumb"><img src="<?php echo $base_url . 'uploads/food_vendor_logo/'.$getFoodVendorsBann['logo']; ?>" alt="<?php echo $getMostPopualrRestaurants['restaurant_name']; ?>"></div>
@@ -90,11 +90,12 @@
 				<div class="box_style_2 hidden-xs" id="help">
 					<i class="icon_lifesaver"></i>
 					<h4>Need <span>Help?</span></h4>
-					<a href="tel://004542344599" class="phone">+91- 999 999 9999</a>
-					<small>Monday to Friday 9.00am - 7.30pm</small>
+					<a href="tel:<?php echo $getFoodVendorsBann['vendor_mobile']; ?>" class="phone">+91- <?php echo $getFoodVendorsBann['vendor_mobile']; ?></a>
+					<small>Monday to Friday <?php echo $getFoodVendorsBann['working_timings']; ?></small>
 				</div>
 			</div><!-- End col-md-3 -->
             <?php $getCategory1 = getFoodCategoryByRestId('food_products','restaurant_id',$getRestKey); ?>
+
 			<div class="col-md-6">
 				<div class="box_style_2" id="main_menu">
                         <h2 class="inner">Menu <span class="pull-right">
@@ -125,8 +126,10 @@
 						$getItemsByCat = getFoodItemsByCategory('food_products','restaurant_id',$getRestKey,'category_id',$getCatName['id']);	
 						$i=1; while($getItemsByCategory = $getItemsByCat->fetch_assoc() ) {
 						$productId = $getItemsByCategory['id'];
-		            ?>                    
-					<tr>
+		            ?>
+		            <input type="hidden" id="item<?php echo $productId; ?>_name" value="<?php echo $getItemsByCategory['product_name']; ?>">
+    				<input type="hidden" id="item<?php echo $productId; ?>_price" value="15">
+					<tr class="items" id="item<?php echo $productId; ?>">
 						<td>
                         	<figure class="thumb_menu_list"><img src="<?php echo $base_url . 'uploads/food_product_images/'.$getItemsByCategory['product_image']; ?>" alt="<?php echo $getItemsByCategory['product_name']; ?>" ></figure>
 							<h5><?php echo $i; ?>. <?php echo $getItemsByCategory['product_name']; ?></h5>
@@ -139,28 +142,30 @@
 							<strong>Rs. <?php echo $getFirstPrice['product_price']; ?></strong>
 						</td>
 						<td class="options">
-                        <div class="dropdown dropdown-options">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="icon_plus_alt2"></i></a>
-                            <div class="dropdown-menu">
-                                <h5>Select an option</h5>
-                                <?php $getSelectOptions =  getAllDataWhere('food_product_weight_prices','product_id',$productId); ?>
-                                <?php while($getItemPrices = $getSelectOptions->fetch_assoc() ) { ?>
-	                                <label>
-	                                <input type="radio" value="option1" name="options_1" checked><?php $getWeight = getIndividualDetails('food_product_weights','id',$getItemPrices['weight_type_id']); echo $getWeight['weight_type'];  ?><span>+ Rs. <?php echo $getItemPrices['product_price']; ?></span>
-	                                </label>
-	                            <?php } ?>
-                               
-                                <h5>Add ingredients</h5>
+						
+	                        <div class="dropdown dropdown-options">
+	                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="icon_plus_alt2"></i></a>
+	                            <div class="dropdown-menu">
+	                                <h5>Select an option</h5>
+	                                <?php $getSelectOptions =  getAllDataWhere('food_product_weight_prices','product_id',$productId); ?>
+	                                <?php while($getItemPrices = $getSelectOptions->fetch_assoc() ) { ?>
+		                                <label>
+		                                <input type="radio" value="option1" name="options_1" required><?php $getWeight = getIndividualDetails('food_product_weights','id',$getItemPrices['weight_type_id']); echo $getWeight['weight_type'];  ?><span>+ Rs. <?php echo $getItemPrices['product_price']; ?></span>
+		                                </label>
+		                            <?php } ?>
+	                               
+	                                <h5>Add ingredients</h5>
 
-                                <?php $getIngOptions =  getAllDataWhere('food_product_ingredient_prices','product_id',$productId); ?>
-                                <?php while($getItemIngoptions = $getIngOptions->fetch_assoc() ) { ?>
-	                                <label>
-	                                <input type="checkbox" value=""><?php $getWeight = getIndividualDetails('food_ingredients','id',$getItemIngoptions['ingredient_name_id']); echo $getWeight['ingredient_name'];  ?><span>+ Rs. <?php echo $getItemIngoptions['ingredient_price']; ?></span>
-	                                </label>
-	                            <?php } ?>	                           
-                                <a href="#0" class="add_to_basket">Add to cart</a>
-                            </div>
-                        </div>
+	                                <?php $getIngOptions =  getAllDataWhere('food_product_ingredient_prices','product_id',$productId); ?>
+	                                <?php while($getItemIngoptions = $getIngOptions->fetch_assoc() ) { ?>
+		                                <label>
+		                                <input type="checkbox" value=""><?php $getWeight = getIndividualDetails('food_ingredients','id',$getItemIngoptions['ingredient_name_id']); echo $getWeight['ingredient_name'];  ?><span>+ Rs. <?php echo $getItemIngoptions['ingredient_price']; ?></span>
+		                                </label>
+		                            <?php } ?>
+		                            <a href="#0" class="add_to_basket add_cart_item" data-key="<?php echo $productId; ?>" onclick="cart('item<?php echo $productId; ?>')">Add to cart</a>
+	                            </div>
+	                        </div>	                    
+
                     </td>
 					</tr>
                         <?php $i++; } ?>
@@ -178,6 +183,7 @@
 					<h3>Your order <i class="icon_cart_alt pull-right"></i></h3>
 					<table class="table table_summary">
 					<tbody>
+						
 					<tr>
 						<td>
 							<a href="#0" class="remove_item"><i class="icon_plus_alt"></i></a> <strong>1x</strong> <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> Enchiladas
@@ -188,36 +194,13 @@
 					</tr>
 					<tr>
 						<td>
-							<a href="#0" class="remove_item"><i class="icon_plus_alt"></i></a> <strong>1x</strong> <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> Burrito
+							<a href="#0" class="remove_item"><i class="icon_plus_alt"></i></a> <strong>1x</strong> <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> Enchiladas
 						</td>
 						<td>
-							<strong class="pull-right">Rs. 14</strong>
+							<strong class="pull-right">Rs. 11</strong>
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<a href="#0" class="remove_item"><i class="icon_plus_alt"></i></a> <strong>1x</strong> <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> Chicken
-						</td>
-						<td>
-							<strong class="pull-right">Rs. 20</strong>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a href="#0" class="remove_item"><i class="icon_plus_alt"></i></a> <strong>1x</strong> <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> Corona Beer
-						</td>
-						<td>
-							<strong class="pull-right">Rs. 9</strong>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a href="#0" class="remove_item"><i class="icon_plus_alt"></i></a> <strong>1x</strong> <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> Cheese Cake
-						</td>
-						<td>
-							<strong class="pull-right">Rs. 12</strong>
-						</td>
-					</tr>
+					
 					</tbody>
 					</table>
 					<hr>
@@ -303,6 +286,7 @@ $('#cat_nav a[href^="#"]').on('click', function (e) {
 			});
 		});
 </script>
+
 
 </body>
 </html>
