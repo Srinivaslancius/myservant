@@ -22,7 +22,7 @@
 
 </head>
 
-<body>
+<body onload="show_cart()">
 
 <!--[if lte IE 8]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
@@ -94,7 +94,7 @@
 					<small>Monday to Friday <?php echo $getFoodVendorsBann['working_timings']; ?></small>
 				</div>
 			</div><!-- End col-md-3 -->
-            <?php $getCategory1 = getFoodCategoryByRestId('food_products','restaurant_id',$getRestKey); ?>
+            <?php $getCategory1 = getFoodCategoryByRestId('food_products','restaurant_id',$getRestKey); ?>            
 
 			<div class="col-md-6">
 				<div class="box_style_2" id="main_menu">
@@ -128,7 +128,8 @@
 						$productId = $getItemsByCategory['id'];
 		            ?>
 		            <input type="hidden" id="item<?php echo $productId; ?>_name" value="<?php echo $getItemsByCategory['product_name']; ?>">
-    				<input type="hidden" id="item<?php echo $productId; ?>_price" value="15">
+		            <input type="hidden" id="item<?php echo $productId; ?>_id" value="<?php echo $productId; ?>">
+    				
 					<tr class="items" id="item<?php echo $productId; ?>">
 						<td>
                         	<figure class="thumb_menu_list"><img src="<?php echo $base_url . 'uploads/food_product_images/'.$getItemsByCategory['product_image']; ?>" alt="<?php echo $getItemsByCategory['product_name']; ?>" ></figure>
@@ -140,9 +141,35 @@
 						<td>
 							<?php $getFirstPrice =  getIndividualDetails('food_product_weight_prices','product_id',$productId); ?>
 							<strong>Rs. <?php echo $getFirstPrice['product_price']; ?></strong>
+							<input type="hidden" id="item<?php echo $productId; ?>_price" value="<?php echo $getFirstPrice['product_price']; ?>">
 						</td>
-						<td><i class="icon_plus_alt2 add_cart_item" data-key="<?php echo $productId; ?>" data-key-price="25"></i></td>
+						<td class="options">
 						
+	                        <div class="dropdown dropdown-options">
+	                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="icon_plus_alt2"></i></a>
+	                            <div class="dropdown-menu">
+	                                <h5>Select an option</h5>
+	                                <?php $getSelectOptions =  getAllDataWhere('food_product_weight_prices','product_id',$productId); ?>
+	                                <?php while($getItemPrices = $getSelectOptions->fetch_assoc() ) { ?>
+		                                <label>
+		                                	<?php $getWeight = getIndividualDetails('food_product_weights','id',$getItemPrices['weight_type_id']); ?>
+		                                <input type="radio" name="options_1" required value="<?php echo $getItemPrices['weight_type_id']; ?>"><?php echo $getWeight['weight_type'];  ?><span>+ Rs. <?php echo $getItemPrices['product_price']; ?></span>
+		                                </label>
+		                            <?php } ?>
+	                               
+	                                <h5>Add ingredients</h5>
+
+	                                <?php $getIngOptions =  getAllDataWhere('food_product_ingredient_prices','product_id',$productId); ?>
+	                                <?php while($getItemIngoptions = $getIngOptions->fetch_assoc() ) { ?>
+		                                <label>
+		                                <input type="checkbox" value=""><?php $getWeight = getIndividualDetails('food_ingredients','id',$getItemIngoptions['ingredient_name_id']); echo $getWeight['ingredient_name'];  ?><span>+ Rs. <?php echo $getItemIngoptions['ingredient_price']; ?></span>
+		                                </label>
+		                            <?php } ?>
+		                            <a href="#0" class="add_to_basket add_cart_item" data-key="<?php echo $productId; ?>" onclick="cart('item<?php echo $productId; ?>')">Add to cart</a>
+	                            </div>
+	                        </div>	                    
+
+                    </td>
 					</tr>
                         <?php $i++; } ?>
 					</tbody>
@@ -153,28 +180,24 @@
 				</div><!-- End box_style_1 -->
 			</div><!-- End col-md-6 -->
             
-            <?php
-			    if($_SESSION['CART_TEMP_RANDOM'] == "") {
-			        $_SESSION['CART_TEMP_RANDOM'] = rand(10, 10).sha1(crypt(time())).time();
-			    }
-			    $session_cart_id = $_SESSION['CART_TEMP_RANDOM'];
-			    if(isset($_SESSION['user_login_session_id']) && $_SESSION['user_login_session_id']!='') {
-			        $user_session_id = $_SESSION['user_login_session_id'];
-			        $cartItems1 = "SELECT * FROM food_cart WHERE user_id = '$user_session_id' OR session_cart_id='$session_cart_id' ";
-			        $cartItems = $conn->query($cartItems1);
-			    } else {
-			        $cartItems = getAllDataWhere('food_cart','session_cart_id',$session_cart_id);
-			    } 
-			?>
-
 			<div class="col-md-3" id="sidebar">
             <div class="theiaStickySidebar">
 				<div id="cart_box" >
-					<h3>Your order <i class="icon_cart_alt pull-right"></i></h3>
-					<table class="table table_summary">					
-						<tbody id="mycart">
+					<h3>Your order <i class="icon_cart_alt pull-right" ></i>(<input type="button" id="total_items" value="0">)</h3>
+					
+					<table class="table table_summary">
+					<tbody id="mycart">
 						
-						</tbody>					
+					<tr>
+						<td>
+							<a href="#0" class="remove_item"><i class="icon_plus_alt"></i></a> <strong>1x</strong> <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> Enchiladas
+						</td>
+						<td>
+							<strong class="pull-right">Rs. 11</strong>
+						</td>
+					</tr>
+					
+					</tbody>
 					</table>
 					<hr>
 					<div class="row" id="options_2">
@@ -261,28 +284,77 @@ $('#cat_nav a[href^="#"]').on('click', function (e) {
 </script>
 
 <script type="text/javascript">
-$(".add_cart_item").click(function(){
 
-	var ProductId = $(this).attr("data-key");
-	var ProductPrice = $(this).attr("data-key-price");
+    $(document).ready(function(){
+
+      $.ajax({
+        type:'post',
+        url:'store_items.php',
+        data:{
+          total_cart_items:"totalitems"
+        },
+        success:function(response) {
+          document.getElementById("total_items").value=response;
+        }
+      });
+
+    });
+
+    function cart(id)
+    {
+	  var ele=document.getElementById(id);
+	  //var img_src=ele.getElementsByTagName("img")[0].src;
+	  var product_id=document.getElementById(id+"_id").value;
+	  var name=document.getElementById(id+"_name").value;
+	  var price=document.getElementById(id+"_price").value;	  
+	  
+	  $.ajax({
+        type:'post',
+        url:'store_items.php',
+        data:{
+          //item_src:img_src,
+          item_name:name,
+          item_price:price,
+          item_id:product_id
+        },
+        success:function(response) {     	
+          document.getElementById("total_items").value=response;
+          document.getElementById("mycart").innerHTML=response;
+        }
+      });
 
       $.ajax({
       type:'post',
-      url:'save_item_cart.php',
+      url:'store_items.php',
       data:{
-         item_id:ProductId,
-         item_price:ProductPrice,
+        showcart:"cart"
       },
-      success:function(response) {	
+      success:function(response) {
+      	//alert(response);  
         document.getElementById("mycart").innerHTML=response;
         //$("#mycart").slideToggle();
       }
      });
-}); 
-</script>
+	
+    }
 
-<script type="text/javascript">
-//Already did page for cart update
+    function show_cart()
+    {
+      $.ajax({
+      type:'post',
+      url:'store_items.php',
+      data:{
+        showcart:"cart"
+      },
+      success:function(response) {
+      	//alert(response);  
+        document.getElementById("mycart").innerHTML=response;
+        //$("#mycart").slideToggle();
+      }
+     });
+
+    }
+	
 </script>
 
 </body>
