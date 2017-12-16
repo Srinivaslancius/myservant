@@ -38,7 +38,7 @@ $id = $_GET['uid'];
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email</label>
-                    <input type="email" name="admin_email" class="form-control" id="user_input" placeholder="Email" data-error="Please enter valid email address." onkeyup="checkUserAvailTest();" required value="<?php echo $getAdminUsersData['admin_email'];?>">
+                    <input type="email" name="admin_email" class="form-control" id="user_input" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" data-error="Please enter valid email address." onkeyup="checkUserAvailTest();" required value="<?php echo $getAdminUsersData['admin_email'];?>">
                     <span id="input_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
                     <input type="hidden" id="table_name" value="admin_users">
@@ -46,7 +46,7 @@ $id = $_GET['uid'];
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Password</label>
-                    <input type="password" name="admin_password" class="form-control" id="form-control-2" placeholder="Password" data-error="Please enter Password." required value="<?php echo decryptPassword($getAdminUsersData['admin_password']);?>">
+                    <input type="password" name="admin_password" class="form-control" minlength="8" data-error="Please Enter Minimum 8 characters." id="form-control-2" placeholder="Password" data-error="Please enter Password." required value="<?php echo decryptPassword($getAdminUsersData['admin_password']);?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <?php $getAdminSetvices = "SELECT * from `lkp_admin_service_types` WHERE `lkp_status_id` = '0' And id =2";

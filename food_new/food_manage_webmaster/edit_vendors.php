@@ -122,8 +122,12 @@ if (!isset($_POST['submit'])) {
                   
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email</label>
-                    <input type="email" name="vendor_email" class="form-control" id="form-control-2" placeholder="Email" data-error="Please enter a valid email address." required value="<?php echo $getVendorsData['vendor_email'];?>">
+                    <input type="email" name="vendor_email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" id="user_input" placeholder="Email" data-error="Please enter a valid email address." required value="<?php echo $getVendorsData['vendor_email'];?>" onkeyup="checkUserAvailTest()">
+                    <span id="input_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
+                    <input type="hidden" id="table_name" value="food_vendors">
+                    <input type="hidden" id="column_name" value="vendor_email">
+            
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Mobile</label>
@@ -138,7 +142,7 @@ if (!isset($_POST['submit'])) {
       
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" id="form-control-2" placeholder="Password" data-error="Please enter Password." required value="<?php echo decryptPassword($getVendorsData['password']);?>">
+                    <input type="password" name="password" id="password" minlength="8" data-error="Please Enter Minimum 8 characters."  class="form-control" id="form-control-2" placeholder="Password" data-error="Please enter Password." required value="<?php echo decryptPassword($getVendorsData['password']);?>">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
@@ -200,15 +204,15 @@ if (!isset($_POST['submit'])) {
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Pincode</label>
-                    <input type="text" name="pincode" class="form-control" id="form-control-2" placeholder="Pincode" data-error="Please enter Pincode." required maxlength="6"  required value="<?php echo $getVendorsData['pincode'];?>" >
+                    <input type="text" name="pincode" class="form-control" id="form-control-2" placeholder="Pincode" data-error="Please enter Pincode." required maxlength="6"  onkeypress="return isNumberKey(event)" required value="<?php echo $getVendorsData['pincode'];?>" >
                     <div class="help-block with-errors"></div>
                   </div>
                     <div class="form-group">
                     <label for="form-control-4" class="control-label">logo</label>
-                    <img src="<?php echo $base_url . 'uploads/food_vendor_logo/'.$getVendorsData['logo'] ?>"  id="output" height="100" width="100"/>
+                    <img src="<?php echo $base_url . 'uploads/food_vendor_logo/'.$getVendorsData['logo'] ?>"  id="output" height="100" width="100"/ required>
                     <label class="btn btn-default file-upload-btn">
                         Choose file...
-                        <input id="form-control-22" class="file-upload-input" type="file" accept="image/*" name="fileToUpload" id="fileToUpload"  onchange="loadFile(event)"  multiple="multiple" >
+                        <input id="form-control-22" class="file-upload-input" type="file" accept="image/*" name="fileToUpload" id="fileToUpload"  onchange="loadFile(event)"  multiple="multiple" required>
                       </label>
                   </div>
                   <div class="form-group">

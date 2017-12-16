@@ -35,7 +35,7 @@
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Email</label>
-                    <input type="email" name="admin_email" class="form-control" id="user_input" placeholder="Email" data-error="Please enter a valid email address." onkeyup="checkUserAvailTest()" required>
+                    <input type="email" name="admin_email" class="form-control" id="user_input" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" placeholder="Email" data-error="Please enter a valid email address." onkeyup="checkUserAvailTest()" required>
                     <span id="input_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
                     <input type="hidden" id="table_name" value="admin_users">
@@ -43,7 +43,7 @@
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Password</label>
-                    <input type="password" name="admin_password" class="form-control" id="form-control-2" placeholder="Password" data-error="Please enter Correct Password." required>
+                    <input type="password" name="admin_password" minlength="8" data-error="Please Enter Minimum 8 characters." class="form-control" id="form-control-2" placeholder="Password" data-error="Please enter Correct Password." required>
                     <div class="help-block with-errors"></div>
                   </div>
                   <?php $getAdminSetvices= "SELECT * from `lkp_admin_service_types` WHERE `lkp_status_id` = '0' And id =2";

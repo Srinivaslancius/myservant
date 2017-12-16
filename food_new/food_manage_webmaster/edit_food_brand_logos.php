@@ -31,7 +31,7 @@ if (!isset($_POST['submit'])) {
                 }
       } else {
 
-          $sql = "UPDATE `services_brand_logos` SET title = '$title', lkp_status_id='$lkp_status_id' WHERE id = '$id' ";
+          $sql = "UPDATE food_brand_logos SET title = '$title', lkp_status_id='$lkp_status_id' WHERE id = '$id' ";
           if($conn->query($sql) === TRUE){
              echo "<script type='text/javascript'>window.location='food_brand_logos.php?msg=success'</script>";
           } else {

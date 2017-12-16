@@ -105,6 +105,7 @@ if (!isset($_POST['submit']))  {
 <!-- Script for display category based on banner type -->
 <script type="text/javascript">
   $(document).ready(function () {
+    $("#food_category_id").hide();
     $("input[name='lkp_banner_type_id']").click(function () {
       if ($("#lkp_banner_type_id").is(":checked")) {
           $("#food_category_id").show();
