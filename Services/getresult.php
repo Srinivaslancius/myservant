@@ -1,5 +1,4 @@
 <?php
-error_reporting(1);
 include "../admin_includes/config.php";
 
 $perPage = 3;

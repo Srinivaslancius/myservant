@@ -41,6 +41,7 @@
                 <thead>
                   <tr>
                     <th>S.No</th>
+                    <th>Restaurant Name</th>
                     <th>Product Name</th>
                     <th>Category Name</th>
                     <th>Status</th>
@@ -51,6 +52,8 @@
                   <?php while ($row = $getProductsData->fetch_assoc()) { ?>
                   <tr>
                     <td><?php echo $i;?></td>
+                    <td><?php $getRst =  getAllDataWhere('food_vendors','id',$row['restaurant_id']);
+                    $getRestName = $getRst->fetch_assoc(); echo $getRestName['restaurant_name']; ?></td>
                     <td><?php echo $row['product_name'];?></td>
                     <td><?php $getCategories =  getAllDataWhere('food_category','id',$row['category_id']);
                     $getCategory = $getCategories->fetch_assoc(); echo $getCategory['category_name']; ?></td>
