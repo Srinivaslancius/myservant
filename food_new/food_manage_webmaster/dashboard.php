@@ -1,6 +1,8 @@
 <?php include_once 'admin_includes/main_header.php'; ?>
       <div class="site-content">
         <div class="row">
+           <?php $getUsers = "SELECT * FROM users WHERE lkp_admin_service_type_id = 2 ORDER BY lkp_status_id, id DESC";
+          $getUsersData = $conn->query($getUsers); $getRowsCountofUsers = $getUsersData->num_rows; ?>
           <a href="users.php">
           <div class="col-md-4 col-sm-5">
             <div class="widget widget-tile-2 bg-primary m-b-30">
@@ -10,7 +12,7 @@
                     <i class="zmdi zmdi-caret-up"></i>
                   </span>
                 </div>
-                <div class="wt-number"><?php echo getRowsCount('users')?></div>
+                <div class="wt-number"><?php echo $getRowsCountofUsers; ?></div>
               </div>
               <div class="wt-icon">
                 <i class="zmdi zmdi-accounts"></i>
@@ -18,12 +20,14 @@
             </div>
           </div>
           </a>
+          <?php $getAdminUsers = "SELECT * FROM admin_users WHERE lkp_admin_service_type_id = 2 ORDER BY lkp_status_id,id DESC";
+          $getAdminUsersData = $conn->query($getAdminUsers); $getRowsCountofAdminUsers = $getAdminUsersData->num_rows; ?>
           <a href="admin_users.php">
           <div class="col-md-4 col-sm-5">
             <div class="widget widget-tile-2 bg-warning m-b-30">
               <div class="wt-content p-a-20 p-b-50">
                 <div class="wt-title">Admin Users</div>
-                <div class="wt-number"><?php echo getRowsCount('admin_users')?></div>
+                <div class="wt-number"><?php echo $getRowsCountofAdminUsers; ?></div>
               </div>
               <div class="wt-icon">
                 <i class="zmdi zmdi-accounts"></i>
